@@ -8,9 +8,7 @@ const StateContext=createContext( {
 );
 
 export const ContextProvider=({children})=>{
-    const [user,setUser]=useState({
-        name:'Menna'
-    });
+    const [user,setUser]=useState(null);
     const [token,_SetToken]=useState(null);
 
     const setToken=(token)=>{
