@@ -67,7 +67,7 @@ export default function signup(){
                 </label>
               </div>
               <div className="form-login">
-                <button type='submit'>Sign up</button>
+                <button type='submit' onClick={onSubmit}>Sign up</button>
                 <p>Already have an account? {' '}
                 <Link to="/login">Login</Link></p>
               </div>
