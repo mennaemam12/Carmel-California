@@ -1,12 +1,17 @@
+import React from 'react';
+import registrationImage from './../images/reg.jpg';
+import './../css/login.css'; 
 import { Link } from "react-router-dom";
 import {useRef} from "react";
 import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
+
 export default function signup(){
     const nameRef=useRef();
     const emailRef=useRef();
+    const phoneRef=useRef();
     const passwordRef=useRef();
-    const passwordConfirmationRef=useRef();
+    const confirmPasswordRef=useRef();
 
     const {setUser,setToken}=useStateContext();
 
@@ -15,8 +20,9 @@ export default function signup(){
         const payload={
             name:nameRef.current.value,
             email:emailRef.current.value,
+            phone:phoneRef.current.value,
             password:passwordRef.current.value,
-            password_confirmation:passwordConfirmationRef.current.value
+            confirm_password:confirmPasswordRef.current.value
         }
         axiosClient.post('/signup',payload)
         .then(({data})=>{
@@ -32,22 +38,41 @@ export default function signup(){
             }
         })
     }
-    return(
-        <div className="login-signup-form animated fadeInDown">
-            <div className="form">
-                <h1 className="title">Signup for free</h1>
-                <form onSubmit={onSubmit}>
-                    <input ref={nameRef} type="text" placeholder="Full Name" />
-                    <input ref={emailRef} type="email" placeholder="Email" />
-                    <input ref={passwordRef} type="password" placeholder="Password" />
-                    <input ref={passwordConfirmationRef} type="password" placeholder="Password Confirmation" />
-                    <button className="btn btn-block">Signup</button>
-                    <p className="message">
-                        Alreday Registered? <Link to="/login">Sign in </Link>
-                    </p>
-                </form>
-
+    return (
+        <div className="wrapper">
+          <div className="inner">
+            <div className="image-holder">
+              <img src={registrationImage} style={{ objectFit: 'fill', maxHeight: '780px' }} alt="" />
             </div>
+            <form action="">
+              <h3>Sign Up</h3>
+              <div className="form-holder active">
+                <input type="text" ref={nameRef} placeholder="name" className="form-control" />
+              </div>
+              <div className="form-holder">
+                <input type="text" ref={emailRef} placeholder="e-mail" className="form-control" />
+              </div>
+              <div className="form-holder">
+                <input type="text" ref={phoneRef} placeholder="Phone Number" className="form-control" />
+              </div>
+              <div className="form-holder">
+                <input type="password" ref={passwordRef} placeholder="Password" className="form-control" style={{ fontSize: '15px' }} />
+              </div>
+              <div className="form-holder">
+                <input type="password" ref={confirmPasswordRef} placeholder="Confirm Password" className="form-control" style={{ fontSize: '15px' }} />
+              </div>
+              <div className="checkbox">
+                <label>
+                  <span className="checkmark"></span>
+                </label>
+              </div>
+              <div className="form-login">
+                <button type='submit' onClick={onSubmit}>Sign up</button>
+                <p>Already have an account? {' '}
+                <Link to="/login">Login</Link></p>
+              </div>
+            </form>
+          </div>
         </div>
-    )
+      );
 }
