@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
 import Login from "./views/login.jsx";
 import Signup from "./views/signup.jsx";
@@ -7,45 +7,55 @@ import Dashboard from "./views/dashboard.jsx";
 import NotFound from "./views/NotFound.jsx";
 import GuestLayout from "./components/GuestLayout.jsx";
 import DefaultLayout from "./components/DefaultLayout.jsx";
+import Homepage from "./components/Homepage.jsx";
+import AddMenuItem from "./views/add-item.jsx";
 
 
-const router=createBrowserRouter([
+const router = createBrowserRouter([
     {
         path: '/',
-        element: <DefaultLayout/>,
-        children:[
+        element: <Homepage />,
+    },
+    {
+        path: '/',
+        element: <DefaultLayout />,
+        children: [
+            {
+                path: '/add-menu-item',
+                element: <AddMenuItem />
+            },
             {
                 path: '/',
-                element: <Users/>
+                element: <Users />
             },
             {
                 path: '/users',
-                element: <Users/>
+                element: <Users />
             },
             {
                 path: '/dashboard',
-                element: <Dashboard/>
+                element: <Dashboard />
             }
         ]
     },
     {
         path: '/',
-        element: <GuestLayout/>,
-        children:[
+        element: <GuestLayout />,
+        children: [
             {
                 path: '/signup',
-                element: <Signup/>
+                element: <Signup />
             },
             {
                 path: '/login',
-                element: <Login/>
+                element: <Login />
             }
         ]
     },
-   
+
     {
         path: '*',
-        element: <NotFound/>
+        element: <NotFound />
     }
 ])
 
