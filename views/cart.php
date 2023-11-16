@@ -37,7 +37,7 @@ include 'projectFolderName.php';
 		include 'partials/nav.php';
 	?>
 
-    <section class="home-slider owl-carousel">
+    <!-- <section class="home-slider owl-carousel">
 
       <div class="slider-item" style="background-image: url(public/images/bg_7.png);" data-stellar-background-ratio="0.5">
       	<div class="overlay"></div>
@@ -52,7 +52,7 @@ include 'projectFolderName.php';
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 		
 		<section class="ftco-section ftco-cart">
 			<div class="container">
@@ -227,8 +227,8 @@ include 'projectFolderName.php';
   <script src="public/js/bootstrap-datepicker.js"></script>
   <script src="public/js/jquery.timepicker.min.js"></script>
   <script src="public/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="public/js/google-map.js"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+  <!-- <script src="public/js/google-map.js"></script> -->
   <script src="public/js/main.js"></script>
 
     

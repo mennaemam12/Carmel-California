@@ -2,10 +2,10 @@
 include 'projectFolderName.php';
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar"
-		style="background-color: rgb(193, 171, 143);">
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar"
+		style="background: rgb(221, 209, 195,0.8);z-index:100;">
 		<div class="container">
-			<a class="navbar-brand" href="<?php echo $projectFolder;?>/">Carmel<small>California</small></a>
+			<a class="navbar-brand" style="color:#504831"href="<?php echo $projectFolder;?>/">Carmel<small>California</small></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
 				aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu" style="color:#504831"></span> Menu
