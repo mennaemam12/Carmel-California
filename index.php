@@ -1,19 +1,29 @@
 <?php
+// Path: index.php
 
-// Get the requested URL
-$url = isset($_GET['url']) ? $_GET['url'] : '/';
+include 'projectFolderName.php';
 
-// Split the URL into segments
+// Get the current URL
+$url = $_SERVER['REQUEST_URI'];
+
+// segments
 $segments = explode('/', $url);
 
-// Define your routes
-switch ($segments[0]) {
+// We use segments[2] to determine which route to load
+// segments[0] is empty because the URL starts with a slash
+// segments[1] is the project folder name 'Carmel-California'
+// segments[2] is the route name example: menu, about, contact, etc.
+
+// Define routes
+switch ($segments[2]) {
     case '':
     case '/':
-        include 'views/index.php';
+    case 'index':
+    case 'home':
+        include 'routes/index.php';
         break;
     case 'about':
-        include 'views/about.php';
+        include 'routes/about.php';
         break;
     case 'login':
         include 'routes/login.php';

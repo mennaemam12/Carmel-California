@@ -14,7 +14,7 @@ if(isset($_POST['Submit'])){
 			$lastInsertedID = mysqli_insert_id($GLOBALS['con']);
 			session_start();
             $_SESSION["UserID"] = $lastInsertedID;
-            header("Location: ../index.php");
+            header('Location: ' .$projectFolder. '/'); // Redirect to the home page
         }
 }
 ?>
@@ -27,7 +27,7 @@ if(isset($_POST['Submit'])){
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="../public/css/login.css">
+		<link rel="stylesheet" href="public/css/login.css">
 	</head>
 
 	<body>
@@ -35,7 +35,7 @@ if(isset($_POST['Submit'])){
 		<div class="wrapper">
 			<div class="inner">
 				<div class="image-holder">
-					<img src="../public/images/reg.jpg" style="object-fit: fill;max-height: 780px;"alt="">
+					<img src="public/images/reg.jpg" style="object-fit: fill;max-height: 780px;"alt="">
 				</div>
 				<form action="" method="post">
 					<h3>Sign Up</h3>
@@ -62,13 +62,13 @@ if(isset($_POST['Submit'])){
 					</div>
 					<div class="form-login">
 						<button type="submit" name="Submit">Sign up</button>
-						<p>Already Have account? <a href="login.php">Login</a></p>
+						<p>Already Have account? <a href="/login">Login</a></p>
 					</div>
 				</form>
 			</div>
 		</div>
 
-		<script src="../public/js/jquery.js"></script>
-		<script src="../public/js/reg.js"></script>
+		<script src="public/js/jquery.js"></script>
+		<script src="public/js/reg.js"></script>
 	</body>
 </html>

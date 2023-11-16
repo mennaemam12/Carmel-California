@@ -1,4 +1,6 @@
 <?php
+include 'projectFolderName.php';
+
 $con = mysqli_connect("localhost", "root", "","carmel");
 if(isset($_POST['submit'])){
 	$Email=$_POST["email"];
@@ -9,7 +11,7 @@ if(isset($_POST['submit'])){
         if ($row=mysqli_fetch_array($result)){
             session_start();
             $_SESSION["UserID"]=$row[0];
-            header("Location: ../index.php");		
+            header('Location: ' .$projectFolder. '/'); // Redirect to the home page	
 		}
 
 }
@@ -23,7 +25,7 @@ if(isset($_POST['submit'])){
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="../public/css/login.css">
+		<link rel="stylesheet" href="public/css/login.css">
 	</head>
 
 	<body>
@@ -31,7 +33,7 @@ if(isset($_POST['submit'])){
 		<div class="wrapper">
 			<div class="inner">
 				<div class="image-holder">
-					<img src="../public/images/reg.jpg" style="object-fit: fill;max-height: 780px;"alt="">
+					<img src="public/images/reg.jpg" style="object-fit: fill;max-height: 780px;"alt="">
 				</div>
 				<form action="" method="post">
 					<h3>Login</h3>
@@ -55,7 +57,7 @@ if(isset($_POST['submit'])){
 			</div>
 		</div>
 
-		<script src="../public/js/jquery.js"></script>
-		<script src="../public/js/reg.js"></script>
+		<script src="public/js/jquery.js"></script>
+		<script src="public/js/reg.js"></script>
 	</body>
 </html>
