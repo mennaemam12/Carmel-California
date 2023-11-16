@@ -77,8 +77,8 @@ include 'projectFolderName.php';
 						        <td class="image-prod"><div class="img" style="background-image:url(public/images/menu-2.jpg);"></div></td>
 						        
 						        <td class="product-name">
-						        	<h3>Creamy Latte Coffee</h3>
-						        	<p>Far far away, behind the word mountains, far from the countries</p>
+						        	<h3 style="margin-bottom:0px;">Creamy Latte Coffee</h3>
+						        	<!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
 						        </td>
 						        
 						        <td class="price" style="color:#504831;">$4.90</td>
@@ -98,8 +98,8 @@ include 'projectFolderName.php';
 						        <td class="image-prod"><div class="img" style="background-image:url(public/images/dish-2.jpg);"></div></td>
 						        
 						        <td class="product-name">
-						        	<h3>Grilled Ribs Beef</h3>
-						        	<p>Far far away, behind the word mountains, far from the countries</p>
+						        	<h3 style="margin-bottom:0px;">Grilled Ribs Beef</h3>
+						        	<!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
 						        </td>
 						        
 						        <td class="price" style="color:#504831;">$15.70</td>
