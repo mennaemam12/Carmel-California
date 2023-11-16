@@ -1,3 +1,6 @@
+<?php
+	include 'projectFolderName.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +52,7 @@
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#"
+							<p><a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
@@ -70,7 +73,7 @@
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#"
+							<p><a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
@@ -90,7 +93,7 @@
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#"
+							<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
 									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
