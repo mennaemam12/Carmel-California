@@ -26,7 +26,7 @@ include 'projectFolderName.php';
                         echo "<li class='nav-item'><a class='nav-link' href='$projectFolder/login'>Sign In</a></li>";
                     }
                     ?>
-                
+					
 					<li class="nav-item cart"><a href="<?php echo $projectFolder;?>/cart" class="nav-link"><span
 								class="icon icon-shopping_cart"></span><span
 								class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a>

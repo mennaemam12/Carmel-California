@@ -77,7 +77,7 @@
 	        <div class="col-md-7 heading-section text-center ftco-animate">
 	        	<span class="subheading">Testimony</span>
 	          <h2 class="mb-4">Customers Says</h2>
-	          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+	          <p style="color: #fff;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 	        </div>
 	      </div>
 	    </div>
@@ -90,7 +90,7 @@
 	              </blockquote>
 	              <div class="author d-flex mt-4">
 	                <div class="image mr-3 align-self-center">
-	                  <img src="images/person_1.jpg" alt="">
+	                  <img src="public/images/person_2.jpg" alt="">
 	                </div>
 	                <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
 	              </div>
@@ -103,7 +103,7 @@
 	              </blockquote>
 	              <div class="author d-flex mt-4">
 	                <div class="image mr-3 align-self-center">
-	                  <img src="images/person_2.jpg" alt="">
+	                  <img src="public/images/person_2.jpg" alt="">
 	                </div>
 	                <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
 	              </div>
@@ -116,7 +116,7 @@
 	              </blockquote>
 	              <div class="author d-flex mt-4">
 	                <div class="image mr-3 align-self-center">
-	                  <img src="images/person_3.jpg" alt="">
+	                  <img src="public/images/person_3.jpg" alt="">
 	                </div>
 	                <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
 	              </div>
@@ -129,7 +129,7 @@
 	              </blockquote>
 	              <div class="author d-flex mt-4">
 	                <div class="image mr-3 align-self-center">
-	                  <img src="images/person_2.jpg" alt="">
+	                  <img src="public/images/person_2.jpg" alt="">
 	                </div>
 	                <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
 	              </div>
@@ -142,7 +142,7 @@
 	            </blockquote>
 	            <div class="author d-flex mt-4">
 	              <div class="image mr-3 align-self-center">
-	                <img src="images/person_3.jpg" alt="">
+	                <img src="public/images/person_3.jpg" alt="">
 	              </div>
 	              <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
 	            </div>
@@ -218,8 +218,8 @@
   <script src="public/js/bootstrap-datepicker.js"></script>
   <script src="public/js/jquery.timepicker.min.js"></script>
   <script src="public/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="public/js/google-map.js"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+  <!-- <script src="public/js/google-map.js"></script> -->
   <script src="public/js/main.js"></script>
     
   </body>

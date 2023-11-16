@@ -52,8 +52,8 @@
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
-									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
+									class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
 
@@ -73,8 +73,8 @@
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
-									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
+									class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
 
@@ -93,8 +93,8 @@
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
-									class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							<p><a href="#" class="btn btn-secondary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
+									class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
 
@@ -505,7 +505,7 @@
 				<div class="col-md-7 heading-section text-center ftco-animate">
 					<span class="subheading">Testimony</span>
 					<h2 class="mb-4">Customers Says</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+					<p style = "color:#fff">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
 						live the blind texts.</p>
 				</div>
 			</div>
@@ -594,7 +594,6 @@
 		</div>
 	</section>
 
-	
     <?php
 		include 'views/partials/footer.php'
 	?>
@@ -614,9 +613,9 @@
 	<script src="public/js/bootstrap-datepicker.js"></script>
 	<script src="public/js/jquery.timepicker.min.js"></script>
 	<script src="public/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="public/js/google-map.js"></script>
+	<!-- <script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+	<!-- <script src="public/js/google-map.js"></script> -->
 	<script src="public/js/main.js"></script>
 
 </body>

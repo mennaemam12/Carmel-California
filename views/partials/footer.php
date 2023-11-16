@@ -59,7 +59,7 @@
 						<h2 class="ftco-heading-2">Have a Question?</h2>
 						<div class="block-23 mb-3">
 							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">13 Street 18,Maadi, Cairo, Egypt</span></li>
+								<li><span class="icon icon-map-marker"></span><span class="text">13 Street 18, Maadi, Cairo, Egypt</span></li>
 								<li><a href="#"><span class="icon icon-phone"></span><span class="text">(+20) 1550067619</span></a></li>
 								<li><a href="#"><span class="icon icon-envelope"></span><span
 											class="text">info@yourdomain.com</span></a></li>
