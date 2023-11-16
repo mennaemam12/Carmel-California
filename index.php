@@ -46,6 +46,9 @@ switch ($segments[2]) {
     case 'contact':
         include 'routes/contact.php';
         break;
+    case 'product':
+        include 'routes/product.php';
+        break;
 
     // default:
     //     include 'not found'

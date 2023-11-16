@@ -10507,12 +10507,6 @@ h5,
   font-family: "Josefin Sans", Arial, sans-serif;
 }
 
-@media (min-width: 768px) {
-  .ftco-navbar-light .navbar-brand {
-    color: white;
-  }
-}
-
 .ftco-navbar-light .navbar-nav>.nav-item>.nav-link {
   font-size: 13px;
   padding-top: .9rem;
@@ -10529,8 +10523,6 @@ h5,
 
 @media (min-width: 768px) {
   .ftco-navbar-light .navbar-nav>.nav-item>.nav-link {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
     padding-left: 20px;
     padding-right: 20px;
     /* color: #fff; */
@@ -10607,7 +10599,7 @@ h5,
 
 .ftco-navbar-light .navbar-nav>.nav-item.cart>a .bag {
   position: absolute;
-  top: 6px;
+  top: 3px;
   right: 5px;
   width: 24px;
   height: 24px;
@@ -10619,22 +10611,27 @@ h5,
   border-radius: 50%;
 }
 
-@media (max-width: 992px) {
-  .ftco-navbar-light .navbar-nav>.nav-item.cart>a .bag {
-    position:absolute;
-    left:10px;
-    top:2px;
-  }
-}
-
 .ftco-navbar-light .navbar-nav>.nav-item.cart>a .bag small {
   font-weight: 400;
   color: #fff;
 }
 
+@media (max-width: 992px) {
+  .ftco-navbar-light .navbar-nav>.nav-item.cart>a .bag {
+    position:absolute;
+    left:32px;
+    top:4px;
+  }
+}
+
 @media (max-width: 767.98px) {
   .ftco-navbar-light .navbar-nav>.nav-item.cta {
     margin-bottom: 20px;
+  }
+  .ftco-navbar-light .navbar-nav>.nav-item.cart>a .bag {
+    position:absolute;
+    left:13px;
+    top:4px;
   }
 }
 
@@ -10772,12 +10769,6 @@ h5,
   text-transform: uppercase;
   font-size: 16px;
   letter-spacing: .1em;
-}
-
-.ftco-navbar-light.scrolled .nav-link {
-  padding-top: 0.9rem !important;
-  padding-bottom: 0.9rem !important;
-  color: #000 !important;
 }
 
 .ftco-navbar-light.scrolled .nav-link.active {
@@ -11660,7 +11651,7 @@ h5,
 }
 
 .table {
-  min-width: 1000px !important;
+  /* min-width: 1000px !important; */
   width: 100%;
   text-align: center;
 }
@@ -11688,7 +11679,7 @@ h5,
 }
 
 .table tbody tr td.product-remove a {
-  bordeR: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 5px 10px;
 }
 
@@ -11750,6 +11741,7 @@ h5,
 .cart-total p span {
   display: block;
   width: 50%;
+  color: black !important;
 }
 
 .cart-total p.total-price span {
