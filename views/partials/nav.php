@@ -1,5 +1,6 @@
 <?php
 include 'projectFolderName.php';
+session_start();
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar"
@@ -17,15 +18,13 @@ include 'projectFolderName.php';
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/services" class="nav-link">Services</a></li>
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/about" class="nav-link">About</a></li>
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/contact" class="nav-link">Contact</a></li>
-                    <?php
-                    session_start();
-                    if(!empty($_SESSION['UserID'])){
-                       echo " <li class='nav-item'><a class='nav-link' href='../views/signout.php'>Logout</a></li>";
-                    }
-                    else {
-                        echo "<li class='nav-item'><a class='nav-link' href='$projectFolder/login'>Sign In</a></li>";
-                    }
-                    ?>
+                    
+                    <!-- check if logged in -->
+                    <?php if(isset($_SESSION['userId'])): ?>
+                       <li class='nav-item'><a class='nav-link' href='<?php echo $projectFolder;?>/logout'>Logout</a></li>
+                    <?php else: ?>
+                        <li class='nav-item'><a class='nav-link' href='<?php echo $projectFolder;?>/login'>Sign In</a></li>
+					<?php endif; ?>
 					
 					<li class="nav-item cart"><a href="<?php echo $projectFolder;?>/cart" class="nav-link"><span
 								class="icon icon-shopping_cart"></span><span
