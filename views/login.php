@@ -1,20 +1,21 @@
 <?php
+include 'helpers/session.helper.php';
 include 'projectFolderName.php';
 
-$con = mysqli_connect("localhost", "root", "","carmel");
-if(isset($_POST['submit'])){
-	$Email=$_POST["email"];
-	$Password=$_POST["password"];
+// $con = mysqli_connect("localhost", "root", "","carmel");
+// if(isset($_POST['submit'])){
+// 	$Email=$_POST["email"];
+// 	$Password=$_POST["password"];
 
-	$sql="SELECT * FROM users WHERE email='$Email' and password='$Password'";	
-		$result=mysqli_query($GLOBALS['con'],$sql);
-        if ($row=mysqli_fetch_array($result)){
-            session_start();
-            $_SESSION["UserID"]=$row[0];
-            header('Location: ' .$projectFolder. '/'); // Redirect to the home page	
-		}
+// 	$sql="SELECT * FROM users WHERE email='$Email' and password='$Password'";	
+// 		$result=mysqli_query($GLOBALS['con'],$sql);
+//         if ($row=mysqli_fetch_array($result)){
+//             session_start();
+//             $_SESSION["UserID"]=$row[0];
+//             header('Location: ' .$projectFolder. '/'); // Redirect to the home page	
+// 		}
 
-}
+// }
 ?>
 
 <!DOCTYPE html>
@@ -35,23 +36,25 @@ if(isset($_POST['submit'])){
 				<div class="image-holder">
 					<img src="public/images/reg.jpg" style="object-fit: fill;max-height: 780px;"alt="">
 				</div>
-				<form action="" method="post">
+				<form action="<?php echo $projectFolder;?>/login" method="post">
 					<h3>Login</h3>
 					<div class="form-holder active">
-						<input type="text" placeholder="e-mail" name="email" class="form-control">
+						<input type="text" placeholder="e-mail" name="Name/Email" class="form-control">
 					</div>
 					<div class="form-holder">
-						<input type="password" placeholder="Password" name="password" class="form-control" style="font-size: 15px;">
+						<input type="password" placeholder="Password" name="UserPass" class="form-control" style="font-size: 15px;">
 					</div>
                     <div class="checkbox" style="display: none;">
 						<label>
 							<span class="checkmark"></span>
 						</label>
 					</div>
-			
+					<div>
+						<?php flash('login') ?>
+					</div>
 					<div class="form-login" style="margin-top: 10%;">
 						<button type="submit" name="submit">Login</button>
-						<p>Don't Have an account? <a href="signup.php">Sign Up</a></p>
+						<p>Don't Have an account? <a href='<?php echo $projectFolder;?>/signup'>Sign Up</a></p>
 					</div>
 				</form>
 			</div>
