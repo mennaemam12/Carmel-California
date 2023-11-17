@@ -3,6 +3,7 @@
 
 include 'projectFolderName.php';
 
+
 // Commenting till we have a proper database
 // Check if the user is already logged in
 // if (isset($_SESSION['userType'])) {
@@ -16,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Include Controller
+    include 'controllers/user.controller.php';
+    $user = new UserController;
+    $user->register();
 }
 
