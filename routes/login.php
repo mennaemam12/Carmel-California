@@ -17,10 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // Handle login form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Include your UserController or handle the login logic here
-
-    // example: 
-    // include 'controllers/UserController.php';
-    // UserController::login($_POST); // Assuming login function is static and accepts form data
+    include 'controllers/user.controller.php';
+    $user = new UserController;
+    $user->login();
 }
 
