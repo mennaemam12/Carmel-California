@@ -8,7 +8,6 @@ $url = $_SERVER['REQUEST_URI'];
 
 // segments
 $segments = explode('/', $url);
-
 // We use segments[2] to determine which route to load
 // segments[0] is empty because the URL starts with a slash
 // segments[1] is the project folder name 'Carmel-California'
@@ -27,6 +26,9 @@ switch ($segments[2]) {
         break;
     case 'login':
         include 'routes/login.php';
+        break;
+    case 'logout':
+        include 'routes/logout.php';
         break;
     case 'signup':
         include 'routes/signup.php';
