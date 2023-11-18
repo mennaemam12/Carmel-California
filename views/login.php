@@ -20,47 +20,91 @@ include 'projectFolderName.php';
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Login</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="public/css/login.css">
-	</head>
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<body>
+	<!-- STYLE CSS -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-		<div class="wrapper">
-			<div class="inner">
-				<div class="image-holder">
-					<img src="public/images/reg.jpg" style="object-fit: fill;max-height: 780px;"alt="">
-				</div>
-				<form action="<?php echo $projectFolder;?>/login" method="post">
-					<h3>Login</h3>
-					<div class="form-holder active">
-						<input type="text" placeholder="e-mail" name="Name/Email" class="form-control">
-					</div>
-					<div class="form-holder">
-						<input type="password" placeholder="Password" name="UserPass" class="form-control" style="font-size: 15px;">
-					</div>
-                    <div class="checkbox" style="display: none;">
-						<label>
-							<span class="checkmark"></span>
-						</label>
-					</div>
-					<div>
-						<?php flash('login') ?>
-					</div>
-					<div class="form-login" style="margin-top: 10%;">
-						<button type="submit" name="submit">Login</button>
-						<p>Don't Have an account? <a href='<?php echo $projectFolder;?>/signup'>Sign Up</a></p>
-					</div>
-				</form>
+	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="public/css/animate.css">
+
+	<link rel="stylesheet" href="public/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="public/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="public/css/magnific-popup.css">
+
+	<link rel="stylesheet" href="public/css/aos.css">
+
+	<link rel="stylesheet" href="public/css/ionicons.min.css">
+
+	<link rel="stylesheet" href="public/css/flaticon.css">
+	<link rel="stylesheet" href="public/css/icomoon.css">
+	<link rel="stylesheet" href="public/css/style.css">
+	<link rel="stylesheet" href="public/css/login.css">
+</head>
+
+<body>
+	<?php
+	include 'views/partials/nav.php'
+	?>
+
+	<div class="wrapper">
+		<div class="inner">
+			<div class="image-holder">
+				<img src="public/images/reg.jpg" alt="">
 			</div>
+			<form action="<?php echo $projectFolder; ?>/login" method="post">
+				<h3>Login</h3>
+				<div class="form-holder active">
+					<input type="text" placeholder="e-mail" name="Name/Email" class="form-control">
+				</div>
+				<div class="form-holder">
+					<input type="password" placeholder="Password" name="UserPass" class="form-control" style="font-size: 15px;">
+				</div>
+				<div class="checkbox" style="display: none;">
+					<label>
+						<span class="checkmark"></span>
+					</label>
+				</div>
+				<div class="form-message-div">
+					<?php flash('login') ?>
+				</div>
+				<div class="form-login">
+					<button class="button" type="submit" name="submit">Login</button>
+					<p>Don't Have an account? <a href='<?php echo $projectFolder; ?>/signup'>Sign Up</a></p>
+				</div>
+			</form>
 		</div>
+	</div>
 
-		<script src="public/js/jquery.js"></script>
-		<script src="public/js/reg.js"></script>
-	</body>
+	<?php
+		include 'views/partials/footer.php'
+	?>
+
+	<script src="public/js/jquery.js"></script>
+	<script src="public/js/reg.js"></script>
+	
+	<script src="public/js/jquery.min.js"></script>
+	<script src="public/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="public/js/popper.min.js"></script>
+	<script src="public/js/bootstrap.min.js"></script>
+	<script src="public/js/jquery.easing.1.3.js"></script>
+	<script src="public/js/jquery.waypoints.min.js"></script>
+	<script src="public/js/jquery.stellar.min.js"></script>
+	<script src="public/js/owl.carousel.min.js"></script>
+	<script src="public/js/jquery.magnific-popup.min.js"></script>
+	<script src="public/js/aos.js"></script>
+	<script src="public/js/jquery.animateNumber.min.js"></script>
+	<script src="public/js/bootstrap-datepicker.js"></script>
+	<script src="public/js/jquery.timepicker.min.js"></script>
+	<script src="public/js/scrollax.min.js"></script>
+	<script src="public/js/main.js"></script>
+
+</body>
+
 </html>
