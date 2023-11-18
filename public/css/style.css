@@ -4645,6 +4645,12 @@ input[type="button"].btn-block {
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+
+  display:flex;
+  flex-direction:row;
+  column-gap:5px;
+  justify-content:flex-start;
+  align-items:baseline;
 }
 
 .navbar-toggler:hover,
@@ -10416,7 +10422,7 @@ body {
   line-height: 1.8;
   font-weight: 300;
   color: gray;
-  background: url(public/images/bg_4.jpg) no-repeat fixed;
+  background: url(../images/bg_4.jpg) no-repeat fixed;
   background-size: cover;
 }
 

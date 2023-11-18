@@ -61,7 +61,7 @@ include 'projectFolderName.php';
 	<div class="wrapper">
 		<div class="inner">
 			<div class="image-holder">
-				<img src="public/images/reg.jpg" style="object-fit: fill;max-height: 780px;" alt="">
+				<img src="public/images/reg.jpg" alt="">
 			</div>
 
 			<form action="<?php echo $projectFolder; ?>/signup" method="post">
@@ -74,7 +74,7 @@ include 'projectFolderName.php';
 					<input type="text" placeholder="Username" name="Username" class="form-control">
 				</div>
 				<div class="form-holder">
-					<input type="text" placeholder="E-Mail" name="Email" class="form-control">
+					<input type="text" placeholder="Email" name="Email" class="form-control">
 				</div>
 				<div class="form-holder">
 					<input type="text" placeholder="Phone Number" name="PhoneNumber" class="form-control">
@@ -86,17 +86,19 @@ include 'projectFolderName.php';
 					<input type="password" placeholder="Confirm Password" class="form-control" name="UserConfPass" style="font-size: 15px;">
 				</div>
 				<div class="checkbox">
+					<input type="checkbox" checked>
 					<label>
-						<span class="checkmark"></span>
+						I agree to bla bla bla
 					</label>
 				</div>
-				<div class="form-message-div">
+
+				<div class="form-message-div" style="margin-top:25px;">
 					<?php flash('register') ?>
 				</div>
 
 				<div class="form-login">
-					<button class="button" type="submit" name="Submit">Sign up</button>
-					<p>Already have an account? <a href='<?php echo $projectFolder; ?>/login'>Login</a></p>
+					<button class="button" type="submit" name="Submit">Sign&nbsp;up</button>
+					<p>Already have an account? <a href='<?php echo $projectFolder;?>/login'>Login</a></p>
 				</div>
 			</form>
 		</div>

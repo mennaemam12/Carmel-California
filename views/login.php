@@ -61,7 +61,7 @@ include 'projectFolderName.php';
 			<form action="<?php echo $projectFolder; ?>/login" method="post">
 				<h3>Login</h3>
 				<div class="form-holder active">
-					<input type="text" placeholder="e-mail" name="Name/Email" class="form-control">
+					<input type="text" placeholder="Email" name="Name/Email" class="form-control">
 				</div>
 				<div class="form-holder">
 					<input type="password" placeholder="Password" name="UserPass" class="form-control" style="font-size: 15px;">
@@ -76,7 +76,7 @@ include 'projectFolderName.php';
 				</div>
 				<div class="form-login">
 					<button class="button" type="submit" name="submit">Login</button>
-					<p>Don't Have an account? <a href='<?php echo $projectFolder; ?>/signup'>Sign Up</a></p>
+					<p>Don't have an account? <a href='<?php echo $projectFolder; ?>/signup'>Sign&nbsp;Up</a></p>
 				</div>
 			</form>
 		</div>

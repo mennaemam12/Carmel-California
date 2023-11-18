@@ -44,6 +44,7 @@ ul {
 
 img {
   max-width: 100%;
+  height:100%;
 }
 
 ul {
@@ -79,7 +80,7 @@ a:hover {
 .inner {
   width:90%;
   max-width: 1200px;
-  background: #ebdcce;
+  /* background: #ebdcce; */
   display: flex;
   flex-direction: row;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
@@ -96,10 +97,12 @@ a:hover {
 
 form {
   width: 50%;
-  padding-top: 77px;
+  padding-top: 25px;
   padding-right: 60px;
   padding-left: 30px;
-  background: #ebdcce;
+  padding-bottom:25px;
+  /* background: #ebdcce; */
+  background: rgb(235,220,206,0.75);
 }
 
 h3 {
@@ -133,40 +136,44 @@ h3 {
   background: #045420;
 }
 
+.form-holder input {
+  width:80%;
+  min-width:250px;
+}
+
 .form-control {
   display: block;
   width: 100%;
-  border-radius: 23.5px;
-  height: 47px;
+  border-radius: 15px;
+  height: 47px !important;
   padding: 0 24px;
   color: #808080;
   font-size: 13px;
   border: none;
   background: #f7f7f7;
   margin-bottom: 25px;
+  color:#504831 !important;
+  background: rgb(255,255,255,0.6)!important;
 }
+
 .form-control::-webkit-input-placeholder {
   font-size: 13px;
   color: #808080;
-  text-transform: uppercase;
   font-family: "Montserrat-Regular";
 }
 .form-control::-moz-placeholder {
   font-size: 13px;
   color: #808080;
-  text-transform: uppercase;
   font-family: "Montserrat-Regular";
 }
 .form-control:-ms-input-placeholder {
   font-size: 13px;
   color: #808080;
-  text-transform: uppercase;
   font-family: "Montserrat-Regular";
 }
 .form-control:-moz-placeholder {
   font-size: 13px;
   color: #808080;
-  text-transform: uppercase;
   font-family: "Montserrat-Regular";
 }
 
@@ -225,8 +232,8 @@ h3 {
 .button {
   letter-spacing: 2px;
   border: none;
-  width: 133px;
-  height: 47px;
+  /* width: 133px; */
+  /* height: 47px; */
   margin-right: 19px;
   border-radius: 23.5px;
   cursor: pointer;
@@ -255,45 +262,18 @@ h3 {
 }
 
 .checkbox {
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-start;
+  column-gap: 10px;
   position: relative;
-  padding-left: 19px;
-  margin-bottom: 37px;
-  margin-left: 26px;
 }
+
+
 .checkbox label {
-  cursor: pointer;
-  color: #ab3606;
-}
-.checkbox input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-.checkbox input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.checkmark {
-  position: absolute;
-  top: 2px;
-  left: 0;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  border: 1px solid #e7e7e7;
-}
-
-.checkmark:after {
-  content: "";
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #045420;
-  position: absolute;
-  display: none;
+  width:100%;
 }
 
 .form-message-div {
@@ -303,8 +283,25 @@ h3 {
 
 .form-login {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   margin-left: 23px;
+  flex-wrap: nowrap;
+}
+
+.form-login p {
+  text-align: center;
+  width:100%;
+}
+
+.form-login .button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding:10px 35px;
 }
 
 @media (max-width:767.98px) {
@@ -312,13 +309,17 @@ h3 {
     width:100%;
     flex-direction: column-reverse;
   }
+  .form-holder input {
+    width:100%;
+    max-width:350px;
+  }
   .wrapper {
     padding-right: 1.25em;
     padding-left:1.25em;
   }
   form {
     width:100%;
-    padding: 77px 20px;
+    padding: 25px 20px;
   }
   .image-holder {
     width:100%;
@@ -339,6 +340,7 @@ h3 {
   .button {
     margin-right:0px;
   }
+  
 }
 
 @media (min-width:991.98px) {
