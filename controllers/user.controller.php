@@ -64,12 +64,11 @@
 
             //Register User
             if($this->userModel->register($data)){
-                $this->userModel = new User;
-                $loggedInUser = $this->userModel->login($data['Email'], $data['Username']);
+                $logedd=$this->userModel->findUserByEmailOrUsername($data['Email'], $data['FullName']);
+                if($logedd){
                 //Create session
-                if($loggedInUser)
-                    $this->createUserSession($loggedInUser);
-                else{
+                $this->createUserSession($logedd);     
+            }else{
                     die("Something went wrong while logging in");
                 }
             }else{
