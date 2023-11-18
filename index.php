@@ -51,6 +51,9 @@ switch ($segments[2]) {
     case 'product':
         include 'routes/product.php';
         break;
+    case 'itemadd':
+        include 'routes/itemadd.php';
+        break;
 
     // default:
     //     include 'not found'

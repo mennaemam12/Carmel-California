@@ -18,6 +18,7 @@ session_start();
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/services" class="nav-link">Services</a></li>
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/about" class="nav-link">About</a></li>
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/contact" class="nav-link">Contact</a></li>
+					<li class="nav-item"><a href="<?php echo $projectFolder;?>/itemadd" class="nav-link">Add item</a></li>
                     
                     <!-- check if logged in -->
                     <?php if(isset($_SESSION['userId'])): ?>
