@@ -47,7 +47,7 @@ include 'projectFolderName.php';
 					</div>
 					<div class="form-login" style="margin-top: 10%;">
 					<div class="form-login">
-						<button type="submit" name="Submit">Add</button>
+						<button class="button" type="submit" name="Submit">Add</button>
 					</div>
 				</form>
 			</div>
