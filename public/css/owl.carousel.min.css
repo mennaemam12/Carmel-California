@@ -228,3 +228,7 @@
     height: 100%;
     width: 100%
 }
+
+.owl-carousel.owl-drag .owl-item {
+    touch-action: pan-y;
+}
