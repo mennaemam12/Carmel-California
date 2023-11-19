@@ -64,7 +64,7 @@ include 'projectFolderName.php';
 				<img src="public/images/reg.jpg" alt="">
 			</div>
 
-			<form action="<?php echo $projectFolder; ?>/signup" method="post">
+			<form action="signup" method="post">
 				<h3>Sign Up</h3>
 				<input type="hidden" name="type" value="register">
 				<div class="form-holder active">
@@ -98,7 +98,7 @@ include 'projectFolderName.php';
 
 				<div class="form-login">
 					<button class="button" type="submit" name="Submit">Sign&nbsp;up</button>
-					<p>Already have an account? <a href='<?php echo $projectFolder;?>/login'>Login</a></p>
+					<p>Already have an account? <a href='login'>Login</a></p>
 				</div>
 			</form>
 		</div>

@@ -98,7 +98,7 @@ include 'projectFolderName.php'
               </span>
             </div>
           </div>
-          <p><a href="<?php echo $projectFolder; ?>/cart" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
+          <p><a href="cart" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
         </div>
       </div>
     </div>

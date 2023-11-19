@@ -44,8 +44,8 @@ include 'projectFolderName.php';
 				<div class="col-md-7 heading-section text-center ftco-animate">
 					<span style="margin-bottom:10px;" class="subheading">Oops</span>
 					<h2 class="mb-4">Page was not found</h2>
-                    <h4 class="mb-4">Lost? Don't forget to take a look at our <a style="font-size: 20px;text-decoration:underline;" href="<?php echo $projectFolder?>/menu">Menu</a></h4>
-					<p><a style="text-decoration:underline;" href="<?php echo $projectFolder?>/">Home</a></p>
+                    <h4 class="mb-4">Lost? Don't forget to take a look at our <a style="font-size: 20px;text-decoration:underline;" href="menu">Menu</a></h4>
+					<p><a style="text-decoration:underline;" href="index">Home</a></p>
 				</div>
 			</div>
 		</div>
