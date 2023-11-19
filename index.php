@@ -53,6 +53,8 @@ switch ($segments[2]) {
         break;
     case 'addItem':
         include 'routes/addItem.php';
+    case 'dashboard':
+        include 'routes/dashboard.php';
         break;
     default:
         include 'views/404.php';
