@@ -10,10 +10,10 @@ class Item {
     }
 
     //Find user by email or username
-    public function findItemByName($ItemName){
-        $this->db->query('SELECT * FROM items WHERE ItemName = :ItemName');
-        $this->db->bind(':ItemName', $ItemName);
-
+    public function findItemByName($ItemName,$ItemType){
+        $this->db->query('SELECT * FROM :itemtype WHERE itemname = :itemname');
+        $this->db->bind(':itemname', $ItemName);
+        $this->db->bind(':itemtype', $ItemType);
         $row = $this->db->single();
 
         //Check row
@@ -26,15 +26,23 @@ class Item {
 
     //Register User
     public function add($data){
-        $this->db->query('INSERT INTO items (ItemName, Price, Category, Descriptions) 
-        VALUES (:ItemName, :Price, :Category, :Descriptions)');
+        $this->db->query('INSERT INTO :itemtype (itemname, price, category, descriptions) 
+        VALUES (:itemname, :price, :category, :descriptions)');
         //Bind values
-        $this->db->bind(':ItemName', $data['ItemName']);
-        $this->db->bind(':Price', $data['Price']);
-        $this->db->bind(':Category', $data['Category']);
-        $this->db->bind(':Descriptions', $data['Descriptions']);
-
+        $this->db->bind(':itemtype', $data['itemtype']);
+        $this->db->bind(':price', $data['price']);
+        $this->db->bind(':category', $data['category']);
+        $this->db->bind(':descriptions', $data['descriptions']);
+        $this->db->bind(':itemname', $data['itemname']);
         //Execute
+        // $stmt=array(
+        //     ":itemtype" => $data['itemtype'],
+        //     ":price" => $data['price'],
+        //     ":category" => $data['category'],
+        //     ":descriptions" =>  $data['descriptions'],
+        //     ":itemname" => $data['itemname'] 
+        // );
+
         if($this->db->execute()){
             return true;
         }else{

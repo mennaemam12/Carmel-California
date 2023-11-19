@@ -18,7 +18,7 @@ include 'projectFolderName.php';
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/services" class="nav-link">Services</a></li>
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/about" class="nav-link">About</a></li>
 					<li class="nav-item"><a href="<?php echo $projectFolder;?>/contact" class="nav-link">Contact</a></li>
-					<li class="nav-item"><a href="<?php echo $projectFolder;?>/itemadd" class="nav-link">Add item</a></li>
+					<!-- <li class="nav-item"><a href="<?php echo $projectFolder;?>/itemadd" class="nav-link">Add item</a></li> -->
                     
                     <!-- check if logged in -->
                     <?php if(isset($_SESSION['userId'])): ?>
@@ -26,7 +26,10 @@ include 'projectFolderName.php';
                     <?php else: ?>
                         <li class='nav-item'><a class='nav-link' href='<?php echo $projectFolder;?>/login'>Sign In</a></li>
 					<?php endif; ?>
-					
+					<?php if(isset($_SESSION['userId'])&&str_contains($_SESSION['Type'], "admin")): ?>
+						<li class='nav-item'><a class='nav-link' href='<?php echo $projectFolder;?>/'>Dashboard</a></li>
+					<?php else: ?>
+					<?php endif; ?>		
 					<li class="nav-item cart"><a href="<?php echo $projectFolder;?>/cart" class="nav-link"><span
 								class="icon icon-shopping_cart"></span><span
 								class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a>

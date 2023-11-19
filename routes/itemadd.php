@@ -12,7 +12,7 @@ include 'projectFolderName.php';
 // }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    include 'views/itemadd.php';
+    include 'views/additem.php';
     exit();
 }
 

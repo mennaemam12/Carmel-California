@@ -115,6 +115,7 @@
         $_SESSION['userId'] = $user->id;
         $_SESSION['Username'] = $user->Username;
         $_SESSION['Email'] = $user->Email;
+        $_SESSION['Type']=$user->Usertype;
         header("location:". $GLOBALS['projectFolder']."/index");
     }
 
@@ -122,6 +123,7 @@
         unset($_SESSION['userId']);
         unset($_SESSION['userName']);
         unset($_SESSION['userEmail']);
+        unset($_SESSION['userType']);
         session_destroy();
         redirect($GLOBALS['projectFolder']."/index");
     }

@@ -27,15 +27,15 @@ class User {
 
     //Register User
     public function register($data){
-        $this->db->query('INSERT INTO users (FullName, Email, UserName, UserPass, PhoneNumber) 
-        VALUES (:fullname, :email, :username, :userpass, :phonenumber)');
+        $this->db->query('INSERT INTO users (FullName, Email, UserName, UserPass, PhoneNumber,Usertype) 
+        VALUES (:fullname, :email, :username, :userpass, :phonenumber,:usertype)');
         //Bind values
         $this->db->bind(':fullname', $data['FullName']);
         $this->db->bind(':email', $data['Email']);
         $this->db->bind(':username', $data['Username']);
         $this->db->bind(':userpass', $data['UserPass']);
         $this->db->bind(':phonenumber', $data['PhoneNumber']);
-
+        $this->db->bind(':usertype',"user");
         //Execute
         if($this->db->execute()){
             return true;
