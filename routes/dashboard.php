@@ -23,12 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         include 'views/dashboard.php';
         exit();
     }
+    else if($segments[3] === 'addItem'){
+        include 'views/addItem.php';
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Add item form submitted
-    if ($segments[3] === 'additem') {
+    if ($segments[3] === 'addItem') {
         include 'controllers/item.controller.php';
         $item = new ItemController;
         $item->add();
