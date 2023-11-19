@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2023 at 11:18 PM
+-- Generation Time: Nov 19, 2023 at 02:15 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `breakfast` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `itemname` varchar(30) NOT NULL,
   `category` varchar(20) NOT NULL,
-  `description` varchar(65) NOT NULL,
+  `descriptions` varchar(65) NOT NULL,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -43,9 +43,9 @@ CREATE TABLE `breakfast` (
 
 CREATE TABLE `dinner` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `itemname` varchar(30) NOT NULL,
   `category` varchar(20) NOT NULL,
-  `description` varchar(65) NOT NULL,
+  `descriptions` varchar(65) NOT NULL,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -57,9 +57,9 @@ CREATE TABLE `dinner` (
 
 CREATE TABLE `drinks` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `itemname` varchar(30) NOT NULL,
   `category` varchar(20) NOT NULL,
-  `description` varchar(65) NOT NULL,
+  `descriptions` varchar(65) NOT NULL,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -85,9 +85,9 @@ CREATE TABLE `items` (
 
 CREATE TABLE `sides` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `itemname` varchar(30) NOT NULL,
   `category` varchar(20) NOT NULL,
-  `description` varchar(65) NOT NULL,
+  `descriptions` varchar(65) NOT NULL,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -104,15 +104,17 @@ CREATE TABLE `users` (
   `UserPass` varchar(255) NOT NULL,
   `PhoneNumber` int(11) NOT NULL,
   `id` int(11) NOT NULL,
-  `type` varchar(20) NOT NULL
+  `Usertype` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `type`) VALUES
-('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, 'user');
+INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `Usertype`) VALUES
+('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, 'user'),
+('Nader Maged', 'donia@gmail.com', 'nadour', '$2y$10$3tJLZR02BX0NBtm1u5bT0e/UCP7duY3uinnn6bbM0EtJ.UB9cvk56', 1210700150, 27, 'admin'),
+('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$0JFjOW6JWMNJG7av.INeVO9Bc1qkVUirVm2D2yOBU4tjbJsXwP0je', 1210700150, 28, 'user');
 
 --
 -- Indexes for dumped tables
@@ -192,7 +194,7 @@ ALTER TABLE `sides`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
