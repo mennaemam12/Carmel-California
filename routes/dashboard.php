@@ -23,8 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         include 'views/dashboard.php';
         exit();
     }
-    else if($segments[3] === 'addItem'){
-        include 'views/addItem.php';
+
+    $lastSegment = strtolower($segments[count($segments) - 1]);
+
+    // Switch based on the last segment
+    switch ($lastSegment) {
+        case 'additem':
+            include 'views/dashboard.php';
+            exit();
+        default:
+            include 'views/404.php';
+            exit();
     }
 }
 

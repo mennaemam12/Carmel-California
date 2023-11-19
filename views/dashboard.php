@@ -1,6 +1,19 @@
 <?php
 @session_start();
 include 'projectFolderName.php';
+
+$url = $_SERVER['REQUEST_URI'];
+$segments = explode('/', $url);
+$lastSegment = strtolower($segments[count($segments) - 1]);
+
+switch ($lastSegment) {
+  case 'dashboard':
+    $currentPage = 'dashboard';
+    break;
+  case 'additem':
+    $currentPage = 'additem';
+    break;
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +24,7 @@ include 'projectFolderName.php';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Skydash Admin</title>
+  <base href="<?php echo $projectFolder ?>/" />
   <!-- plugins:css -->
   <link rel="stylesheet" href="template/vendors/feather/feather.css">
   <link rel="stylesheet" href="template/vendors/ti-icons/css/themify-icons.css">
@@ -227,7 +241,7 @@ include 'projectFolderName.php';
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <?php
-        include 'views/partials/dashboard/sidebar.php';
+      include 'views/partials/dashboard/sidebar.php';
       ?>
       <!-- partial -->
       <div class="main-panel">
@@ -237,7 +251,8 @@ include 'projectFolderName.php';
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <?php
-                include 'views/partials/dashboard/addItemForm.php';
+                if ($currentPage === 'additem')
+                  include 'views/partials/dashboard/addItemForm.php';
                 ?>
               </div>
             </div>
@@ -250,7 +265,7 @@ include 'projectFolderName.php';
     </div>
   </div>
   <!-- container-scroller -->
-  
+
   <!-- plugins:js -->
   <script src="template/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->

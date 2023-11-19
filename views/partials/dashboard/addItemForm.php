@@ -40,6 +40,6 @@
             <textarea class="form-control" id="descriptions" name="descriptions" rows="4"></textarea>
         </div>
         <button type="submit" class="btn btn-primary mr-2">Submit</button>
-        <a href="<?php echo $projectFolder ?>/" class="btn btn-light">Cancel</a>
+        <a href="dashboard" class="btn btn-light">Cancel</a>
     </form>
 </div>

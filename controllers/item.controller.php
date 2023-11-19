@@ -88,9 +88,9 @@
             if ($this->validateItem($data,$imagePath)) {
 
                 // Validation successful, create an Item object
-                $this ->$itemModel = new Item($data['itemname'], $data['category'], $data['description'], $data['price'], $imagePath);
+                $this->itemModel = new Item($data['itemname'], $data['category'], $data['description'], $data['price'], $imagePath);
     
-                if ($this->$itemModel->add($data['itemtype'])) {
+                if ($this->itemModel->add($data['itemtype'])) {
                     flash("formSuccess", "Item added successfully", 'form-message form-message-green');
                     redirect($GLOBALS['projectFolder']."/addItem");
                 } else {
@@ -102,7 +102,7 @@
             }
             
             
-            if($this->ItemModel->add($data)){
+            if($this->itemModel->add($data)){
                 //show in menu
                 die("done");
             }else{
