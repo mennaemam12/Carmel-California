@@ -54,8 +54,7 @@ switch ($segments[2]) {
     case 'itemadd':
         include 'routes/itemadd.php';
         break;
-
-    // default:
-    //     include 'not found'
-    //     break;
+    default:
+        include 'views/404.php';
+        break;
 }
