@@ -4,12 +4,41 @@ require_once 'database.php';
 class Item {
 
     private $db;
-
-    public function __construct(){
+    protected $name;
+    protected $category;
+    protected $description;
+    protected $price;
+    protected $imagePath;
+    
+    public function __construct($name,$category,$description, $price, $imagePath) {
         $this->db = new Database;
+        $this->name = $name;
+        $this->category = $category;
+        $this->description=$description;
+        $this->price = $price;
+        $this->imagePath= $imagePath;
     }
 
-    //Find user by email or username
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+    public function getCategory() {
+        return $this->category;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function getImagePath() {
+        return $this->imagePath;
+    }
+
     public function findItemByName($ItemName,$ItemType){
         $this->db->query('SELECT * FROM :itemtype WHERE itemname = :itemname');
         $this->db->bind(':itemname', $ItemName);
@@ -24,28 +53,39 @@ class Item {
         }
     }
 
-    //Register User
-    public function add($data){
-        $this->db->query('INSERT INTO :itemtype (itemname, price, category, descriptions) 
-        VALUES (:itemname, :price, :category, :descriptions)');
-        //Bind values
-        $this->db->bind(':itemtype', $data['itemtype']);
-        $this->db->bind(':price', $data['price']);
-        $this->db->bind(':category', $data['category']);
-        $this->db->bind(':descriptions', $data['descriptions']);
-        $this->db->bind(':itemname', $data['itemname']);
-        //Execute
-        // $stmt=array(
-        //     ":itemtype" => $data['itemtype'],
-        //     ":price" => $data['price'],
-        //     ":category" => $data['category'],
-        //     ":descriptions" =>  $data['descriptions'],
-        //     ":itemname" => $data['itemname'] 
-        // );
-
-        if($this->db->execute()){
+    public function add($item_type) {
+        $item = null;
+    
+        switch ($item_type) {
+            case 'Breakfast':
+                $item = new BreakfastItem($name, $category, $description, $price, $imagePath);
+                break;
+            case 'Main':
+                $item = new MainItem($name, $category, $description, $price, $imagePath);
+                break;
+            case 'Drink':
+                $item = new DrinkItem($name, $category, $description, $price, $imagePath);
+                break;
+            case 'Side':
+                $item = new SideItem($name, $category, $description, $price, $imagePath);
+                break;
+            default:
+                return false;
+        }
+    
+        
+        $this->db->query('INSERT INTO ' . $data['itemtype'] . ' (Name, Category, Description, Price, ImagePath) 
+            VALUES (:item_name, :category, :description, :price, :image_path)');
+    
+        $this->db->bind(':item_name', $item->getName());
+        $this->db->bind(':price', $item->getPrice());
+        $this->db->bind(':category', $item->getCategory());
+        $this->db->bind(':description', $item->getDescription());
+        $this->db->bind(':image_path', $item->getImagePath());
+    
+        if ($this->db->execute()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
