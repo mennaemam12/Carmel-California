@@ -30,31 +30,31 @@
             //Validate inputs
             if(empty($data['FullName']) || empty($data['Email']) || empty($data['Username']) || 
             empty($data['UserPass']) || empty($data['UserConfPass'])){
-                flash(" ", "Please fill out all inputs");
+                flash("formError", "Please fill out all inputs");
                 redirect($GLOBALS['projectFolder']."/signup");
             }
 
             if(!preg_match("/^[a-zA-Z0-9]*$/", $data['Username'])){
-                flash("register", "Invalid username");
+                flash("formError", "Invalid username");
                 redirect($GLOBALS['projectFolder']."/signup");
             }
 
             if(!filter_var($data['Email'], FILTER_VALIDATE_EMAIL)){
-                flash("register", "Invalid email");
+                flash("formError", "Invalid email");
                 redirect($GLOBALS['projectFolder']."/signup");
             }
 
             if(strlen($data['UserPass']) < 6){
-                flash("register", "Invalid password");
+                flash("formError", "Invalid password");
                 redirect($GLOBALS['projectFolder']."/signup");
             } else if($data['UserPass'] !== $data['UserConfPass']){
-                flash("register", "Passwords don't match");
+                flash("formError", "Passwords don't match");
                 redirect($GLOBALS['projectFolder']."/signup");
             }
 
             //User with the same email or password already exists
             if($this->userModel->findUserByEmailOrUsername($data['Email'], $data['Username'])){
-                flash("register", "Username or email already taken");
+                flash("formError", "Username or email already taken");
                 redirect($GLOBALS['projectFolder']."/signup");
             }
 
@@ -87,7 +87,7 @@
         ];
 
         if(empty($data['Name/Email']) || empty($data['UserPass'])){
-            flash("login", "Please fill out all inputs");
+            flash("formError", "Please fill out all inputs");
             header("location:". $GLOBALS['projectFolder']."/login");
             exit();
         }
@@ -100,12 +100,12 @@
                 //Create session
                 $this->createUserSession($loggedInUser);
             }else{
-                flash("login", "Password Incorrect");
+                flash("formError", "Password Incorrect");
                 header("location:". $GLOBALS['projectFolder']."/login");
 
             }
         }else{
-            flash("login", "No user found");
+            flash("formError", "No user found");
             header("location:". $GLOBALS['projectFolder']."/login");
 
         }

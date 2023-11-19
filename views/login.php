@@ -72,7 +72,7 @@ include 'projectFolderName.php';
 					</label>
 				</div>
 				<div class="form-message-div">
-					<?php flash('login') ?>
+					<?php flash('formError') ?>
 				</div>
 				<div class="form-login">
 					<button class="button" type="submit" name="submit">Login</button>

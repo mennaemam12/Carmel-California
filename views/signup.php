@@ -93,7 +93,7 @@ include 'projectFolderName.php';
 				</div>
 
 				<div class="form-message-div" style="margin-top:25px;">
-					<?php flash('register') ?>
+					<?php flash('formError') ?>
 				</div>
 
 				<div class="form-login">
