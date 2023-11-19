@@ -11792,8 +11792,10 @@ h5,
 }
 
 .billing-form label {
-  color: #fff;
+  /* color: rgba(80,80,80); */
+  color: black;
 }
+
 
 .billing-form .icon {
   position: absolute;
@@ -11823,13 +11825,13 @@ h5,
 
 .billing-form .form-control {
   font-weight: 300;
-  border: transparent !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1.5px solid #c49b63 !important;
+  
   height: 58px !important;
   padding-left: 15px;
   padding-right: 15px;
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.4) !important;
+  color: #504831 !important;
   font-size: 14px;
   border-radius: 0px;
   -webkit-box-shadow: none !important;
@@ -11858,7 +11860,7 @@ h5,
 
 .billing-form .form-control:focus,
 .billing-form .form-control:active {
-  border-color: #c49b63 !important;
+  border: 1.5px solid #c49b63 !important;
 }
 
 .billing-form textarea.form-control {
@@ -11877,6 +11879,10 @@ h5,
 .cart-detail .btn-primary {
   display: block;
   width: 100%;
+}
+
+.cart-detail .form-group {
+  color:black;
 }
 
 .ftco-menu {
@@ -13142,13 +13148,15 @@ textarea.form-control {
   margin-bottom: 7px;
   margin-right: 4px;
   border-radius: 4px;
-  color: #b3b3b3;
-  border: 1px solid #674c27;
+  color: rgba(70,70,70);
+  border: 1px solid rgba(30,30,30);
   font-size: 11px;
 }
 
 .tagcloud a:hover {
   border: 1px solid #000;
+  color: rgba(200,200,200);
+  background: rgba(30,30,30);
 }
 
 .comment-form-wrap {
@@ -13226,29 +13234,14 @@ textarea.form-control {
   font-size: 14px;
   padding-right: 50px;
   background: transparent !important;
-  border: none;
-  border-bottom: 1px solid #c49b63;
-  color: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgb(100,100,100) !important;
+  color: rgb(100,100,100) !important;
 }
 
-.search-form .form-group input::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: rgba(255, 255, 255, 0.7);
-}
+.search-form .form-group input:active,
+.search-form .form-group input:focus {
+  border-bottom: 2px solid rgb(100,100,100) !important;
 
-.search-form .form-group input::-moz-placeholder {
-  /* Firefox 19+ */
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.search-form .form-group input:-ms-input-placeholder {
-  /* IE 10+ */
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.search-form .form-group input:-moz-placeholder {
-  /* Firefox 18- */
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .search-form .icon {
@@ -13295,7 +13288,7 @@ textarea.form-control {
 .categories li a,
 .sidelink li a {
   display: block;
-  color: #cccccc;
+  color: rgba(80,80,80);
 }
 
 .categories li a span,
@@ -13303,7 +13296,7 @@ textarea.form-control {
   position: absolute;
   right: 0;
   top: 0;
-  color: #ccc;
+  color: rgba(80,80,80);
 }
 
 .categories li.active a,
