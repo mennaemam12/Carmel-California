@@ -3,7 +3,7 @@
     <p class="card-description">
         Add Product To Menu
     </p>
-    <form class="forms-sample" method="post" action="dashboard/additem">
+    <form class="forms-sample" method="post" action="<?php echo $projectFolder ?>/dashboard/additem">
         <div class="form-group">
             <label for="exampleInputName1">Product Name</label>
             <input type="text" class="form-control" id="itemname" name="itemname" placeholder="Product Name">
@@ -40,6 +40,6 @@
             <textarea class="form-control" id="descriptions" name="descriptions" rows="4"></textarea>
         </div>
         <button type="submit" class="btn btn-primary mr-2">Submit</button>
-        <a href="index" class="btn btn-light">Cancel</a>
+        <a href="<?php echo $projectFolder ?>/" class="btn btn-light">Cancel</a>
     </form>
 </div>

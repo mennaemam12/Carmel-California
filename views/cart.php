@@ -139,7 +139,7 @@ include 'projectFolderName.php';
     						<span>$17.60</span>
     					</p>
     				</div>
-    				<p class="text-center"><a href="checkout" class="btn btn-primary py-3 px-4" style="background-color:#006a4d;">Proceed to Checkout</a></p>
+    				<p class="text-center"><a href="<?php echo $projectFolder;?>/checkout" class="btn btn-primary py-3 px-4" style="background-color:#006a4d;">Proceed to Checkout</a></p>
     			</div>
     		</div>
 			</div>

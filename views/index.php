@@ -52,7 +52,7 @@
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="menu"
+							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
 									class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
@@ -73,7 +73,7 @@
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="menu"
+							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?php echo $projectFolder;?>/menu"
 									class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
