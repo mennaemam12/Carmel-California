@@ -1,5 +1,5 @@
 <?php
-// Path: routes/login.php
+// Path: routes/logout.php
 
 include 'projectFolderName.php';
 

@@ -27,7 +27,7 @@ include 'projectFolderName.php';
                         <li class='nav-item'><a class='nav-link' href='<?php echo $projectFolder;?>/login'>Sign In</a></li>
 					<?php endif; ?>
 					<?php if(isset($_SESSION['userId'])&&str_contains($_SESSION['Type'], "admin")): ?>
-						<li class='nav-item'><a class='nav-link' href='<?php echo $projectFolder;?>/'>Dashboard</a></li>
+						<li class='nav-item'><a class='nav-link' href='<?php echo $projectFolder;?>/dashboard/additem'>Dashboard</a></li>
 					<?php else: ?>
 					<?php endif; ?>		
 					<li class="nav-item cart"><a href="<?php echo $projectFolder;?>/cart" class="nav-link"><span
