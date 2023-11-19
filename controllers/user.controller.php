@@ -30,7 +30,7 @@
             //Validate inputs
             if(empty($data['FullName']) || empty($data['Email']) || empty($data['Username']) || 
             empty($data['UserPass']) || empty($data['UserConfPass'])){
-                flash("register", "Please fill out all inputs");
+                flash(" ", "Please fill out all inputs");
                 redirect($GLOBALS['projectFolder']."/signup");
             }
 
