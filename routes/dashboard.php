@@ -38,8 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include 'views/dashboard/edititem.php';
             exit();
 <<<<<<< Updated upstream
-        default:
-            include 'views/404.php';
+       
 =======
         case 'chartjs':
             include 'views/dashboard/chartjs.php';
@@ -69,9 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'reviews':
             include 'views/dashboard/reviews.php';
             break;
-        
-        default:
-            include 'views/dashboard/orderTracks.php';
+         default:
+            include 'views/404.php';
 >>>>>>> Stashed changes
             exit();
     }
