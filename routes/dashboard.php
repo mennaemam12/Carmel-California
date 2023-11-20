@@ -20,7 +20,7 @@ $lastSegment = strtolower($segments[count($segments) - 1]);
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if (count($segments) < 4) {
-        include 'views/dashboard.php';
+        include 'views/dashboard/dashboard.php';
         exit();
     }
 
@@ -29,9 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Switch based on the last segment
     switch ($lastSegment) {
         case 'additem':
+            include 'views/dashboard/additem.php';
+            break;
         case 'viewitems':
+            include 'views/dashboard/viewitems.php';
+            break;
         case 'edititem':
-            include 'views/dashboard.php';
+            include 'views/dashboard/edititem.php';
             exit();
         default:
             include 'views/404.php';
