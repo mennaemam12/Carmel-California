@@ -16,7 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit();
     }
 
-    include 'views/menu.php';
+    //include 'views/menu.php';
+    include 'controllers/menu.controller.php';
+    $menu=new MenuController;
+    $menu->getMenu();
+    
     exit();
 }
 ?>

@@ -98,8 +98,14 @@
             if ($this->validateItem($data,$imagePath)) {
 
                 // Validation successful, create an Item object
-                $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], $imagePath);
-    
+                $this->itemModel = new Item;
+                $this->itemModel->setName($data['item_name']);
+                $this->itemModel->setCategory($data['category']);
+                $this->itemModel->setDescription($data['description']);
+                $this->itemModel->setPrice($data['price']);
+                $this->itemModel->setImagePath($imagePath);
+                
+                
                 if ($this->itemModel->add($data['itemtype'])) {
                     flash("formSuccess", "Item added successfully", 'form-message form-message-green');
                     redirect($GLOBALS['projectFolder']."/dashboard/addItem");
@@ -111,4 +117,5 @@
                 redirect($GLOBALS['projectFolder']."/dashboard/additem");
             }
         }
+
 }

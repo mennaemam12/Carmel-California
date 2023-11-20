@@ -69,7 +69,6 @@ include 'helpers/session.helper.php';
                                             <select class="form-control" id="itemtype" name="itemtype">
                                                 <option>breakfast</option>
                                                 <option>main</option>
-                                                <option>dinner</option>
                                                 <option>drinks</option>
                                                 <option>sides</option>
                                             </select>

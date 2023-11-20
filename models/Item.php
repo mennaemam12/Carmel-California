@@ -3,7 +3,6 @@ require_once 'database.php';
 require_once 'models/Breakfast.php';
 require_once 'models/Drinks.php';
 require_once 'models/main.php';
-require_once 'models/Dinner.php';
 require_once 'models/Sides.php';
 class Item {
 
@@ -16,11 +15,27 @@ class Item {
     
     public function __construct($name,$category,$description, $price, $imagePath) {
         $this->db = new Database;
+
+    }
+
+    public function setName($name) {
         $this->name = $name;
-        $this->category = $category;
-        $this->description=$description;
+    }
+
+    public function setPrice($price) {
         $this->price = $price;
-        $this->imagePath= $imagePath;
+    }
+
+    public function setCategory($category) {
+        $this->category = $category;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    public function setImagePath($imagePath) {
+        $this->imagePath=$imagePath;
     }
 
     public function getName() {
@@ -72,9 +87,6 @@ class Item {
                 break;
             case 'sides':
                 $item = new SideItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'dinner':
-                $item = new DinnerItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
             default:
                 return false;

@@ -313,11 +313,25 @@
 		    		<div class="row">
 		          <div class="col-md-12 nav-link-wrap mb-5">
 		            <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-		              <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Main Dish</a>
+					<?php $tabIndex=1 ?>
+					<?php function tabs($itemCategories){
+						foreach ($itemCategories as $index => $category){
+						
+							$_GLOBALS['tabIndex']++;  
+							$isActive = ($index === 0) ? 'active' : '';
+						?>	
+	
+							<a class="nav-link <?php echo $isActive; ?>" id="v-pills-<?php echo $tabIndex; ?>-tab" data-toggle="pill" href="#v-pills-<?php echo $tabIndex; ?>" role="tab" aria-controls="v-pills-<?php echo $tabIndex; ?>" aria-selected="<?php echo ($index === 0) ? 'true' : 'false'; ?>">
+								<?php echo $category; ?>
+							</a>
+						<?php }
+					} ?>
 
-		              <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
-
-		              <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a>
+					<?php tabs($breakfastCategories)  ?>
+					<?php tabs($sideCategories)  ?>
+					<?php tabs($mainCategories)  ?>
+					<?php tabs($drinkCategories)  ?>
+					
 		            </div>
 		          </div>
 		          <div class="col-md-12 d-flex align-items-center">
