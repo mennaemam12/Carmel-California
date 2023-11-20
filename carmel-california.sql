@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 02:15 AM
+-- Generation Time: Nov 20, 2023 at 08:54 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,24 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `breakfast` (
   `id` int(11) NOT NULL,
-  `itemname` varchar(30) NOT NULL,
-  `category` varchar(20) NOT NULL,
-  `descriptions` varchar(65) NOT NULL,
-  `price` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dinner`
---
-
-CREATE TABLE `dinner` (
-  `id` int(11) NOT NULL,
-  `itemname` varchar(30) NOT NULL,
-  `category` varchar(20) NOT NULL,
-  `descriptions` varchar(65) NOT NULL,
-  `price` double NOT NULL
+  `Name` varchar(30) NOT NULL,
+  `Category` varchar(20) NOT NULL,
+  `Description` varchar(65) NOT NULL,
+  `Price` double NOT NULL,
+  `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -57,24 +44,26 @@ CREATE TABLE `dinner` (
 
 CREATE TABLE `drinks` (
   `id` int(11) NOT NULL,
-  `itemname` varchar(30) NOT NULL,
-  `category` varchar(20) NOT NULL,
-  `descriptions` varchar(65) NOT NULL,
-  `price` double NOT NULL
+  `Name` varchar(30) NOT NULL,
+  `Category` varchar(20) NOT NULL,
+  `Description` varchar(65) NOT NULL,
+  `Price` double NOT NULL,
+  `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Table structure for table `main`
 --
 
-CREATE TABLE `items` (
-  `ItemName` varchar(50) NOT NULL,
+CREATE TABLE `main` (
+  `id` int(11) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `Category` varchar(20) NOT NULL,
+  `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
-  `Category` varchar(50) NOT NULL,
-  `Description` varchar(255) NOT NULL,
-  `id` int(11) NOT NULL
+  `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -85,10 +74,11 @@ CREATE TABLE `items` (
 
 CREATE TABLE `sides` (
   `id` int(11) NOT NULL,
-  `itemname` varchar(30) NOT NULL,
-  `category` varchar(20) NOT NULL,
-  `descriptions` varchar(65) NOT NULL,
-  `price` double NOT NULL
+  `Name` varchar(30) NOT NULL,
+  `Category` varchar(20) NOT NULL,
+  `Description` varchar(65) NOT NULL,
+  `Price` double NOT NULL,
+  `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -104,17 +94,15 @@ CREATE TABLE `users` (
   `UserPass` varchar(255) NOT NULL,
   `PhoneNumber` int(11) NOT NULL,
   `id` int(11) NOT NULL,
-  `Usertype` varchar(20) NOT NULL
+  `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `Usertype`) VALUES
-('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, 'user'),
-('Nader Maged', 'donia@gmail.com', 'nadour', '$2y$10$3tJLZR02BX0NBtm1u5bT0e/UCP7duY3uinnn6bbM0EtJ.UB9cvk56', 1210700150, 27, 'admin'),
-('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$0JFjOW6JWMNJG7av.INeVO9Bc1qkVUirVm2D2yOBU4tjbJsXwP0je', 1210700150, 28, 'user');
+INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `type`) VALUES
+('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, 'user');
 
 --
 -- Indexes for dumped tables
@@ -127,21 +115,15 @@ ALTER TABLE `breakfast`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dinner`
---
-ALTER TABLE `dinner`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `drinks`
 --
 ALTER TABLE `drinks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `items`
+-- Indexes for table `main`
 --
-ALTER TABLE `items`
+ALTER TABLE `main`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -167,21 +149,15 @@ ALTER TABLE `breakfast`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `dinner`
---
-ALTER TABLE `dinner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `drinks`
 --
 ALTER TABLE `drinks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `items`
+-- AUTO_INCREMENT for table `main`
 --
-ALTER TABLE `items`
+ALTER TABLE `main`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -194,7 +170,7 @@ ALTER TABLE `sides`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
