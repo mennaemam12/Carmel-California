@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Poppins:wght@100;200;300;400&display=swap');
 
-
 :root{
     /* --dark1: #0000004d;
     --dark2: #181c20;
@@ -35,24 +34,23 @@
 
 body{
     display: flex;
-    justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    background: #DFE0DA;}
+    background: #DFE0DA;
+}
 
-
-.containerx{
+.viewItemsContainer{
     padding: 20px;
     box-shadow: 3px 3px 20px var(--light1);
     background: var(--light3);
     border-radius: 10px;
     margin:5px;
-    margin-top: 100px;
-    max-width: 1300px;
+    margin-top: 20px;
+    width:100%;
 }
 
 
-.containerx header .filterEntries{
+.viewItemsContainer .filterEntries{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -79,11 +77,6 @@ body{
     padding: 5px 10px;
 }
 
-.filterEntries .filter{
-    display: flex;
-    align-items: center;
-}
-
 .filter label{
     color: var(--dark8);
     margin-right: 5px;
@@ -94,11 +87,11 @@ body{
     border-color: var(--light7);
 }
 
-.containerx header .addMemberBtn {
+.viewItemsContainer header .addMemberBtn {
     margin-bottom: 15px;
 }
 
-header .addMemberBtn button, .popup header .closeBtn, .popup footer .submitBtn{
+header .addMemberBtn button, .popup header .closeBtn, .popup .tableFooter .submitBtn, .itemOptions{
     padding: 9px 14px;
     color: var(--dark8);
     background: transparent;
@@ -116,9 +109,10 @@ header .addMemberBtn button, .popup header .closeBtn, .popup footer .submitBtn{
 }
 
 
-.containerx table{
+.viewItemsContainer table{
     border-collapse: collapse;
-    text-align: left;
+    text-align: center;
+    width:100%;
 }
 
 table .heading{
@@ -166,9 +160,6 @@ table tbody tr:nth-child(odd){
     background: var(--light9);
 }
 
-table tbody tr:nth-child(odd) > td:nth-child(3){
-    background: var(--light4);
-}
 
 table tr td{
     font-size: 15px;
@@ -176,7 +167,7 @@ table tr td{
 
 table td button{
     margin: 0 3px;
-    padding: 5px;
+    padding: 7px;
     width: 35px;
     background: var(--light5);
     color: var(--dark8);
@@ -187,24 +178,44 @@ table td button{
     border: 1px solid var(--light4);
 }
 
-.containerx footer{
+/* Apply styles to the last td in each tr */
+table tr td:last-child {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+table td .itemOptions {
+    padding:7px 10px;
+}
+
+table td .itemOptions:hover{
+    background: var(--light1);
+    transition: 0.3s;
+}
+
+.viewItemsContainer .tableFooter{
     margin-top: 25px;
     font-size: 16px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    row-gap:20px;
 }
 
-.containerx footer span{
+.viewItemsContainer .tableFooter span{
     color: var(--dark8);
 }
 
-footer .pagination{
+.tableFooter .pagination{
     display: flex;
 }
 
 
-footer .pagination button{
+.tableFooter .pagination button{
     width: 40px;
     padding: 5px 0;
     color: var(--dark8);
@@ -237,6 +248,7 @@ footer .pagination button{
 
 .pagination button.active, .pagination button:hover{
     background: var(--red1);
+    transition:0.3s;
 }
 
 
@@ -303,12 +315,12 @@ table tr .empty{
     padding: 0 15px;
 }
 
-.popup header .closeBtn:hover, .popup footer .submitBtn:hover{
+.popup header .closeBtn:hover, .popup .tableFooter .submitBtn:hover{
     border-color: var(--light7);
     transition: 0.3s;
 }
 
-.popup footer{
+.popup .tableFooter{
     border-top: 1px solid var(--dark7);
     padding: 12px 20px;
     text-align: right;
@@ -365,25 +377,25 @@ table tr .empty{
     height: 100%;
 }
 
-form .inputFieldcontainerx .nameField,
-form .inputFieldcontainerx .ageCityField,
-form .inputFieldcontainerx .postSalary{
+form .inputFieldviewItemsContainer .nameField,
+form .inputFieldviewItemsContainer .ageCityField,
+form .inputFieldviewItemsContainer .postSalary{
     display: flex;
     justify-content: space-between;
     gap: 15px;
 }
 
-form .inputFieldcontainerx .nameField input,
-form .inputFieldcontainerx .ageCityField input,
-form .inputFieldcontainerx .postSalary input{
+form .inputFieldviewItemsContainer .nameField input,
+form .inputFieldviewItemsContainer .ageCityField input,
+form .inputFieldviewItemsContainer .postSalary input{
     width: 200px;
 }
 
-.inputFieldcontainerx .form_control{
+.inputFieldviewItemsContainer .form_control{
     margin: 10px 0;
 }
 
-.inputFieldcontainerx .form_control label{
+.inputFieldviewItemsContainer .form_control label{
     display: block;
     color: var(--dark8);
     margin-bottom: 5px;

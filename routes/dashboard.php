@@ -24,11 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit();
     }
 
-    
+
 
     // Switch based on the last segment
     switch ($lastSegment) {
         case 'additem':
+        case 'viewitems':
+        case 'edititem':
             include 'views/dashboard.php';
             exit();
         default:
