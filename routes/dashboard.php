@@ -24,8 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit();
     }
 
-
-
     // Switch based on the last segment
     switch ($lastSegment) {
         case 'additem':
@@ -37,13 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'edititem':
             include 'views/dashboard/edititem.php';
             exit();
-<<<<<<< Updated upstream
-       
-=======
         case 'chartjs':
             include 'views/dashboard/chartjs.php';
             break;
-        //orderTracks
         case 'orderTracks':
             include 'views/dashboard/orderTracks.php';
             break;
@@ -68,9 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'reviews':
             include 'views/dashboard/reviews.php';
             break;
-         default:
+        default:
             include 'views/404.php';
->>>>>>> Stashed changes
             exit();
     }
 }

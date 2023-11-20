@@ -121,7 +121,7 @@
   <script src="template/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="/template/js/chart.js"></script>
+  <script src="template/js/chart.js"></script>
   <!-- End custom js for this page-->
 </body>
 

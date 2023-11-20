@@ -236,6 +236,6 @@
     </div>
 
 
-    <script src="/template/js/app1.js"></script>
+    <script src="template/js/app1.js"></script>
 </body>
 </html>
