@@ -58,23 +58,22 @@ class Item {
     
         switch ($item_type) {
             case 'Breakfast':
-                $item = new BreakfastItem($name, $category, $description, $price, $imagePath);
+                $item = new BreakfastItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
             case 'Main':
-                $item = new MainItem($name, $category, $description, $price, $imagePath);
+                $item = new MainItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
             case 'Drink':
-                $item = new DrinkItem($name, $category, $description, $price, $imagePath);
+                $item = new DrinkItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
             case 'Side':
-                $item = new SideItem($name, $category, $description, $price, $imagePath);
-                break;
+                $item = new SideItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
             default:
                 return false;
         }
     
         
-        $this->db->query('INSERT INTO ' . $data['itemtype'] . ' (Name, Category, Description, Price, ImagePath) 
+        $this->db->query('INSERT INTO ' . $item_type . ' (Itemname, Category, Description, Price, ImagePath) 
             VALUES (:item_name, :category, :description, :price, :image_path)');
     
         $this->db->bind(':item_name', $item->getName());
@@ -86,6 +85,7 @@ class Item {
         if ($this->db->execute()) {
             return true;
         } else {
+            
             return false;
         }
     }

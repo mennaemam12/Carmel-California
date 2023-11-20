@@ -69,10 +69,10 @@
             if (move_uploaded_file($file['tmp_name'],$targetPath)) {
                 return $targetPath;
             } else {
-                die("this is the file name : ".$file['name']);
+                // die("this is the file name : ".$file['name']);
                 //flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
-               //redirect($GLOBALS['projectFolder']."/dashboard/additem");
-                //return false;
+                //redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                return false;
             }
         }
 
@@ -111,13 +111,5 @@
             } else {
                 redirect($GLOBALS['projectFolder']."/dashboard/additem");
             }
-            
-            
-            // if($this->itemModel->add($data)){
-            //     //show in menu
-            //     die("done");
-            // }else{
-            //     die("Something went wrong");
-            // }
         }
 }

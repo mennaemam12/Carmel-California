@@ -93,6 +93,9 @@ $currentPage = $lastSegment;
     <script src="template/js/dashboard.js"></script>
     <script src="template/js/Chart.roundedBarCharts.js"></script>
     <!-- End custom js for this page-->
+    <script src="template/js/file-upload.js"></script>
+    <script src="template/js/typeahead.js"></script>
+    <script src="template/js/select2.js"></script>
 </body>
 
 </html>
