@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Required meta tags -->
+  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Carmel Admin</title>
-   <!-- plugins:css -->
-   <link rel="stylesheet" href="../../vendors/feather/feather.css">
-   <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
-   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+  <title>Skydash Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../../vendors/feather/feather.css">
+  <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
-  <link rel="stylesheet" href="/template/css/vertical-layout-light/style.css">
-  <link rel="stylesheet" href="/template/css/vertical-layout-light/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
-  <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="../..//template/images/favicon.png" />
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
+  <link rel="stylesheet" href="../public/css/admin/styleAdmin.css">
+  <link rel="stylesheet" href="../public/css/admin/styles.css">
 
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/logo_mini.jpg" />
-  
+  <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
 <body>
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -454,6 +440,6 @@
     </div>
 
 
-    <script src="/template/js/app2.js"></script>
+    <script src="../../template/js/app2.js"></script>
 </body>
 </html>
