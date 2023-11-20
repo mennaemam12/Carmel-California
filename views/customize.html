@@ -1,0 +1,1742 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      @media (min-width: 1025px) {
+        .h-custom {
+          height: 100vh !important;
+        }
+      }
+      @media (min-width: 300px) {
+        .h6,
+        h6 {
+          font-size: 2rem;
+        }
+      }
+
+      @media (min-width: 500px) {
+        .h6,
+        h6 {
+          font-size: 1rem;
+        }
+      }
+
+      .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+      }
+
+      .card-registration .select-arrow {
+        top: 13px;
+      }
+
+      .bg-grey {
+        background-color: #eae8e8;
+      }
+
+      @media (min-width: 992px) {
+        .card-registration-2 .bg-grey {
+          border-top-right-radius: 16px;
+          border-bottom-right-radius: 16px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .card-registration-2 .bg-grey {
+          border-bottom-left-radius: 16px;
+          border-bottom-right-radius: 16px;
+        }
+      }
+
+      li a {
+        text-decoration: none;
+        color: #2d2f31;
+      }
+
+      span {
+        padding: 30px;
+        color: white;
+        font-size: 1.2em;
+        font-variant: small-caps;
+        cursor: pointer;
+        display: block;
+      }
+
+      span::after {
+        float: right;
+        right: 10%;
+        content: "+";
+      }
+
+      .slide,
+      .slide2,
+      .slide3,
+      .slide4 {
+        clear: both;
+        width: 100%;
+        height: 0px;
+        overflow: hidden;
+        text-align: left;
+        transition: height 0.5s ease;
+        padding-left: 0;
+      }
+
+      .slide li,
+      .slide2 li,
+      .slide3 li,
+      .slide4 li {
+        list-style: none;
+        height: 80px;
+      }
+
+      #touch,
+      #touch2,
+      #touch3,
+      #touch4 {
+        position: absolute;
+        opacity: 0;
+        height: 0px;
+      }
+
+      #touch:checked + .slide,
+      #touch2:checked + .slide2 {
+        height: 900px;
+        transition: height 0.5s ease;
+        overflow: hidden;
+      }
+
+      #touch3:checked + .slide3 {
+        height: 1175px;
+        transition: height 0.5s ease;
+        overflow: hidden;
+      }
+      #touch4:checked + .slide4 {
+        height: 1220px;
+        transition: height 0.5s ease;
+        overflow: hidden;
+      }
+
+      .img-fluid {
+        width: 80px;
+        height: 55px;
+      }
+    </style>
+  </head>
+  <section class="h-100 h-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+          <div
+            class="card card-registration card-registration-2"
+            style="border-radius: 15px"
+          >
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-8">
+                  <div class="p-5">
+                    <div
+                      class="d-flex justify-content-between align-items-center mb-5"
+                    >
+                      <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                      <h6 class="mb-0 text-muted">3 items</h6>
+                    </div>
+
+                    <!--BASE DROP DOWN SECTION-->
+                    <div>
+                      <label for="touch" style="width: 600px; cursor: pointer"
+                        ><h2 class="fw-bold mb-0 text-black">Base</h2>
+                        <h4 class="fw-bold mb-0 text-muted">Choose 1</h4></label
+                      >
+                      <input type="checkbox" id="touch" width="600px" />
+
+                      <ul class="slide">
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/mix greens.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Mix Greens"
+                                height="51px"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Base</h6>
+                              <h6 class="text-black mb-0">Mix Greens</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <!-- NO QUANTITY -->
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/baby rocca.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Baby Rocca"
+                                height="51px"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Base</h6>
+                              <h6 class="text-black mb-0">Baby Rocca</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <!-- NO QUANTITY -->
+
+                              <button class="btn btn-link px-2">
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/lettuce.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Lettuce Iceberg"
+                                height="51px"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Base</h6>
+                              <h6 class="text-black mb-0">Lettuce Iceberg</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <!-- NO QUANTITY -->
+
+                              <button class="btn btn-link px-2">
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/spinach.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Spinach"
+                                height="51px"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Base</h6>
+                              <h6 class="text-black mb-0">Spinach</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <!-- NO QUANTITY -->
+
+                              <button class="btn btn-link px-2">
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/cabbage.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Cabbage"
+                                height="51px"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Base</h6>
+                              <h6 class="text-black mb-0">Cabbage</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <!-- NO QUANTITY -->
+
+                              <button class="btn btn-link px-2">
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/arugula.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Arugula"
+                                height="51px"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Base</h6>
+                              <h6 class="text-black mb-0">Arugula</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <!-- NO QUANTITY -->
+
+                              <button class="btn btn-link px-2">
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      <hr class="my-4" />
+                    </div>
+
+                    <!--VEGETABLES DROP DOWN SECTION-->
+
+                    <div>
+                      <label for="touch2" style="width: 600px; cursor: pointer"
+                        ><h2 class="fw-bold mb-0 text-black">Vegetables</h2>
+                        <h4 class="fw-bold mb-0 text-muted">Choose 3</h4></label
+                      >
+                      <input type="checkbox" id="touch2" width="600px" />
+                      <ul class="slide2">
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/cucumber.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Cucumber"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Cucumber</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="cucumber"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 25.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/tomato.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Tomato"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Tomato</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="tomato"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 25.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/pepper.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Pepper"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Pepper</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="pepper"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 25.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/beetroot.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Beetroot"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Beetroot</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="beetroot"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 25.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/onions.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Onions"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Onions</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="onions"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 25.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/carrot.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Carrot"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Carrot</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="carrot"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 25.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/coriander.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Coriander"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Coriander</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 25.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                     
+                    </div>
+                     <hr class="my-4" />
+                    <!--PROTEIN DROP DOWN SECTION-->
+
+                    <div>
+                      <label for="touch3" style="width: 600px; cursor: pointer"
+                        ><h2 class="fw-bold mb-0 text-black">Protein</h2>
+                        <h4 class="fw-bold mb-0 text-muted">Choose 1</h4></label
+                      >
+                      <input type="checkbox" id="touch3" width="600px" />
+                      <ul class="slide3">
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/quinoa.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Quinoa"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Protein</h6>
+                              <h6 class="text-black mb-0">Quinoa</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="cucumber"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/grilled chicken.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Grilled Chicken"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Protein</h6>
+                              <h6 class="text-black mb-0">Grilled Chicken</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="tomato"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/grilled beef.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Grilled Asian Beef"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Protein</h6>
+                              <h6 class="text-black mb-0">Grilled Asian Beef</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="pepper"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/smoked salmon.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Smoked Salmon"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Protein</h6>
+                              <h6 class="text-black mb-0">Smoked Salmon</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="beetroot"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/tuna.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Tuna"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Protein</h6>
+                              <h6 class="text-black mb-0">Tuna</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="onions"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/anchovies.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Anchovies"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Protein</h6>
+                              <h6 class="text-black mb-0">Anchovies</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="carrot"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/grilled turkey.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Turkey"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Protein</h6>
+                              <h6 class="text-black mb-0">Turkey</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/boiled egg.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Boiled Egg"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Protein</h6>
+                              <h6 class="text-black mb-0">Boiled Egg</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 15.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/sauteed mushrooms.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Sauteed Mushrooms"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegan Protein</h6>
+                              <h6 class="text-black mb-0">Sauteed Mushrooms</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00</h6>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!--ADD ONS DROP DOWN SECTION-->
+                    <hr class="my-4" />
+                    <div>
+                      <label for="touch4" style="width: 600px; cursor: pointer"
+                        ><h2 class="fw-bold mb-0 text-black">Add Ons</h2>
+                        <h4 class="fw-bold mb-0 text-muted">Choose 1</h4></label
+                      >
+                      <input type="checkbox" id="touch4" width="600px" />
+                      <ul class="slide4">
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/sweet potato.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Sweet Potato"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Sweet Potato</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="cucumber"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 25.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/radish.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Radish"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Radish</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="tomato"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 15.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/cherry tomato.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Cherry Tomato"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Cherry Tomato</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="pepper"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 20.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/sweet corn.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Sweet Corn"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Vegetable</h6>
+                              <h6 class="text-black mb-0">Sweet Corn</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="beetroot"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 15.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/red beans.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Red Beans"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Beans</h6>
+                              <h6 class="text-black mb-0">Red Beans</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="onions"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 10.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/black beans.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Black Beans"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Beans</h6>
+                              <h6 class="text-black mb-0">Black Beans</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="carrot"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 10.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/guacamole.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Guacamole"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Sauce</h6>
+                              <h6 class="text-black mb-0">Guacamole</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 35.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/Chickpeas.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Chick Peas"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Nuts</h6>
+                              <h6 class="text-black mb-0">Chick Peas</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 15.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/almonds.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Almonds"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Nuts</h6>
+                              <h6 class="text-black mb-0">Almonds</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 20.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/walnuts.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Walnuts"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Nuts</h6>
+                              <h6 class="text-black mb-0">Walnuts</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 20.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/peanuts.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Peanuts"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Nuts</h6>
+                              <h6 class="text-black mb-0">Peanuts</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 20.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                        <hr class="my-4" />
+                        <li>
+                          <div
+                            class="row mb-4 d-flex justify-content-between align-items-center"
+                          >
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                              <img
+                                src="public/images/salad-ingredients/caramelized walnuts.jpg"
+                                class="img-fluid rounded-3"
+                                alt="Caramelized Walnuts"
+                              />
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                              <h6 class="text-muted">Nuts</h6>
+                              <h6 class="text-black mb-0">Caramelized Walnuts</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                              >
+                                <i class="fas fa-minus"></i>
+                              </button>
+
+                              <input
+                                id="form1"
+                                min="0"
+                                name="coriander"
+                                value="1"
+                                type="number"
+                                max="3"
+                                class="form-control form-control-sm"
+                              />
+
+                              <button
+                                class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                              >
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                              <h6 class="mb-0">LE 30.00/1</h6>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                      
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="pt-5">
+                      <h6 class="mb-0">
+                        <a href="#!" class="text-body"
+                          ><i class="fas fa-long-arrow-alt-left me-2"></i>Back
+                          to shop</a
+                        >
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 bg-grey">
+                  <div class="p-5">
+                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                    <hr class="my-4" />
+
+                    <div class="d-flex justify-content-between mb-4">
+                      <h5 class="text-uppercase">items 3</h5>
+                      <h5>€ 132.00</h5>
+                    </div>
+
+                    <h5 class="text-uppercase mb-3">Shipping</h5>
+
+                    <div class="mb-4 pb-2">
+                      <select class="select">
+                        <option value="1">Standard-Delivery- €5.00</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                      </select>
+                    </div>
+
+                    <h5 class="text-uppercase mb-3">Give code</h5>
+
+                    <div class="mb-5">
+                      <div class="form-outline">
+                        <input
+                          type="text"
+                          id="form3Examplea2"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Examplea2"
+                          >Enter your code</label
+                        >
+                      </div>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="d-flex justify-content-between mb-5">
+                      <h5 class="text-uppercase">Total price</h5>
+                      <h5>€ 137.00</h5>
+                    </div>
+
+                    <button
+                      type="button"
+                      class="btn btn-dark btn-block btn-lg"
+                      data-mdb-ripple-color="dark"
+                    >
+                      Register
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</html>
