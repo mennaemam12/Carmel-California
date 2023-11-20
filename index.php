@@ -54,6 +54,9 @@ switch ($segments[2]) {
     case 'itemadd':
         include 'routes/itemadd.php';
         break;
+    case 'salad-order':
+        include 'routes/custom.salad.php';
+        break;
     default:
         include 'views/404.php';
         break;
