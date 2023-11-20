@@ -38,17 +38,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'chartjs':
             include 'views/dashboard/chartjs.php';
             break;
-        case 'orderTracks':
-            include 'views/dashboard/orderTracks.php';
+        case 'ordertracks':
+            include 'views/dashboard/ordertracks.php';
             break;
         case 'drivers':
             include 'views/dashboard/drivers.php';
             break;
-        case 'loginAdmin':
-            include 'views/dashboard/loginAdmin.php';
+        case 'loginadmin':
+            include 'views/dashboard/loginadmin.php';
             break;
-        case 'registerAdmin':
-            include 'views/dashboard/registerAdmin.php';
+        case 'registeradmin':
+            include 'views/dashboard/registeradmin.php';
             break;
         case 'employee':
             include 'views/dashboard/employee.php';
