@@ -37,6 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'edititem':
             include 'views/dashboard/edititem.php';
             exit();
+        case 'addingredient':
+            include 'views/dashboard/addingredient.php';
+            exit();
         default:
             include 'views/404.php';
             exit();
@@ -50,5 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         include 'controllers/item.controller.php';
         $item = new ItemController;
         $item->add();
+    }
+    else if ($lastSegment === 'addingredient') {
+        include 'controllers/ingredient.controller.php';
+        $ingredient = new IngredientController;
+        $ingredient->add();
     }
 }
