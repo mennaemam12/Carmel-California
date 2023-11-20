@@ -13,6 +13,8 @@ include 'projectFolderName.php';
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
+	<base href="<?php echo $projectFolder?>/"/>
+
     <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/animate.css">
     
@@ -30,7 +32,11 @@ include 'projectFolderName.php';
     
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
-    <link rel="stylesheet" href="public/css/style.css">
+	
+	<link rel="stylesheet" href="public/css/nav.css">
+	<link rel="stylesheet" href="public/css/footer.css">
+	<link rel="stylesheet" href="public/css/cart.css">
+
   </head>
   <body>
     <?php
@@ -46,7 +52,7 @@ include 'projectFolderName.php';
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">Cart</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="<?php echo $projectFolder;?>/">Home</a></span> <span>Cart</span></p>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="">Home</a></span> <span>Cart</span></p>
             </div>
 
           </div>
@@ -139,7 +145,7 @@ include 'projectFolderName.php';
     						<span>$17.60</span>
     					</p>
     				</div>
-    				<p class="text-center"><a href="<?php echo $projectFolder;?>/checkout" class="btn btn-primary py-3 px-4" style="background-color:#006a4d;">Proceed to Checkout</a></p>
+    				<p class="text-center"><a href="checkout" class="btn btn-primary py-3 px-4" style="background-color:#006a4d;">Proceed to Checkout</a></p>
     			</div>
     		</div>
 			</div>

@@ -19681,6 +19681,7 @@ html {
 
 .container-scroller {
   overflow: hidden;
+  width:100%;
 }
 
 pre {
@@ -28822,9 +28823,7 @@ div.tagsinput span.tag a {
 
 .navbar .navbar-brand-wrapper .navbar-brand img {
   max-width: 100%;
-  height: 150px;
-  margin-top: 25px;
-
+  width: 150px;
   vertical-align: middle;
 }
 

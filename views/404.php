@@ -13,6 +13,8 @@ include 'projectFolderName.php';
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
+    <base href="<?php echo $projectFolder?>/"/>
+
     <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/animate.css">
 
@@ -30,7 +32,10 @@ include 'projectFolderName.php';
 
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
-    <link rel="stylesheet" href="public/css/style.css">
+    
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="public/css/404.css">
 </head>
 
 <body>
@@ -44,8 +49,8 @@ include 'projectFolderName.php';
 				<div class="col-md-7 heading-section text-center ftco-animate">
 					<span style="margin-bottom:10px;" class="subheading">Oops</span>
 					<h2 class="mb-4">Page was not found</h2>
-                    <h4 class="mb-4">Lost? Don't forget to take a look at our <a style="font-size: 20px;text-decoration:underline;" href="<?php echo $projectFolder?>/menu">Menu</a></h4>
-					<p><a style="text-decoration:underline;" href="<?php echo $projectFolder?>/">Home</a></p>
+                    <h4 class="mb-4">Lost? Don't forget to take a look at our <a style="font-size: 20px;text-decoration:underline;" href="menu">Menu</a></h4>
+					<p><a style="text-decoration:underline;" href="index">Home</a></p>
 				</div>
 			</div>
 		</div>
@@ -77,8 +82,6 @@ include 'projectFolderName.php';
     <script src="public/js/bootstrap-datepicker.js"></script>
     <script src="public/js/jquery.timepicker.min.js"></script>
     <script src="public/js/scrollax.min.js"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-    <!-- <script src="public/js/google-map.js"></script> -->
     <script src="public/js/main.js"></script>
 
 </body>

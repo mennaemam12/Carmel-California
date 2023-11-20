@@ -5,52 +5,110 @@
 
     class ItemController {
 
-        private $ItemModel;
+        private $itemModel;
         
         public function __construct(){
-            $this->ItemModel = new Item;
+            
+        }
+
+        public function validateItem($data,$imagePath){
+            if (empty($data['itemtype']) || empty($data['item_name']) || empty($data['price']) 
+            || empty($data['category']) || empty($data['description'])) {
+                flash("formError", "Please fill out all inputs");
+                redirect($GLOBALS['projectFolder']."/dashboard/addItem");
+                return false;
+            }
+    
+            if ( !is_string($data['item_name'])) {
+                flash("formError", "Invalid item name");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                return false;
+            }
+    
+            if (!is_numeric($data['price']) || $data['price'] <= 0) {
+                flash("formError", "Invalid price");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                return false;
+            }
+    
+            if (!is_string($data['category'])) {
+                flash("formError", "Invalid category");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                return false;
+            }
+    
+            if (!is_string($data['description'])) {
+                flash("formError", "Invalid description ");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                return false;
+            }
+
+            if (!$imagePath) {
+                flash("formError", "Failed to save the image", 'form-message form-message-red');
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                return false;
+            }
+
+            return true;
+        }
+
+        private function saveImage($file, $category) {
+            $uploadDir = 'public/images/' . $category . '/';  
+            $imageFileType = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    
+            // Generate a unique name for the image
+            $imageName = uniqid('image_') . '.' . $imageFileType;
+            $targetPath = $uploadDir . $imageName;
+    
+            // Create the category subfolder if it doesn't exist
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir,0755);
+            }
+    
+            // Move the uploaded file to the destination subfolder
+            if (move_uploaded_file($file['tmp_name'],$targetPath)) {
+                return $targetPath;
+            } else {
+                //flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
+                //redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                return false;
+            }
         }
 
         public function add(){
-            //Process form
+           
             
             //Sanitize POST data
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             //Init data
             $data = [
-                'itemname' => trim($_POST['itemname']),
-                'price' => trim($_POST['price']),
+                'item_name' => trim($_POST['itemname']),
                 'category' => trim($_POST['category']),
-                'descriptions' => trim($_POST['descriptions']),
+                'description' => trim($_POST['descriptions']),
+                'price' => trim($_POST['price']),
                 'itemtype'=> trim($_POST['itemtype'])
             ];
 
-            //Validate inputs
-            if(empty($data['itemname']) || empty($data['price']) || empty($data['category']) || 
-            empty($data['descriptions'])){
-                die("fill out all inputs");
-                // flash("itemadd", "Please fill out all inputs");
-                // redirect($GLOBALS['projectFolder']."/itemadd");
-            }
+            // flash("formError", "Item name: ".$_FILES['file']['name'], 'form-message form-message-green');
+            // redirect($GLOBALS['projectFolder']."/dashboard/addItem");
+            //handle image path
+            $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
 
-            //User with the same email or password already exists
-            // if($this->ItemModel->findItemByName($data['itemname'],$data['itemtype'])){
-            //     die("Name already taken");
-            //     // flash("itemadd", "Name already taken");
-            //     // redirect($GLOBALS['projectFolder']."/itemadd");
-            // }
+            if ($this->validateItem($data,$imagePath)) {
 
-            //Passed all validation checks.
-            // if(!($this->ItemModel->findItemByName($data['itemname'],$data['itemtype']))){
-            //     die("pass");
-            // }
-            //Register User
-             if($this->ItemModel->add($data)){
-              //show in menu
-              die("done");
-            }else{
-                die("Something went wrong");
+                // Validation successful, create an Item object
+                $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], $imagePath);
+    
+                if ($this->itemModel->add($data['itemtype'])) {
+                    flash("formSuccess", "Item added successfully", 'form-message form-message-green');
+                    redirect($GLOBALS['projectFolder']."/dashboard/addItem");
+                } else {
+                    flash("formError", "Failed to add item to the database", 'form-message form-message-red');
+                    redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                }
+            } else {
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
             }
         }
 }
