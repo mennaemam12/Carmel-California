@@ -121,7 +121,8 @@ include 'projectFolderName.php';
   <script src="public/js/jquery.timepicker.min.js"></script>
   <script src="public/js/scrollax.min.js"></script>
   <script src="public/js/main.js"></script>
-
+  <script src="public/js/nav.js"></script>
+  
 </body>
 
 </html>
