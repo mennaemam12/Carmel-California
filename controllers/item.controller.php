@@ -14,32 +14,38 @@
         public function validateItem($data,$imagePath){
             if (empty($data['itemtype']) || empty($data['item_name']) || empty($data['price']) 
             || empty($data['category']) || empty($data['description'])) {
-                flash("AddItem", "Please fill out all inputs");
+                flash("formError", "Please fill out all inputs");
+                redirect($GLOBALS['projectFolder']."/dashboard/addItem");
                 return false;
             }
     
             if ( !is_string($data['item_name'])) {
-                flash("AddItem", "Invalid item name");
+                flash("formError", "Invalid item name");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
                 return false;
             }
     
             if (!is_numeric($data['price']) || $data['price'] <= 0) {
-                flash("AddItem", "Invalid price");
+                flash("formError", "Invalid price");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
                 return false;
             }
     
             if (!is_string($data['category'])) {
-                flash("AddItem", "Invalid category");
+                flash("formError", "Invalid category");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
                 return false;
             }
     
             if (!is_string($data['description'])) {
-                flash("AddItem", "Invalid description ");
+                flash("formError", "Invalid description ");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
                 return false;
             }
 
             if (!$imagePath) {
-                flash("AddItem", "Failed to save the image", 'form-message form-message-red');
+                flash("formError", "Failed to save the image", 'form-message form-message-red');
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
                 return false;
             }
 
@@ -56,14 +62,17 @@
     
             // Create the category subfolder if it doesn't exist
             if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
+                mkdir($uploadDir,0755);
             }
     
             // Move the uploaded file to the destination subfolder
-            if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+            if (move_uploaded_file($file['tmp_name'],$targetPath)) {
                 return $targetPath;
             } else {
-                return false;
+                die("this is the file name : ".$file['name']);
+                //flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
+               //redirect($GLOBALS['projectFolder']."/dashboard/additem");
+                //return false;
             }
         }
 
@@ -71,7 +80,7 @@
            
             
             //Sanitize POST data
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             //Init data
             $data = [
@@ -82,31 +91,33 @@
                 'itemtype'=> trim($_POST['itemtype'])
             ];
 
+            // flash("formError", "Item name: ".$_FILES['file']['name'], 'form-message form-message-green');
+            // redirect($GLOBALS['projectFolder']."/dashboard/addItem");
             //handle image path
-            $imagePath = $this->saveImage($_FILES['image'], $data['itemtype']);
+            $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
 
             if ($this->validateItem($data,$imagePath)) {
 
                 // Validation successful, create an Item object
-                $this ->$itemModel = new Item($data['itemname'], $data['category'], $data['description'], $data['price'], $imagePath);
+                $this->itemModel = new Item($data['itemname'], $data['category'], $data['description'], $data['price'], $imagePath);
     
-                if ($this->$itemModel->add($data['itemtype'])) {
+                if ($this->itemModel->add($data['itemtype'])) {
                     flash("formSuccess", "Item added successfully", 'form-message form-message-green');
-                    redirect($GLOBALS['projectFolder']."/addItem");
+                    redirect($GLOBALS['projectFolder']."/dashboard/addItem");
                 } else {
                     flash("formError", "Failed to add item to the database", 'form-message form-message-red');
-                    redirect($GLOBALS['projectFolder']."/addItem");
+                    redirect($GLOBALS['projectFolder']."/dashboard/additem");
                 }
             } else {
-                redirect($GLOBALS['projectFolder']."/addItem");
+                redirect($GLOBALS['projectFolder']."/dashboard/additem");
             }
             
             
-            if($this->ItemModel->add($data)){
-                //show in menu
-                die("done");
-            }else{
-                die("Something went wrong");
-            }
+            // if($this->itemModel->add($data)){
+            //     //show in menu
+            //     die("done");
+            // }else{
+            //     die("Something went wrong");
+            // }
         }
 }

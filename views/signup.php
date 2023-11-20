@@ -35,6 +35,8 @@ include 'projectFolderName.php';
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
+	<base href="<?php echo $projectFolder?>/">
+
 	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/animate.css">
 
@@ -64,7 +66,7 @@ include 'projectFolderName.php';
 				<img src="public/images/reg.jpg" alt="">
 			</div>
 
-			<form action="<?php echo $projectFolder; ?>/signup" method="post">
+			<form action="signup" method="post">
 				<h3>Sign Up</h3>
 				<input type="hidden" name="type" value="register">
 				<div class="form-holder active">
@@ -98,7 +100,7 @@ include 'projectFolderName.php';
 
 				<div class="form-login">
 					<button class="button" type="submit" name="Submit">Sign&nbsp;up</button>
-					<p>Already have an account? <a href='<?php echo $projectFolder;?>/login'>Login</a></p>
+					<p>Already have an account? <a href='login'>Login</a></p>
 				</div>
 			</form>
 		</div>
@@ -107,9 +109,6 @@ include 'projectFolderName.php';
 	<?php
 	include 'views/partials/footer.php'
 	?>
-
-	<script src="public/js/jquery.js"></script>
-	<script src="public/js/reg.js"></script>
 
 	<script src="public/js/jquery.min.js"></script>
 	<script src="public/js/jquery-migrate-3.0.1.min.js"></script>

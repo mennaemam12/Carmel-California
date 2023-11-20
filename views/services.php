@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
+    <base href="<?php echo $projectFolder?>/"/>
+
     <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/animate.css">
     
@@ -45,7 +47,7 @@
 
             <div class="col-md-7 col-sm-12 text-center ftco-animate">
             	<h1 class="mb-3 mt-5 bread">Services</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="<?php echo $projectFolder;?>/">Home</a></span> <span>Services</span></p>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="">Home</a></span> <span>Services</span></p>
             </div>
 
           </div>
@@ -110,8 +112,6 @@
   <script src="public/js/bootstrap-datepicker.js"></script>
   <script src="public/js/jquery.timepicker.min.js"></script>
   <script src="public/js/scrollax.min.js"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-  <!-- <script src="public/js/google-map.js"></script> -->
   <script src="public/js/main.js"></script>
     
   </body>

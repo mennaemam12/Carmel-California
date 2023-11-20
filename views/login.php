@@ -31,6 +31,8 @@ include 'projectFolderName.php';
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
+	<base href="<?php echo $projectFolder?>/">
+
 	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/animate.css">
 
@@ -58,7 +60,7 @@ include 'projectFolderName.php';
 			<div class="image-holder">
 				<img src="public/images/reg.jpg" alt="">
 			</div>
-			<form action="<?php echo $projectFolder; ?>/login" method="post">
+			<form action="login" method="post">
 				<h3>Login</h3>
 				<div class="form-holder active">
 					<input type="text" placeholder="Email" name="Name/Email" class="form-control">
@@ -76,7 +78,7 @@ include 'projectFolderName.php';
 				</div>
 				<div class="form-login">
 					<button class="button" type="submit" name="submit">Login</button>
-					<p>Don't have an account? <a href='<?php echo $projectFolder; ?>/signup'>Sign&nbsp;Up</a></p>
+					<p>Don't have an account? <a href='signup'>Sign&nbsp;Up</a></p>
 				</div>
 			</form>
 		</div>
