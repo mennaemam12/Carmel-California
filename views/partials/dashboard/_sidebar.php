@@ -21,20 +21,7 @@
         </ul>
       </div>
     </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-        <i class="icon-search menu-icon"></i>
-        <span class="menu-title">Products</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="form-elements">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Add Product</a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Edit Product</a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Delete Product</a></li>
-        </ul>
-      </div>
-    </li> -->
+
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
         <i class="icon-bar-graph menu-icon"></i>
@@ -43,7 +30,7 @@
       </a>
       <div class="collapse" id="charts">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Reports</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/chartjs">Reports</a></li>
         </ul>
       </div>
     </li>
@@ -56,7 +43,7 @@
       </a>
       <div class="collapse" id="tables">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Order Tracks</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/orderTracks">Order Tracks</a></li>
         </ul>
       </div>
     </li>
@@ -68,7 +55,7 @@
       </a>
       <div class="collapse" id="icons">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table4.html">Drivers Status</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/drivers">Drivers Status</a></li>
         </ul>
       </div>
     </li>
@@ -80,8 +67,8 @@
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/loginAdmin"> Login </a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/registerAdmin"> Register </a></li>
         </ul>
       </div>
     </li>
@@ -93,8 +80,8 @@
       </a>
       <div class="collapse" id="users">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="template/pages/forms/employee.html"> Employees </a></li>
-          <li class="nav-item"> <a class="nav-link" href="template/pages/forms/customer.html"> Customers </a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/employee"> Employees </a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/customer"> Customers </a></li>
         </ul>
       </div>
     </li>
@@ -106,7 +93,7 @@
       </a>
       <div class="collapse" id="error">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table2.html">Customer's Points</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/points">Customer's Points</a></li>
         </ul>
       </div>
     </li>
@@ -117,7 +104,7 @@
       </a>
     </li> -->
     <li class="nav-item">
-      <a class="nav-link" href="pages/tables/basic-table3.html">
+      <a class="nav-link" href="dashboard/reviews">
         <i class="icon-paper menu-icon"></i>
         <span class="menu-title">Reviews</span>
       </a>
