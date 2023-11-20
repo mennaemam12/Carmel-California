@@ -16,7 +16,7 @@ $url = $_SERVER['REQUEST_URI'];
 
 // segments
 $segments = explode('/', $url);
-
+$lastSegment = strtolower($segments[count($segments) - 1]);
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if (count($segments) < 4) {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit();
     }
 
-    $lastSegment = strtolower($segments[count($segments) - 1]);
+    
 
     // Switch based on the last segment
     switch ($lastSegment) {
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Add item form submitted
-    if ($segments[3] === 'addItem') {
+    if ($lastSegment === 'additem') {
         include 'controllers/item.controller.php';
         $item = new ItemController;
         $item->add();

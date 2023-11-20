@@ -1,6 +1,7 @@
 <?php
 @session_start();
 include 'projectFolderName.php';
+include 'helpers/session.helper.php';
 
 $url = $_SERVER['REQUEST_URI'];
 $segments = explode('/', $url);

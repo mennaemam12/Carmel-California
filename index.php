@@ -51,8 +51,6 @@ switch ($segments[2]) {
     case 'product':
         include 'routes/product.php';
         break;
-    case 'addItem':
-        include 'routes/addItem.php';
     case 'dashboard':
         include 'routes/dashboard.php';
         break;

@@ -25,7 +25,7 @@ include 'projectFolderName.php';
                     <?php else: ?>
                         <li class='nav-item'><a class='nav-link' href='login'>Sign In</a></li>
 					<?php endif; ?>
-					<?php if(isset($_SESSION['userId'])&&str_contains($_SESSION['Type'], "admin")): ?>
+					<?php if(isset($_SESSION['userId'])&&strpos($_SESSION['Type'], "admin")!==false): ?>
 						<li class='nav-item'><a class='nav-link' href='dashboard'>Dashboard</a></li>
 					<?php else: ?>
 					<?php endif; ?>		
