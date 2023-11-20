@@ -69,7 +69,6 @@
             if (move_uploaded_file($file['tmp_name'],$targetPath)) {
                 return $targetPath;
             } else {
-                // die("this is the file name : ".$file['name']);
                 //flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
                 //redirect($GLOBALS['projectFolder']."/dashboard/additem");
                 return false;
@@ -99,7 +98,7 @@
             if ($this->validateItem($data,$imagePath)) {
 
                 // Validation successful, create an Item object
-                $this->itemModel = new Item($data['itemname'], $data['category'], $data['description'], $data['price'], $imagePath);
+                $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], $imagePath);
     
                 if ($this->itemModel->add($data['itemtype'])) {
                     flash("formSuccess", "Item added successfully", 'form-message form-message-green');

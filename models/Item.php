@@ -1,6 +1,10 @@
 <?php
 require_once 'database.php';
-
+require_once 'models/Breakfast.php';
+require_once 'models/Drinks.php';
+require_once 'models/main.php';
+require_once 'models/Dinner.php';
+require_once 'models/Sides.php';
 class Item {
 
     private $db;
@@ -57,23 +61,27 @@ class Item {
         $item = null;
     
         switch ($item_type) {
-            case 'Breakfast':
+            case 'breakfast':
                 $item = new BreakfastItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
-            case 'Main':
+            case 'main':
                 $item = new MainItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
-            case 'Drink':
+            case 'drinks':
                 $item = new DrinkItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
-            case 'Side':
+            case 'sides':
                 $item = new SideItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
+                break;
+            case 'dinner':
+                $item = new DinnerItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
+                break;
             default:
                 return false;
         }
     
         
-        $this->db->query('INSERT INTO ' . $item_type . ' (Itemname, Category, Description, Price, ImagePath) 
+        $this->db->query('INSERT INTO ' . $item_type . ' (Name, Category, Description, Price, ImagePath) 
             VALUES (:item_name, :category, :description, :price, :image_path)');
     
         $this->db->bind(':item_name', $item->getName());
@@ -85,7 +93,6 @@ class Item {
         if ($this->db->execute()) {
             return true;
         } else {
-            
             return false;
         }
     }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 08:54 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Nov 20, 2023 at 03:08 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,30 @@ CREATE TABLE `breakfast` (
   `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dinner`
+--
+
+CREATE TABLE `dinner` (
+  `id` int(11) NOT NULL,
+  `Name` varchar(30) NOT NULL,
+  `Category` varchar(20) NOT NULL,
+  `Description` varchar(65) NOT NULL,
+  `Price` double NOT NULL,
+  `ImagePath` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `dinner`
+--
+
+INSERT INTO `dinner` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath`) VALUES
+(1, 'pasta', 'meal', 'well', 25, 'public/images/dinner/image_655b67af60c0c.jpeg'),
+(2, 'pastaya', 'meal', 'welles', 35, 'public/images/dinner/image_655b6829f20b7.jpeg');
 
 -- --------------------------------------------------------
 
@@ -49,7 +72,7 @@ CREATE TABLE `drinks` (
   `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -64,7 +87,7 @@ CREATE TABLE `main` (
   `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -79,7 +102,7 @@ CREATE TABLE `sides` (
   `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -95,7 +118,7 @@ CREATE TABLE `users` (
   `PhoneNumber` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `type` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -112,6 +135,12 @@ INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`,
 -- Indexes for table `breakfast`
 --
 ALTER TABLE `breakfast`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dinner`
+--
+ALTER TABLE `dinner`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -146,7 +175,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `breakfast`
 --
 ALTER TABLE `breakfast`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `dinner`
+--
+ALTER TABLE `dinner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `drinks`
