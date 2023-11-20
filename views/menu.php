@@ -29,7 +29,10 @@
     
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
-    <link rel="stylesheet" href="public/css/style.css">
+
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="public/css/menu.css">
   </head>
   <body>
     <?php

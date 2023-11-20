@@ -46,8 +46,12 @@ include 'projectFolderName.php';
 
 	<link rel="stylesheet" href="public/css/flaticon.css">
 	<link rel="stylesheet" href="public/css/icomoon.css">
-	<link rel="stylesheet" href="public/css/style.css">
+
+	
+	<link rel="stylesheet" href="public/css/nav.css">
+	<link rel="stylesheet" href="public/css/footer.css">
 	<link rel="stylesheet" href="public/css/login.css">
+
 </head>
 
 <body>
@@ -87,9 +91,6 @@ include 'projectFolderName.php';
 	<?php
 		include 'views/partials/footer.php'
 	?>
-
-	<script src="public/js/jquery.js"></script>
-	<script src="public/js/reg.js"></script>
 	
 	<script src="public/js/jquery.min.js"></script>
 	<script src="public/js/jquery-migrate-3.0.1.min.js"></script>
