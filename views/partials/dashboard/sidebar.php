@@ -1,12 +1,12 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #DFE0DA;">
   <ul class="nav">
-    <li class="nav-item">
+    <li class="nav-item" id="sidebar-dashboard">
       <a class="nav-link" href="dashboard">
         <i class="icon-grid-2 menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" id="sidebar-menu">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <i class="icon-map menu-icon"></i>
         <span class="menu-title">Menu</span>
@@ -15,7 +15,7 @@
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">View Menu</a></li> -->
-          <li class="nav-item"> <a class="nav-link" href="dashboard/additem">Add Menu</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/additem">Add Menu Item</a></li>
           <li class="nav-item"> <a class="nav-link" href="pages/forms/menuCRUD.html">Edit Menu</a></li>
           <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Delete Menu</a></li> -->
         </ul>

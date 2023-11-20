@@ -239,11 +239,14 @@ switch ($lastSegment) {
           </button>
         </div>
       </nav>
+
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
+
       <?php
       include 'views/partials/dashboard/sidebar.php';
       ?>
+
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper" style="background-color: #DFE0DA;">
@@ -252,8 +255,12 @@ switch ($lastSegment) {
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <?php
-                if ($currentPage === 'additem')
-                  include 'views/partials/dashboard/addItemForm.php';
+                switch ($currentPage) {
+                  case 'additem':
+                    include 'views/partials/dashboard/addItemForm.php';
+                    break;
+                }
+                  
                 ?>
               </div>
             </div>
