@@ -36,8 +36,8 @@ if(isset($_POST['submit'])){
   <!-- inject:css -->
   <link rel="stylesheet" href="../public/css/admin/styleAdmin.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="../../images/favicon.png" />
-</head>>
+  <link rel="shortcut icon" href="../../images/favicon.png" >
+</head>
 
 <body>
   <div class="container-scroller">
