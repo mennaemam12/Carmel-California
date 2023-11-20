@@ -1,5 +1,5 @@
 <?php
-	include 'projectFolderName.php';
+include 'projectFolderName.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-	<base href="<?php echo $projectFolder?>/"/>
+	<base href="<?php echo $projectFolder ?>/" />
 
 	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/animate.css">
@@ -33,7 +33,7 @@
 
 	<link rel="stylesheet" href="public/css/flaticon.css">
 	<link rel="stylesheet" href="public/css/icomoon.css">
-		
+
 	<link rel="stylesheet" href="public/css/nav.css">
 	<link rel="stylesheet" href="public/css/footer.css">
 	<link rel="stylesheet" href="public/css/index.css">
@@ -41,7 +41,7 @@
 
 <body>
 	<?php
-		include 'partials/nav.php';
+	include 'partials/nav.php';
 	?>
 	<!-- END nav -->
 
@@ -51,14 +51,12 @@
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-					<div
-						style=" z-index: 0; padding:30px; border-radius: 10px;	text-align: center;">
+					<div style=" z-index: 0; padding:30px; border-radius: 10px;	text-align: center;">
 						<div style="z-index:0;">
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="menu"
-									class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="menu" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
 
@@ -72,14 +70,12 @@
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-					<div
-						style="z-index: 0; padding:30px; border-radius: 10px;	text-align: center;">
+					<div style="z-index: 0; padding:30px; border-radius: 10px;	text-align: center;">
 						<div style="z-index:0;">
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="menu"
-									class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							<p><a href="#" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">Order Now</a> <a href="menu" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
 
@@ -92,14 +88,12 @@
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-					<div
-						style="z-index: 0; padding:30px; border-radius: 10px;	text-align: center;">
+					<div style="z-index: 0; padding:30px; border-radius: 10px;	text-align: center;">
 						<div style="z-index:0;">
 							<span class="subheading">Welcome</span>
 							<h1 class="mb-4">Discover Carmel, <br>California's flavours now in Cairo</h1>
 							<p class="mb-4 mb-md-5"></p>
-							<p><a href="#" class="btn btn-secondary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="menu"
-									class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							<p><a href="#" class="btn btn-secondary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="menu" class="btn btn-secondary btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 						</div>
 					</div>
 
@@ -113,7 +107,7 @@
 	<section class="ftco-about d-md-flex">
 		<div class="one-half img" style="background-image: url(public/images/bgstory_3.jpg); background-size: 88%;"></div>
 		<div class="one-half ftco-animate">
-			
+
 			<div class="overlap">
 				<div class="heading-section ftco-animate ">
 					<span class="subheading">Discover</span>
@@ -182,7 +176,7 @@
 						<h2 class="mb-4">Our Menu</h2>
 						<p class="mb-4">All our items are handmade, working with speciality farmers and gourmet
 							suppliers to ensure that our raw materials are up to our premium standard.
-						Carmel's team cares about your experience, and offers a 100 % guarantee policy</p>
+							Carmel's team cares about your experience, and offers a 100 % guarantee policy</p>
 						<p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
 					</div>
 				</div>
@@ -214,11 +208,11 @@
 		</div>
 	</section>
 
-	<section class="ftco-section" id="section-counter" style="padding: 30px;" >
-		<div class="overlay" ></div>
+	<section class="ftco-section" id="section-counter" style="padding: 30px;">
+		<div class="overlay"></div>
 		<div class="container">
 			<div class="row justify-content-center">
-					
+
 			</div>
 		</div>
 	</section>
@@ -286,32 +280,28 @@
 		<div class="container-wrap">
 			<div class="row no-gutters">
 				<div class="col-md-3 ftco-animate">
-					<a href="gallery.html" class="gallery img d-flex align-items-center"
-						style="background-image: url(public/images/gallery-1.jpg);">
+					<a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(public/images/gallery-1.jpg);">
 						<div class="icon mb-4 d-flex align-items-center justify-content-center">
 							<span class="icon-search"></span>
 						</div>
 					</a>
 				</div>
 				<div class="col-md-3 ftco-animate">
-					<a href="gallery.html" class="gallery img d-flex align-items-center"
-						style="background-image: url(public/images/gallery-2.jpg);">
+					<a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(public/images/gallery-2.jpg);">
 						<div class="icon mb-4 d-flex align-items-center justify-content-center">
 							<span class="icon-search"></span>
 						</div>
 					</a>
 				</div>
 				<div class="col-md-3 ftco-animate">
-					<a href="gallery.html" class="gallery img d-flex align-items-center"
-						style="background-image: url(public/images/gallery-3.jpg);">
+					<a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(public/images/gallery-3.jpg);">
 						<div class="icon mb-4 d-flex align-items-center justify-content-center">
 							<span class="icon-search"></span>
 						</div>
 					</a>
 				</div>
 				<div class="col-md-3 ftco-animate">
-					<a href="gallery.html" class="gallery img d-flex align-items-center"
-						style="background-image: url(public/images/gallery-4.jpg);">
+					<a href="gallery.html" class="gallery img d-flex align-items-center" style="background-image: url(public/images/gallery-4.jpg);">
 						<div class="icon mb-4 d-flex align-items-center justify-content-center">
 							<span class="icon-search"></span>
 						</div>
@@ -335,29 +325,23 @@
 				<div class="col-lg-12 ftco-animate p-md-5">
 					<div class="row">
 						<div class="col-md-12 nav-link-wrap mb-5">
-							<div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab"
-								role="tablist" aria-orientation="vertical">
-								<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1"
-									role="tab" aria-controls="v-pills-1" aria-selected="true">Main Dish</a>
+							<div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+								<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Main Dish</a>
 
-								<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
-									aria-controls="v-pills-2" aria-selected="false">Drinks</a>
+								<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Drinks</a>
 
-								<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
-									aria-controls="v-pills-3" aria-selected="false">Desserts</a>
+								<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Desserts</a>
 							</div>
 						</div>
 						<div class="col-md-12 d-flex align-items-center">
 
 							<div class="tab-content ftco-animate" id="v-pills-tabContent">
 
-								<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
-									aria-labelledby="v-pills-1-tab">
+								<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/dish-1.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/dish-1.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Grilled Beef</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -370,8 +354,7 @@
 										</div>
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/dish-2.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/dish-2.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Grilled Beef</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -384,8 +367,7 @@
 										</div>
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/dish-3.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/dish-3.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Grilled Beef</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -399,13 +381,11 @@
 									</div>
 								</div>
 
-								<div class="tab-pane fade" id="v-pills-2" role="tabpanel"
-									aria-labelledby="v-pills-2-tab">
+								<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/drink-1.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/drink-1.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Lemonade Juice</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -418,8 +398,7 @@
 										</div>
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/drink-2.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/drink-2.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Pineapple Juice</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -432,8 +411,7 @@
 										</div>
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/drink-3.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/drink-3.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Soda Drinks</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -447,13 +425,11 @@
 									</div>
 								</div>
 
-								<div class="tab-pane fade" id="v-pills-3" role="tabpanel"
-									aria-labelledby="v-pills-3-tab">
+								<div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/dessert-1.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/dessert-1.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Hot Cake Honey</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -466,8 +442,7 @@
 										</div>
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/dessert-2.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/dessert-2.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Hot Cake Honey</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -480,8 +455,7 @@
 										</div>
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<a href="#" class="menu-img img mb-4"
-													style="background-image: url(public/images/dessert-3.jpg);"></a>
+												<a href="#" class="menu-img img mb-4" style="background-image: url(public/images/dessert-3.jpg);"></a>
 												<div class="text">
 													<h3><a href="#">Hot Cake Honey</a></h3>
 													<p>Far far away, behind the word mountains, far from the countries
@@ -502,15 +476,14 @@
 		</div>
 	</section>
 
-	<section class="ftco-section img" id="ftco-testimony" style="background-image: url(public/images/cover2.jpg);background-size: cover;"
-		data-stellar-background-ratio="0.5">
+	<section class="ftco-section img" id="ftco-testimony" style="background-image: url(public/images/cover2.jpg);background-size: cover;" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row justify-content-center mb-5">
 				<div class="col-md-7 heading-section text-center ftco-animate">
 					<span class="subheading">Testimony</span>
 					<h2 class="mb-4">Customers Says</h2>
-					<p style = "color:#fff">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+					<p style="color:#fff">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
 						live the blind texts.</p>
 				</div>
 			</div>
@@ -599,8 +572,8 @@
 		</div>
 	</section>
 
-    <?php
-		include 'views/partials/footer.php'
+	<?php
+	include 'views/partials/footer.php'
 	?>
 
 

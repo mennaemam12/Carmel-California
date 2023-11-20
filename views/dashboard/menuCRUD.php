@@ -220,6 +220,6 @@
     </div>
 
 
-    <script src="/template/js/app2.js"></script>
+    <script src="template/js/app2.js"></script>
 </body>
 </html>

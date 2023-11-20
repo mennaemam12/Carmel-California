@@ -249,6 +249,6 @@
     
 
 
-    <script src="/template/js/app.js"></script>
+    <script src="template/js/app.js"></script>
 </body>
 </html>

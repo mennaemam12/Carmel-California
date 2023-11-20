@@ -1,3 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Carmel Dashboard</title>
+
+  <base href="<?php echo $projectFolder; ?>/">
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="template/vendors/feather/feather.css">
+  <link rel="stylesheet" href="template/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="template/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="public/css/dashboard/styleAdmin.css">
+  <link rel="stylesheet" href="public/css/dashboard/styles.css">
+  <!-- endinject -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="shortcut icon" href="template/images/favicon.png" />
+</head>
+<body>
 <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="ti-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
@@ -111,7 +136,7 @@
             </div>
             <ul class="chat-list">
               <li class="list active">
-                <div class="profile"><img src="images/faces/face1.jpg" alt="image"><span class="online"></span></div>
+                <div class="profile"><img src="../../public/images/faces/face1.jpg" alt="image"><span class="online"></span></div>
                 <div class="info">
                   <p>Thomas Douglas</p>
                   <p>Available</p>
@@ -166,3 +191,13 @@
           <!-- chat tab ends -->
         </div>
       </div>
+
+      <script src="template/js/settings.js"></script>
+
+
+      
+  
+</body>
+</html>
+
+

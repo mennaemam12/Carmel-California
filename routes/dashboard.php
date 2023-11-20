@@ -63,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include 'views/dashboard/reviews.php';
             break;
         default:
+            // include 'views/dashboard/error-404.php';
             include 'views/404.php';
             exit();
     }
