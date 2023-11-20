@@ -169,10 +169,10 @@ function showInfo(){
     }
 
 
-    else{
-        menuInfo.innerHTML = `<tr class="menuDetails"><td class="empty" colspan="11" align="center">No data available in table</td></tr>`
-        table.style.minWidth = "1280px"
-    }
+    // else{
+    //     menuInfo.innerHTML = `<tr class="menuDetails"><td class="empty" colspan="11" align="center">No data available in table</td></tr>`
+    //     table.style.minWidth = "1280px"
+    // }
 }
 
 showInfo()
@@ -285,7 +285,7 @@ form.addEventListener('submit', (e)=> {
         id: Date.now(),
         picture: imgInput.src == undefined ? "./img/pic1.png" :imgInput.src,
         itemNameVal: itemName.value,
-        price: price.value,
+        priceVal: price.value,
         countryVal: country.value,
         categoryVal: category.value
         

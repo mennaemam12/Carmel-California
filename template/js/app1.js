@@ -309,9 +309,9 @@ form.addEventListener('submit', (e)=> {
         lName: lName.value,
         ageVal: age.value,
         cityVal: city.value,
-        orderNumbersValVal: orderNumbers.value,
-        pointsValVal: points.value,
-        birthdayValVal: birthday.value,
+        orderNumbersVal: orderNumbers.value,
+        pointsVal: points.value,
+        birthdayVal: birthday.value,
         emailVal: email.value,
         phoneVal: phone.value
     }

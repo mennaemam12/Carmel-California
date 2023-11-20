@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "","carmel");
+$con = mysqli_connect("localhost:3307", "root", "","carmel");
 if(isset($_POST['submit'])){
 
 	$Name=$_POST['Name'];
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="../../css/vertical-layout-light/styleAdmin.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../template/images/favicon.png" />
 </head>
