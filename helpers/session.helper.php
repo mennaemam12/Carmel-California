@@ -15,6 +15,9 @@ function flash($name = '', $message = '', $class = 'form-message form-message-re
             unset($_SESSION[$name.'_class']);
         }
     }
+    else{
+        echo '<div></div>';
+    }
 }
 
 function redirect($location){
