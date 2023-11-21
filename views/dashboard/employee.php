@@ -25,8 +25,8 @@
 
 
 <body>
-<?php include_once './partials/dashboard/_navbar.php'; ?>
-<?php include_once './partials/dashboard/_sidebar.php'; ?>
+<?php include_once 'views/partials/dashboard/_navbar.php'; ?>
+<?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
       <div style="background-color: #DFE0DA; width: 100vw; height: 120vh;">
     
     <div class="containerx" >
@@ -242,13 +242,13 @@
                 </form>
              </div>
 
-             <?php include_once './partials/dashboard/_footer.php'; ?>
+             <?php include_once 'views/partials/dashboard/_footer.php'; ?>
         </div>
 
     </div>
     
 
 
-    <script src="../template/js/app.js"></script>
+    <script src="template/js/app.js"></script>
 </body>
 </html>

@@ -1,7 +1,9 @@
 <?php
 @session_start();
 include 'projectFolderName.php';
-include 'helpers/session.helper.php';
+require_once 'helpers/session.helper.php';
+require_once 'models/Item.php';
+$rows = Item::getAllItems();
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +40,6 @@ include 'helpers/session.helper.php';
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
-            <!-- <?php include_once 'views/partials/dashboard/_settings-panel.php'; ?> -->
 
             <!-- Sidebar -->
             <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
@@ -62,7 +63,7 @@ include 'helpers/session.helper.php';
                                         </div>
 
                                         <div class="filter" style="color: black;">
-                                            <label for="search">Search:</label>
+                                            <label for="search" id="searchLabel">Search:</label>
                                             <input type="search" name="" id="search" placeholder="Enter product name">
                                         </div>
                                     </div>
@@ -75,48 +76,30 @@ include 'helpers/session.helper.php';
                                                 <th>Item Name</th>
                                                 <th>Price</th>
                                                 <th>Category</th>
+                                                <th>Type</th>
                                             </tr>
                                         </thead>
 
                                         <tbody class="menuInfo">
-                                            <tr>
-                                                <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td>
-                                                <td>1</td>
-                                                <td>Pasta</td>
-                                                <td>30</td>
-                                                <td>Breakfast</td>
-                                                <td>
-                                                    <a class="itemOptions" href="product"><i class="fa-regular fa-eye"></i></a>
-                                                    <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td>
-                                                <td>1</td>
-                                                <td>Pasta</td>
-                                                <td>30</td>
-                                                <td>Breakfast</td>
-                                                <td>
-                                                    <a class="itemOptions" href="product"><i class="fa-regular fa-eye"></i></a>
-                                                    <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td>
-                                                <td>1</td>
-                                                <td>Pasta</td>
-                                                <td>30</td>
-                                                <td>Breakfast</td>
-                                                <td>
-                                                    <a class="itemOptions" href="product"><i class="fa-regular fa-eye"></i></a>
-                                                    <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
-                                                </td>
-                                            </tr>
 
+                                            <?php
 
+                                            for ($i = 0; $i < count($rows); $i++) {
+                                                echo "<tr><td><img src='" . $rows[$i]->ImagePath . "' alt='' width='40' height='40'> </td>";
+                                                echo "<td>" . $rows[$i]->id . "</td>";
+                                                echo "<td>" . $rows[$i]->Name . "</td>";
+                                                echo "<td>" . $rows[$i]->Price . "</td>";
+                                                echo "<td>" . $rows[$i]->Category . "</td>";
+                                                echo "<td>" . $rows[$i]->itemType . "</td>";
+                                                echo "<td>
+                                                    <a class='itemOptions' href='product/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
+                                                    <a class='itemOptions' href='dashboard/edititem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'>
+                                                        <i class='fa-regular fa-pen-to-square'></i>
+                                                    </a>
+                                                    <a class='itemOptions'><i class='fa-regular fa-trash-can'></i></a>
+                                                    </td></tr>";
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
 

@@ -25,15 +25,15 @@
 
 <body>
   <div class="container-scroller">
-    <!-- partial:../../partials/_navbar.html -->
-    <?php include_once './partials/dashboard/_navbar.php'; ?>
+    <!-- partial:template/partials/_navbar.html -->
+    <?php include_once 'views/partials/dashboard/_navbar.php'; ?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:../../partials/_settings-panel.html -->
-      <?php include_once './partials/dashboard/_settings-panel.php'; ?>
+      <!-- partial:template/partials/_settings-panel.html -->
+      <?php include_once 'views/partials/dashboard/_settings-panel.php'; ?>
       <!-- partial -->
-      <!-- partial:../../partials/_sidebar.html -->
-      <?php include_once './partials/dashboard/_sidebar.php'; ?>
+      <!-- partial:template/partials/_sidebar.html -->
+      <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper" style="background-color: #DFE0DA;">
@@ -134,8 +134,8 @@
             </div>
 
         <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <?php include_once './partials/dashboard/_footer.php'; ?>
+        <!-- partial:template/partials/_footer.html -->
+        <?php include_once 'views/partials/dashboard/_footer.php'; ?>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -144,16 +144,16 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <script src="template/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <script src="template/js/off-canvas.js"></script>
+  <script src="template/js/hoverable-collapse.js"></script>
+  <script src="template/js/template.js"></script>
+  <script src="template/js/settings.js"></script>
+  <script src="template/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->

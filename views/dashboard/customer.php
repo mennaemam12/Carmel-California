@@ -23,8 +23,8 @@
   <link rel="shortcut icon" href="template/images/favicon.png" />
 </head>
 <body>
-<?php include_once './partials/dashboard/_navbar.php'; ?>
-<?php include_once './partials/dashboard/_sidebar.php'; ?>
+<?php include_once 'views/partials/dashboard/_navbar.php'; ?>
+<?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
       
       <div style="background-color: #DFE0DA; width: 100vw; height: 100vh;">
     
@@ -149,18 +149,7 @@
         </table>
 
 
-        <footer>
-            <span class="showEntries">Showing 1 to 10 of 50 entries</span>
-            <div class="pagination">
-                <!-- <button>Prev</button>
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button>Next</button> -->
-            </div>
-        </footer>
+       
     </div>
   </div>
 
@@ -241,14 +230,12 @@
                 </form>
              </div>
 
-             <footer class="popupFooter">
-                <button form="myForm" class="submitBtn">Submit</button>
-             </footer>
+             <?php include_once 'views/partials/dashboard/_footer.php'; ?>
         </div>
 
     </div>
 
 
-    <script src="../template/js/app1.js"></script>
+    <script src="template/js/app1.js"></script>
 </body>
 </html>

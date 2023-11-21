@@ -23,9 +23,9 @@
   <link rel="shortcut icon" href="template/images/favicon.png" />
 </head>
 <body>
-<?php include_once './partials/dashboard/_navbar.php'; ?>
+<?php include_once 'views/partials/dashboard/_navbar.php'; ?>
      <!-- partial:partials/_sidebar.html -->
-     <?php include_once './partials/dashboard/_sidebar.php'; ?>
+     <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
       <div style="background-color: #DFE0DA; width: 100vw; height: 100vh;">
     
     <div class="containerx">
@@ -214,14 +214,12 @@
                 </form>
              </div>
 
-             <footer class="popupFooter">
-                <button form="myForm" class="submitBtn">Submit</button>
-             </footer>
+             <?php include_once 'views/partials/dashboard/_footer.php'; ?>
         </div>
 
     </div>
 
 
-    <script src="../../template/js/app2.js"></script>
+    <script src="template/js/app2.js"></script>
 </body>
 </html>

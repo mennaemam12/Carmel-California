@@ -2,17 +2,6 @@
 @session_start();
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
-require_once 'models/Item.php';
-
-$url = $_SERVER['REQUEST_URI'];
-// segments
-$segments = explode('/', $url);
-
-$itemID = trim($segments[count($segments) - 1]);
-$itemType = trim($segments[count($segments) - 2]);
-
-$item = Item::findItemByID($itemType, $itemID);
-
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +38,7 @@ $item = Item::findItemByID($itemType, $itemID);
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
+            <!-- <?php include_once 'views/partials/dashboard/_settings-panel.php'; ?> -->
 
             <!-- Sidebar -->
             <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
@@ -61,56 +51,39 @@ $item = Item::findItemByID($itemType, $itemID);
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Edit Item </h4>
+                                    <h4 class="card-title">Add Ingredient </h4>
                                     <p class="card-description">
-                                        Edit Item in Menu
+                                        Add Salad Ingredient
                                     </p>
-                                    <form class="forms-sample" method="post" action="" enctype='multipart/form-data'>
+                                    <form class="forms-sample" method="post" action="dashboard/addingredient" enctype='multipart/form-data'>
                                         <div class="form-group">
-                                            <label for="exampleInputName1">Product Name</label>
-                                            <input type="text" class="form-control" id="itemname" name="itemname" placeholder="Product Name" <?php
-                                                                                                                                                echo 'value=' . $item->Name;
-                                                                                                                                                ?>>
+                                            <label for="exampleInputName1">Ingredient Name</label>
+                                            <input type="text" class="form-control" id="ingredientname" name="ingredientname" placeholder="Ingredient Name"
+                                            onclick='emptyMessage()'>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail3">Product Price</label>
-                                            <input type="text" class="form-control" id="price" name="price" placeholder="Product Price" <?php
-                                                                                                                                        echo 'value=' . $item->Price;
-                                                                                                                                        ?>>
+                                            <label for="exampleInputEmail3">Ingredient Price</label>
+                                            <input type="text" class="form-control" id="price" name="price" placeholder="Ingredient Price" onclick='emptyMessage()'>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleSelectGender">Type</label>
-                                            <select class="form-control" id="itemtype" name="itemtype">
-                                                <option <?php if ($itemType == 'breakfast') echo 'selected'; ?>>Breakfast</option>
-                                                <option <?php if ($itemType == 'dinner') echo 'selected'; ?>>Dinner</option>
-                                                <option <?php if ($itemType == 'drinks') echo 'selected'; ?>>Drinks</option>
-                                                <option <?php if ($itemType == 'sides') echo 'selected'; ?>>Sides</option>
+                                            <label for="exampleSelectGender">Category</label>
+                                            <select class="form-control" id="category" name="category" onclick='emptyMessage()'>
+                                                <option>Base</option>
+                                                <option>Dressing</option>
+                                                <option>Vegetable</option>
+                                                <option>Protein</option>
+                                                <option>Add Ons</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail3">Category</label>
-                                            <input type="text" class="form-control" id="category" name="category" placeholder="Category" <?php
-                                                                                                                                            echo 'value=' . $item->Category;
-                                                                                                                                            ?>>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Product Image </label>
-                                            <div id ="image-preview" class = "image-preview">
-                                                <?php echo "<div>Current Image: <img src='" . $item->ImagePath . "' alt='Item Image'></div>"; ?>
-                                            </div>
-                                            <input type="file" name="file" id="file" class="file-upload-default">
+                                            <label>Ingredient Image </label>
+                                            <input type="file" name="file" id="file" class="file-upload-default" onclick='emptyMessage()'>
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                                 <span class="input-group-append">
                                                     <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleTextarea1">Description</label>
-                                            <textarea class="form-control" id="descriptions" name="descriptions" rows="4"><?php
-                                                                                                                            echo $item->Description;
-                                                                                                                            ?></textarea>
                                         </div>
                                         <div class="form-message-div">
                                             <?php flash('formError') ?>
@@ -121,25 +94,32 @@ $item = Item::findItemByID($itemType, $itemID);
                                         <button type="submit" class="btn btn-primary mr-2" value="Upload File">Submit</button>
                                         <a href="dashboard" class="btn btn-light">Cancel</a>
                                     </form>
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                     <?php
                     include 'views/partials/dashboard/_footer.php'
-                    ?>
+                        ?>
                 </div>
             </div>
             <!-- page-body-wrapper ends -->
         </div>
         <!-- container-scroller -->
-
+        <script>
+            function emptyMessage(){
+                document.getElementsByClassName("form-message-div")[0].innerHTML="<?php flash('') ?>";
+                document.getElementsByClassName("form-message-div")[1].innerHTML="<?php flash('') ?>";
+            }
+        </script>
         <!-- plugins:js -->
         <script src="template/vendors/js/vendor.bundle.base.js"></script>
         <!-- endinject -->
         <!-- Plugin js for this page -->
+        <script src="template/vendors/chart.js/Chart.min.js"></script>
+        <script src="template/vendors/datatables.net/jquery.dataTables.js"></script>
+        <script src="template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+        <script src="template/js/dataTables.select.min.js"></script>
 
         <!-- End plugin js for this page -->
         <!-- inject:js -->
@@ -148,15 +128,15 @@ $item = Item::findItemByID($itemType, $itemID);
         <script src="public/js/dashboard/dashboard.js"></script>
 
         <script src="template/js/settings.js"></script>
+        <script src="template/js/todolist.js"></script>
         <!-- endinject -->
         <!-- Custom js for this page-->
         <script src="template/js/dashboard.js"></script>
+        <script src="template/js/Chart.roundedBarCharts.js"></script>
         <!-- End custom js for this page-->
         <script src="template/js/file-upload.js"></script>
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
-
-        <script src="public/js/dashboard/imagePreview.js"></script>
 </body>
 
 </html>

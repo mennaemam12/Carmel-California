@@ -25,15 +25,15 @@
 
 <body>
   <div class="container-scroller">
-    <!-- partial:../../partials/_navbar.html -->
+    <!-- partial:template/partials/_navbar.html -->
     <?php include_once 'views/partials/dashboard/_navbar.php'; ?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:../../partials/_settings-panel.html -->
+      <!-- partial:template/partials/_settings-panel.html -->
       <?php include_once 'views/partials/dashboard/_settings-panel.php'; ?>
       <!-- partial -->
-      <!-- partial:../../partials/_sidebar.html -->
-      <?php include_once 'views/partials/dashboard/_settings-panel.php'; ?>
+      <!-- partial:template/partials/_sidebar.html -->
+      <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper" style="background-color: #DFE0DA;">
@@ -93,7 +93,7 @@
           </div>
         </div>
         <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
+        <!-- partial:template/partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
@@ -108,20 +108,20 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <script src="template/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
-  <script src="../../vendors/chart.js/Chart.min.js"></script>
+  <script src="template/vendors/chart.js/Chart.min.js"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="../../js/off-canvas.js"></script>
-  <script src="../../js/hoverable-collapse.js"></script>
-  <script src="../../js/template.js"></script>
-  <script src="../../js/settings.js"></script>
-  <script src="../../js/todolist.js"></script>
+  <script src="template/js/off-canvas.js"></script>
+  <script src="template/js/hoverable-collapse.js"></script>
+  <script src="template/js/template.js"></script>
+  <script src="template/js/settings.js"></script>
+  <script src="template/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../template/js/chart.js"></script>
+  <script src="template/js/chart.js"></script>
   <!-- End custom js for this page-->
 </body>
 
