@@ -188,4 +188,18 @@ class Item
             return false;
         }
     }
+
+    public static function doesItemExist($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+        $db = new Database;
+
+        $db->query('SELECT * FROM ' . $itemType . ' WHERE id = :id');
+        $db->bind(':id', $ID);
+        
+        $result = $db->single();
+
+        // returns true if rowCount() > 0
+        return $db->rowCount() > 0;
+    }
 }

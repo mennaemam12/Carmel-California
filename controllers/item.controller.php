@@ -7,49 +7,44 @@ class ItemController
 {
 
     private $itemModel;
-
+    private $errorMsg = "";
     public function __construct()
     {
     }
 
     public function validateItem($data, $imagePath)
     {
+        $this->errorMsg = "";
         if (
             empty($data['itemtype']) || empty($data['item_name']) || empty($data['price'])
             || empty($data['category']) || empty($data['description'])
         ) {
-            flash("formError", "Please fill out all inputs");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/addItem");
+            $this->errorMsg = "Please fill in all the fields";
             return false;
         }
 
         if (!is_string($data['item_name'])) {
-            flash("formError", "Invalid item name");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            $this->errorMsg = "Invalid item name";
             return false;
         }
 
         if (!is_numeric($data['price']) || $data['price'] <= 0) {
-            flash("formError", "Invalid price");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            $this->errorMsg = "Invalid price";
             return false;
         }
 
         if (!is_string($data['category'])) {
-            flash("formError", "Invalid category");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            $this->errorMsg = "Invalid category";
             return false;
         }
 
         if (!is_string($data['description'])) {
-            flash("formError", "Invalid description ");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            $this->errorMsg = "Invalid description";
             return false;
         }
 
         if (!$imagePath) {
-            flash("formError", "Failed to save the image", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            $this->errorMsg = "Invalid image// Failed to save image";
             return false;
         }
 
@@ -93,10 +88,14 @@ class ItemController
         $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], "");
         if ($this->itemModel->findItemByName($data['item_name'], $data['itemtype'])) {
             flash("formSuccess", "Item name already taken", 'form-message form-message-green');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/addItem");
+            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
         } else {
             //handle image path
             $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
+            if (!$imagePath) {
+                flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            }
 
             if ($this->validateItem($data, $imagePath)) {
 
@@ -111,6 +110,7 @@ class ItemController
                     redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
                 }
             } else {
+                flash("formError", $this->errorMsg, 'form-message form-message-red');
                 redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
             }
         }
@@ -118,7 +118,7 @@ class ItemController
     public function edit($itemType, $ID)
     {
         $itemType = strtolower($itemType);
-        
+
         //Init data
         $data = [
             'item_name' => trim($_POST['itemname']),
@@ -130,10 +130,14 @@ class ItemController
         $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], "");
         if ($this->itemModel->findItemByName($data['item_name'], $data['itemtype'])) {
             flash("formSuccess", "Item name already taken", 'form-message form-message-green');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType .'/'. $ID);
+            redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' . $ID);
         } else {
             //handle image path
             $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
+            if (!$imagePath) {
+                flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
+            }
 
             if ($this->validateItem($data, $imagePath)) {
 
@@ -142,14 +146,52 @@ class ItemController
 
                 if ($this->itemModel->edit($itemType, $ID)) {
                     flash("formSuccess", "Item edited successfully", 'form-message form-message-green');
-                    redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType .'/'.  $ID);
+                    redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
                 } else {
                     flash("formError", "Failed to edit item in the database", 'form-message form-message-red');
-                    redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType .'/'.  $ID);
+                    redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
                 }
             } else {
-                redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType .'/'.  $ID);
+                flash("formError", $this->errorMsg, 'form-message form-message-red');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
             }
         }
+    }
+
+    public static function isItemType($itemType)
+    {
+        $itemType = strtolower($itemType);
+
+        $itemTypes = array(
+            "breakfast",
+            "dinner",
+            "drinks",
+            "main",
+            "sides"
+        );
+
+        if (in_array($itemType, $itemTypes))
+            return true;
+        else
+            return false;
+    }
+
+    public static function doesExist($itemType, $itemID)
+    {
+        // Check if the item type is valid
+        // Checking for example: 'breakfast', 'dinner' etc
+        // $itemType is $segments[count($segments) - 2];
+
+        if (!ItemController::isItemType($itemType))
+            return false;
+
+        // Check if the item exists
+        // Checking for example: 'breakfast/1', 'dinner/2' etc
+        // $itemID is $lastSegment;
+
+        if (!Item::doesItemExist($itemType, intval($itemID)))
+            return false;
+
+        return true;
     }
 }

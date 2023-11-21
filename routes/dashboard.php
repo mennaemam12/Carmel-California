@@ -16,8 +16,8 @@ $url = $_SERVER['REQUEST_URI'];
 
 // segments
 $segments = explode('/', $url);
-$lastSegment = strtolower($segments[count($segments) - 1]);
-$thirdlastSegment = strtolower($segments[count($segments) - 3]);
+$lastSegment = trim(strtolower($segments[count($segments) - 1]));
+$thirdlastSegment = trim(strtolower($segments[count($segments) - 3]));
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
@@ -28,6 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     switch ($thirdlastSegment) {
         case 'edititem':
+            include 'controllers/item.controller.php';
+
+            $itemID = $lastSegment;
+            $itemType = $segments[count($segments) - 2];
+
+            // Check if the item type & item id are valid
+            if (!ItemController::doesExist($itemType, $itemID)) {
+                include 'views/404.php';
+                exit();
+            }
+
+            //Passed checks
             include 'views/dashboard/edititem.php';
             exit();
     }
@@ -71,11 +83,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include 'views/dashboard/reviews.php';
             exit();
         default:
-            // include 'views/dashboard/error-404.php';
             include 'views/404.php';
             exit();
     }
 }
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     switch ($lastSegment) {
@@ -102,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             //$itemID = $_POST['itemID'];
             //$itemType = $_POST['itemtype'];
-            
+
             $item->edit($itemType, $itemID);
             exit();
     }

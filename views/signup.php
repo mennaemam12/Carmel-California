@@ -1,5 +1,5 @@
 <?php
-include 'helpers/session.helper.php';
+require_once 'helpers/session.helper.php';
 include 'projectFolderName.php';
 // $con = mysqli_connect("localhost", "root", "","carmel");
 // if(isset($_POST['Submit'])){
