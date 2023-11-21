@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 04:28 PM
+-- Generation Time: Nov 21, 2023 at 04:46 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -35,6 +35,14 @@ CREATE TABLE `breakfast` (
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `breakfast`
+--
+
+INSERT INTO `breakfast` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath`) VALUES
+(6, 'pasta', 'meal', 'well', 25, 'public/images/breakfast/image_655c2164555d3.jpeg'),
+(7, 'meatballs', 'goodmeal', 'delicious meatballs', 2555, 'public/images/breakfast/image_655c2472e04aa.jpeg');
 
 -- --------------------------------------------------------
 
@@ -168,7 +176,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `breakfast`
 --
 ALTER TABLE `breakfast`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `dinner`
