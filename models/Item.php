@@ -96,6 +96,23 @@ class Item
         }
     }
 
+    public static function getAllItems()
+    {
+        $db = new Database;
+        $db->query('SELECT *, "breakfast" AS itemType FROM breakfast 
+                    UNION SELECT *, "main" AS itemType FROM main 
+                    UNION SELECT *, "drinks" AS itemType FROM drinks 
+                    UNION SELECT *, "sides" AS itemType FROM sides 
+                    UNION SELECT *, "dinner" AS itemType FROM dinner');
+        $rows = $db->resultSet();
+
+        if ($db->rowCount() > 0)
+            return $rows;
+        else
+            return false;
+    }
+
+
     public static function getItems($itemType)
     {
         $itemType = strtolower($itemType);
@@ -196,7 +213,7 @@ class Item
 
         $db->query('SELECT * FROM ' . $itemType . ' WHERE id = :id');
         $db->bind(':id', $ID);
-        
+
         $result = $db->single();
 
         // returns true if rowCount() > 0

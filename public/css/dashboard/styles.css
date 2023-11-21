@@ -457,3 +457,15 @@ form .image-preview img {
     width:25%;
     min-width: 125px;
 }
+
+.form-message {
+    padding-bottom:20px;
+}
+
+.form-message-red {
+    color: red;
+}
+
+.form-message-green {
+    color: green;
+}

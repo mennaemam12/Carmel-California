@@ -67,11 +67,11 @@ require_once 'helpers/session.helper.php';
                                         <div class="form-group">
                                             <label for="exampleSelectGender">Type</label>
                                             <select class="form-control" id="itemtype" name="itemtype">
-                                                <option>breakfast</option>
-                                                <option>main</option>
-                                                <option>dinner</option>
-                                                <option>drinks</option>
-                                                <option>sides</option>
+                                                <option>Breakfast</option>
+                                                <option>Main</option>
+                                                <option>Dinner</option>
+                                                <option>Drinks</option>
+                                                <option>Sides</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

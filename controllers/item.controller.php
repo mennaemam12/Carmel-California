@@ -66,13 +66,10 @@ class ItemController
         }
 
         // Move the uploaded file to the destination subfolder
-        if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+        if (move_uploaded_file($file['tmp_name'], $targetPath))
             return $targetPath;
-        } else {
-            //flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
-            //redirect($GLOBALS['projectFolder']."/dashboard/additem");
+        else
             return false;
-        }
     }
 
     public function add()
@@ -87,13 +84,13 @@ class ItemController
         ];
         $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], "");
         if ($this->itemModel->findItemByName($data['item_name'], $data['itemtype'])) {
-            flash("formSuccess", "Item name already taken", 'form-message form-message-green');
+            flash("formSuccess", "Item name already taken", 'form-message form-message-red');
             redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
         } else {
             //handle image path
             $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
             if (!$imagePath) {
-                flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
+                flash("formError", "Failed to save image", 'form-message form-message-red');
                 redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
             }
 
@@ -129,13 +126,13 @@ class ItemController
         ];
         $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], "");
         if ($this->itemModel->findItemByName($data['item_name'], $data['itemtype'])) {
-            flash("formSuccess", "Item name already taken", 'form-message form-message-green');
+            flash("formSuccess", "Item name already taken", 'form-message form-message-red');
             redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' . $ID);
         } else {
             //handle image path
             $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
             if (!$imagePath) {
-                flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
+                flash("formError", "Failed to save image", 'form-message form-message-red');
                 redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
             }
 

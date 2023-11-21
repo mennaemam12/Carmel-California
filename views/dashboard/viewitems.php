@@ -3,7 +3,7 @@
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 require_once 'models/Item.php';
-$rows = Item::getItems('breakfast');
+$rows = Item::getAllItems();
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ $rows = Item::getItems('breakfast');
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
-            
+
             <!-- Sidebar -->
             <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
 
@@ -89,10 +89,12 @@ $rows = Item::getItems('breakfast');
                                                 echo "<td>" . $rows[$i]->Name . "</td>";
                                                 echo "<td>" . $rows[$i]->Price . "</td>";
                                                 echo "<td>" . $rows[$i]->Category . "</td>";
-                                                echo "<td> 
+                                                echo "<td>
                                                     <a class='itemOptions' href='product'><i class='fa-regular fa-eye'></i></a>
-                                                    <a class='itemOptions' href='dashboard/edititem'><i class='fa-regular fa-pen-to-square'></i></a>
-                                                    <a class='itemOptions'><i class='fa-regular fa-trash-can'></i></a>                                                    
+                                                    <a class='itemOptions' href='dashboard/edititem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'>
+                                                        <i class='fa-regular fa-pen-to-square'></i>
+                                                    </a>
+                                                    <a class='itemOptions'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
                                             }
                                             ?>
