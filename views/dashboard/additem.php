@@ -80,7 +80,7 @@ include 'helpers/session.helper.php';
                                         </div>
                                         <div class="form-group">
                                             <label>Product Image </label>
-                                            <div id = "image-preview"></div>
+                                            <div id = "image-preview" class = "image-preview"></div>
                                             <input type="file" name="file" id="file" class="file-upload-default">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" onchange="previewImage();">

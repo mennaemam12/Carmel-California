@@ -5,17 +5,17 @@ function previewImage() {
   if (document.getElementById("newImg") != null) {
     document.getElementById("newImg").remove();
   }
-  
+
   // Ensure that a file is selected
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function (e) {
-      preview.classList.add("image-preview"); //for styling
-
       // Set the source of the image to the uploaded file
-      preview.innerHTML =
-      '<div id="newImg">Selected Image: <img src="' + e.target.result + '" alt="Item Preview"></div>';
+      preview.innerHTML +=
+        '<div id="newImg">Selected Image: <img src="' +
+        e.target.result +
+        '" alt="Item Preview"></div>';
     };
 
     // Read the image file as a data URL

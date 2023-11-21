@@ -156,7 +156,7 @@ $item = Item::findItemByID($itemID, $itemType);
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
 
-        <script src="public/js/dashboard/imagePreview_editItem.js"></script>
+        <script src="public/js/dashboard/imagePreview.js"></script>
 </body>
 
 </html>
