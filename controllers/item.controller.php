@@ -115,8 +115,10 @@ class ItemController
             }
         }
     }
-    public function edit($type, $ID)
+    public function edit($itemType, $ID)
     {
+        $itemType = strtolower($itemType);
+        
         //Init data
         $data = [
             'item_name' => trim($_POST['itemname']),
@@ -128,7 +130,7 @@ class ItemController
         $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], "");
         if ($this->itemModel->findItemByName($data['item_name'], $data['itemtype'])) {
             flash("formSuccess", "Item name already taken", 'form-message form-message-green');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $type .'/'. $ID);
+            redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType .'/'. $ID);
         } else {
             //handle image path
             $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
@@ -138,15 +140,15 @@ class ItemController
                 // Validation successful, create an Item object
                 $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], $imagePath);
 
-                if ($this->itemModel->edit($type, $ID)) {
+                if ($this->itemModel->edit($itemType, $ID)) {
                     flash("formSuccess", "Item edited successfully", 'form-message form-message-green');
-                    redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $type .'/'.  $ID);
+                    redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType .'/'.  $ID);
                 } else {
                     flash("formError", "Failed to edit item in the database", 'form-message form-message-red');
-                    redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $type .'/'.  $ID);
+                    redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType .'/'.  $ID);
                 }
             } else {
-                redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $type .'/'.  $ID);
+                redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType .'/'.  $ID);
             }
         }
     }

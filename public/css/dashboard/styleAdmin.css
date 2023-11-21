@@ -8875,8 +8875,10 @@
   }
   
   label {
-    display: inline-block;
+    display: block;
+    width:100%;
     margin-bottom: 0.5rem;
+    white-space:nowrap;
   }
   
   button {
@@ -11044,6 +11046,7 @@
     font-size: 0.875rem;
     line-height: 1;
     border-radius: 0.1875rem;
+    white-space: nowrap;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
   

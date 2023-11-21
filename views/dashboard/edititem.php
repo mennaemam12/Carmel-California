@@ -81,10 +81,10 @@ $item = Item::findItemByID($itemID, $itemType);
                                         <div class="form-group">
                                             <label for="exampleSelectGender">Type</label>
                                             <select class="form-control" id="itemtype" name="itemtype">
-                                                <option <?php if ($itemType == 'breakfast') echo 'selected'; ?>>breakfast</option>
-                                                <option <?php if ($itemType == 'dinner') echo 'selected'; ?>>dinner</option>
-                                                <option <?php if ($itemType == 'drinks') echo 'selected'; ?>>drinks</option>
-                                                <option <?php if ($itemType == 'sides') echo 'selected'; ?>>sides</option>
+                                                <option <?php if ($itemType == 'breakfast') echo 'selected'; ?>>Breakfast</option>
+                                                <option <?php if ($itemType == 'dinner') echo 'selected'; ?>>Dinner</option>
+                                                <option <?php if ($itemType == 'drinks') echo 'selected'; ?>>Drinks</option>
+                                                <option <?php if ($itemType == 'sides') echo 'selected'; ?>>Sides</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -95,7 +95,9 @@ $item = Item::findItemByID($itemID, $itemType);
                                         </div>
                                         <div class="form-group">
                                             <label>Product Image </label>
-                                            <?php echo "<img src='" . $item->ImagePath . "' alt='' width='40' height='40'>"; ?>
+                                            <div id ="image-preview" class = "image-preview">
+                                                <?php echo "<div>Current Image: <img src='" . $item->ImagePath . "' alt='Item Image'></div>"; ?>
+                                            </div>
                                             <input type="file" name="file" id="file" class="file-upload-default">
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
@@ -138,10 +140,6 @@ $item = Item::findItemByID($itemID, $itemType);
         <script src="template/vendors/js/vendor.bundle.base.js"></script>
         <!-- endinject -->
         <!-- Plugin js for this page -->
-        <script src="template/vendors/chart.js/Chart.min.js"></script>
-        <script src="template/vendors/datatables.net/jquery.dataTables.js"></script>
-        <script src="template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-        <script src="template/js/dataTables.select.min.js"></script>
 
         <!-- End plugin js for this page -->
         <!-- inject:js -->
@@ -150,15 +148,15 @@ $item = Item::findItemByID($itemID, $itemType);
         <script src="public/js/dashboard/dashboard.js"></script>
 
         <script src="template/js/settings.js"></script>
-        <script src="template/js/todolist.js"></script>
         <!-- endinject -->
         <!-- Custom js for this page-->
         <script src="template/js/dashboard.js"></script>
-        <script src="template/js/Chart.roundedBarCharts.js"></script>
         <!-- End custom js for this page-->
         <script src="template/js/file-upload.js"></script>
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
+
+        <script src="public/js/dashboard/imagePreview_editItem.js"></script>
 </body>
 
 </html>

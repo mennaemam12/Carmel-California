@@ -50,10 +50,12 @@ class Item
         return $this->imagePath;
     }
 
-    public function findItemByName($ItemName, $ItemType)
+    public function findItemByName($itemName, $itemType)
     {
-        $this->db->query('SELECT * FROM ' . $ItemType . ' WHERE Name = :itemname');
-        $this->db->bind(':itemname', $ItemName);
+        $itemType = strtolower($itemType);
+
+        $this->db->query('SELECT * FROM ' . $itemType . ' WHERE Name = :itemname');
+        $this->db->bind(':itemname', $itemName);
         $row = $this->db->single();
 
         //Check row
@@ -64,11 +66,12 @@ class Item
         }
     }
 
-    public static function findItemByID($id, $ItemType)
+    public static function findItemByID($id, $itemType)
     {
         $db = new Database;
-        
-        $db->query('SELECT * FROM ' . $ItemType . ' WHERE id = :id');
+        $itemType = strtolower($itemType);
+
+        $db->query('SELECT * FROM ' . $itemType . ' WHERE id = :id');
         $db->bind(':id', $id);
         $result = $db->single();
 
@@ -80,9 +83,11 @@ class Item
         }
     }
 
-    public function getItemData($type, $ID)
+    public function getItemData($itemType, $ID)
     {
-        $this->db->query('SELECT * FROM ' . $type);
+        $itemType = strtolower($itemType);
+        $this->db->query('SELECT * FROM ' . $itemType);
+
         $rows = $this->db->resultSet();
         if ($this->db->rowCount() > 0) {
             return $rows;
@@ -91,11 +96,12 @@ class Item
         }
     }
 
-    public static function getItems($ItemType)
+    public static function getItems($itemType)
     {
+        $itemType = strtolower($itemType);
         $db = new Database;
 
-        $db->query('SELECT * FROM ' . $ItemType);
+        $db->query('SELECT * FROM ' . $itemType);
         $rows = $db->resultSet();
         if ($db->rowCount() > 0) {
             return $rows;
@@ -103,11 +109,11 @@ class Item
             return false;
         }
     }
-    public function add($item_type)
+    public function add($itemType)
     {
-        $item = null;
+        $itemType = strtolower($itemType);
 
-        switch ($item_type) {
+        switch ($itemType) {
             case 'breakfast':
                 $item = new BreakfastItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
@@ -127,7 +133,7 @@ class Item
                 return false;
         }
 
-        $this->db->query('INSERT INTO ' . $item_type . ' (Name, Category, Description, Price, ImagePath) 
+        $this->db->query('INSERT INTO ' . $itemType . ' (Name, Category, Description, Price, ImagePath) 
             VALUES (:item_name, :category, :description, :price, :image_path)');
 
         $this->db->bind(':item_name', $item->getName());
@@ -144,11 +150,11 @@ class Item
     }
 
     //Update item
-    public function edit($item_type, $ID)
+    public function edit($itemType, $ID)
     {
-        $item = null;
+        $itemType = strtolower($itemType);
 
-        switch ($item_type) {
+        switch ($itemType) {
             case 'breakfast':
                 $item = new BreakfastItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
                 break;
@@ -167,7 +173,7 @@ class Item
             default:
                 return false;
         }
-        $this->db->query('UPDATE ' . $item_type . ' SET Name=:item_name ,Category=:category ,Description=:description ,Price=:price, ImagePath=:image_path WHERE id=:id');
+        $this->db->query('UPDATE ' . $itemType . ' SET Name=:item_name ,Category=:category ,Description=:description ,Price=:price, ImagePath=:image_path WHERE id=:id');
         $this->db->bind(':id', $ID);
         $this->db->bind(':item_name', $item->getName());
         $this->db->bind(':price', $item->getPrice());
