@@ -26,15 +26,17 @@
             $sideItems=$sideModel->getSideItems();
             $dessertItems=$dessertModel->getDessertItems();
 
+             
             // Extract unique categories for each set of items
-            $breakfastCategories = $this->extractUniqueCategories($breakfastItems);
-            $mainCategories = $this->extractUniqueCategories($mainItems);
-            $drinkCategories = $this->extractUniqueCategories($drinkItems);
-            $sideCategories = $this->extractUniqueCategories($sideItems);
-            $dssertCategories = $this->extractUniqueCategories($dessertItems);
+            $breakfastCategories = !empty($breakfastItems) ? $this->extractUniqueCategories($breakfastItems) : [];
+            $mainCategories = !empty($mainItems) ? $this->extractUniqueCategories($mainItems) : [];
+            $drinkCategories = !empty($drinkItems) ? $this->extractUniqueCategories($drinkItems) : [];
+            $sideCategories = !empty($sideItems) ? $this->extractUniqueCategories($sideItems) : [];
+            $dessertCategories = !empty($dessertItems) ? $this->extractUniqueCategories($dessertItems) : [];
             
             // Include the view file and pass the variables to it
-            include_once '../views/menu.php';
+            include_once 'views/menu.php';
+            
         }
 
         private function extractUniqueCategories($categoryItems) {

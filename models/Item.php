@@ -1,20 +1,20 @@
 <?php
 require_once 'database.php';
-require_once 'models/Breakfast.php';
-require_once 'models/Drink.php';
-require_once 'models/Main.php';
-require_once 'models/Side.php';
-require_once 'models/Dessert.php';
+require_once 'models/BreakfastItem.php';
+require_once 'models/DrinkItem.php';
+require_once 'models/MainItem.php';
+require_once 'models/SideItem.php';
+require_once 'models/DessertItem.php';
 class Item {
 
-    private $db;
+    protected $db;
     protected $name;
     protected $category;
     protected $description;
     protected $price;
     protected $imagePath;
     
-    public function __construct($name,$category,$description, $price, $imagePath) {
+    public function __construct() {
         $this->db = new Database;
 
     }
@@ -74,34 +74,16 @@ class Item {
     }
 
     public function add($item_type) {
-        $item = null;
-    
-        switch ($item_type) {
-            case 'breakfast':
-                $item = new BreakfastItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'main':
-                $item = new MainItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'drinks':
-                $item = new DrinkItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'sides':
-                $item = new SideItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            default:
-                return false;
-        }
-    
+      
         
         $this->db->query('INSERT INTO ' . $item_type . ' (Name, Category, Description, Price, ImagePath) 
             VALUES (:item_name, :category, :description, :price, :image_path)');
     
-        $this->db->bind(':item_name', $item->getName());
-        $this->db->bind(':price', $item->getPrice());
-        $this->db->bind(':category', $item->getCategory());
-        $this->db->bind(':description', $item->getDescription());
-        $this->db->bind(':image_path', $item->getImagePath());
+        $this->db->bind(':item_name', $this->name);
+        $this->db->bind(':price', $this->price);
+        $this->db->bind(':category', $this->category);
+        $this->db->bind(':description', $this->description);
+        $this->db->bind(':image_path', $this->imagePath);
     
         if ($this->db->execute()) {
             return true;
