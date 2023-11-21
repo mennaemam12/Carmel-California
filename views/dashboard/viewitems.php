@@ -63,11 +63,11 @@ $rows = Item::getAllItems();
                                         </div>
 
                                         <div class="filter" style="color: black;">
-                                            <label for="search" id = "searchLabel">Search:</label>
+                                            <label for="search" id="searchLabel">Search:</label>
                                             <input type="search" name="" id="search" placeholder="Enter product name">
                                         </div>
                                     </div>
-                                    
+
                                     <table>
                                         <thead>
                                             <tr class="heading">
@@ -92,7 +92,7 @@ $rows = Item::getAllItems();
                                                 echo "<td>" . $rows[$i]->Category . "</td>";
                                                 echo "<td>" . $rows[$i]->itemType . "</td>";
                                                 echo "<td>
-                                                    <a class='itemOptions' href='product'><i class='fa-regular fa-eye'></i></a>
+                                                    <a class='itemOptions' href='product/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
                                                     <a class='itemOptions' href='dashboard/edititem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'>
                                                         <i class='fa-regular fa-pen-to-square'></i>
                                                     </a>
