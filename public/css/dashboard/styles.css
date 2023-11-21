@@ -47,8 +47,18 @@ body{
     margin:5px;
     margin-top: 20px;
     width:100%;
+    overflow-x : auto;
 }
 
+.viewItemsContainer .filter {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.viewItemsContainer .filter #searchLabel {
+    width:fit-content;
+}
 
 .viewItemsContainer .filterEntries{
     display: flex;
@@ -86,6 +96,37 @@ body{
 
 .filter input:focus{
     border-color: var(--light7);
+}
+
+@media (max-width:700px){
+
+    .viewItemsContainer .filterEntries {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        row-gap:10px;
+    }
+    .viewItemsContainer .filter {
+        width:100%;
+    }
+    .viewItemsContainer .filter #search {
+        width:100%;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .viewItemsContainer .filter {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        row-gap:5px;
+        width:100%;
+    }
+    .viewItemsContainer .filter #search {
+        width:100%;
+    }
+    
 }
 
 .viewItemsContainer header .addMemberBtn {
@@ -213,6 +254,7 @@ table td .itemOptions:hover{
 
 .tableFooter .pagination{
     display: flex;
+    width:100%;
 }
 
 
@@ -267,6 +309,10 @@ table td .itemOptions:hover{
 table tr .empty{
     padding: 6px;
     background: var(--dark9);
+}
+
+table th {
+    position: sticky;
 }
 
 

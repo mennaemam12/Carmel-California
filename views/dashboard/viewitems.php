@@ -63,11 +63,11 @@ $rows = Item::getAllItems();
                                         </div>
 
                                         <div class="filter" style="color: black;">
-                                            <label for="search">Search:</label>
+                                            <label for="search" id = "searchLabel">Search:</label>
                                             <input type="search" name="" id="search" placeholder="Enter product name">
                                         </div>
                                     </div>
-
+                                    
                                     <table>
                                         <thead>
                                             <tr class="heading">
@@ -76,6 +76,7 @@ $rows = Item::getAllItems();
                                                 <th>Item Name</th>
                                                 <th>Price</th>
                                                 <th>Category</th>
+                                                <th>Type</th>
                                             </tr>
                                         </thead>
 
@@ -89,6 +90,7 @@ $rows = Item::getAllItems();
                                                 echo "<td>" . $rows[$i]->Name . "</td>";
                                                 echo "<td>" . $rows[$i]->Price . "</td>";
                                                 echo "<td>" . $rows[$i]->Category . "</td>";
+                                                echo "<td>" . $rows[$i]->itemType . "</td>";
                                                 echo "<td>
                                                     <a class='itemOptions' href='product'><i class='fa-regular fa-eye'></i></a>
                                                     <a class='itemOptions' href='dashboard/edititem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'>
@@ -98,43 +100,6 @@ $rows = Item::getAllItems();
                                                     </td></tr>";
                                             }
                                             ?>
-                                            <!-- <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td> -->
-                                            <!-- <td>1</td>
-                                                <td>Pasta</td>
-                                                <td>30</td>
-                                                <td>Breakfast</td> -->
-                                            <!-- <td>
-                                                    <a class="itemOptions" href="product"><i class="fa-regular fa-eye"></i></a>
-                                                    <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
-                                                </td> -->
-                                            <!-- </tr>
-                                            <tr>
-                                                <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td>
-                                                <td>1</td>
-                                                <td>Pasta</td>
-                                                <td>30</td>
-                                                <td>Breakfast</td>
-                                                <td>
-                                                    <a class="itemOptions" href="product"><i class="fa-regular fa-eye"></i></a>
-                                                    <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
-                                                </td>
-                                            </tr> -->
-                                            <tr>
-                                                <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td>
-                                                <td>1</td>
-                                                <td>Pasta</td>
-                                                <td>30</td>
-                                                <td>Breakfast</td>
-                                                <td>
-                                                    <a class="itemOptions" href="product"><i class="fa-regular fa-eye"></i></a>
-                                                    <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
-                                                    <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
-                                                </td>
-                                            </tr>
-
-
                                         </tbody>
                                     </table>
 
