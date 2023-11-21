@@ -66,7 +66,7 @@ class Item
         }
     }
 
-    public static function findItemByID($id, $itemType)
+    public static function findItemByID($itemType, $id)
     {
         $db = new Database;
         $itemType = strtolower($itemType);
@@ -76,11 +76,10 @@ class Item
         $result = $db->single();
 
         //Check row
-        if ($db->rowCount() > 0) {
+        if ($db->rowCount() > 0)
             return $result;
-        } else {
+        else
             return false;
-        }
     }
 
     public function getItemData($itemType, $ID)

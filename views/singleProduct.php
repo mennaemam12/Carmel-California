@@ -9,7 +9,7 @@ $segments = explode('/', $url);
 $itemID = trim($segments[count($segments) - 1]);
 $itemType = trim($segments[count($segments) - 2]);
 
-$item = Item::findItemByID($itemID, $itemType);
+$item = Item::findItemByID($itemType, $itemID);
 ?>
 
 
