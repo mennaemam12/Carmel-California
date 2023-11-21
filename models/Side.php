@@ -1,7 +1,7 @@
 <?php
 class SideItem extends Item{
 
-    public function getSidesItems(){
+    public function getSideItems(){
          $this->db->query('SELECT * FROM sides');
          $result=$this->db->resultSet();
          // Convert the result set into an array of SideItem objects

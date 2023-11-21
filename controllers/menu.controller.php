@@ -18,17 +18,20 @@
             $mainModel=new MainItem;
             $drinkModel=new DrinkItem;
             $sideModel=new SideItem;
+            $dessertModel=new DessertItem;
 
             $breakfastItems=$breakfastModel->getBreakfastItems();
             $mainItems=$mainModel->getMainItems();
-            $drinkItems=$drinkModel->getDrinksItems();
-            $sideItems=$sideModel->getSidesItems();
+            $drinkItems=$drinkModel->getDrinkItems();
+            $sideItems=$sideModel->getSideItems();
+            $dessertItems=$dessertModel->getDessertItems();
 
             // Extract unique categories for each set of items
             $breakfastCategories = $this->extractUniqueCategories($breakfastItems);
             $mainCategories = $this->extractUniqueCategories($mainItems);
             $drinkCategories = $this->extractUniqueCategories($drinkItems);
             $sideCategories = $this->extractUniqueCategories($sideItems);
+            $dssertCategories = $this->extractUniqueCategories($dessertItems);
             
             // Include the view file and pass the variables to it
             include_once '../views/menu.php';

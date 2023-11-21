@@ -1,9 +1,10 @@
 <?php
 require_once 'database.php';
 require_once 'models/Breakfast.php';
-require_once 'models/Drinks.php';
-require_once 'models/main.php';
-require_once 'models/Sides.php';
+require_once 'models/Drink.php';
+require_once 'models/Main.php';
+require_once 'models/Side.php';
+require_once 'models/Dessert.php';
 class Item {
 
     private $db;

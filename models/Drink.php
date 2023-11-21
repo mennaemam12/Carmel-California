@@ -1,7 +1,7 @@
 <?php
 class DrinkItem extends Item{
 
-    public function getDrinksItems(){
+    public function getDrinkItems(){
          $this->db->query('SELECT * FROM drinks');
          $result=$this->db->resultSet();
          // Convert the result set into an array of DrinkItem objects
