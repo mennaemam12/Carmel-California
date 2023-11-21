@@ -38,7 +38,7 @@ include 'helpers/session.helper.php';
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
-            <!-- <?php include_once 'views/partials/dashboard/_settings-panel.php'; ?> -->
+            
 
             <!-- Sidebar -->
             <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>

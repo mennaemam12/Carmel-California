@@ -3,6 +3,7 @@
 include 'projectFolderName.php';
 include 'helpers/session.helper.php';
 require_once 'models/Item.php';
+$rows = Item::getItems('breakfast');
 ?>
 
 <!DOCTYPE html>
@@ -80,31 +81,28 @@ require_once 'models/Item.php';
                                         </thead>
 
                                         <tbody class="menuInfo">
-                                            
-                                                <?php
-                                                   $objitem=new Item("","","","","");
-                                                   $rows=$objitem->getallitems('breakfast');
-                                                   for($i=0;$i<count($rows);$i++){
-                                                    echo "<tr>";
-                                                    echo "<td><img src='".$rows[$i]->ImagePath ."' alt='' width='40' height='40'> </td>";
-                                                    echo "<td>". $rows[$i]->id."</td>";
-                                                    echo "<td>". $rows[$i]->Name."</td>";
-                                                    echo "<td>". $rows[$i]->Price."</td>";
-                                                    echo "<td>". $rows[$i]->Category."</td>";
-                                                    echo "<td> 
+
+                                            <?php
+
+                                            for ($i = 0; $i < count($rows); $i++) {
+                                                echo "<tr><td><img src='" . $rows[$i]->ImagePath . "' alt='' width='40' height='40'> </td>";
+                                                echo "<td>" . $rows[$i]->id . "</td>";
+                                                echo "<td>" . $rows[$i]->Name . "</td>";
+                                                echo "<td>" . $rows[$i]->Price . "</td>";
+                                                echo "<td>" . $rows[$i]->Category . "</td>";
+                                                echo "<td> 
                                                     <a class='itemOptions' href='product'><i class='fa-regular fa-eye'></i></a>
                                                     <a class='itemOptions' href='dashboard/edititem'><i class='fa-regular fa-pen-to-square'></i></a>
                                                     <a class='itemOptions'><i class='fa-regular fa-trash-can'></i></a>                                                    
-                                                    </td>";
-                                                    echo "</tr>";
-                                                   }
-                                                ?>
-                                                <!-- <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td> -->
-                                                <!-- <td>1</td>
+                                                    </td></tr>";
+                                            }
+                                            ?>
+                                            <!-- <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td> -->
+                                            <!-- <td>1</td>
                                                 <td>Pasta</td>
                                                 <td>30</td>
                                                 <td>Breakfast</td> -->
-                                                <!-- <td>
+                                            <!-- <td>
                                                     <a class="itemOptions" href="product"><i class="fa-regular fa-eye"></i></a>
                                                     <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
                                                     <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
