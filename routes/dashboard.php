@@ -84,5 +84,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         include 'controllers/ingredient.controller.php';
         $ingredient = new IngredientController;
         $ingredient->add();
+    }else if($lastSegment === 'edititem'){
+        include 'controllers/item.controller.php';
+        $item = new ItemController;
+        $item->edit();
     }
 }

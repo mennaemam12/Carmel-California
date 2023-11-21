@@ -44,9 +44,8 @@ class Item {
     }
 
     public function findItemByName($ItemName,$ItemType){
-        $this->db->query('SELECT * FROM :itemtype WHERE itemname = :itemname');
+        $this->db->query('SELECT * FROM ' .$ItemType .' WHERE Name = :itemname');
         $this->db->bind(':itemname', $ItemName);
-        $this->db->bind(':itemtype', $ItemType);
         $row = $this->db->single();
 
         //Check row
@@ -80,7 +79,6 @@ class Item {
                 return false;
         }
     
-        
         $this->db->query('INSERT INTO ' . $item_type . ' (Name, Category, Description, Price, ImagePath) 
             VALUES (:item_name, :category, :description, :price, :image_path)');
     
@@ -98,7 +96,7 @@ class Item {
     }
 
     //Update item
-    // public function resetPassword($data){
+    // public function edit($item_type){
     //     $this->db->query('UPDATE items SET UserPass=:pwd WHERE Email=:email');
     //     $this->db->bind(':userpass', $newPwdHash);
     //     $this->db->bind(':email', $tokenEmail);

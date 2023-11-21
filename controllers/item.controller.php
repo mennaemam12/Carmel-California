@@ -76,11 +76,6 @@
         }
 
         public function add(){
-           
-            
-            //Sanitize POST data
-            //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
             //Init data
             $data = [
                 'item_name' => trim($_POST['itemname']),
@@ -89,9 +84,12 @@
                 'price' => trim($_POST['price']),
                 'itemtype'=> trim($_POST['itemtype'])
             ];
-
-            // flash("formError", "Item name: ".$_FILES['file']['name'], 'form-message form-message-green');
-            // redirect($GLOBALS['projectFolder']."/dashboard/addItem");
+            $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], "");
+            if($this->itemModel->findItemByName($data['item_name'],$data['itemtype'])){
+                flash("formSuccess", "Item name already taken", 'form-message form-message-green');
+                redirect($GLOBALS['projectFolder']."/dashboard/addItem");
+            }
+            else{
             //handle image path
             $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
 
@@ -110,5 +108,9 @@
             } else {
                 redirect($GLOBALS['projectFolder']."/dashboard/additem");
             }
+        }
+        }
+        public function edit(){
+
         }
 }
