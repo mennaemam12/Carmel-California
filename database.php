@@ -80,7 +80,4 @@ class Database {
     public function rowCount(){
         return $this->stmt->rowCount();
     }
-    // public function executes(array $string){
-    //     return $this->stmt->execute($string);
-    // }
 }
