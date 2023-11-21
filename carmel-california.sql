@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 04:46 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Nov 22, 2023 at 12:18 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,30 +34,29 @@ CREATE TABLE `breakfast` (
   `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `breakfast`
 --
 
 INSERT INTO `breakfast` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath`) VALUES
-(6, 'pasta', 'meal', 'well', 25, 'public/images/breakfast/image_655c2164555d3.jpeg'),
-(7, 'meatballs', 'goodmeal', 'delicious meatballs', 2555, 'public/images/breakfast/image_655c2472e04aa.jpeg');
+(3, 'Eggs Benedict', 'Eggs', 'Poached eggs, smoked salmon, spinach, homemade brioche, warm holl', 249, 'public/images/breakfast/image_655d3482b54c7.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dinner`
+-- Table structure for table `desserts`
 --
 
-CREATE TABLE `dinner` (
+CREATE TABLE `desserts` (
   `id` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Category` varchar(20) NOT NULL,
-  `Description` varchar(65) NOT NULL,
+  `Description` text NOT NULL,
   `Price` double NOT NULL,
-  `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ImagePath` varchar(65) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -72,7 +71,14 @@ CREATE TABLE `drinks` (
   `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `drinks`
+--
+
+INSERT INTO `drinks` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath`) VALUES
+(2, 'Espresso', 'Coffee', 'Single shot | double shot | triple shot', 49, 'public/images/drinks/image_655d303a32a50.jpg');
 
 -- --------------------------------------------------------
 
@@ -87,7 +93,15 @@ CREATE TABLE `main` (
   `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `main`
+--
+
+INSERT INTO `main` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath`) VALUES
+(2, 'Chicken Pesto', 'Pasta', 'pasta, cream', 295, 'public/images/main/image_655b8c040e11b.jpg'),
+(3, 'Mushroom & Swiss Burger', 'Burger', 'Emmental, tomato, lettuce, pickles served with homemade.', 269, 'public/images/main/image_655d3533ef5dc.jpg');
 
 -- --------------------------------------------------------
 
@@ -102,7 +116,14 @@ CREATE TABLE `sides` (
   `Description` varchar(65) NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sides`
+--
+
+INSERT INTO `sides` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath`) VALUES
+(2, 'Truffle Fries', 'Starters', 'Savor the perfection of hand-cut golden fries, expertly seasoned ', 135, 'public/images/sides/image_655d2c8bc5aca.jpg');
 
 -- --------------------------------------------------------
 
@@ -118,7 +139,7 @@ CREATE TABLE `users` (
   `PhoneNumber` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `Usertype` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
@@ -139,9 +160,9 @@ ALTER TABLE `breakfast`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dinner`
+-- Indexes for table `desserts`
 --
-ALTER TABLE `dinner`
+ALTER TABLE `desserts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -176,31 +197,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `breakfast`
 --
 ALTER TABLE `breakfast`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `dinner`
+-- AUTO_INCREMENT for table `desserts`
 --
-ALTER TABLE `dinner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `desserts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `drinks`
 --
 ALTER TABLE `drinks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `main`
 --
 ALTER TABLE `main`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sides`
 --
 ALTER TABLE `sides`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
