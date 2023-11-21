@@ -80,11 +80,12 @@ require_once 'models/Item.php';
                                         </thead>
 
                                         <tbody class="menuInfo">
-                                            <tr>
+                                            
                                                 <?php
                                                    $objitem=new Item("","","","","");
                                                    $rows=$objitem->getallitems('breakfast');
                                                    for($i=0;$i<count($rows);$i++){
+                                                    echo "<tr>";
                                                     echo "<td><img src='".$rows[$i]->ImagePath ."' alt='' width='40' height='40'> </td>";
                                                     echo "<td>". $rows[$i]->id."</td>";
                                                     echo "<td>". $rows[$i]->Name."</td>";
@@ -95,6 +96,7 @@ require_once 'models/Item.php';
                                                     <a class='itemOptions' href='dashboard/edititem'><i class='fa-regular fa-pen-to-square'></i></a>
                                                     <a class='itemOptions'><i class='fa-regular fa-trash-can'></i></a>                                                    
                                                     </td>";
+                                                    echo "</tr>";
                                                    }
                                                 ?>
                                                 <!-- <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td> -->
@@ -107,7 +109,7 @@ require_once 'models/Item.php';
                                                     <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
                                                     <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
                                                 </td> -->
-                                            </tr>
+                                            <!-- </tr>
                                             <tr>
                                                 <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td>
                                                 <td>1</td>
@@ -119,7 +121,7 @@ require_once 'models/Item.php';
                                                     <a class="itemOptions" href="dashboard/edititem"><i class="fa-regular fa-pen-to-square"></i></a>
                                                     <a class="itemOptions"><i class="fa-regular fa-trash-can"></i></a>
                                                 </td>
-                                            </tr>
+                                            </tr> -->
                                             <tr>
                                                 <td><img src="template/images/faces/face1.jpg" alt="" width="40" height="40"></td>
                                                 <td>1</td>

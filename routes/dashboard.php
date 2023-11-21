@@ -17,6 +17,8 @@ $url = $_SERVER['REQUEST_URI'];
 // segments
 $segments = explode('/', $url);
 $lastSegment = strtolower($segments[count($segments) - 1]);
+// $typeofitem = strtolower($segments[count($segments) - 2]);
+// $thirdlastSegment = strtolower($segments[count($segments)-3]);
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if (count($segments) < 4) {
@@ -70,8 +72,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include 'views/404.php';
             exit();
     }
+    // if($thirdlastSegment==='edititem'){
+    //     include 'views/dashboard/edititem.php';
+    //     exit();
+    // }
 }
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Add item form submitted
@@ -87,6 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }else if($lastSegment === 'edititem'){
         include 'controllers/item.controller.php';
         $item = new ItemController;
-        $item->edit();
+       // $item->edit();
+    }else if($thirdlastSegment=== 'edititem'){
+        $item = new ItemController;
+        $item->edit($type,$ID);
     }
 }

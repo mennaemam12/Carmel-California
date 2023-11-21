@@ -110,7 +110,7 @@
             }
         }
         }
-        public function edit(){
+        public function edit($type,$ID){
             
         }
 }
