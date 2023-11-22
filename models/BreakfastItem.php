@@ -5,10 +5,9 @@ class BreakfastItem extends Item{
         parent::__construct();
     }
 
-    public function getBreakfastItems(){
+    public static function getBreakfastItems(){
        
-        $this->db->query('SELECT * FROM breakfast');
-        $result=$this->db->resultSet();
+        $result = Item::getItems('breakfast');
         // Convert the result set into an array of BreakfastItem objects
         $breakfastItems = [];
         foreach ($result as $row) {

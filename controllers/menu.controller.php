@@ -20,7 +20,7 @@
             $sideModel=new SideItem;
             $dessertModel=new DessertItem;
 
-            $breakfastItems=$breakfastModel->getBreakfastItems();
+            $breakfastItems= BreakfastItem::getBreakfastItems();
             $mainItems=$mainModel->getMainItems();
             $drinkItems=$drinkModel->getDrinkItems();
             $sideItems=$sideModel->getSideItems();
