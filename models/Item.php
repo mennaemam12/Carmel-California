@@ -108,6 +108,36 @@ class Item {
             return false;
         }
     }
+    public static function getAllItems()
+    {
+        $db = new Database;
+        $db->query('SELECT *, "breakfast" AS itemType FROM breakfast 
+                    UNION SELECT *, "main" AS itemType FROM main 
+                    UNION SELECT *, "drinks" AS itemType FROM drinks 
+                    UNION SELECT *, "sides" AS itemType FROM sides 
+                    UNION SELECT *, "desserts" AS itemType FROM desserts');
+        $rows = $db->resultSet();
+
+        if ($db->rowCount() > 0)
+            return $rows;
+        else
+            return false;
+    }
+
+
+    public static function getItems($itemType)
+    {
+        $itemType = strtolower($itemType);
+        $db = new Database;
+
+        $db->query('SELECT * FROM ' . $itemType);
+        $rows = $db->resultSet();
+        if ($db->rowCount() > 0) {
+            return $rows;
+        } else {
+            return false;
+        }
+    }
 
     public function add($item_type) {
       
@@ -133,32 +163,13 @@ class Item {
     {
         $itemType = strtolower($itemType);
 
-        switch ($itemType) {
-            case 'breakfast':
-                $item = new BreakfastItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'main':
-                $item = new MainItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'drinks':
-                $item = new DrinkItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'sides':
-                $item = new SideItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'dinner':
-                $item = new DinnerItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            default:
-                return false;
-        }
         $this->db->query('UPDATE ' . $itemType . ' SET Name=:item_name ,Category=:category ,Description=:description ,Price=:price, ImagePath=:image_path WHERE id=:id');
         $this->db->bind(':id', $ID);
-        $this->db->bind(':item_name', $item->getName());
-        $this->db->bind(':price', $item->getPrice());
-        $this->db->bind(':category', $item->getCategory());
-        $this->db->bind(':description', $item->getDescription());
-        $this->db->bind(':image_path', $item->getImagePath());
+        $this->db->bind(':item_name',  $this->getName());
+        $this->db->bind(':price', $this->getPrice());
+        $this->db->bind(':category',$this->getCategory());
+        $this->db->bind(':description',$this->getDescription());
+        $this->db->bind(':image_path',  $this->getImagePath());
 
         //Execute
         if ($this->db->execute()) {

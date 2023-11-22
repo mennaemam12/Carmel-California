@@ -85,6 +85,7 @@ $item = Item::findItemByID($itemType, $itemID);
                                                 <option <?php if ($itemType == 'dinner') echo 'selected'; ?>>Dinner</option>
                                                 <option <?php if ($itemType == 'drinks') echo 'selected'; ?>>Drinks</option>
                                                 <option <?php if ($itemType == 'sides') echo 'selected'; ?>>Sides</option>
+                                                <option <?php if ($itemType == 'desserts') echo 'selected'; ?>>Desserts</option>
                                             </select>
                                         </div>
                                         <div class="form-group">

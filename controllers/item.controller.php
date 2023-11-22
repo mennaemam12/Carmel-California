@@ -91,10 +91,10 @@ class ItemController
             'itemtype' => trim($_POST['itemtype'])
         ];
 
-        $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], "");
+        $this->itemModel = new Item;
 
         if ($this->itemModel->findItemByName($data['item_name'], $data['itemtype'])) {
-            flash("formSuccess", "Item name already taken", 'form-message form-message-red');
+            flash("formError", "Item name already taken", 'form-message form-message-red');
             redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
             exit();
         }
@@ -132,5 +132,93 @@ class ItemController
                 redirect($GLOBALS['projectFolder']."/dashboard/additem");
             }
         }
+        public function edit($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+
+        //Init data
+        $data = [
+            'item_name' => trim($_POST['itemname']),
+            'category' => trim($_POST['category']),
+            'description' => trim($_POST['descriptions']),
+            'price' => trim($_POST['price']),
+            'itemtype' => trim($_POST['itemtype'])
+        ];
+
+        //handle image path
+        if ($_FILES['file']['size'] > 0)
+            $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
+        else
+            // get the current image path from the database
+            $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath; // No image was uploaded so no need to update the image
+
+        if (!$imagePath) {
+            flash("formError", "Failed to save image", 'form-message form-message-red');
+            redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
+            exit();
+        }
+
+        if ($this->validateItem($data, $imagePath)) {
+
+            // Validation successful, create an Item object
+            $this->itemModel = new Item;
+            $this->itemModel->setName($data['item_name']);
+            $this->itemModel->setCategory($data['category']);
+            $this->itemModel->setDescription($data['description']);
+            $this->itemModel->setPrice($data['price']);
+            $this->itemModel->setImagePath($imagePath);
+
+            if ($this->itemModel->edit($itemType, $ID)) {
+                flash("formSuccess", "Item edited successfully", 'form-message form-message-green');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
+                exit();
+            }
+
+            flash("formError", "Failed to edit item in the database", 'form-message form-message-red');
+            redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
+            exit();
+        }
+
+        flash("formError", $this->errorMsg, 'form-message form-message-red');
+        redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
+        exit();
+    }
+
+    public static function isItemType($itemType)
+    {
+        $itemType = strtolower($itemType);
+
+        $itemTypes = array(
+            "breakfast",
+            "desserts",
+            "drinks",
+            "main",
+            "sides"
+        );
+
+        if (in_array($itemType, $itemTypes))
+            return true;
+        else
+            return false;
+    }
+
+    public static function doesExist($itemType, $itemID)
+    {
+        // Check if the item type is valid
+        // Checking for example: 'breakfast', 'dinner' etc
+        // $itemType is $segments[count($segments) - 2];
+
+        if (!ItemController::isItemType($itemType))
+            return false;
+
+        // Check if the item exists
+        // Checking for example: 'breakfast/1', 'dinner/2' etc
+        // $itemID is $lastSegment;
+
+        if (!Item::doesItemExist($itemType, intval($itemID)))
+            return false;
+
+        return true;
+    }
 
 }
