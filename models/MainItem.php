@@ -1,24 +1,31 @@
 <?php
 class MainItem extends Item{
 
-    public function __construct($name, $category, $description, $price, $imagePath) {
-        parent::__construct($name, $category, $description, $price, $imagePath);
+    public function __construct() {
+        parent::__construct();
     }
+
     public static function getMainItems(){
+       
         $result = Item::getItems('main');
         if (!$result)
             return [];
         
-        $mainItems = [];
-
-        // Convert the result set into an array of MainItem objects
+        // Convert the result set into an array of objects
+        $items = [];
         foreach ($result as $row) {
-            $mainItem = new MainItem($row->Name, $row->Category, $row->Description, $row->Price, $row->ImagePath);
-
-            $mainItems[] = $mainItem;
+            $item = new MainItem;
+			
+			$item->setName($row->Name);
+			$item->setCategory($row->Category);
+			$item->setDescription($row->Description);
+			$item->setPrice($row->Price);
+			$item->setImagePath($row->ImagePath);
+			
+            $items[] = $item;
         }
 
-       return $mainItems;
+        return $items;
     }
 }
 

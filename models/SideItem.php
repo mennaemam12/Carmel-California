@@ -1,26 +1,31 @@
 <?php
 class SideItem extends Item{
 
-    public function __construct($name, $category, $description, $price, $imagePath) {
-        parent::__construct($name, $category, $description, $price, $imagePath);
+    public function __construct() {
+        parent::__construct();
     }
 
     public static function getSideItems(){
+       
         $result = Item::getItems('sides');
         if (!$result)
             return [];
-        $sideItems = [];
-         
-            
-            // Convert the result set into an array of SideItem objects 
-            foreach ($result as $row) {
-                    $sideItem = new SideItem($row->Name, $row->Category, $row->Description, $row->Price, $row->ImagePath);
-
-                    $sideItems[] = $sideItem;
-            }
         
+        // Convert the result set into an array of objects
+        $items = [];
+        foreach ($result as $row) {
+            $item = new SideItem;
+			
+			$item->setName($row->Name);
+			$item->setCategory($row->Category);
+			$item->setDescription($row->Description);
+			$item->setPrice($row->Price);
+			$item->setImagePath($row->ImagePath);
+			
+            $items[] = $item;
+        }
 
-        return $sideItems;
+        return $items;
     }
 }
 

@@ -14,13 +14,8 @@ class Item {
     protected $price;
     protected $imagePath;
     
-    public function __construct($name, $category, $description, $price, $imagePath) {
+    public function __construct() {
         $this->db = new Database;
-        $this->name = $name;
-        $this->category = $category;
-        $this->description = $description;
-        $this->price = $price;
-        $this->imagePath = $imagePath;
     }
 
     public function setName($name) {
@@ -68,20 +63,21 @@ class Item {
         return $this->imagePath;
     }
 
-    public function findItemByName($itemName, $itemType)
+    public static function findItemByName($itemName, $itemType)
     {
+		$db = new Database;
         $itemType = strtolower($itemType);
 
-        $this->db->query('SELECT * FROM ' . $itemType . ' WHERE Name = :itemname');
-        $this->db->bind(':itemname', $itemName);
-        $row = $this->db->single();
+        $db->query('SELECT * FROM ' . $itemType . ' WHERE Name = :itemname');
+        $db->bind(':itemname', $itemName);
+        $row = $db->single();
 
         //Check row
-        if ($this->db->rowCount() > 0) {
+        if ($db->rowCount() > 0) 
             return $row;
-        } else {
+         else 
             return false;
-        }
+        
     }
 
     public static function findItemByID($itemType, $id)

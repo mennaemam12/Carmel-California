@@ -85,11 +85,9 @@ class ItemController
             'price' => trim($_POST['price']),
             'itemtype' => trim($_POST['itemtype'])
         ];
-
-        $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], "");
-
-        if ($this->itemModel->findItemByName($data['item_name'], $data['itemtype'])) {
-            flash("formSuccess", "Item name already taken", 'form-message form-message-red');
+		
+        if (Item::findItemByName($data['item_name'], $data['itemtype'])) {
+            flash("formSuccess", "Item name is already taken", 'form-message form-message-red');
             redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
             exit();
         }
@@ -107,8 +105,15 @@ class ItemController
                 exit();
             }
 
+
             // Validation successful, create an Item object
-            $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], $imagePath);
+            $this->itemModel = new Item();
+
+			$this->itemModel->setName($data['item_name']);
+			$this->itemModel->setCategory($data['category']);
+			$this->itemModel->setDescription($data['description']);
+			$this->itemModel->setPrice($data['price']);
+			$this->itemModel->setImagePath($imagePath);
 
             if ($this->itemModel->add($data['itemtype'])) {
                 flash("formSuccess", "Item added successfully", 'form-message form-message-green');
@@ -163,7 +168,13 @@ class ItemController
             }
 
             // Validation successful, create an Item object
-            $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], $imagePath);
+            $this->itemModel = new Item();
+
+			$this->itemModel->setName($data['item_name']);
+			$this->itemModel->setCategory($data['category']);
+			$this->itemModel->setDescription($data['description']);
+			$this->itemModel->setPrice($data['price']);
+			$this->itemModel->setImagePath($imagePath);
 
             if ($this->itemModel->edit($itemType, $ID)) {
                 flash("formSuccess", "Item edited successfully", 'form-message form-message-green');

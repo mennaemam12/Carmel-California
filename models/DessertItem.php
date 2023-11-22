@@ -1,24 +1,31 @@
 <?php
 class DessertItem extends Item{
 
-    public function __construct($name, $category, $description, $price, $imagePath) {
-        parent::__construct($name, $category, $description, $price, $imagePath);
+    public function __construct() {
+        parent::__construct();
     }
 
     public static function getDessertItems(){
+       
         $result = Item::getItems('desserts');
         if (!$result)
             return [];
-
-        $dessertItems = [];
-        // Convert the result set into an array of dessertItem objects
+        
+        // Convert the result set into an array of objects
+        $items = [];
         foreach ($result as $row) {
-            $dessertItem = new DessertItem($row->Name, $row->Category, $row->Description, $row->Price, $row->ImagePath);
-
-            $dessertItems[] = $dessertItem;
+            $item = new DessertItem;
+			
+			$item->setName($row->Name);
+			$item->setCategory($row->Category);
+			$item->setDescription($row->Description);
+			$item->setPrice($row->Price);
+			$item->setImagePath($row->ImagePath);
+			
+            $items[] = $item;
         }
 
-       return $dessertItems;
+        return $items;
     }
 }
 
