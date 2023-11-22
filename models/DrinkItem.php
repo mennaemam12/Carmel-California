@@ -1,25 +1,21 @@
 <?php
 class DrinkItem extends Item{
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct($name, $category, $description, $price, $imagePath) {
+        parent::__construct($name, $category, $description, $price, $imagePath);
     }
 
-    public function getDrinkItems(){
+    public static function getDrinkItems(){
+
+        $result = Item::getItems('drinks');
+        if (!$result)
+            return [];
+        
         $drinkItems = [];
-        $this->db->query('SELECT * FROM drinks');
-            $result=$this->db->resultSet();
             
             // Convert the result set into an array of DrinkItem objects
             foreach ($result as $row) {
-                $drinkItem = new DrinkItem();
-
-                // Assuming you have setters for properties in DrinkItem class
-                $drinkItem->setName($row->Name);
-                $drinkItem->setPrice($row->Price);
-                $drinkItem->setCategory($row->Category);
-                $drinkItem->setDescription($row->Description);
-                $drinkItem->setImagePath($row->ImagePath);
+                $drinkItem = new DrinkItem($row->Name, $row->Category, $row->Description, $row->Price, $row->ImagePath);
 
                 $drinkItems[] = $drinkItem;
             

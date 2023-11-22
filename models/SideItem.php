@@ -1,25 +1,20 @@
 <?php
 class SideItem extends Item{
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct($name, $category, $description, $price, $imagePath) {
+        parent::__construct($name, $category, $description, $price, $imagePath);
     }
 
-    public function getSideItems(){
+    public static function getSideItems(){
+        $result = Item::getItems('sides');
+        if (!$result)
+            return [];
         $sideItems = [];
-         $this->db->query('SELECT * FROM sides');
-         $result=$this->db->resultSet();
+         
             
             // Convert the result set into an array of SideItem objects 
             foreach ($result as $row) {
-                    $sideItem = new SideItem();
-
-                    // Assuming you have setters for properties in SideItem class
-                    $sideItem->setName($row->Name);
-                    $sideItem->setPrice($row->Price);
-                    $sideItem->setCategory($row->Category);
-                    $sideItem->setDescription($row->Description);
-                    $sideItem->setImagePath($row->ImagePath);
+                    $sideItem = new SideItem($row->Name, $row->Category, $row->Description, $row->Price, $row->ImagePath);
 
                     $sideItems[] = $sideItem;
             }

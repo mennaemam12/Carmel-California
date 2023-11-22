@@ -1,25 +1,19 @@
 <?php
 class MainItem extends Item{
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct($name, $category, $description, $price, $imagePath) {
+        parent::__construct($name, $category, $description, $price, $imagePath);
     }
-
-    public function getMainItems(){
+    public static function getMainItems(){
+        $result = Item::getItems('main');
+        if (!$result)
+            return [];
+        
         $mainItems = [];
-         $this->db->query('SELECT * FROM main');
-         $result=$this->db->resultSet();
 
         // Convert the result set into an array of MainItem objects
         foreach ($result as $row) {
-            $mainItem = new MainItem();
-
-            // Assuming you have setters for properties in MainItem class
-            $mainItem->setName($row->Name);
-            $mainItem->setPrice($row->Price);
-            $mainItem->setCategory($row->Category);
-            $mainItem->setDescription($row->Description);
-            $mainItem->setImagePath($row->ImagePath);
+            $mainItem = new MainItem($row->Name, $row->Category, $row->Description, $row->Price, $row->ImagePath);
 
             $mainItems[] = $mainItem;
         }

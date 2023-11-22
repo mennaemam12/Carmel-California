@@ -14,17 +14,17 @@
         }
 
         public function getMenu(){
-            $breakfastModel=new BreakfastItem;
-            $mainModel=new MainItem;
-            $drinkModel=new DrinkItem;
-            $sideModel=new SideItem;
-            $dessertModel=new DessertItem;
+            // $breakfastModel=new BreakfastItem;
+            // $mainModel=new MainItem;
+            // $drinkModel=new DrinkItem;
+            // $sideModel=new SideItem;
+            // $dessertModel=new DessertItem;
 
             $breakfastItems= BreakfastItem::getBreakfastItems();
-            $mainItems=$mainModel->getMainItems();
-            $drinkItems=$drinkModel->getDrinkItems();
-            $sideItems=$sideModel->getSideItems();
-            $dessertItems=$dessertModel->getDessertItems();
+            $mainItems= MainItem::getMainItems();
+            $drinkItems= DrinkItem::getDrinkItems();
+            $sideItems= SideItem::getSideItems();
+            $dessertItems= DessertItem::getDessertItems();
 
              
             // Extract unique categories for each set of items

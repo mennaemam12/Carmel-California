@@ -14,9 +14,13 @@ class Item {
     protected $price;
     protected $imagePath;
     
-    public function __construct() {
+    public function __construct($name, $category, $description, $price, $imagePath) {
         $this->db = new Database;
-
+        $this->name = $name;
+        $this->category = $category;
+        $this->description = $description;
+        $this->price = $price;
+        $this->imagePath = $imagePath;
     }
 
     public function setName($name) {
