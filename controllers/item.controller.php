@@ -12,7 +12,7 @@ class ItemController
     {
     }
 
-    public function validateItem($data, $imagePath)
+    public function validateItem($data)
     {
         $this->errorMsg = "";
         if (
@@ -40,11 +40,6 @@ class ItemController
 
         if (!is_string($data['description'])) {
             $this->errorMsg = "Invalid description";
-            return false;
-        }
-
-        if (!$imagePath) {
-            $this->errorMsg = "Invalid image// Failed to save image";
             return false;
         }
 
@@ -99,18 +94,18 @@ class ItemController
             exit();
         }
 
-        //handle image path
-        $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
+        if ($this->validateItem($data)) {
 
-        if (!$imagePath) {
-            if ($this->errorMsg == "")
-                $this->errorMsg = "Failed to save image";
-            flash("formError", $this->errorMsg, 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
-            exit();
-        }
+            //handle image path
+            $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
 
-        if ($this->validateItem($data, $imagePath)) {
+            if (!$imagePath) {
+                if ($this->errorMsg == "")
+                    $this->errorMsg = "Failed to save image";
+                flash("formError", $this->errorMsg, 'form-message form-message-red');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+                exit();
+            }
 
             // Validation successful, create an Item object
             $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], $imagePath);
@@ -122,6 +117,12 @@ class ItemController
             }
 
             flash("formError", "Failed to add item to the database", 'form-message form-message-red');
+            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            exit();
+        }
+
+        if ($_FILES['file']['size'] <= 0) {
+            flash("formError", "Please upload an image", 'form-message form-message-red');
             redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
             exit();
         }
@@ -144,24 +145,25 @@ class ItemController
             'itemtype' => trim($_POST['itemtype'])
         ];
 
-        //handle image path
-        $imagePath = $this->saveImage($_FILES['file'], $itemType);
 
-        if (!$imagePath) {
-            flash("formError", "Failed to save image", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
-            exit();
-        }
 
-        if ($this->validateItem($data, $imagePath)) {
+        if ($this->validateItem($data)) {
+
+            //handle image path
+            if ($_FILES['file']['size'] > 0)
+                $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
+            else
+                // get the current image path from the database
+                $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath; // No image was uploaded so no need to update the image
+
+            if (!$imagePath) {
+                flash("formError", "Failed to save image", 'form-message form-message-red');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
+                exit();
+            }
 
             // Validation successful, create an Item object
-            $this->itemModel = new Item;
-            $this->itemModel->setName($data['item_name']);
-            $this->itemModel->setCategory($data['category']);
-            $this->itemModel->setDescription($data['description']);
-            $this->itemModel->setPrice($data['price']);
-            $this->itemModel->setImagePath($imagePath);
+            $this->itemModel = new Item($data['item_name'], $data['category'], $data['description'], $data['price'], $imagePath);
 
             if ($this->itemModel->edit($itemType, $ID)) {
                 flash("formSuccess", "Item edited successfully", 'form-message form-message-green');
@@ -178,6 +180,8 @@ class ItemController
         redirect($GLOBALS['projectFolder'] . "/dashboard/edititem/" . $itemType . '/' .  $ID);
         exit();
     }
+
+
 
     public static function isItemType($itemType)
     {
