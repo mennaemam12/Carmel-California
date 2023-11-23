@@ -14,17 +14,6 @@
         }
 
         public function getMenu(){
-            // $breakfastModel=new BreakfastItem;
-            // $mainModel=new MainItem;
-            // $drinkModel=new DrinkItem;
-            // $sideModel=new SideItem;
-            // $dessertModel=new DessertItem;
-
-			// $breakfastItems = $breakfastModel->getBreakfastItems();
-			// $mainItems = $mainModel->getMainItems();
-			// $drinkItems = $drinkModel->getBreakfastItems();
-			// $sideItems = $sideModel->getSideItems();
-			// $dessertItems = $dessertModel->getDessertItems();
 
             $breakfastItems= BreakfastItem::getBreakfastItems();
             $mainItems= MainItem::getMainItems();
