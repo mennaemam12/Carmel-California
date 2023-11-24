@@ -42,10 +42,11 @@
             
             // Include the view file and pass the variables to it
             include_once 'views/menu.php';
+           
             
         }
 
-        private function extractUniqueCategories($categoryItems) {
+        public function extractUniqueCategories($categoryItems) {
             $uniqueCategories = [];
     
             foreach ($categoryItems as $item) {
@@ -54,8 +55,8 @@
                     $uniqueCategories[] = $category;
                 }
             }
-    
             return $uniqueCategories;
+            //include_once 'views/dashboard/discount.php';
         }
 
 

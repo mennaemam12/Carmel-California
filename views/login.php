@@ -32,7 +32,7 @@ include 'projectFolderName.php';
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
 	<base href="<?php echo $projectFolder?>/">
-
+	<link rel="shortcut icon" href="template/images/favicon.png" />
 	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/animate.css">
 

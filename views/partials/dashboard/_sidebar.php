@@ -59,6 +59,20 @@
         </ul>
       </div>
     </li>
+    <!-- discounts -->
+    <li class="nav-item" >
+      <a class="nav-link" data-toggle="collapse" href="#dis" aria-expanded="false" aria-controls="ui-basic">
+        <i class="icon-delete menu-icon"></i>
+        <span class="menu-title">Discounts</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="dis">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="dashboard/discount">Add Discount</a></li>
+          <!-- <li class="nav-item"> <a class="nav-link" href="dashboard/viewitems">Add Offer</a></li> -->
+        </ul>
+      </div>
+    </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
         <i class="icon-server menu-icon"></i>

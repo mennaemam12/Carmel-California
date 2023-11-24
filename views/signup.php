@@ -50,7 +50,7 @@ include 'projectFolderName.php';
 
 	<link rel="stylesheet" href="public/css/flaticon.css">
 	<link rel="stylesheet" href="public/css/icomoon.css">
-
+	<link rel="shortcut icon" href="template/images/favicon.png" />
 	<link rel="stylesheet" href="public/css/nav.css">
 	<link rel="stylesheet" href="public/css/footer.css">
 	<link rel="stylesheet" href="public/css/login.css">

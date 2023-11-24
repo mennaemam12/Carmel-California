@@ -79,6 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'points':
             include 'views/dashboard/points.php';
             exit();
+            case 'discount':
+            include 'views/dashboard/discount.php';
+            exit();
         case 'reviews':
             include 'views/dashboard/reviews.php';
             exit();
@@ -86,6 +89,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include 'views/404.php';
             exit();
     }
+
+    // if (isset($_GET['selectedValue'])) {
+    //     $selectedValue = $_GET['selectedValue'];
+
+    //     // Fetch $categoryItems based on $selectedValue from the database
+    //     // ...
+
+    //     // Call the function to extract unique categories based on the fetched $categoryItems
+    //     include 'controllers/menu.controller.php';
+    //     $uniqueCategories = new MenuController;
+    //     $uniqueCategories->extractUniqueCategories($selectedValue);
+
+    //     // Return unique categories as JSON
+    //     echo "in routes";
+    //     var_dump($uniqueCategories);
+    //     header('Content-Type: application/json');
+    //     echo json_encode($uniqueCategories);
+    //     exit();
+
+    // }
 }
 
 
@@ -118,5 +141,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $item->edit($itemType, $itemID);
             exit();
+    }
+
+    
+    if (isset($_POST['type'])) {
+        $menuController = new MenuController();
+        $uniqueCategories = $menuController->extractUniqueCategories($_POST['type']);
+        var_dump($uniqueCategories);
+
+        $out = '';
+        foreach ($uniqueCategories as $category) {   
+            $out .=  '<option>' . $category . '</option>'; 
+        }
+        echo $out;
+    } else {
+        echo "Invalid request"; // Handle the case when 'type' is not set in POST data
     }
 }
