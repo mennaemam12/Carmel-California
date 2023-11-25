@@ -155,8 +155,12 @@ class ItemController
         if ($this->validateItem($data)) {
 
             //handle image path
-            if ($_FILES['file']['size'] > 0)
+            if ($_FILES['file']['size'] > 0){
+                $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath;
+                unlink($imagePath);
                 $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
+            
+            }
             else
                 // get the current image path from the database
                 $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath; // No image was uploaded so no need to update the image
