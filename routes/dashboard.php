@@ -42,6 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             //Passed checks
             include 'views/dashboard/edititem.php';
             exit();
+        case 'deleteitem' :
+        include 'controllers/item.controller.php';
+            $item = new ItemController;
+
+            $itemID = $lastSegment;
+            $itemType = $segments[count($segments) - 2];
+
+            //$itemID = $_POST['itemID'];
+            //$itemType = $_POST['itemtype'];
+
+            $item->delete($itemType, $itemID);
+            exit();
+
     }
 
     // Switch based on the last segment

@@ -230,4 +230,26 @@ class ItemController
 
         return true;
     }
+    public function delete($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+            // get the current image path from the database
+            $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath; // No image was uploaded so no need to update the image
+            // Validation successful, create an Item object
+            $this->itemModel = new Item();
+
+			//$this->itemModel->setImagePath($imagePath);
+
+            if ($this->itemModel->delete($itemType, $ID)) {
+                unlink($imagePath);
+                flash("formSuccess", "Item deleted successfully", 'form-message form-message-green');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/viewitems");
+                exit();
+            }else{
+            flash("formError", "Failed to delete item from the database", 'form-message form-message-red');
+            redirect($GLOBALS['projectFolder'] . "/dashboard/viewitems/");
+            exit();
+        }
+    }
+
 }

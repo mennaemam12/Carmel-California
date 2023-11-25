@@ -192,4 +192,19 @@ class Item {
         // returns true if rowCount() > 0
         return $db->rowCount() > 0;
     }
+    public function delete($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+
+        $this->db->query('DELETE FROM ' . $itemType . ' WHERE id=:id');
+        
+        $this->db->bind(':id', $ID);
+
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
