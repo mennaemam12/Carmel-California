@@ -143,6 +143,14 @@
         width: 80px;
         height: 55px;
       }
+
+      .error{
+        color: red;
+        float:right;
+        position:relative;
+        top:15px;
+        display:none;
+      }
     </style>
 
 
@@ -183,8 +191,7 @@
         break;  
     }
   }
-
-  
+  $counter = 1;
   ?>
 
 
@@ -205,8 +212,7 @@
                     <div
                       class="d-flex justify-content-between align-items-center mb-5"
                     >
-                      <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                      <h6 class="mb-0 text-muted">3 items</h6>
+                      <h1 class="fw-bold mb-0 text-black">Customize Your Salad</h1>
                     </div>
 
                     <!--BASE DROP DOWN SECTION-->
@@ -238,11 +244,8 @@
                             </div>
                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                               <!-- NO QUANTITY -->
-
-                              <button
-                                class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                              >
+                              <button id="<?php echo $b->Name;
+                                echo $GLOBALS['counter']; ?>" class="btn btn-link px-2">
                                 <i class="fas fa-plus"></i>
                               </button>
                             </div>
@@ -251,7 +254,7 @@
                             </div>
                           </div>
                         </li>
-                        <?php endforeach; ?>
+                        <?php $counter = 1; endforeach; ?>
                       </ul>
                       
                       <hr class="my-4" />
@@ -261,8 +264,10 @@
                     <div>
                       <label for="touch2" style="width: 600px; cursor: pointer"
                         ><h2 class="fw-bold mb-0 text-black">Toppings</h2>
-                        <h4 class="fw-bold mb-0 text-muted">Choose 3</h4></label
+                        <h4 class="fw-bold mb-0 text-muted">Choose 4</h4>
+                        </label
                       >
+                      <div id='toppingserror' class="error"></div>
                       <input type="checkbox" id="touch2" width="600px" />
                       <ul class="slide2">
                         <hr class="my-4" />
@@ -284,35 +289,41 @@
                             </div>
                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                               <button
-                                class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                              >
-                                <i class="fas fa-minus"></i>
-                              </button>
+                                  class="btn btn-link px-2"
+                                  onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                  restriction(this.parentNode.querySelector('input[type=number]'),'topping');"
+                                >
+                                  <i class="fas fa-minus"></i>
+                                </button>
 
-                              <input
-                                id="form1"
-                                min="0"
-                                name="cucumber"
-                                value="1"
-                                type="number"
-                                max="3"
-                                class="form-control form-control-sm"
-                              />
+                                <input
+                                id="topping<?php echo $counter++;?>"
+                                  min="0"
+                                  name="<?php echo $top->Name?>"
+                                  value="0"
+                                  type="number"
+                                  max="3"
+                                  class="form-control form-control-sm"
+                                />
 
-                              <button
-                                class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                              >
-                                <i class="fas fa-plus"></i>
-                              </button>
-                            </div>
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6 class="mb-0">LE <?php echo $top->Price?>.00/1</h6>
+                                <button
+                                  class="btn btn-link px-2"
+                                  onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                  restriction(this.parentNode.querySelector('input[type=number]'),'topping');"
+                                >
+                                  <i class="fas fa-plus"></i>
+                                </button>
+                                <p id='toppingmax' style='color:red; text-align:left; font-size:small'></p>
+                              </div>
+
+                            
+                              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                <h6 class="mb-0">LE <?php echo $top->Price?>.00/1</h6>
                             </div>
                           </div>
                         </li>
-                        <?php endforeach;?>
+                        <?php endforeach;
+                        $counter = 1;?>
                       </ul>
                      <hr class="my-4" />
                     </div>
@@ -321,7 +332,8 @@
                     <div>
                       <label for="touch3" style="width: 600px; cursor: pointer"
                         ><h2 class="fw-bold mb-0 text-black">Dressing</h2>
-                        <h4 class="fw-bold mb-0 text-muted">Choose 1</h4></label
+                        <h4 class="fw-bold mb-0 text-muted">Choose 1</h4>
+                        <div id='dressingserror' class="error"></div></label
                       >
                       <input type="checkbox" id="touch3" width="600px" />
                       <ul class="slide3">
@@ -345,12 +357,14 @@
                               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                 <button
                                   class="btn btn-link px-2"
-                                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                  onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                  restriction(this.parentNode.querySelector('input[type=number]'),'dressing');"
                                 >
                                   <i class="fas fa-minus"></i>
                                 </button>
 
                                 <input
+                                  id="dressing<?php echo $counter++; ?>"
                                   min="0"
                                   name="<?php echo $dress->Name?>"
                                   value="0"
@@ -361,7 +375,8 @@
 
                                 <button
                                   class="btn btn-link px-2"
-                                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                  onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                  restriction(this.parentNode.querySelector('input[type=number]'),'dressing');"
                                 >
                                   <i class="fas fa-plus"></i>
                                 </button>
@@ -371,7 +386,7 @@
                               </div>
                             </div>
                           </li>
-                        <?php endforeach; ?>
+                        <?php endforeach; $counter=1; ?>
                       </ul>
                      <hr class="my-4" />
                     </div>
@@ -380,7 +395,8 @@
                     <div>
                       <label for="touch4" style="width: 600px; cursor: pointer"
                         ><h2 class="fw-bold mb-0 text-black">Protein</h2>
-                        <h4 class="fw-bold mb-0 text-muted">Choose 1</h4></label
+                        <h4 class="fw-bold mb-0 text-muted">Choose 1</h4>
+                        <div id='proteinserror' class="error"></div></label
                       >
                       <input type="checkbox" id="touch4" width="600px" />
                       <ul class="slide4">
@@ -404,14 +420,16 @@
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                   <button
                                     class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                    restriction(this.parentNode.querySelector('input[type=number]'),'protein')"
                                   >
                                     <i class="fas fa-minus"></i>
                                   </button>
 
                                   <input
+                                    id="protein<?php echo $counter++; ?>"
                                     min="0"
-                                    name="<?php echo $prot->Name ?>"
+                                    name="<?php echo $prot->Name?>"
                                     value="0"
                                     type="number"
                                     max="3"
@@ -420,7 +438,8 @@
 
                                   <button
                                     class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                    restriction(this.parentNode.querySelector('input[type=number]'),'protein')"
                                   >
                                     <i class="fas fa-plus"></i>
                                   </button>
@@ -430,7 +449,7 @@
                                 </div>
                               </div>
                             </li>
-                        <?php endforeach; ?>
+                        <?php endforeach; $counter=1; ?>
                       </ul>
                      <hr class="my-4" />
                     </div>
@@ -439,7 +458,8 @@
                     <div>
                       <label for="touch5" style="width: 600px; cursor: pointer"
                         ><h2 class="fw-bold mb-0 text-black">Add Ons</h2>
-                        <h4 class="fw-bold mb-0 text-muted">Up To 3</h4></label
+                        <h4 class="fw-bold mb-0 text-muted">Up To 3</h4>
+                        <div id='additionserror' class="error"></div></label
                       >
                       <input type="checkbox" id="touch5" width="600px" />
                       <ul class="slide5">
@@ -463,12 +483,14 @@
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                   <button
                                     class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                    restriction(this.parentNode.querySelector('input[type=number]'),'addition')"
                                   >
                                     <i class="fas fa-minus"></i>
                                   </button>
 
                                   <input
+                                    id="addition<?php echo $counter++; ?>"
                                     min="0"
                                     name="<?php echo $add->Name?>"
                                     value="0"
@@ -479,7 +501,8 @@
 
                                   <button
                                     class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                    restriction(this.parentNode.querySelector('input[type=number]'),'addition')"
                                   >
                                     <i class="fas fa-plus"></i>
                                   </button>
@@ -489,7 +512,7 @@
                                 </div>
                               </div>
                             </li>
-                        <?php endforeach; ?>
+                        <?php endforeach; $counter=1; ?>
                       </ul>
                      <hr class="my-4" />
                     </div>
@@ -499,7 +522,8 @@
                     <div>
                       <label for="touch6" style="width: 600px; cursor: pointer"
                         ><h2 class="fw-bold mb-0 text-black">Fruits</h2>
-                        <h4 class="fw-bold mb-0 text-muted">Up to 2</h4></label
+                        <h4 class="fw-bold mb-0 text-muted">Up to 2</h4>
+                        <div id='fruitserror' class="error"></div></label
                       >
                       <input type="checkbox" id="touch6" width="600px" />
                       <ul class="slide6">
@@ -523,12 +547,14 @@
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                   <button
                                     class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                    restriction(this.parentNode.querySelector('input[type=number]'),'fruit')"
                                   >
                                     <i class="fas fa-minus"></i>
                                   </button>
 
                                   <input
+                                    id="fruit<?php echo $counter++;?>"
                                     min="0"
                                     name="<?php echo $fruit->Name?>"
                                     value="0"
@@ -539,7 +565,8 @@
 
                                   <button
                                     class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                    restriction(this.parentNode.querySelector('input[type=number]'),'fruit')"
                                   >
                                     <i class="fas fa-plus"></i>
                                   </button>
@@ -549,7 +576,7 @@
                                 </div>
                               </div>
                             </li>
-                        <?php endforeach; ?>
+                        <?php  endforeach; $counter=1; ?>
                       </ul>
                      <hr class="my-4" />
                     </div>
@@ -559,7 +586,8 @@
                     <div>
                       <label for="touch7" style="width: 600px; cursor: pointer"
                         ><h2 class="fw-bold mb-0 text-black">Cheese</h2>
-                        <h4 class="fw-bold mb-0 text-muted">Up to 2</h4></label
+                        <h4 class="fw-bold mb-0 text-muted">Up to 2</h4>
+                        <div id='cheeseserror' class="error"></div></label
                       >
                       <input type="checkbox" id="touch7" width="600px" />
                       <ul class="slide7">
@@ -571,24 +599,26 @@
                                 >
                                   <div class="col-md-2 col-lg-2 col-xl-2">
                                     <img
-                                      src="public/images/salad-ingredients/<?php echo $cheese->Name ?>.jpg"
+                                      src="public/images/salad-ingredients/<?php echo $cheese->Name?>.jpg"
                                       class="img-fluid rounded-3"
                                       alt="Cucumber"
                                     />
                                   </div>
                                   <div class="col-md-3 col-lg-3 col-xl-3">
                                     <h6 class="text-muted">Cheese</h6>
-                                    <h6 class="text-black mb-0"><?php echo $cheese->Name ?></h6>
+                                    <h6 class="text-black mb-0"><?php echo $cheese->Name?></h6>
                                   </div>
                                   <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                     <button
                                       class="btn btn-link px-2"
-                                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                      onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                        restriction(this.parentNode.querySelector('input[type=number]'),'cheese')"
                                     >
                                       <i class="fas fa-minus"></i>
                                     </button>
 
                                     <input
+                                      id="cheese<?php echo $counter++;?>"
                                       min="0"
                                       name="<?php echo $cheese->Name ?>"
                                       value="0"
@@ -599,7 +629,8 @@
 
                                     <button
                                       class="btn btn-link px-2"
-                                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                      onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                        restriction(this.parentNode.querySelector('input[type=number]'),'cheese')"
                                     >
                                       <i class="fas fa-plus"></i>
                                     </button>
@@ -609,7 +640,7 @@
                                   </div>
                                 </div>
                               </li>
-                        <?php endforeach; ?>
+                        <?php  endforeach; $counter=1; ?>
                       </ul>
                      <hr class="my-4" />
                     </div>
@@ -626,15 +657,16 @@
                 </div>
                 <div class="col-lg-4 bg-grey">
                   <div class="p-5">
-                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                    <h3 class="fw-bold mb-5 mt-2 pt-1">Order Summary</h3>
                     <hr class="my-4" />
 
                     <div class="d-flex justify-content-between mb-4">
-                      <h5 class="text-uppercase">items 3</h5>
-                      <h5>€ 132.00</h5>
+                      <h5 class="text-uppercase">Base</h5>
+                      <h5>getTotal()</h5>
                     </div>
 
                     <h5 class="text-uppercase mb-3">Shipping</h5>
+                    
 
                     <div class="mb-4 pb-2">
                       <select class="select">
@@ -683,4 +715,31 @@
       </div>
     </div>
   </section>
+
+  <script>
+    function getTotal(){
+      var inputs = document.querySelectorAll('input[type="number"]');
+      var chosen = Array.from(inputs).filter(function(input){
+        return input.value > 1;
+      })
+
+      
+    }
+
+    function restriction(input, type){
+      document.getElementById(type+'serror').innerHTML="";
+      var inputs = document.querySelectorAll("input[type='number'][id*="+type+"]");
+      var chosen = Array.from(inputs).filter(function(input){
+        return input.value > 0;
+      })
+      
+      if(chosen.length>input.max){
+        document.getElementById(type+'serror').innerHTML=`You can only choose up to ${input.max} ${type}s`;
+        document.getElementById(type+'serror').style.display='block';
+        input.value = 0;
+      }
+
+    }
+
+  </script>
 </html>
