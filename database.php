@@ -39,6 +39,7 @@ class Database {
         $this->stmt = $this->dbh->prepare($sql);
     }
 
+
     //Bind values, to prepared statement using named parameters
     public function bind($param, $value, $type = null){
         if(is_null($type)){
@@ -80,7 +81,4 @@ class Database {
     public function rowCount(){
         return $this->stmt->rowCount();
     }
-    // public function executes(array $string){
-    //     return $this->stmt->execute($string);
-    // }
 }

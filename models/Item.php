@@ -1,94 +1,155 @@
 <?php
 require_once 'database.php';
-require_once 'models/Breakfast.php';
-require_once 'models/Drinks.php';
-require_once 'models/main.php';
-require_once 'models/Dinner.php';
-require_once 'models/Sides.php';
+require_once 'models/BreakfastItem.php';
+require_once 'models/DrinkItem.php';
+require_once 'models/MainItem.php';
+require_once 'models/SideItem.php';
+require_once 'models/DessertItem.php';
 class Item {
 
-    private $db;
+    protected $db;
     protected $name;
     protected $category;
     protected $description;
     protected $price;
     protected $imagePath;
     
-    public function __construct($name,$category,$description, $price, $imagePath) {
+    public function __construct() {
         $this->db = new Database;
-        $this->name = $name;
-        $this->category = $category;
-        $this->description=$description;
-        $this->price = $price;
-        $this->imagePath= $imagePath;
     }
 
-    public function getName() {
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setPrice($price) {
+        $this->price = $price;
+    }
+
+    public function setCategory($category) {
+        $this->category = $category;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    public function setImagePath($imagePath) {
+        $this->imagePath=$imagePath;
+    }
+
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getPrice() {
+    public function getPrice()
+    {
         return $this->price;
     }
 
-    public function getCategory() {
+    public function getCategory()
+    {
         return $this->category;
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function getImagePath() {
+    public function getImagePath()
+    {
         return $this->imagePath;
     }
 
-    public function findItemByName($ItemName,$ItemType){
-        $this->db->query('SELECT * FROM :itemtype WHERE itemname = :itemname');
-        $this->db->bind(':itemname', $ItemName);
-        $this->db->bind(':itemtype', $ItemType);
-        $row = $this->db->single();
+    public static function findItemByName($itemName, $itemType)
+    {
+		$db = new Database;
+        $itemType = strtolower($itemType);
+
+        $db->query('SELECT * FROM ' . $itemType . ' WHERE Name = :itemname');
+        $db->bind(':itemname', $itemName);
+        $row = $db->single();
 
         //Check row
-        if($this->db->rowCount() > 0){
+        if ($db->rowCount() > 0) 
             return $row;
-        }else{
+         else 
+            return false;
+        
+    }
+
+    public static function findItemByID($itemType, $id)
+    {
+        $db = new Database;
+        $itemType = strtolower($itemType);
+
+        $db->query('SELECT * FROM ' . $itemType . ' WHERE id = :id');
+        $db->bind(':id', $id);
+        $result = $db->single();
+
+        //Check row
+        if ($db->rowCount() > 0)
+            return $result;
+        else
+            return false;
+    }
+
+    public function getItemData($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+        $this->db->query('SELECT * FROM ' . $itemType);
+
+        $rows = $this->db->resultSet();
+        if ($this->db->rowCount() > 0) {
+            return $rows;
+        } else {
+            return false;
+        }
+    }
+    public static function getAllItems()
+    {
+        $db = new Database;
+        $db->query('SELECT *, "breakfast" AS itemType FROM breakfast 
+                    UNION SELECT *, "main" AS itemType FROM main 
+                    UNION SELECT *, "drinks" AS itemType FROM drinks 
+                    UNION SELECT *, "sides" AS itemType FROM sides 
+                    UNION SELECT *, "desserts" AS itemType FROM desserts');
+        $rows = $db->resultSet();
+
+        if ($db->rowCount() > 0)
+            return $rows;
+        else
+            return false;
+    }
+
+
+    public static function getItems($itemType)
+    {
+        $itemType = strtolower($itemType);
+        $db = new Database;
+
+        $db->query('SELECT * FROM ' . $itemType);
+        $rows = $db->resultSet();
+        if ($db->rowCount() > 0) {
+            return $rows;
+        } else {
             return false;
         }
     }
 
     public function add($item_type) {
-        $item = null;
-    
-        switch ($item_type) {
-            case 'breakfast':
-                $item = new BreakfastItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'main':
-                $item = new MainItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'drinks':
-                $item = new DrinkItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'sides':
-                $item = new SideItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            case 'dinner':
-                $item = new DinnerItem($this->name, $this->category, $this->description, $this->price, $this->imagePath);
-                break;
-            default:
-                return false;
-        }
-    
+      
         
         $this->db->query('INSERT INTO ' . $item_type . ' (Name, Category, Description, Price, ImagePath) 
             VALUES (:item_name, :category, :description, :price, :image_path)');
     
-        $this->db->bind(':item_name', $item->getName());
-        $this->db->bind(':price', $item->getPrice());
-        $this->db->bind(':category', $item->getCategory());
-        $this->db->bind(':description', $item->getDescription());
-        $this->db->bind(':image_path', $item->getImagePath());
+        $this->db->bind(':item_name', $this->name);
+        $this->db->bind(':price', $this->price);
+        $this->db->bind(':category', $this->category);
+        $this->db->bind(':description', $this->description);
+        $this->db->bind(':image_path', $this->imagePath);
     
         if ($this->db->execute()) {
             return true;
@@ -98,16 +159,52 @@ class Item {
     }
 
     //Update item
-    // public function resetPassword($data){
-    //     $this->db->query('UPDATE items SET UserPass=:pwd WHERE Email=:email');
-    //     $this->db->bind(':userpass', $newPwdHash);
-    //     $this->db->bind(':email', $tokenEmail);
+    public function edit($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
 
-    //     //Execute
-    //     if($this->db->execute()){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // }
+        $this->db->query('UPDATE ' . $itemType . ' SET Name=:item_name ,Category=:category ,Description=:description ,Price=:price, ImagePath=:image_path WHERE id=:id');
+        $this->db->bind(':id', $ID);
+        $this->db->bind(':item_name',  $this->getName());
+        $this->db->bind(':price', $this->getPrice());
+        $this->db->bind(':category',$this->getCategory());
+        $this->db->bind(':description',$this->getDescription());
+        $this->db->bind(':image_path',  $this->getImagePath());
+
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function doesItemExist($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+        $db = new Database;
+
+        $db->query('SELECT * FROM ' . $itemType . ' WHERE id = :id');
+        $db->bind(':id', $ID);
+
+        $result = $db->single();
+
+        // returns true if rowCount() > 0
+        return $db->rowCount() > 0;
+    }
+    public function delete($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+
+        $this->db->query('DELETE FROM ' . $itemType . ' WHERE id=:id');
+        
+        $this->db->bind(':id', $ID);
+
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -10,6 +10,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="shortcut icon" href="template/images/favicon.png" />
     <style>
       @media (min-width: 1025px) {
         .h-custom {

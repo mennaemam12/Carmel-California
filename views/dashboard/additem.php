@@ -1,7 +1,7 @@
 <?php
 @session_start();
 include 'projectFolderName.php';
-include 'helpers/session.helper.php';
+require_once 'helpers/session.helper.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ include 'helpers/session.helper.php';
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_settings-panel.html -->
-            <!-- <?php include_once 'views/partials/dashboard/_settings-panel.php'; ?> -->
+            
 
             <!-- Sidebar -->
             <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
@@ -69,8 +69,8 @@ include 'helpers/session.helper.php';
                                             <select class="form-control" id="itemtype" name="itemtype">
                                                 <option>breakfast</option>
                                                 <option>main</option>
-                                                <option>dinner</option>
                                                 <option>drinks</option>
+                                                <option>desserts</option>
                                                 <option>sides</option>
                                             </select>
                                         </div>
@@ -80,9 +80,10 @@ include 'helpers/session.helper.php';
                                         </div>
                                         <div class="form-group">
                                             <label>Product Image </label>
+                                            <div id = "image-preview" class = "image-preview"></div>
                                             <input type="file" name="file" id="file" class="file-upload-default">
                                             <div class="input-group col-xs-12">
-                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" onchange="previewImage();">
                                                 <span class="input-group-append">
                                                     <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                                 </span>
@@ -139,6 +140,8 @@ include 'helpers/session.helper.php';
         <script src="template/js/file-upload.js"></script>
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
+
+        <script src = "public/js/dashboard/imagePreview.js"></script>
 </body>
 
 </html>

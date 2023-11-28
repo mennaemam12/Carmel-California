@@ -1,5 +1,15 @@
 <?php
-include 'projectFolderName.php'
+include 'projectFolderName.php';
+require_once 'models/Item.php';
+
+$url = $_SERVER['REQUEST_URI'];
+// segments
+$segments = explode('/', $url);
+
+$itemID = trim($segments[count($segments) - 1]);
+$itemType = trim($segments[count($segments) - 2]);
+
+$item = Item::findItemByID($itemType, $itemID);
 ?>
 
 
@@ -7,7 +17,7 @@ include 'projectFolderName.php'
 <html lang="en">
 
 <head>
-  <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+  <title>Carmel Calfornia</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -34,7 +44,7 @@ include 'projectFolderName.php'
 
   <link rel="stylesheet" href="public/css/flaticon.css">
   <link rel="stylesheet" href="public/css/icomoon.css">
-
+  <link rel="shortcut icon" href="template/images/favicon.png" />
   <link rel="stylesheet" href="public/css/nav.css">
   <link rel="stylesheet" href="public/css/footer.css">
   <link rel="stylesheet" href="public/css/product.css">
@@ -66,14 +76,18 @@ include 'projectFolderName.php'
     <div class="container">
       <div class="row">
         <div class="col-lg-6 mb-5 ftco-animate">
-          <a href="public/images/menu-2.jpg" class="image-popup"><img src="public/images/menu-2.jpg" class="img-fluid" alt="Colorlib Template"></a>
+          <!-- <a href="public/images/menu-2.jpg" class="image-popup"><img src="public/images/menu-2.jpg" class="img-fluid" alt="Colorlib Template"></a> -->
+          <a href="<?php echo $item->ImagePath; ?>" class="image-popup"><img src="<?php echo $item->ImagePath; ?>" class="img-fluid" alt="Colorlib Template"></a>
         </div>
         <div class="col-lg-6 product-details pl-md-5 ftco-animate">
-          <h3>Creamy Latte Coffee</h3>
-          <p class="price"><span>$4.90</span></p>
-          <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+          <!-- <h3>Creamy Latte Coffee</h3> -->
+          <h3><?php echo $item->Name; ?></h3>
+          <!-- <p class="price"><span>$4.90</span></p> -->
+          <p class="price"><span><?php echo $item->Price . " EGP"; ?></span></p>
+          <p><?php echo $item->Description; ?></p>
+          <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
           <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.
-          </p>
+          </p> -->
           <div class="row mt-4">
             <div class="col-md-6">
               <div class="form-group d-flex">

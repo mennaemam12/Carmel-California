@@ -1,7 +1,7 @@
 <?php
 @session_start();
 include 'projectFolderName.php';
-include 'helpers/session.helper.php';
+require_once 'helpers/session.helper.php';
 ?>
 
 <!DOCTYPE html>

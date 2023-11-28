@@ -40,7 +40,7 @@ class IngredientController
         }
 
         if (!$imagePath) {
-            flash("formError", "Failed to save the image", 'form-message form-message-red');
+            flash("formError", "Failed to save image", 'form-message form-message-red');
             redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
             return false;
         }

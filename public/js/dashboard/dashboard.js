@@ -10,6 +10,7 @@ function addActiveClass() {
     .replace(/^\/|\/$/g, "");
 
   currentPage = currentPage.toLowerCase();
+  thirdLastSegment = location.pathname.split("/").slice(-3)[0];
 
   switch (currentPage) {
     case "dashboard":
@@ -18,7 +19,12 @@ function addActiveClass() {
 
     case "additem":
     case "viewitems":
-    case "edititem":
+      element = $("#sidebar-menu");
+      break;
+  }
+
+  switch (thirdLastSegment) {
+    case 'edititem':
       element = $("#sidebar-menu");
       break;
   }
