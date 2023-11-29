@@ -68,6 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'addingredient':
             include 'views/dashboard/addingredient.php';
             exit();
+        case 'addoption':
+            include 'views/dashboard/addItemOption.php';
+            exit();
         case 'chartjs':
             include 'views/dashboard/chartjs.php';
             exit();
