@@ -4,29 +4,31 @@ document.addEventListener("DOMContentLoaded", function() {
     function retrieveCategoriesByType(selectedType) {
         // Use the $.ajax function
         $.ajax({
-            url: "../routes/dashboard.php",
-            method: "GET",
+            url: "dashboard/addoptions",
+            method: "POST",
             data: {
-                action: "getCategories",
+
                 type: selectedType
             },
             success: function(response) {
-                console.log(response)
-                // Handle the successful response
-                try {
-                    var categories = JSON.parse(response);
+                if(response){
+                    console.log(response)
+                    // Handle the successful response
+                    try {
+                        var categories = JSON.parse(response);
 
-                    var categorySelect = document.getElementById("category");
-                    categorySelect.innerHTML = "";
+                        var categorySelect = document.getElementById("category");
+                        categorySelect.innerHTML = "";
 
-                    categories.forEach(category => {
-                        var option = document.createElement("option");
-                        option.value = category;
-                        option.text = category;
-                        categorySelect.appendChild(option);
-                    });
-                } catch (e) {
-                    console.error("Error parsing JSON:", e);
+                        categories.forEach(category => {
+                            var option = document.createElement("option");
+                            option.value = category;
+                            option.text = category;
+                            categorySelect.appendChild(option);
+                        });
+                    } catch (e) {
+                        console.error("Error parsing JSON:", e);
+                    }
                 }
             },
             error: function(xhr, status, error) {
@@ -46,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
     selectType.addEventListener("change", function() {
         enableDropdown();
         var selectedType = selectType.value;
-        console.log(selectedType);
         retrieveCategoriesByType(selectedType);
     });
 });

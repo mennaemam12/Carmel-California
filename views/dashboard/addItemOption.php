@@ -59,7 +59,7 @@ require_once 'helpers/session.helper.php';
                                         <div class="form-group">
                                             <label for="itemtype">Type</label>
                                             <select class="form-control" id="itemtype" name="itemtype">
-                                            <option value="" selected disabled hidden>Choose Type</option>
+                                            <option value="" selected  hidden>Choose Type</option>
                                                 <option value="breakfast">Breakfast</option>
                                                 <option value="main">Main</option>
                                                 <option value="drinks">Drinks</option>
@@ -73,31 +73,37 @@ require_once 'helpers/session.helper.php';
                                                 <option value="" selected disabled hidden>Choose Category</option>
                                             </select>
                                         </div>
-            
-                                        <div class="form-group">
-                                            <label>Product Image </label>
-                                            <div id = "image-preview" class = "image-preview"></div>
-                                            <input type="file" name="file" id="file" class="file-upload-default">
-                                            <div class="input-group col-xs-12">
-                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" onchange="previewImage();">
-                                                <span class="input-group-append">
-                                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                                </span>
+
+                                        <div class="form-group" id="option-container">
+                                            <label for="option-criteria">Option Criteria</label>
+                                            <input type="text" class="form-control" id="option-criteria" name="option-criteria" required>
+                                            <br>
+                                            <div class="form-group" id="options">
+                                                <label for="option-values">Option Value</label>
+                                                <input type="text" class="form-control" name="option-values[]" required>
                                             </div>
+
+                                            
                                         </div>
-                                        <div class="form-group">
-                                            <label for="descriptions">Description</label>
-                                            <textarea class="form-control" id="descriptions" name="descriptions" rows="4"></textarea>
-                                        </div>
+ 
+            
                                         <div class="form-message-div">
                                             <?php flash('formError') ?>
                                         </div>
                                         <div class="form-message-div">
                                             <?php flash('formSuccess') ?>
                                         </div>
+                                        <button type="button" class="btn btn-primary btn-sm mt-2" onclick="addOptionField()">Add Option</button><br><br><br>
                                         <button type="submit" class="btn btn-primary mr-2" value="Upload File">Submit</button>
                                         <a href="dashboard" class="btn btn-light">Cancel</a>
                                     </form>
+                                    <script>
+                                            function addOptionField() {
+                                                // Clone the first option values input and append it
+                                                var clone = document.getElementById('options').cloneNode(true);
+                                                document.getElementById('option-container').appendChild(clone);
+                                            }
+                                     </script>
                                 </div>
                             </div>
                         </div>
@@ -111,6 +117,7 @@ require_once 'helpers/session.helper.php';
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="public/js/dashboard/retrieveCategory-AJAX.js"></script>
         <!-- container-scroller -->
         <!-- plugins:js -->
         <script src="template/vendors/js/vendor.bundle.base.js"></script>
@@ -139,7 +146,6 @@ require_once 'helpers/session.helper.php';
         <script src="template/js/select2.js"></script>
 
         <script src = "public/js/dashboard/imagePreview.js"></script>
-        <script src="public/js/dashboard/retrieveCategory_AJAX.js"></script>
 </body>
 
 </html>

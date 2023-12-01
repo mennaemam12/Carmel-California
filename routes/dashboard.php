@@ -5,6 +5,7 @@ include 'projectFolderName.php';
 
 
 
+
 // Commenting till we have a proper database
 // Check if the user is already logged in
 // if (isset($_SESSION['userType'])) {
@@ -20,86 +21,6 @@ $segments = explode('/', $url);
 $lastSegment = trim(strtolower($segments[count($segments) - 1]));
 $thirdlastSegment = trim(strtolower($segments[count($segments) - 3]));
 
-
- // Check if the request is an AJAX request
- if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"])) {
- 
-    if ($_GET["action"] == "getCategories") {
-        $items=[];
-        include 'controllers/menu.controller.php';
-        // Instantiate the MenuController
-        $menuController = new MenuController();
-
-         // Handle AJAX request for categories
-         if (isset($_GET['type'])) {
-             switch ($_GET['type']) {
-                 case 'breakfast':
-                     $items = BreakfastItem::getBreakfastItems();
-                     break;
-                 case 'main':
-                     $items = MainItem::getMainItems();
-                     break;
-                 case 'drinks':
-                     $items = DrinkItem::getDrinkItems();
-                     break;
-                 case 'desserts':
-                     $items = DessertItem::getDessertsItems();
-                     break;
-                 case 'sides':
-                     $items = SideItem::getSideItems();
-                     break;
-                 default:
-                     http_response_code(400);
-                     echo "Invalid item type";
-                     exit;
-             }
- 
-             // Check if $items is not false (indicating an error)
-             if ($items === false) {
-                 http_response_code(500);
-                 echo "Error fetching items";
-                 exit;
-             }
- 
-             // Check if $items is an array
-             if (!is_array($items)) {
-                 http_response_code(500);
-                 echo "Unexpected data format for items";
-                 exit;
-             }
- 
-             $uniqueCategories = $menuController->extractUniqueCategories($items);
- 
-             // Check if $uniqueCategories is not false (indicating an error)
-             if ($uniqueCategories === false) {
-                 http_response_code(500);
-                 echo "Error extracting unique categories";
-                 exit;
-             }
- 
-             // Return the categories as JSON
-             $jsonResponse = json_encode($uniqueCategories);
- 
-             // Check for JSON encoding errors
-             if ($jsonResponse === false) {
-                 $jsonError = json_last_error_msg();
-                 http_response_code(500);
-                 echo "JSON encoding error: $jsonError";
-                 exit;
-             }
- 
-             echo $jsonResponse;
-             exit;
-         } else {
-             http_response_code(400);
-             echo "Type parameter is missing";
-         }
-     } else {
-         http_response_code(400);
-         echo "Invalid action parameter";
-     }
-
-    }
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
 
     if (count($segments) < 4) {
@@ -182,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
         case 'reviews':
             include 'views/dashboard/reviews.php';
             exit();
+        
         default:
             include 'views/404.php';
             exit();
@@ -205,6 +127,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ingredient = new IngredientController;
             $ingredient->add();
             exit();
+
+        case 'addoptions':     
+            $items=[];
+            include 'controllers/item.controller.php';
+            ItemController::getAjaxCategories();
+
+        case 'addoption':
+            include 'controllers/item.controller.php';
+
+        
     }
 
     switch ($thirdlastSegment) {
@@ -223,17 +155,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     
-    if (isset($_POST['type'])) {
-        $menuController = new MenuController();
-        $uniqueCategories = $menuController->extractUniqueCategories($_POST['type']);
-        var_dump($uniqueCategories);
+    // if (isset($_POST['type'])) {
+    //     $menuController = new MenuController();
+    //     $uniqueCategories = $menuController->extractUniqueCategories($_POST['type']);
+    //     var_dump($uniqueCategories);
 
-        $out = '';
-        foreach ($uniqueCategories as $category) {   
-            $out .=  '<option>' . $category . '</option>'; 
-        }
-        echo $out;
-    } else {
-        echo "Invalid request"; // Handle the case when 'type' is not set in POST data
-    }
+    //     $out = '';
+    //     foreach ($uniqueCategories as $category) {   
+    //         $out .=  '<option>' . $category . '</option>'; 
+    //     }
+    //     echo $out;
+    // } else {
+    //     echo "Invalid request"; // Handle the case when 'type' is not set in POST data
+    // }
 }
