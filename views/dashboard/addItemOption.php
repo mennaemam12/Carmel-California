@@ -68,7 +68,7 @@ require_once 'helpers/session.helper.php';
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleSelectGender">Category</label>
+                                            <label for="category">Category</label>
                                             <select class="form-control" id="category" name="category" disabled>
                                                 <option value="" selected disabled hidden>Choose Category</option>
                                             </select>
@@ -86,7 +86,7 @@ require_once 'helpers/session.helper.php';
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleTextarea1">Description</label>
+                                            <label for="descriptions">Description</label>
                                             <textarea class="form-control" id="descriptions" name="descriptions" rows="4"></textarea>
                                         </div>
                                         <div class="form-message-div">
@@ -109,6 +109,8 @@ require_once 'helpers/session.helper.php';
             </div>
             <!-- page-body-wrapper ends -->
         </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <!-- container-scroller -->
         <!-- plugins:js -->
         <script src="template/vendors/js/vendor.bundle.base.js"></script>
@@ -136,7 +138,6 @@ require_once 'helpers/session.helper.php';
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src = "public/js/dashboard/imagePreview.js"></script>
         <script src="public/js/dashboard/retrieveCategory_AJAX.js"></script>
 </body>

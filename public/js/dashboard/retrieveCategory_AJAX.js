@@ -1,40 +1,39 @@
 document.addEventListener("DOMContentLoaded", function() {
+    console.log("Menna");
     // Function to retrieve categories based on type
     function retrieveCategoriesByType(selectedType) {
-        // Create a new XMLHttpRequest object
-        var xhr = new XMLHttpRequest();
+        // Use the $.ajax function
+        $.ajax({
+            url: "../routes/dashboard.php",
+            method: "GET",
+            data: {
+                action: "getCategories",
+                type: selectedType
+            },
+            success: function(response) {
+                console.log(response)
+                // Handle the successful response
+                try {
+                    var categories = JSON.parse(response);
 
-        // Configure it: GET-request for the PHP script with the selected type as a parameter
-        xhr.open("GET", "menu.controller.php?action=getCategories&type=" + selectedType, true);
+                    var categorySelect = document.getElementById("category");
+                    categorySelect.innerHTML = "";
 
-        // Set up the callback function to handle the response
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    try {
-                        // Try parsing the JSON response
-                        var categories = JSON.parse(xhr.responseText);
-
-                        var categorySelect = document.getElementById("category");
-                        categorySelect.innerHTML = "";
-
-                        categories.forEach(category => {
-                            var option = document.createElement("option");
-                            option.value = category;
-                            option.text = category;
-                            categorySelect.appendChild(option);
-                        });
-                    } catch (e) {
-                        console.error("Error parsing JSON:", e);
-                    }
-                } else {
-                    console.error("Error with the request. Status code:", xhr.status);
+                    categories.forEach(category => {
+                        var option = document.createElement("option");
+                        option.value = category;
+                        option.text = category;
+                        categorySelect.appendChild(option);
+                    });
+                } catch (e) {
+                    console.error("Error parsing JSON:", e);
                 }
+            },
+            error: function(xhr, status, error) {
+                // Handle errors
+                console.error("Error with the request. Status code:", xhr.status);
             }
-        };
-
-        // Send the request
-        xhr.send();
+        });
     }
 
     function enableDropdown() {
@@ -47,7 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
     selectType.addEventListener("change", function() {
         enableDropdown();
         var selectedType = selectType.value;
+        console.log(selectedType);
         retrieveCategoriesByType(selectedType);
     });
-
 });
+
