@@ -141,13 +141,30 @@ CREATE TABLE `users` (
   `Usertype` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `discount`
+--
+
+CREATE TABLE `discount` (
+  `id` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `percentage` int(50) DEFAULT NULL,
+  `coupon` varchar(100) DEFAULT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `valid` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `Usertype`) VALUES
-('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, 'user'),
-('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, 'admin');
+INSERT INTO `discount` (`id`, `type`, `category`, `percentage`,  `coupon`, `start_date` , `end_date`,`valid`) VALUES
+(1, 'breakfast', 'Eggs', 10, , 'Eggs10', '1/12/2023' , '1/2/2024' , 'valid');
 
 --
 -- Indexes for dumped tables
@@ -189,6 +206,15 @@ ALTER TABLE `sides`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
+
+
+--
+-- Indexes for table `discount`
+--
+ALTER TABLE `discount`
+  ADD PRIMARY KEY (`id`);
+
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -229,6 +255,15 @@ ALTER TABLE `sides`
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
+
+
+--
+-- AUTO_INCREMENT for table `discount`
+--
+ALTER TABLE `discount`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

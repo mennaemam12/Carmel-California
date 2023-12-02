@@ -127,8 +127,10 @@ require_once 'helpers/session.helper.php';
                                         <div class="form-message-div">
                                             <?php flash('formSuccess') ?>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mr-2" value="Upload File">Submit</button>
+                                        <input type="hidden" id="startDate" name="start_date" value=""  >
+                                        <button type="submit" class="btn btn-primary mr-2" value="Upload File"  onclick="setStartDate()">Submit</button>
                                         <a href="dashboard" class="btn btn-light">Cancel</a>
+                                       
                                     </form>
                                 </div>
                             </div>
@@ -143,6 +145,17 @@ require_once 'helpers/session.helper.php';
         </div>
         <!-- container-scroller -->
         <script>
+            function setStartDate() {
+            // Get the current date
+            var currentDate = new Date();
+
+            // Format the date as 'd/m/Y'
+            var formattedDate = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + '/' + currentDate.getFullYear();
+
+            // Set the formatted date into the hidden input field
+            document.getElementById('startDate').value = formattedDate;
+            console.log(formattedDate)
+        }
             function enablecategoryDropdown() {
             var typeDropdown = document.getElementById("typeDropdown");
             var categoryDropdown = document.getElementById("categoryDropdown");

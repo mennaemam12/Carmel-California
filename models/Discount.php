@@ -41,11 +41,15 @@ class Discount{
     }
     public function setStartDate($start_date)
     {
-        $this->start_date = $start_date;
+        // Convert 'd/m/Y' to 'Y-m-d' format
+        $formattedStartDate = DateTime::createFromFormat('d/m/Y', $start_date);
+        $this->start_date = $formattedStartDate->format('Y-m-d');
     }
     public function setEndDate($end_date)
     {
-        $this->end_date = $end_date;
+        // Convert 'd/m/Y' to 'Y-m-d' format
+        $formattedEndDate = DateTime::createFromFormat('d/m/Y', $end_date);
+        $this->end_date = $formattedEndDate->format('Y-m-d');
     }
     public function setValid($valid)
     {
@@ -70,11 +74,15 @@ class Discount{
     }
     public function getStartDate()
     {
-        return $this->start_date;
+        // Convert 'Y-m-d' to 'd/m/Y' format
+        $formattedStartDate = DateTime::createFromFormat('Y-m-d', $this->start_date);
+        return $formattedStartDate->format('d/m/Y');
     }
     public function getEndDate()
     {
-        return $this->end_date;
+        // Convert 'Y-m-d' to 'd/m/Y' format
+        $formattedEndDate = DateTime::createFromFormat('Y-m-d', $this->end_date);
+        return $formattedEndDate->format('d/m/Y');
     }
     public function getValid()
     {
