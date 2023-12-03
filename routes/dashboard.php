@@ -128,6 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ingredient->add();
             exit();
 
+
         case 'addoptions':     
             $items=[];
             include 'controllers/item.controller.php';
@@ -138,6 +139,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             include 'controllers/itemOption.controller.php';
             $option=new OptionController;
             $option->addOption();
+            exit();
+
+
+        case'discount':
+            include 'controllers/discount.controller.php';
+            $discount = new DiscountController;
+            $discount->add();
             exit();
 
         
