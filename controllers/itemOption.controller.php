@@ -35,8 +35,16 @@ class OptionController{
         $this->optionModel->setCriteria($data['optionCriteria']);
         $this->optionModel->setOptions($data['optionValues']);
 
-
-
+        if ($this->optionModel->addOption()) {
+            flash("formSuccess", "Item added successfully", 'form-message form-message-green');
+            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            exit();
+        }
+        else{
+            flash("formError", "Failed to add item to the database", 'form-message form-message-red');
+            redirect($GLOBALS['projectFolder'] . "/dashboard/additem");
+            exit();
+        }
         
     }
 

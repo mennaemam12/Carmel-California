@@ -82,15 +82,19 @@ class Database {
         return $this->stmt->rowCount();
     }
 
+    public function lastInsertId(){
+        return $this->dbh->lastInsertId();
+    }
+
     public function getCategoryIdByName($categoryName) {
         $this->query('SELECT id FROM categories WHERE Name = :name');
         $this->bind(':name', $categoryName);
-        $result = $this->single();
-
-        if ($result) {
-            return $result['id'];
-        } else {
-            return false; 
+        $row = $this->single(); // 
+    
+        if ($row) {
+            return $row->id; 
         }
+    
+        return null; 
     }
 }

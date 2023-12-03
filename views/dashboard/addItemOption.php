@@ -101,6 +101,7 @@ require_once 'helpers/session.helper.php';
                                             function addOptionField() {
                                                 // Clone the first option values input and append it
                                                 var clone = document.getElementById('options').cloneNode(true);
+                                                clone.querySelector('input').value = '';
                                                 document.getElementById('option-container').appendChild(clone);
                                             }
                                      </script>

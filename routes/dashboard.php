@@ -132,9 +132,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $items=[];
             include 'controllers/item.controller.php';
             ItemController::getAjaxCategories();
+            exit();
 
         case 'addoption':
-            include 'controllers/item.controller.php';
+            include 'controllers/itemOption.controller.php';
+            $option=new OptionController;
+            $option->addOption();
+            exit();
 
         
     }

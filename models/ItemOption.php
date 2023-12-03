@@ -1,4 +1,5 @@
 <?php
+require_once 'database.php';
 class ItemOption{
     protected $db;
     private $category;
@@ -46,7 +47,17 @@ class ItemOption{
         
             // Execute the query
             $this->db->execute();
+            $lastInsertedOptionId = $this->db->lastInsertId();
+            foreach($this->options as $value){
+                // Insert into option_values table
+                $this->db->query('INSERT INTO option_values (id_options, value) VALUES (:optionID, :optionValue)');
+                $this->db->bind(':optionID', $lastInsertedOptionId);
+                $this->db->bind(':optionValue', $value);
+                $this->db->execute();
+            }
+            return true;
         } 
+        return false;
         
     }
 
