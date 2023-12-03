@@ -152,7 +152,7 @@ class Item {
         $this->db->bind(':image_path', $this->imagePath);
     
         if ($this->db->execute()) {
-            $this->db->query('SELECT ID FROM categories WHERE Name = :name');
+            $this->db->query('SELECT id FROM categories WHERE Name = :name');
             $this->db->bind(':name', $this->category);
             $result = $this->db->single();
 
@@ -161,6 +161,7 @@ class Item {
                 $this->db->bind(':name', $this->category);
                 $this->db->execute();
             }
+
             return true;
         } else {
             return false;
