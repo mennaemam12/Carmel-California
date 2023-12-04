@@ -16,6 +16,7 @@ class MainItem extends Item{
         foreach ($result as $row) {
             $item = new MainItem;
 			
+            $item->setID($row->id);
 			$item->setName($row->Name);
 			$item->setCategory($row->Category);
 			$item->setDescription($row->Description);

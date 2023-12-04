@@ -1,5 +1,6 @@
 <?php
 require_once 'database.php';
+require_once 'models/Item.php';
 class ItemOption{
     protected $db;
     private $category;
@@ -60,6 +61,51 @@ class ItemOption{
         return false;
         
     }
+
+    private function getOptionValues($valuesID,$criteria){
+        // Now, get the option values
+        $sqlOptionValues = 'SELECT ov.value
+        FROM option_values ov
+        WHERE ov.id_options = :valuesID';
+
+        $this->db->query($sqlOptionValues);
+        $this->db->bind(':valuesID', $valuesID);
+
+        $optionValuesRows = $this->db->resultSet();
+        $optionValues=[];
+        foreach($optionValuesRows as $ovr){
+            array_push($optionValues, $ovr->value);
+        }
+
+        return ['criteria' => $criteria, 'values' => $optionValues];
+   }
+
+    public static function getItemOptions($itemType,$itemID){
+        $db=new Database;
+        $item = Item::findItemByID($itemType, $itemID);
+
+        $sql = 'SELECT o.id,o.Criteria 
+        FROM options o
+        INNER JOIN categories c ON o.Category_id = c.id
+        WHERE c.Name = :categoryName';
+
+        $db->query($sql);
+        $db->bind(':categoryName', $item->Category);
+
+        $rows = $db->resultSet();
+        $result=[];
+        foreach ($rows as $row) {
+            $valuesID = $row->id;
+            $criteria = $row->Criteria;
+    
+            $itemOption = new ItemOption();
+            $result[] = $itemOption->getOptionValues($valuesID, $criteria);
+        }
+    
+        return $result;
+    }
+
+  
 
 }
 

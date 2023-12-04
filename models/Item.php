@@ -8,6 +8,7 @@ require_once 'models/DessertItem.php';
 class Item {
 
     protected $db;
+    protected $id;
     protected $name;
     protected $category;
     protected $description;
@@ -16,6 +17,10 @@ class Item {
     
     public function __construct() {
         $this->db = new Database;
+    }
+
+    public function setID($id) {
+        $this->id = $id;
     }
 
     public function setName($name) {
@@ -36,6 +41,11 @@ class Item {
 
     public function setImagePath($imagePath) {
         $this->imagePath=$imagePath;
+    }
+
+    public function getID()
+    {
+        return $this->id;
     }
 
     public function getName()

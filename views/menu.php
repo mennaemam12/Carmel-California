@@ -116,7 +116,7 @@
 		          
 					<?php
 
-				function generateItemsHTML($Categories, $Items)
+				function generateItemsHTML($Categories, $Items, $itemType)
 				{
 					$html = '<section class="ftco-section">
 								<div class="container">
@@ -128,7 +128,8 @@
 
 						foreach ($Items as $item) {
 							if ($item->getCategory() == $category) {
-								$html .= '<div class="pricing-entry d-flex ftco-animate">
+								$html .= '<div class="pricing-entry d-flex ftco-animate" onclick="window.location.href=\'menu/' .
+								$itemType . '/' . $item->getID() . '\'">
 											<div class="img" style="background-image: url(' . $item->getImagePath() . ');"></div>
 											<div class="desc pl-3">
 												<div class="d-flex text align-items-center">
@@ -158,23 +159,23 @@
 		            <div class="tab-content ftco-animate" id="v-pills-tabContent">
 
 		              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
-					  		<?php echo generateItemsHTML($mainCategories,$mainItems)?>
+					  		<?php echo generateItemsHTML($mainCategories,$mainItems,"main")?>
 		              </div>
 
 		              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-					  		<?php echo generateItemsHTML($sideCategories,$sideItems)?>
+					  		<?php echo generateItemsHTML($sideCategories,$sideItems,"sides")?>
 		              </div>
 
 		              <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-					  		<?php echo generateItemsHTML($breakfastCategories,$breakfastItems)?>
+					  		<?php echo generateItemsHTML($breakfastCategories,$breakfastItems,"breakfast")?>
 		              </div>
 
 					  <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
-					  		<?php echo generateItemsHTML($dessertCategories,$dessertItems)?>
+					  		<?php echo generateItemsHTML($dessertCategories,$dessertItems,"desserts")?>
 		              </div>
 
 					  <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
-					  		<?php echo generateItemsHTML($drinkCategories,$drinkItems)?>
+					  		<?php echo generateItemsHTML($drinkCategories,$drinkItems,"drinks")?>
 		              </div>
 
 		              </div>

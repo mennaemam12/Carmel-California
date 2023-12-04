@@ -1,6 +1,7 @@
 <?php
 include 'projectFolderName.php';
 require_once 'models/Item.php';
+require_once 'models/ItemOption.php';
 
 $url = $_SERVER['REQUEST_URI'];
 // segments
@@ -10,6 +11,9 @@ $itemID = trim($segments[count($segments) - 1]);
 $itemType = trim($segments[count($segments) - 2]);
 
 $item = Item::findItemByID($itemType, $itemID);
+
+$result=ItemOption::getItemOptions($itemType,$itemID);
+
 ?>
 
 
@@ -93,29 +97,25 @@ $item = Item::findItemByID($itemType, $itemID);
               <div class="form-group d-flex">
                 <div class="select-wrap">
                   <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                  <select name="" id="" class="form-control">
-                    <option value="">Small</option>
-                    <option value="">Medium</option>
-                    <option value="">Large</option>
-                    <option value="">Extra Large</option>
-                  </select>
+                  <?php if(!empty($result)){?>
+                    <?php foreach ($result as $itemOptions) {
+                     
+                        $criteria = $itemOptions['criteria'];
+                        $values = $itemOptions['values'];
+                    ?>
+                        <label for="options"><?=$criteria?></label>
+                        <select name="options" id="options" class="form-control">
+                          <?php foreach($values as $value){?>
+                            <option value="<?=$value?>"><?=$value?></option>
+                          <?php }?>
+                        </select>
+                    <?php }?>
+                  <?php }?>
                 </div>
               </div>
             </div>
             <div class="w-100"></div>
-            <div class="input-group col-md-6 d-flex mb-3">
-              <span class="input-group-btn mr-2">
-                <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
-                  <i class="icon-minus"></i>
-                </button>
-              </span>
-              <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-              <span class="input-group-btn ml-2">
-                <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-                  <i class="icon-plus"></i>
-                </button>
-              </span>
-            </div>
+         
           </div>
           <p><a href="cart" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
         </div>
