@@ -154,7 +154,7 @@ require_once 'helpers/session.helper.php';
             var formattedDate = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + '/' + currentDate.getFullYear();
 
             // Set the formatted date into the hidden input field
-            document.getElementById('start_date').value = formattedDate;
+            document.getElementById('startDate').value = formattedDate;
             console.log(formattedDate)
 
 
@@ -171,7 +171,7 @@ require_once 'helpers/session.helper.php';
         var formattedEndDate = endDate.getDate() + '/' + (endDate.getMonth() + 1) + '/' + endDate.getFullYear();
 
         // Set the formatted end date into the hidden input field
-        document.getElementById('end_date').value = formattedEndDate;
+        document.getElementById('endDate').value = formattedEndDate;
 
         console.log("End Date:", formattedEndDate);
     }
