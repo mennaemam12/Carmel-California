@@ -59,12 +59,10 @@ class Discount{
 }
 
     public function setValid() {
-        $startDate = $this->getStartDate();
-        $endDate = $this->getEndDate();
-
+       
         // Convert start date and end date strings to DateTime objects
-        $startDateTime = new DateTime($startDate);
-        $endDateTime = new DateTime($endDate);
+        $startDateTime = new DateTime( $this->getStartDate());
+        $endDateTime = new DateTime($this->getEndDate());
 
         // Calculate the difference between dates
         $interval = $endDateTime->diff($startDateTime);
