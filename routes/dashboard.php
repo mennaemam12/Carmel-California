@@ -147,8 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $discount = new DiscountController;
             $discount->add();
             exit();
-
-        
+     
     }
 
     switch ($thirdlastSegment) {
@@ -180,4 +179,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // } else {
     //     echo "Invalid request"; // Handle the case when 'type' is not set in POST data
     // }
+}
+else{
+    die ("something wrong in discount");
+
 }

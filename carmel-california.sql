@@ -192,6 +192,15 @@ INSERT INTO `sides` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePat
 
 -- --------------------------------------------------------
 
+
+
+--
+-- Dumping data for table `discount`
+--
+
+INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start_date`, `end_date`, `valid`) VALUES
+(1, 'breakfast', 'Eggs', 10, 'Eggs10', '2023-12-05', '2024-01-05', 'YES');
+
 --
 -- Table structure for table `users`
 --
@@ -204,6 +213,22 @@ CREATE TABLE `users` (
   `PhoneNumber` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `Usertype` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Table structure for table `discount`
+--
+
+CREATE TABLE `discount` (
+  `id` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `percentage` int(50) DEFAULT NULL,
+  `coupon` varchar(100) DEFAULT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `valid` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -272,9 +297,27 @@ ALTER TABLE `sides`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
+
+--
+-- Indexes for table `discount`
+--
+ALTER TABLE `discount`
+  ADD PRIMARY KEY (`id`);
+
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+
+
+--
+-- AUTO_INCREMENT for table `discount`
+--
+ALTER TABLE `discount`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 
 --
 -- AUTO_INCREMENT for table `breakfast`
