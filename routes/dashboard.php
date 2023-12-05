@@ -2,7 +2,7 @@
 // Path: routes/dashboard.php
 
 include 'projectFolderName.php';
-
+require_once 'helpers/session.helper.php';
 
 
 
@@ -148,7 +148,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $discount->add();
             exit();
 
-        
+        case 'deleteuser' :
+            include 'models/User.php';
+            $user = new User;
+            $userID = $_POST['id'];
+            $user->delete($userID);
+            redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
+            exit();
+            case 'makeadmin' :
+                include 'models/User.php';
+                $user = new User;
+                $userID = $_POST['id'];
+                $user->Makeadmin($userID);
+                redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
+                exit();
+     
     }
 
     switch ($thirdlastSegment) {
@@ -180,4 +194,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // } else {
     //     echo "Invalid request"; // Handle the case when 'type' is not set in POST data
     // }
+}
+else{
+    die ("something wrong in discount");
+
 }

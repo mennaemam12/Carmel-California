@@ -3,17 +3,6 @@ include 'projectFolderName.php';
 require_once 'models/Item.php';
 require_once 'models/ItemOption.php';
 
-$url = $_SERVER['REQUEST_URI'];
-// segments
-$segments = explode('/', $url);
-
-$itemID = trim($segments[count($segments) - 1]);
-$itemType = trim($segments[count($segments) - 2]);
-
-$item = Item::findItemByID($itemType, $itemID);
-
-$result=ItemOption::getItemOptions($itemType,$itemID);
-
 ?>
 
 
@@ -173,7 +162,7 @@ $result=ItemOption::getItemOptions($itemType,$itemID);
               <h3><a href="#">Coffee Capuccino</a></h3>
               <p>A small river named Duden flows by their place and supplies</p>
               <p class="price"><span>$5.90</span></p>
-              <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+              <p><a class="btn btn-primary btn-outline-primary" onclick="addToCart()">Add to Cart</a></p>
             </div>
           </div>
         </div>
