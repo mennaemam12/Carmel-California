@@ -1,3 +1,11 @@
+<?php
+@session_start();
+include 'projectFolderName.php';
+require_once 'helpers/session.helper.php';
+require_once 'models/User.php';
+$user =new  User;
+$rows=$user->getalluser();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,17 +67,22 @@
 
             <thead>
                 <tr class="heading">
-                    <th>SL No</th>
-                    <th>Picture</th>
-                    <th>Full Name</th>
-                    <th>Age</th>
-                    <th>City</th>
-                    <th>Order Numbers</th>
-                    <th>Points</th>
-                    <th>Birthday</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Action</th>
+                <?php
+for ($i = 0; $i < count($rows); $i++) {
+    echo "<td>" . $rows[$i]->id . "</td>";
+    echo "<td>" . $rows[$i]->FullName . "</td>";
+    echo "<td>" . $rows[$i]->Email . "</td>";
+    echo "<td>" . $rows[$i]->PhoneNumber . "</td>";
+    echo "<td>" . $rows[$i]->Usertype . "</td>";
+    echo "<td>
+        <a class='itemOptions' href=''>
+            <i class='fa-regular fa-pen-to-square'></i>
+        </a>
+        <a class='itemOptions' href=''><i class='fa-regular fa-trash-can'></i>
+        </a>
+        </td></tr>";
+}
+?>
                 </tr>
             </thead>
 
@@ -157,85 +170,10 @@
     <!--Popup Form-->
 
     <div class="dark_bg">
-
-        <div class="popup">
-             <header>
-                <h2 class="modalTitle">Fill the Form</h2>
-                <button class="closeBtn">&times;</button>
-             </header>
-
-             <div class="body">
-                <form action="#" id="myForm">
-                    <div class="imgholder">
-                        <label for="uploadimg" class="upload">
-                            <input type="file" name="" id="uploadimg" class="picture">
-                            <i class="fa-solid fa-plus"></i>
-                        </label>
-                        <img src="./img/pic1.png" alt="" width="150" height="150" class="img">
-                    </div>
-
-                    <div class="inputFieldcontainerx">
-
-                        <div class="nameField">
-                            <div class="form_control">
-                                <label for="fName">First Name:</label>
-                                <input type="text" name="" id="fName" required>
-                            </div>
-
-                            <div class="form_control">
-                                <label for="lName">Last Name:</label>
-                                <input type="text" name="" id="lName" required>
-                            </div>
-                        </div>
-
-                        <div class="ageCityField">
-                            <div class="form_control">
-                                <label for="age">Age:</label>
-                                <input type="number" name="" id="age" required>
-                            </div>
-
-                            <div class="form_control">
-                                <label for="city">City:</label>
-                                <input type="text" name="" id="city" required>
-                            </div>
-                        </div>
-
-                        <div class="postSalary">
-                            <div class="form_control">
-                                <label for="orderNumbers">Order Numbers:</label>
-                                <input type="number" name="" id="orderNumbers" required>
-                            </div>
-
-                            <div class="form_control">
-                                <label for="points">Points:</label>
-                                <input type="number" name="" id="points" required>
-                            </div>
-                        </div>
-
-                        <div class="form_control">
-                            <label for="birthday">Birthday:</label>
-                            <input type="date" name="" id="birthday" required>
-                        </div>
-
-                        <div class="form_control">
-                            <label for="email">Email:</label>
-                            <input type="email" name="" id="email" required>
-                        </div>
-
-                        <div class="form_control">
-                            <label for="phone">Phone:</label>
-                            <input type="number" name="" id="phone" required>
-                        </div>
-                    </div>
-                </form>
-             </div>
-
              <?php include_once 'views/partials/dashboard/_footer.php'; ?>
-        </div>
-
     </div>
 
 
-    <script src="template/js/app1.js"></script>
+
 </body>
 </html>

@@ -8,13 +8,20 @@ $url = $_SERVER['REQUEST_URI'];
 
 // segments
 $segments = explode('/', $url);
+
+$page = $segments[2];
+
+if (strpos($page, '?') !== false)
+    $page = strstr($segments[2], '?', true);
+
+
 // We use segments[2] to determine which route to load
 // segments[0] is empty because the URL starts with a slash
 // segments[1] is the project folder name 'Carmel-California'
 // segments[2] is the route name example: menu, about, contact, etc.
 
 // Define routes
-switch ($segments[2]) {
+switch ($page) {
     case '':
     case '/':
     case 'index':

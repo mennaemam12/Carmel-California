@@ -1,34 +1,29 @@
 <?php
+include 'controllers/itemOption.controller.php';
 // Path: routes/product.php
 
-// Get the current URL
-$url = $_SERVER['REQUEST_URI'];
-
-// segments
-$segments = explode('/', $url);
-$lastSegment = trim(strtolower($segments[count($segments) - 1]));
-$thirdlastSegment = trim(strtolower($segments[count($segments) - 3]));
-
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    include 'controllers/item.controller.php';
 
-    switch ($thirdlastSegment) {
-        case 'product':
-            include 'controllers/item.controller.php';
-
-            $itemID = $lastSegment;
-            $itemType = $segments[count($segments) - 2];
-
-            // Check if the item type & item id are valid
-            if (!ItemController::doesExist($itemType, $itemID)) {
-                include 'views/404.php';
-                exit();
-            }
-
-            //Passed checks
-            include 'views/singleProduct.php';
-            exit();
-        default:
-            include 'views/404.php';
-            exit();
+    //check if isset
+    if (!isset($_GET['type']) || !isset($_GET['id'])) {
+        include 'views/404.php';
+        exit();
     }
+
+    $itemType = $_GET['type'];
+    $itemID = $_GET['id'];
+
+    // Check if the item type & item id are valid
+    if (!ItemController::doesExist($itemType, $itemID)) {
+        include 'views/404.php';
+        exit();
+    }
+
+    //Passed checks
+    $item = Item::findItemByID($itemType, $itemID);
+
+    $result = ItemOption::getItemOptions($itemType, $itemID);
+    include 'views/singleProduct.php';
+    exit();
 }
