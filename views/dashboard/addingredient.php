@@ -57,26 +57,36 @@ require_once 'helpers/session.helper.php';
                                     </p>
                                     <form class="forms-sample" method="post" action="dashboard/addingredient" enctype='multipart/form-data'>
                                         <div class="form-group">
-                                            <label for="exampleInputName1">Ingredient Name</label>
+                                            <label for="ingredientname">Ingredient Name</label>
                                             <input type="text" class="form-control" id="ingredientname" name="ingredientname" placeholder="Ingredient Name"
                                             onclick='emptyMessage()'>
+                                            
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail3">Ingredient Price</label>
+                                            <label for="price">Ingredient Price</label>
                                             <input type="text" class="form-control" id="price" name="price" placeholder="Ingredient Price" onclick='emptyMessage()'>
+                                            
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleSelectGender">Category</label>
+                                            <label for="category">Category</label>
                                             <select class="form-control" id="category" name="category" onclick='emptyMessage()'>
                                                 <option>Base</option>
                                                 <option>Dressing</option>
-                                                <option>Vegetable</option>
+                                                <option>Topping</option>
                                                 <option>Protein</option>
-                                                <option>Add Ons</option>
+                                                <option>Add On</option>
+                                                <option>Fruit</option>
+                                                <option>Cheese</option>
                                             </select>
+                                            
                                         </div>
                                         <div class="form-group">
-                                            <label>Ingredient Image </label>
+                                            <label for="categorymax">Category Max</label>
+                                            <input type="text" class="form-control" id="categorymax" name="categorymax" placeholder="Example: 4" onclick='emptyMessage()'>
+                                           
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="file">Ingredient Image </label>
                                             <input type="file" name="file" id="file" class="file-upload-default" onclick='emptyMessage()'>
                                             <div class="input-group col-xs-12">
                                                 <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
