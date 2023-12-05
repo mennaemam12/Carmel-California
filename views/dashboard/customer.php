@@ -33,6 +33,41 @@ $rows=$user->getalluser();
 </head>
 
 <body>
+
+    <script>
+        function deleteUser(Userid) {
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'dashboard/deleteuser';
+
+            let input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "id";
+            input.value = Userid;
+
+            form.appendChild(input);
+            document.body.appendChild(form); 
+            form.submit();
+        }
+        function Makeadmin(Userid) {
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'dashboard/makeadmin';
+
+            let input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "id";
+            input.value = Userid;
+
+            form.appendChild(input);
+            document.body.appendChild(form); 
+            form.submit();
+        }
+    </script>
+
+
+
+
     <div class="container-scroller">
 
         <!-- Navbar -->
@@ -91,10 +126,10 @@ $rows=$user->getalluser();
                                                 echo "<td>" . $rows[$i]->PhoneNumber . "</td>";
                                                 echo "<td>" . $rows[$i]->Usertype . "</td>";
                                                 echo "<td>
-                                                    <a class='itemOptions' href=''>
-                                                        <i class='fa-regular fa-pen-to-square'></i>
+                                                    <a class='itemOptions'>
+                                                        <i class='fa-regular fa-pen-to-square' onclick='Makeadmin(".$rows[$i]->id.")'></i>
                                                     </a>
-                                                    <a class='itemOptions' href=''><i class='fa-regular fa-trash-can'></i></a>
+                                                    <a class='itemOptions' onclick='deleteUser(".$rows[$i]->id.")'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
                                             }
                                             ?>
@@ -145,7 +180,7 @@ $rows=$user->getalluser();
         <!-- inject:js -->
         <script src="template/js/off-canvas.js"></script>
         <script src="template/js/hoverable-collapse.js"></script>
-        <script src="public/js/dashboard/dashboard.js"></script>
+        
 
         <script src="template/js/settings.js"></script>
         <script src="template/js/todolist.js"></script>
@@ -157,6 +192,7 @@ $rows=$user->getalluser();
         <script src="template/js/file-upload.js"></script>
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
+        <script src="public/js/dashboard/dashboard.js"></script>
 </body>
 
 </html>
