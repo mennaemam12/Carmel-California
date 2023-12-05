@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 04:56 PM
+-- Generation Time: Dec 05, 2023 at 09:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -170,6 +170,39 @@ INSERT INTO `option_values` (`id`, `id_options`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `saladingredients`
+--
+
+CREATE TABLE `saladingredients` (
+  `id` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Price` double NOT NULL,
+  `Category` varchar(50) NOT NULL,
+  `CategoryMax` int(11) NOT NULL,
+  `ImagePath` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `saladingredients`
+--
+
+INSERT INTO `saladingredients` (`id`, `Name`, `Price`, `Category`, `CategoryMax`, `ImagePath`) VALUES
+(1, 'Lettuce', 15, 'Base', 1, 'public/images/salad-ingredients/Base/Cabbage.jpg'),
+(2, 'Arugula', 15, 'Base', 1, 'public/images/salad-ingredients/Base/Arugula.jpg'),
+(3, 'Baby Rocca', 20, 'Base', 1, 'public/images/salad-ingredients/Base/Baby Rocca.jpg'),
+(4, 'Mix Greens', 20, 'Base', 1, 'public/images/salad-ingredients/Base/Mix Greens.jpg'),
+(5, 'Coriander', 15, 'Base', 1, 'public/images/salad-ingredients/Base/Coriander.jpg'),
+(6, 'Blueberries', 20, 'Add On', 3, 'public/images/salad-ingredients/Add Ons/Blueberries.jpg'),
+(7, 'Strawberries', 15, 'Add On', 2, 'public/images/salad-ingredients/Add Ons/Strawberries.jpg'),
+(8, 'Onions', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Onions.jpg'),
+(9, 'Grilled Chicken', 25, 'Protein', 1, 'public/images/salad-ingredients/Toppings/Grilled Chicken.jpg'),
+(10, 'Red Beans', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Red Beans.jpg'),
+(11, 'Cherry Tomato', 15, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Cherry Tomato.jpg'),
+(12, 'Pepper', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Pepper.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sides`
 --
 
@@ -261,6 +294,12 @@ ALTER TABLE `option_values`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `saladingredients`
+--
+ALTER TABLE `saladingredients`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sides`
 --
 ALTER TABLE `sides`
@@ -317,6 +356,12 @@ ALTER TABLE `options`
 --
 ALTER TABLE `option_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `saladingredients`
+--
+ALTER TABLE `saladingredients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `sides`
