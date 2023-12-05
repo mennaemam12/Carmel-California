@@ -149,9 +149,9 @@ class User {
             return false;
         }
     }
-    public function Makeadmin($tokenEmail){
-        $this->db->query('UPDATE users SET Usertype="admin" WHERE Email=:email');
-        $this->db->bind(':email', $tokenEmail);
+    public function Makeadmin($ID){
+        $this->db->query('UPDATE users SET Usertype="admin" WHERE id=:id');
+        $this->db->bind(':id', $ID);
 
         //Execute
         if($this->db->execute()){

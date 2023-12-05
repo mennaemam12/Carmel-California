@@ -19,7 +19,7 @@ class DiscountController{
         $this->errorMsg = "";
         if (
             empty($data['type']) || empty($data['category']) || empty($data['percentage'])
-            || empty($data['copoun']) || empty($data['start_date']) || empty($data['end_date']) || empty($data['valid'])
+           || empty($data['start_date']) || empty($data['end_date']) 
         ) {
             $this->errorMsg = "Please fill in all the fields";
             return false;
@@ -40,10 +40,6 @@ class DiscountController{
             return false;
         }
 
-        if (!is_string($data['copoun'])) {
-            $this->errorMsg = "Invalid copoun";
-            return false;
-        }
 
         if (!is_string($data['start_date'])) {
             $this->errorMsg = "Invalid start date";
@@ -55,10 +51,7 @@ class DiscountController{
             return false;
         }
 
-        if (!is_string($data['valid'])) {
-            $this->errorMsg = "Invalid valid";
-            return false;
-        }
+       
 
         return true;
     }
@@ -75,7 +68,6 @@ class DiscountController{
             'copoun' => $_POST['copoun'],
             'start_date' => $_POST['start_date'],
             'end_date' => $_POST['end_date'],
-            'valid' => $_POST['valid'],
         ];
         if ($this->validateDiscount($data)) {
             $this->discountModel->setType($data['type']);
@@ -84,7 +76,7 @@ class DiscountController{
             $this->discountModel->setCopoun($data['copoun']);
             $this->discountModel->setStartDate($data['start_date']);
             $this->discountModel->setEndDate($data['end_date']);
-            $this->discountModel->setValid($data['valid']);
+            $this->discountModel->setValid();
             if ($this->discountModel->addDiscount()) {
                 header('location:dashboard/discount');
                 flash("formSuccess", "Discount added successfully", 'form-message form-message-green');
