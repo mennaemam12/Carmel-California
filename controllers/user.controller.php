@@ -2,6 +2,7 @@
     require_once 'models/User.php';
     require_once 'helpers/session.helper.php';
     include 'projectFolderName.php';
+   
 
     class UserController {
 
@@ -61,7 +62,7 @@
             //Passed all validation checks.
             //Now going to hash password
             $data['UserPass'] = password_hash($data['UserPass'], PASSWORD_DEFAULT);
-            $id = $this->db->lastInsertId();
+            $id = $this->userModel->db->lastInsertId();
             $this->userModel->setID($id);
             $this->userModel->setFullName($data['FullName']);
             $this->userModel->setEmail($data['Email']);
