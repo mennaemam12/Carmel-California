@@ -8,40 +8,37 @@ class IngredientController
 
     private $ingredientModel;
 
+    private $errorMsg;
+
     public function __construct()
     {
 
     }
 
-    public function validateItem($data, $imagePath)
+    public function validateItem($data)
     {
         if (empty($data['ingredientname']) || empty($data['category']) || empty($data['price'])) {
-            flash("formError", "Please fill out all inputs");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
+            $this->errorMsg ='Please fill all inputs';
             return false;
         }
 
-        if (!is_string($data['ingredientname'])) {
-            flash("formError", "Invalid ingredient name");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
+        if (!ctype_alpha($data['ingredientname'])) {
+            $this->errorMsg = 'Ingredient Name is invalid.';
             return false;
         }
 
         if (!is_numeric($data['price']) || $data['price'] <= 0) {
-            flash("formError", "Invalid price");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
+            $this->errorMsg = 'Price is invalid.';
             return false;
         }
 
-        if (!is_string($data['category'])) {
-            flash("formError", "Invalid category");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
+        if (!ctype_alpha($data['category'])) {
+            $this->errorMsg = 'Category is invalid.';
             return false;
         }
 
-        if (!$imagePath) {
-            flash("formError", "Failed to save image", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
+        if (!is_numeric($data['categorymax'])) {
+            $this->errorMsg = 'Category Max is invalid.';
             return false;
         }
 
@@ -66,8 +63,6 @@ class IngredientController
         if (move_uploaded_file($file['tmp_name'], $targetPath)) {
             return $targetPath;
         } else {
-            //flash("formError", "Failed to save the image in path ", 'form-message form-message-red');
-            //redirect($GLOBALS['projectFolder']."/dashboard/additem");
             return false;
         }
     }
@@ -81,28 +76,82 @@ class IngredientController
         $data = [
             'ingredientname' => trim($_POST['ingredientname']),
             'category' => trim($_POST['category']),
+            'categorymax' => trim($_POST['categorymax']),
             'price' => trim($_POST['price']),
         ];
 
-        // flash("formError", "Item name: ".$_FILES['file']['name'], 'form-message form-message-green');
-        // redirect($GLOBALS['projectFolder']."/dashboard/addItem");
-        //handle image path
-        $imagePath = $this->saveImage($_FILES['file'], $data['category'], $data['ingredientname']);
+        if(Ingredient::findIngredientByName($data['ingredientname'])) {
+            flash("formError", "Ingredient with the same name already exists", 'form-message form-message-red');
+            redirect($GLOBALS['projectFolder']."/dashboard/additem");
+            exit();
+        }
 
-        if ($this->validateItem($data, $imagePath)) {
+        if ($this->validateItem($data)) {
+            $imagePath = $this->saveImage($_FILES['file'], $data['category'], $data['ingredientname']);
+
+            if(!$imagePath) {
+                flash("ImageError",'form-message form-message-red');
+                redirect($GLOBALS['projectFolder']."/dashboard/addingredient");
+                exit();
+            }
 
             // Validation successful, create an Item object
-            $this->ingredientModel = new Ingredient($data['ingredientname'], $data['category'], $data['price'], $imagePath);
+            $this->ingredientModel = new Ingredient($data['ingredientname'], $data['category'],$data['categorymax'], $data['price'], $imagePath);
 
             if ($this->ingredientModel->add()) {
                 flash("formSuccess", "Ingredient added successfully", 'form-message form-message-green');
                 redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
+                exit();
             } else {
                 flash("formError", "Failed to add ingredient to the database", 'form-message form-message-red');
                 redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
+                exit();
             }
-        } else {
-            redirect($GLOBALS['projectFolder'] . "/dashboard/addingredient");
         }
+
+        flash("formError", $this->errorMsg, 'form-message form-message-red');
+        redirect($GLOBALS['projectFolder']."/dashboard/addingredient");
+        
+        
+    }
+
+    public function getSections(){
+        $ing = new Ingredient();
+        $ingredients = $ing->getIngredients();
+        $bases = array();
+        $proteins = array();
+        $addons = array();
+        $dressings = array();
+        $toppings = array();
+        $cheeses = array();
+        $fruits = array();
+        foreach ($ingredients as $ingredient) {
+            $category = $ingredient->Category;
+            switch ($category) {
+                case 'Base':
+                    $bases[] = $ingredient;
+                    break;
+                case 'Vegetable':
+                    $toppings[] = $ingredient;
+                    break;
+                case 'Protein':
+                    $proteins[] = $ingredient;
+                    break;
+                case 'Dressing':
+                    $dressings[] = $ingredient;
+                    break;
+                case 'Fruit':
+                    $fruits[] = $ingredient;
+                    break;
+                case 'Add Ons':
+                    $addons[] = $ingredient;
+                    break;
+                case 'Cheese':
+                    $cheeses[] = $ingredient;
+                    break;
+            }
+        }
+        $counter = 1;
+        include_once('views/customize.php');
     }
 }
