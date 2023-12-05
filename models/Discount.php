@@ -46,11 +46,18 @@ class Discount{
         $this->start_date = $formattedStartDate->format('Y-m-d');
     }
     public function setEndDate($end_date)
-    {
-        // Convert 'd/m/Y' to 'Y-m-d' format
-        $formattedEndDate = DateTime::createFromFormat('d/m/Y', $end_date);
-        $this->end_date = $formattedEndDate->format('Y-m-d');
-    }
+{
+    // Convert 'd/m/Y' to 'Y-m-d' format
+    $formattedEndDate = DateTime::createFromFormat('d/m/Y', $end_date);
+
+    // Add 30 days to the start date
+    $startDate = DateTime::createFromFormat('Y-m-d', $this->start_date);
+    $startDate->add(new DateInterval('P30D')); // Adding 30 days
+
+    // Set the end date as 30 days after the start date
+    $this->end_date = $startDate->format('Y-m-d');
+}
+
     public function setValid($valid)
     {
         $this->valid = $valid;
@@ -90,8 +97,6 @@ class Discount{
     }
 
 
-
-    
      //add discount
         public function addDiscount()
         {

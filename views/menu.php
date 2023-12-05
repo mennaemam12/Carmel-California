@@ -128,8 +128,8 @@
 
 						foreach ($Items as $item) {
 							if ($item->getCategory() == $category) {
-								$html .= '<div class="pricing-entry d-flex ftco-animate" onclick="window.location.href=\'menu/' .
-								$itemType . '/' . $item->getID() . '\'">
+								$html .= '<div class="pricing-entry d-flex ftco-animate" onclick="window.location.href=\'product?type=' .
+								$itemType . '&id=' . $item->getID().'\'">
 											<div class="img" style="background-image: url(' . $item->getImagePath() . ');"></div>
 											<div class="desc pl-3">
 												<div class="d-flex text align-items-center">
