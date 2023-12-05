@@ -3,17 +3,6 @@ include 'projectFolderName.php';
 require_once 'models/Item.php';
 require_once 'models/ItemOption.php';
 
-$url = $_SERVER['REQUEST_URI'];
-// segments
-$segments = explode('/', $url);
-
-$itemID = trim($segments[count($segments) - 1]);
-$itemType = trim($segments[count($segments) - 2]);
-
-$item = Item::findItemByID($itemType, $itemID);
-
-$result=ItemOption::getItemOptions($itemType,$itemID);
-
 ?>
 
 
