@@ -25,6 +25,16 @@ class User {
         }
     }
 
+    public function getalluser(){
+        $this->db->query('SELECT * FROM users');
+        $rows = $this->db->resultSet();
+        if ($this->db->rowCount() > 0) {
+            return $rows;
+        } else {
+            return false;
+        }
+    }
+
     //Register User
     public function register($data){
         $this->db->query('INSERT INTO users (FullName, Email, UserName, UserPass, PhoneNumber,Usertype) 
@@ -68,6 +78,30 @@ class User {
         if($this->db->execute()){
             return true;
         }else{
+            return false;
+        }
+    }
+    public function Makeadmin($tokenEmail){
+        $this->db->query('UPDATE users SET Usertype="admin" WHERE Email=:email');
+        $this->db->bind(':email', $tokenEmail);
+
+        //Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function delete($ID)
+    {
+        $this->db->query('DELETE FROM users  WHERE id=:id');
+        
+        $this->db->bind(':id', $ID);
+
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
             return false;
         }
     }
