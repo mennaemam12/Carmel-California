@@ -58,10 +58,28 @@ class Discount{
     $this->end_date = $startDate->format('Y-m-d');
 }
 
-    public function setValid($valid)
-    {
-        $this->valid = $valid;
+    public function setValid() {
+        $startDate = $this->getStartDate();
+        $endDate = $this->getEndDate();
+
+        // Convert start date and end date strings to DateTime objects
+        $startDateTime = new DateTime($startDate);
+        $endDateTime = new DateTime($endDate);
+
+        // Calculate the difference between dates
+        $interval = $endDateTime->diff($startDateTime);
+
+        // Get the difference in days
+        $daysDifference = $interval->days;
+
+        // Check if there are days left
+        if ($daysDifference > 0) {
+            return "YES"; // There are days left between start and end dates
+        } else {
+            return "NO"; // There are no days left between start and end dates
+        }
     }
+    
     //getters
     public function getType()
     {
