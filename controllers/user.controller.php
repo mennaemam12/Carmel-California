@@ -62,8 +62,6 @@
             //Passed all validation checks.
             //Now going to hash password
             $data['UserPass'] = password_hash($data['UserPass'], PASSWORD_DEFAULT);
-            $id = $this->userModel->db->lastInsertId();
-            $this->userModel->setID($id);
             $this->userModel->setFullName($data['FullName']);
             $this->userModel->setEmail($data['Email']);
             $this->userModel->setUsername($data['Username']);
@@ -76,6 +74,8 @@
                 // $logged=$this->userModel->findUserByEmailOrUsername($data['Email'], $data['FullName']);
                 // if($logged){
                 //Create session
+                $id = $this->userModel->getLastInsertedID();
+                $this->userModel->setID($id);
                 $this->createUserSession($this->userModel);     
                 // }else{
                 //     die("Something went wrong while logging in");
@@ -127,7 +127,7 @@
     }
 
     public function createUserSession($user){
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = serialize($user);
         header("location:". $GLOBALS['projectFolder']."/index");
     }
 

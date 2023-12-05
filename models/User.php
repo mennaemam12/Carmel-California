@@ -66,7 +66,7 @@ class User {
     }
 
     public function getType() {
-        return $this->Type;
+        return $this->type;
     }
 
     public function addToCart($item) {
@@ -172,5 +172,8 @@ class User {
         } else {
             return false;
         }
+    }
+    public function getLastInsertedID(){
+       $this->db->lastInsertId();
     }
 }

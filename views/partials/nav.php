@@ -1,6 +1,7 @@
 <?php
 include 'projectFolderName.php';
 @session_start();
+@$user=unserialize($_SESSION['user']);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar"
@@ -20,12 +21,12 @@ include 'projectFolderName.php';
 					<li class="nav-item" id="contact"><a href="contact" class="nav-link">Contact</a></li>
                     
                     <!-- check if logged in -->
-                    <?php if(isset($_SESSION['userId'])): ?>
+                    <?php if($user!=null): ?>
                        <li class='nav-item' id="logout"><a class='nav-link' href='logout'>Logout</a></li>
                     <?php else: ?>
                         <li class='nav-item' id="login"><a class='nav-link' href='login'>Sign In</a></li>
 					<?php endif; ?>
-					<?php if(isset($_SESSION['userId'])&&strpos($_SESSION['Type'], "admin")!==false): ?>
+					<?php if($user!=null&&strpos($user->getType(), "admin")!==false): ?>
 						<li class='nav-item' id="dashboard"><a class='nav-link'  href='dashboard'>Dashboard</a></li>
 					<?php else: ?>
 					<?php endif; ?>		
