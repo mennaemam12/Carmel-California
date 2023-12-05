@@ -4,9 +4,77 @@ require_once 'database.php';
 class User {
 
     private $db;
+    private $id;
+    private $fullName;
+    private $email;
+    private $username;
+    private $password;
+    private $phone;
+    private $type;
+    private $cart=array();
 
     public function __construct(){
         $this->db = new Database;
+    }
+
+    public function setID($id){
+        $this->id=$id;
+    }
+
+    public function getID(){
+        return $this->id;
+    }
+
+    public function setFullName($fullName) {
+        $this->fullName = $fullName;
+    }
+
+    public function getFullName() {
+        return $this->fullName;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+    public function setPhone($phone) {
+        $this->phone = $phone;
+    }
+
+    public function getPhone() {
+        return $this->phone;
+    }
+
+    public function setType($type) {
+        $this->type = $type;
+    }
+
+    public function getType() {
+        return $this->Type;
+    }
+
+    public function addToCart($item) {
+        $this->cart[] = $item;
+    }
+
+    public function getCart() {
+        return $this->cart;
     }
 
     //Find user by email or username
@@ -36,16 +104,16 @@ class User {
     }
 
     //Register User
-    public function register($data){
+    public function register(){
         $this->db->query('INSERT INTO users (FullName, Email, UserName, UserPass, PhoneNumber,Usertype) 
         VALUES (:fullname, :email, :username, :userpass, :phonenumber,:usertype)');
         //Bind values
-        $this->db->bind(':fullname', $data['FullName']);
-        $this->db->bind(':email', $data['Email']);
-        $this->db->bind(':username', $data['Username']);
-        $this->db->bind(':userpass', $data['UserPass']);
-        $this->db->bind(':phonenumber', $data['PhoneNumber']);
-        $this->db->bind(':usertype',"user");
+        $this->db->bind(':fullname', $this->fullName);
+        $this->db->bind(':email', $this->email);
+        $this->db->bind(':username', $this->username);
+        $this->db->bind(':userpass', $this->password);
+        $this->db->bind(':phonenumber', $this->phone);
+        $this->db->bind(':usertype',$this->type);
         //Execute
         if($this->db->execute()){
             return true;

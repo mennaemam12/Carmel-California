@@ -1,5 +1,6 @@
 <?php
 require_once 'database.php';
+require_once 'models/Item.php';
 session_start();
 
 class Cart{
@@ -38,12 +39,13 @@ class Cart{
     public function getCart(){
         $sql = "SELECT * FROM `cart` WHERE User_id= :userID";
         $this->db->query($sql);
-        $this->db->bind(":userID", $_SESSION['userId']);
+        $this->db->bind(":userID", $_SESSION['user']->id);
         $rows =$this->db->resultSet();
         foreach($rows as $row){
-            
+            $items[]=Item::findItemByID($row->Item_type,$row->Item_id);
         }
 
+        include_once 'views/cart.php';
     }
 
 

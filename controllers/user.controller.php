@@ -61,16 +61,24 @@
             //Passed all validation checks.
             //Now going to hash password
             $data['UserPass'] = password_hash($data['UserPass'], PASSWORD_DEFAULT);
+            $id = $this->db->lastInsertId();
+            $this->userModel->setID($id);
+            $this->userModel->setFullName($data['FullName']);
+            $this->userModel->setEmail($data['Email']);
+            $this->userModel->setUsername($data['Username']);
+            $this->userModel->setPassword($data['UserPass']);
+            $this->userModel->setPhone($data['PhoneNumber']);
+            $this->userModel->setType("user");
 
             //Register User
-            if($this->userModel->register($data)){
-                $logedd=$this->userModel->findUserByEmailOrUsername($data['Email'], $data['FullName']);
-                if($logedd){
+            if($this->userModel->register()){
+                // $logged=$this->userModel->findUserByEmailOrUsername($data['Email'], $data['FullName']);
+                // if($logged){
                 //Create session
-                $this->createUserSession($logedd);     
-            }else{
-                    die("Something went wrong while logging in");
-                }
+                $this->createUserSession($this->userModel);     
+                // }else{
+                //     die("Something went wrong while logging in");
+                // }
             }else{
                 die("Something went wrong");
             }
@@ -97,8 +105,14 @@
             //User Found
             $loggedInUser = $this->userModel->login($data['Name/Email'], $data['UserPass']);
             if($loggedInUser){
-                //Create session
-                $this->createUserSession($loggedInUser);
+                //Cre
+                $this->userModel->setID($loggedInUser->id);
+                $this->userModel->setFullName($loggedInUser->FullName);
+                $this->userModel->setEmail($loggedInUser->Email);
+                $this->userModel->setUsername($loggedInUser->UserName);
+                $this->userModel->setPhone($loggedInUser->PhoneNumber);
+                $this->userModel->setType($loggedInUser->Usertype);
+                $this->createUserSession($this->userModel);
             }else{
                 flash("formError", "Password Incorrect");
                 header("location:". $GLOBALS['projectFolder']."/login");
@@ -112,18 +126,12 @@
     }
 
     public function createUserSession($user){
-        $_SESSION['userId'] = $user->id;
-        $_SESSION['Username'] = $user->Username;
-        $_SESSION['Email'] = $user->Email;
-        $_SESSION['Type']=$user->Usertype;
+        $_SESSION['user'] = $user;
         header("location:". $GLOBALS['projectFolder']."/index");
     }
 
     public function logout(){
-        unset($_SESSION['userId']);
-        unset($_SESSION['userName']);
-        unset($_SESSION['userEmail']);
-        unset($_SESSION['userType']);
+        unset($_SESSION['user']);
         session_destroy();
         redirect($GLOBALS['projectFolder']."/index");
     }
