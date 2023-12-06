@@ -108,16 +108,16 @@ require_once 'helpers/session.helper.php';
                                         <div class="checkbox-container">
                                             <div class="checkbox-group">
                                                 <label for="offerCheckbox">Offer</label>
-                                                <input type="checkbox" id="offerCheckbox"name="copoun">
+                                                <input type="checkbox" id="offerCheckbox"name="coupon">
                                             </div>
                                             <div class="checkbox-group">
                                                 <label for="couponCheckbox">Coupon Code</label>
-                                                <input type="checkbox" id="couponCheckbox"name="copoun">
+                                                <input type="checkbox" id="couponCheckbox"name="coupon">
                                                 <!-- <button class="btn btn-primary mr-2" id="generateCodeBtn" style="display: none;">Generate Code</button> -->
                                             </div>
                                             <div class="button-container">
                                             <button class="btn btn-primary mr-2" id="generateCodeBtn" style="display: none;">Generate Code</button>
-                                            <span id="copoun"></span>
+                                            <span id="coupon"></span>
                                         </div>
                                         </div>
                                        
@@ -129,7 +129,8 @@ require_once 'helpers/session.helper.php';
                                         </div>
                                         <input type="hidden" id="startDate" name="start_date" value=""  >
                                         <input type="hidden" id="endDate" name="end_date" value=""  >
-                                        <button type="submit" class="btn btn-primary mr-2" value="Upload File"  onclick="setStartDate() ;setEndDate()">Submit</button>
+                                        <input type="hidden" id="couponX" name="coupon" value=""  >
+                                        <button type="submit" class="btn btn-primary mr-2" value="Upload File"  onclick="setStartDate() ;setEndDate(); ">Submit</button>
                                         <a href="dashboard" class="btn btn-light">Cancel</a>
                                        
                                     </form>
@@ -223,7 +224,7 @@ require_once 'helpers/session.helper.php';
 
 
         //checkbox 
-        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="copoun"]');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="coupon"]');
         const generateCodeBtn = document.getElementById('generateCodeBtn');
         const couponCheckbox = document.getElementById('couponCheckbox');
 
@@ -246,7 +247,8 @@ require_once 'helpers/session.helper.php';
             const type = document.getElementById('type');
             const category = document.getElementById('category');
             const percentage = document.getElementById('percentage');
-            const copoun = document.getElementById('copoun'); // Reference to the element for displaying code
+            const coupon = document.getElementById('coupon'); // Reference to the element for displaying code
+            
             
             const selectedType = type.value;
             const selectedCategory = category.value;
@@ -254,14 +256,23 @@ require_once 'helpers/session.helper.php';
 
             if (selectedCategory !== "" && selectedPercentage !== "") {
                 const generatedCode = selectedCategory + selectedPercentage;
-                copoun.textContent = "Generated Code: " + generatedCode; // Display the generated code next to the button
+                coupon.textContent = "Generated Code: " + generatedCode; // Display the generated code next to the button
+                document.getElementById('couponX').value = generatedCode;
             } else {
-                copoun.textContent = "Please select a category and provide a percentage.";
+                coupon.textContent = "Please select a category and provide a percentage.";
             }
             this.preventDefault();
         }
         // Button click event listener
         generateCodeBtn.addEventListener('click', generateCode);
+
+        couponCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                generateCode(); // Call the generateCode function when the checkbox is checked
+            } else {
+                // You can add handling if the checkbox is unchecked here if needed
+            }
+        });
 
 
 
