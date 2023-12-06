@@ -68,26 +68,26 @@ include 'projectFolderName.php';
 				<img src="public/images/reg.jpg" alt="">
 			</div>
 
-			<form action="signup" method="post">
+			<form id="signup-form" action="signup" method="post">
 				<h3>Sign Up</h3>
 				<input type="hidden" name="type" value="register">
 				<div class="form-holder active">
-					<input type="text" placeholder="Full Name" name="FullName" class="form-control">
+					<input type="text" id = "name" placeholder="Full Name" name="FullName" class="form-control">
 				</div>
 				<div class="form-holder">
-					<input type="text" placeholder="Username" name="Username" class="form-control">
+					<input type="text" id="username" placeholder="Username" name="Username" class="form-control">
 				</div>
 				<div class="form-holder">
-					<input type="text" placeholder="Email" name="Email" class="form-control">
+					<input type="text" id="email" placeholder="Email" name="Email" class="form-control">
 				</div>
 				<div class="form-holder">
-					<input type="text" placeholder="Phone Number" name="PhoneNumber" class="form-control">
+					<input type="text" id="phoneNumber" placeholder="Phone Number" name="PhoneNumber" class="form-control">
 				</div>
 				<div class="form-holder">
-					<input type="password" placeholder="Password" class="form-control" name="UserPass" style="font-size: 15px;">
+					<input type="password" id = "password" placeholder="Password" class="form-control" name="UserPass" style="font-size: 15px;">
 				</div>
 				<div class="form-holder">
-					<input type="password" placeholder="Confirm Password" class="form-control" name="UserConfPass" style="font-size: 15px;">
+					<input type="password" id="confirmpass" placeholder="Confirm Password" class="form-control" name="UserConfPass" style="font-size: 15px;">
 				</div>
 				<div class="checkbox">
 					<input type="checkbox" checked>
@@ -96,12 +96,12 @@ include 'projectFolderName.php';
 					</label>
 				</div>
 
-				<div class="form-message-div" style="margin-top:25px;">
+				<div class="form-message-div" id = "form-message-div" style="margin-top:25px;">
 					<?php flash('formError') ?>
 				</div>
 
 				<div class="form-login">
-					<button class="button" type="submit" name="Submit">Sign&nbsp;up</button>
+					<button class="button" type="button" onclick="validator.initialize();" name="Submit">Sign&nbsp;up</button>
 					<p>Already have an account? <a href='login'>Login</a></p>
 				</div>
 			</form>
@@ -127,6 +127,7 @@ include 'projectFolderName.php';
 	<script src="public/js/jquery.timepicker.min.js"></script>
 	<script src="public/js/scrollax.min.js"></script>
 	<script src="public/js/main.js"></script>
+	<script src="public/js/validation/signup.js"></script>
 </body>
 
 </html>

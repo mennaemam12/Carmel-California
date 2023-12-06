@@ -41,17 +41,17 @@ class UserController
         }
 
         if (!preg_match("/^[a-zA-Z0-9]*$/", $data['Username'])) {
-            flash("formError", "Invalid username");
+            flash("formError", "Invalid Username");
             redirect($GLOBALS['projectFolder'] . "/signup");
         }
 
         if (!filter_var($data['Email'], FILTER_VALIDATE_EMAIL)) {
-            flash("formError", "Invalid email");
+            flash("formError", "Invalid Email");
             redirect($GLOBALS['projectFolder'] . "/signup");
         }
 
-        if (strlen($data['UserPass']) < 6) {
-            flash("formError", "Invalid password");
+        if (strlen($data['UserPass']) < 8) {
+            flash("formError", "Password must be at least 8 characters long");
             redirect($GLOBALS['projectFolder'] . "/signup");
         } else if ($data['UserPass'] !== $data['UserConfPass']) {
             flash("formError", "Passwords don't match");
@@ -60,7 +60,7 @@ class UserController
 
         //User with the same email or password already exists
         if ($this->userModel->findUserByEmailOrUsername($data['Email'], $data['Username'])) {
-            flash("formError", "Username or email already taken");
+            flash("formError", "Username or Email already taken");
             redirect($GLOBALS['projectFolder'] . "/signup");
         }
 

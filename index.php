@@ -14,7 +14,6 @@ $page = $segments[2];
 if (strpos($page, '?') !== false)
     $page = strstr($segments[2], '?', true);
 
-
 // We use segments[2] to determine which route to load
 // segments[0] is empty because the URL starts with a slash
 // segments[1] is the project folder name 'Carmel-California'
