@@ -1,7 +1,10 @@
 <?php
 include 'projectFolderName.php';
+include 'models/User.php';
 @session_start();
-@$user=unserialize($_SESSION['user']);
+$user= new User;
+if(isset($_SESSION['user']))
+	$user->unserialize($_SESSION['user']);
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar"
@@ -21,12 +24,12 @@ include 'projectFolderName.php';
 					<li class="nav-item" id="contact"><a href="contact" class="nav-link">Contact</a></li>
                     
                     <!-- check if logged in -->
-                    <?php if($user!=null): ?>
+                    <?php if(isset($_SESSION['user'])): ?>
                        <li class='nav-item' id="logout"><a class='nav-link' href='logout'>Logout</a></li>
                     <?php else: ?>
                         <li class='nav-item' id="login"><a class='nav-link' href='login'>Sign In</a></li>
 					<?php endif; ?>
-					<?php if($user!=null&&strpos($user->getType(), "admin")!==false): ?>
+					<?php if(isset($_SESSION['user']) && strpos($user->getType(), "admin") !== false): ?>
 						<li class='nav-item' id="dashboard"><a class='nav-link'  href='dashboard'>Dashboard</a></li>
 					<?php else: ?>
 					<?php endif; ?>		
