@@ -116,7 +116,7 @@
                 $this->createUserSession($this->userModel);
             }else{
                 flash("formError", "Password Incorrect");
-                header("location:". $GLOBALS['projectFolder']."/login");
+                header("location:".$GLOBALS['projectFolder']."/login");
 
             }
         }else{
