@@ -231,7 +231,7 @@ INSERT INTO `sides` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePat
 -- Dumping data for table `discount`
 --
 
-INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `copoun`, `start_date`, `end_date`, `valid`) VALUES
+INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start_date`, `end_date`, `valid`) VALUES
 (1, 'breakfast', 'Eggs', 10, 'Eggs10', '2023-12-05', '2024-01-05', 'YES');
 
 --
@@ -258,7 +258,7 @@ CREATE TABLE `discount` (
   `type` varchar(100) NOT NULL,
   `category` varchar(100) NOT NULL,
   `percentage` int(50) DEFAULT NULL,
-  `copoun` varchar(100) DEFAULT NULL,
+  `coupon` varchar(100) DEFAULT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `valid` varchar(50) DEFAULT NULL

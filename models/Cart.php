@@ -4,6 +4,7 @@ require_once 'models/Item.php';
 session_start();
 
 class Cart{
+    protected $db;
     protected $id;
     protected $user_id;
     protected $item_type;
@@ -11,11 +12,11 @@ class Cart{
     protected $quantity;
 
     public function __construct($user_id,$item_type,$item_id,$quantity){
+        $this->db = new Database;
         $this->user_id=$user_id;
         $this->item_type=$item_type;
         $this->item_id=$item_id;
         $this->quantity=$quantity;
-
     }
 
     public function add(){
@@ -36,10 +37,10 @@ class Cart{
 
     }
 
-    public function getCart(){
+    public function getCart($user){
         $sql = "SELECT * FROM `cart` WHERE User_id= :userID";
         $this->db->query($sql);
-        $this->db->bind(":userID", $_SESSION['user']->id);
+        $this->db->bind(":userID", $user->id);
         $rows =$this->db->resultSet();
         foreach($rows as $row){
             $items[]=Item::findItemByID($row->Item_type,$row->Item_id);

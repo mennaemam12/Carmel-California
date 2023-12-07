@@ -77,6 +77,32 @@ class User {
         return $this->cart;
     }
 
+    public function serialize() {
+        return serialize([
+            $this->id,
+            $this->fullName,
+            $this->email,
+            $this->username,
+            $this->password,
+            $this->phone,
+            $this->type,
+            $this->cart
+        ]);
+    }
+
+    public function unserialize($serialized) {
+        list(
+            $this->id,
+            $this->fullName,
+            $this->email,
+            $this->username,
+            $this->password,
+            $this->phone,
+            $this->type,
+            $this->cart
+        ) = unserialize($serialized);
+    }
+
     //Find user by email or username
     public function findUserByEmailOrUsername($email, $username){
         $this->db->query('SELECT * FROM users WHERE Username = :username OR Email = :email');

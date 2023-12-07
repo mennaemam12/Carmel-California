@@ -51,8 +51,6 @@ class DiscountController{
             return false;
         }
 
-       
-
         return true;
     }
 
@@ -65,15 +63,20 @@ class DiscountController{
             'type' => $_POST['type'],
             'category' => $_POST['category'],
             'percentage' => $_POST['percentage'],
-            'copoun' => $_POST['copoun'],
+            'coupon' => $_POST['coupon'],
             'start_date' => $_POST['start_date'],
             'end_date' => $_POST['end_date'],
         ];
         if ($this->validateDiscount($data)) {
+
+            if ($_POST['coupon'] == '') {
+                $data['coupon'] = NULL;
+            }
+
             $this->discountModel->setType($data['type']);
             $this->discountModel->setCategory($data['category']);
             $this->discountModel->setPercentage($data['percentage']);
-            $this->discountModel->setCopoun($data['copoun']);
+            $this->discountModel->setCoupon($data['coupon']);
             $this->discountModel->setStartDate($data['start_date']);
             $this->discountModel->setEndDate($data['end_date']);
             $this->discountModel->setValid();
@@ -97,7 +100,7 @@ class DiscountController{
             'type' => $_POST['type'],
             'category' => $_POST['category'],
             'percentage' => $_POST['percentage'],
-            'copoun' => $_POST['copoun'],
+            'coupon' => $_POST['coupon'],
             'start_date' => $_POST['start_date'],
             'end_date' => $_POST['end_date'],
             'valid' => $_POST['valid'],
@@ -106,7 +109,7 @@ class DiscountController{
             $this->discountModel->setType($data['type']);
             $this->discountModel->setCategory($data['category']);
             $this->discountModel->setPercentage($data['percentage']);
-            $this->discountModel->setCopoun($data['copoun']);
+            $this->discountModel->setCoupon($data['coupon']);
             $this->discountModel->setStartDate($data['start_date']);
             $this->discountModel->setEndDate($data['end_date']);
             $this->discountModel->setValid($data['valid']);

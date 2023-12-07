@@ -8,12 +8,12 @@ require_once 'models/DessertItem.php';
 require_once 'models/Item.php';
 class Discount{
 
-    //type , category , percentage , copoun , start_date , end_date , valid
+    //type , category , percentage , coupon , start_date , end_date , valid
     protected $db;
     protected $type;
     protected $category;
     protected $percentage;
-    protected $copoun;
+    protected $coupon;
     protected $start_date;
     protected $end_date;
     protected $valid;
@@ -35,9 +35,9 @@ class Discount{
     {
         $this->percentage = $percentage;
     }
-    public function setCopoun($copoun)
+    public function setCoupon($coupon)
     {
-        $this->copoun = $copoun;
+        $this->coupon = $coupon;
     }
     public function setStartDate($start_date)
     {
@@ -91,9 +91,9 @@ class Discount{
     {
         return $this->percentage;
     }
-    public function getCopoun()
+    public function getcoupon()
     {
-        return $this->copoun;
+        return $this->coupon;
     }
     public function getStartDate()
     {
@@ -116,16 +116,19 @@ class Discount{
      //add discount
         public function addDiscount()
         {
-            $sql = "INSERT INTO discount (type , category , percentage , copoun , start_date , end_date , valid) VALUES (:type , :category , :percentage , :copoun , :start_date , :end_date , :valid)";
+            $sql = "INSERT INTO discount (type , category , percentage , coupon , start_date , end_date , valid) VALUES (:type , :category , :percentage , :coupon , :start_date , :end_date , :valid)";
             $this->db->query($sql);
             $this->db->bind(':type', $this->type);
             $this->db->bind(':category', $this->category);
             $this->db->bind(':percentage', $this->percentage);
-            $this->db->bind(':copoun', $this->copoun);
+            $this->db->bind(':coupon', $this->coupon);
             $this->db->bind(':start_date', $this->start_date);
             $this->db->bind(':end_date', $this->end_date);
             $this->db->bind(':valid', $this->valid);
-            $this->db->execute();
+            if ($this->db->execute())
+                return true;
+
+            return false;
         }
     
 
@@ -160,11 +163,11 @@ class Discount{
 
 
      //get discount by coupon
-        public static function getDiscountByCopoun($copoun)
+        public static function getDiscountBycoupon($coupon)
         {
             $db = new Database;
-            $db->query('SELECT * FROM discount WHERE copoun = :copoun');
-            $db->bind(':copoun', $copoun);
+            $db->query('SELECT * FROM discount WHERE coupon = :coupon');
+            $db->bind(':coupon', $coupon);
             $row = $db->single();
             if ($db->rowCount() > 0) {
                 return $row;
@@ -191,12 +194,12 @@ class Discount{
      //edit discount
         public function editDiscount($id)
         {
-            $sql = "UPDATE discount SET type = :type , category = :category , percentage = :percentage , copoun = :copoun , start_date = :start_date , end_date = :end_date , valid = :valid WHERE id = :id";
+            $sql = "UPDATE discount SET type = :type , category = :category , percentage = :percentage , coupon = :coupon , start_date = :start_date , end_date = :end_date , valid = :valid WHERE id = :id";
             $this->db->query($sql);
             $this->db->bind(':type', $this->type);
             $this->db->bind(':category', $this->category);
             $this->db->bind(':percentage', $this->percentage);
-            $this->db->bind(':copoun', $this->copoun);
+            $this->db->bind(':coupon', $this->coupon);
             $this->db->bind(':start_date', $this->start_date);
             $this->db->bind(':end_date', $this->end_date);
             $this->db->bind(':valid', $this->valid);
@@ -206,12 +209,12 @@ class Discount{
     
     
 
-    ///edit discount copoun
-    public function editDiscountCopoun($id)
+    ///edit discount coupon
+    public function editDiscountcoupon($id)
     {
-        $sql = "UPDATE discount SET copoun = :copoun WHERE id = :id";
+        $sql = "UPDATE discount SET coupon = :coupon WHERE id = :id";
         $this->db->query($sql);
-        $this->db->bind(':copoun', $this->copoun);
+        $this->db->bind(':coupon', $this->coupon);
         $this->db->bind(':id', $id);
         $this->db->execute();
     }
