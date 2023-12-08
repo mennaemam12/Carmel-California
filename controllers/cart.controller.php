@@ -1,5 +1,6 @@
 <?php
     require_once 'models/Cart.php'; 
+    require_once 'models/User.php'; 
     require_once 'helpers/session.helper.php';
     include 'projectFolderName.php';
 
@@ -8,29 +9,37 @@
         public function __construct(){
         }
 
-        public static function addToUserSession(){
-            session_start();
+        public function addToUserSession(){
 
             // Now, $data contains the values sent from the frontend
             $id = $_POST['id'];
             $type = $_POST['type'];
             $quantity = $_POST['quantity'];
+        
+            $this->cartModel = new Cart;
+            $user= new User;
+            if(isset($_SESSION['user'])){
+                $user->unserialize($_SESSION['user']);
 
-            $cartModel=new Cart;
-            $cartModel->setUserId($_SESSION['user']->getID());
-            $cartModel->setItemType($type);
-            $cartModel->setItemId($id);
-            $cartModel->setQuantity($quantity);
-            if ($_POST['$selectedOption']!='') {
-                $selectedOption = $_POST['$selectedOption'];
-                $cartModel->setSelectedOption($selectedOption);
-            } 
+                $this->cartModel->setUserId($user->getID());
+                $this->cartModel->setItemType($type);
+                $this->cartModel->setItemId($id);
+                $this->cartModel->setQuantity($quantity);
+            
+                // Check if the selectedOption is set in $_POST and not an empty string
+                if (isset($_POST['selectedOption']) && $_POST['selectedOption'] !== '') {
+                    $selectedOption = $_POST['selectedOption'];
+                    $this->cartModel->setSelectedOption($selectedOption);
+                } 
+            
+               $user->addToCart($this->cartModel->serialize());
+               $_SESSION['user'] = $user->serialize();
 
-            $cartModel->serialize();
-            $_SESSION['user']->cart=$_SESSION['user']->addToCart($cartModel);
-
-            $response = json_encode(true);
-            echo $response;
+            
+                // Return a JSON response with a boolean value
+                $response = true;
+                echo $response;
+           }
         }
     }
 

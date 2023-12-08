@@ -1,7 +1,7 @@
 <?php
 require_once 'database.php';
 require_once 'models/Item.php';
-session_start();
+//session_start();
 
 class Cart{
     protected $db;

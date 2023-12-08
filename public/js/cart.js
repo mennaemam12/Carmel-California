@@ -20,9 +20,7 @@ function addToCart(){
             quantity: quantity
         },
         success: function(response) {
-            console.log("response")
             if(response){
-                console.log("true response")
                 $('#addCart').text("Added to Cart");
             }
         },

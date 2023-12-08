@@ -29,11 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   switch($lastSegment){
-    case 'addToCart':
+//    switch($lastSegment){
+//     case 'addToCart':
         include 'controllers/cart.controller.php';
-        CartController::addToUserSession();
-        exit();
-   }
+        $cartController=new CartController;
+        $cartController->addToUserSession();
+//         exit();
+//    }
 
 }
