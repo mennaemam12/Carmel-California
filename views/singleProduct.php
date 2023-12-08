@@ -69,7 +69,6 @@ require_once 'models/ItemOption.php';
     <div class="container">
       <div class="row">
         <div class="col-lg-6 mb-5 ftco-animate">
-          <!-- <a href="public/images/menu-2.jpg" class="image-popup"><img src="public/images/menu-2.jpg" class="img-fluid" alt="Colorlib Template"></a> -->
           <a href="<?php echo $item->ImagePath; ?>" class="image-popup"><img src="<?php echo $item->ImagePath; ?>" class="img-fluid" alt="Colorlib Template"></a>
         </div>
         <div class="col-lg-6 product-details pl-md-5 ftco-animate">
@@ -81,33 +80,48 @@ require_once 'models/ItemOption.php';
           <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
           <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.
           </p> -->
-          <div class="row mt-4">
-            <div class="col-md-6">
-              <div class="form-group d-flex">
-                <div class="select-wrap">
-                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+            <div class="row mt-4">
+              <div class="col-md-6">
                   <?php if(!empty($result)){?>
-                    <?php foreach ($result as $itemOptions) {
-                     
+                    <?php foreach ($result as $itemOptions) {                     
                         $criteria = $itemOptions['criteria'];
                         $values = $itemOptions['values'];
                     ?>
-                        <label for="options"><?=$criteria?></label>
-                        <select name="options" id="options" class="form-control">
-                          <?php foreach($values as $value){?>
-                            <option value="<?=$value?>"><?=$value?></option>
-                          <?php }?>
-                        </select>
+                    <div class="form-group d-flex">
+                      <div class="select-wrap">
+                          <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                          <label for="options"><?=$criteria?></label>
+                          <select name="options" id="options" class="form-control">
+                            <?php foreach($values as $value){?>
+                              <option value="<?=$value?>"><?=$value?></option>
+                            <?php }?>
+                          </select>
+                      </div>
+                    </div>
                     <?php }?>
                   <?php }?>
-                </div>
               </div>
             </div>
             <div class="w-100"></div>
-         
-          </div>
-          <p><a href="cart" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
-        </div>
+
+            <label for="quantity">Quantity</label>
+            <div class="input-group col-md-6 d-flex mb-3">
+              <span class="input-group-btn mr-2">
+                <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+                  <i class="icon-minus"></i>
+                </button>
+              </span>
+              <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+              <span class="input-group-btn ml-2">
+                <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                  <i class="icon-plus"></i>
+                </button>
+              </span>
+            </div>
+      
+          <p><a onclick="addToCart()" id="addCart" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
+
+        </div>   
       </div>
     </div>
   </section>
@@ -162,7 +176,7 @@ require_once 'models/ItemOption.php';
               <h3><a href="#">Coffee Capuccino</a></h3>
               <p>A small river named Duden flows by their place and supplies</p>
               <p class="price"><span>$5.90</span></p>
-              <p><a class="btn btn-primary btn-outline-primary" onclick="addToCart()">Add to Cart</a></p>
+              <p><a class="btn btn-primary btn-outline-primary" >Add to Cart</a></p>
             </div>
           </div>
         </div>
@@ -180,6 +194,7 @@ require_once 'models/ItemOption.php';
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
     </svg></div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="public/js/jquery.min.js"></script>
   <script src="public/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="public/js/popper.min.js"></script>
@@ -197,6 +212,7 @@ require_once 'models/ItemOption.php';
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
   <!-- <script src="public/js/google-map.js"></script> -->
   <script src="public/js/main.js"></script>
+  <script src="public/js/cart.js"></script>
 
   <script>
     $(document).ready(function() {

@@ -1,6 +1,14 @@
 <?php
 include 'projectFolderName.php';
+include 'models/Cart.php';
+include 'models/User.php';
 session_start();
+$user=new User;
+$user->unserialize($_SESSION['user']);
+$cart=new Cart;
+$items=$_SESSION['user']->getCart();
+$cart->unserialize($items);
+
 ?>
 
 <!DOCTYPE html>
@@ -78,26 +86,28 @@ session_start();
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(public/images/menu-2.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3 style="margin-bottom:0px;">Creamy Latte Coffee</h3>
-						        	<!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
-						        </td>
-						        
-						        <td class="price" style="color:#504831;">$4.90</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-					          	</div>
-					          </td>
-						        
-						        <td class="total" style="color:#504831;">$4.90</td>
-						      </tr><!-- END TR-->
+								<?php foreach($items as $item){  ?> 
+								<tr class="text-center">
+									<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
+									
+									<td class="image-prod"><div class="img" style="background-image:url(public/images/menu-2.jpg);"></div></td>
+									
+									<td class="product-name">
+										<h3 style="margin-bottom:0px;">Creamy Latte Coffee</h3>
+										<!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
+									</td>
+									
+									<td class="price" style="color:#504831;">$4.90</td>
+									
+									<td class="quantity">
+										<div class="input-group mb-3">
+										<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+										</div>
+									</td>
+									
+									<td class="total" style="color:#504831;">$4.90</td>
+								</tr><!-- END TR-->
+							<?php }?>
 
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>

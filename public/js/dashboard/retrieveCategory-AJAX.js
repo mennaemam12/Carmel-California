@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("Menna");
     // Function to retrieve categories based on type
     function retrieveCategoriesByType(selectedType) {
         // Use the $.ajax function

@@ -200,6 +200,6 @@ class User {
         }
     }
     public function getLastInsertedID(){
-       $this->db->lastInsertId();
+       return $this->db->lastInsertId();
     }
 }

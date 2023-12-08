@@ -9,14 +9,81 @@ class Cart{
     protected $user_id;
     protected $item_type;
     protected $item_id;
+    protected $selected_option;
     protected $quantity;
 
-    public function __construct($user_id,$item_type,$item_id,$quantity){
+    public function __construct(){
         $this->db = new Database;
-        $this->user_id=$user_id;
-        $this->item_type=$item_type;
-        $this->item_id=$item_id;
-        $this->quantity=$quantity;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setUserId($user_id) {
+        $this->user_id = $user_id;
+    }
+
+    public function getUserId() {
+        return $this->user_id;
+    }
+
+    public function setItemType($item_type) {
+        $this->item_type = $item_type;
+    }
+
+    public function getItemType() {
+        return $this->item_type;
+    }
+
+    public function setItemId($item_id) {
+        $this->item_id = $item_id;
+    }
+
+    public function getItemId() {
+        return $this->item_id;
+    }
+
+    public function setQuantity($quantity) {
+        $this->quantity = $quantity;
+    }
+
+    public function getQuantity() {
+        return $this->quantity;
+    }
+
+    public function setSelectedOption($selected_option) {
+        $this->selected_option = $selected_option;
+    }
+
+    public function getSelectedOption() {
+        return $this->selected_option;
+    }
+
+    public function serialize() {
+        return serialize([
+            $this->id,
+            $this->user_id,
+            $this->item_type,
+            $this->item_id,
+            $this->selected_option,
+            $this->quantity,
+        ]);
+    }
+
+    public function unserialize($serialized) {
+        list(
+            $this->id,
+            $this->user_id,
+            $this->item_type,
+            $this->item_id,
+            $this->selected_option,
+            $this->quantity,
+        ) = unserialize($serialized);
     }
 
     public function add(){

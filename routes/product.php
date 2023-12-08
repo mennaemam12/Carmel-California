@@ -1,29 +1,39 @@
 <?php
 include 'controllers/itemOption.controller.php';
-// Path: routes/product.php
+
+$url = $_SERVER['REQUEST_URI'];
+
+// segments
+$segments = explode('/', $url);
+$lastSegment = trim(strtolower($segments[count($segments) - 1]));
+$thirdlastSegment = trim(strtolower($segments[count($segments) - 3]));
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    include 'controllers/item.controller.php';
+    
+        include 'controllers/item.controller.php';
 
-    //check if isset
-    if (!isset($_GET['type']) || !isset($_GET['id'])) {
-        include 'views/404.php';
+        $itemID = $_GET['id'];
+        $itemType = $_GET['type'];
+
+        // Check if the item type & item id are valid
+        if (!ItemController::doesExist($itemType, $itemID)) {
+            include 'views/404.php';
+            exit();
+        }
+
+        $item = Item::findItemByID($itemType, $itemID);
+
+        $result = ItemOption::getItemOptions($itemType, $itemID);
+        include 'views/singleProduct.php';
         exit();
-    }
+}
 
-    $itemType = $_GET['type'];
-    $itemID = $_GET['id'];
-
-    // Check if the item type & item id are valid
-    if (!ItemController::doesExist($itemType, $itemID)) {
-        include 'views/404.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+   switch($lastSegment){
+    case 'addToCart':
+        include 'controllers/cart.controller.php';
+        CartController::addToUserSession();
         exit();
-    }
+   }
 
-    //Passed checks
-    $item = Item::findItemByID($itemType, $itemID);
-
-    $result = ItemOption::getItemOptions($itemType, $itemID);
-    include 'views/singleProduct.php';
-    exit();
 }
