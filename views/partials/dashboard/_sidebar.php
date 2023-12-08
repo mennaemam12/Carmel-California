@@ -69,7 +69,7 @@
       <div class="collapse" id="dis">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="dashboard/discount">Add Discount</a></li>
-          <!-- <li class="nav-item"> <a class="nav-link" href="dashboard/viewitems">Add Offer</a></li> -->
+          <li class="nav-item"> <a class="nav-link" href="dashboard/viewdiscount">View Discounts</a></li>
         </ul>
       </div>
     </li>

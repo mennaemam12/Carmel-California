@@ -100,6 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
             case 'discount':
             include 'views/dashboard/discount.php';
             exit();
+            case 'viewdiscount':
+                include 'views/dashboard/viewdiscount.php';
+                exit();
         case 'reviews':
             include 'views/dashboard/reviews.php';
             exit();
