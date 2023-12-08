@@ -41,8 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
                 exit();
             }
 
-            //Passed checks
-            include 'views/dashboard/edititem.php';
+        case 'editdiscount':
+            include 'controllers/discount.controller.php';
+
+            $itemID = $lastSegment;
+            $itemType = $segments[count($segments) - 2];
+    
+            include 'views/dashboard/editdiscount.php';
             exit();
         case 'deleteitem' :
         include 'controllers/item.controller.php';
