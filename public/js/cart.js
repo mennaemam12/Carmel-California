@@ -4,13 +4,10 @@ function addToCart(){
     const type = urlParams.get('type');
     const selectElement = document.getElementById('options');
     const quantity=document.getElementById('quantity').value;
-    var selectedOption;
+    var selectedOption='';
 
     if(selectElement){
         selectedOption = selectElement.value;
-    }
-    else{
-        selectedOption='';
     }
 
     $.ajax({
@@ -23,7 +20,9 @@ function addToCart(){
             quantity: quantity
         },
         success: function(response) {
+            console.log("response")
             if(response){
+                console.log("true response")
                 $('#addCart').text("Added to Cart");
             }
         },
