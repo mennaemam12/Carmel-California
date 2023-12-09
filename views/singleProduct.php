@@ -126,12 +126,12 @@ include 'partials/nav.php';
 <section class="ftco-section">
     <div class="container" id="reviews">
         <div class="row justify-content-center pb-3">
-            <div class="heading-section ftco-animate">
+            <div class="heading-section ftco-animate" style="display: flex;flex-direction:column; align-items:flex-start;row-gap:10px;">
                 <span class="subheading"
-                      style="margin-bottom:10px; padding-left:10px; padding-right:10px; float: left">Reviews</span>
+                      style="margin-bottom:10px; padding:10px; float: left">Reviews</span>
                 <?php
                 if (count($reviews) <= 0) {
-                    echo "<h2 class='mb-4' style='padding-left:10px; padding-right:10px;'>No Reviews were posted for this item</h2>";
+                    echo "<h2 class='mb-4' style='padding-right:10px;'>No Reviews were posted for this item</h2>";
                 }
                 ?>
             </div>
