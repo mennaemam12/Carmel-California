@@ -49,22 +49,6 @@ require_once 'models/ItemOption.php';
   ?>
   <!-- END nav -->
 
-  <!-- <section class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url(public/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row slider-text justify-content-center align-items-center">
-
-          <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            <h1 class="mb-3 mt-5 bread">Product Detail</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="">Home</a></span> <span>Product Detail</span></p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section> -->
-
   <section class="ftco-section">
     <div class="container">
       <div class="row">
@@ -119,11 +103,42 @@ require_once 'models/ItemOption.php';
               </span>
             </div>
       
-          <p><a onclick="addToCart()" id="addCart" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
+          <p><a onclick="addToCart()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
 
         </div>   
       </div>
     </div>
+  </section>
+
+  <section class="ftco-section">
+      <div class="container" id = "reviews">
+          <div class="row justify-content-center pb-3">
+              <div class="heading-section ftco-animate">
+                  <span class="subheading" style= "margin-bottom:10px; padding-left:10px; padding-right:10px;" >Reviews</span>
+                  <h2 class="mb-4" style="padding-left:10px; padding-right:10px;">No Reviews were posted for this item</h2>
+              </div>
+          </div>
+          <div class="user-review overlay">
+              <div class="author row justify-content-left d-flex p-1" style="display:flex; flex-direction: row; align-items: center" >
+                  <div class="name" style="font-weight: bold; font-size: 15px;padding-left:10px; padding-right:10px;">Louise Kelly</div>
+                  <div class="rating">
+                      <input value="5" name="rate" id="star5" type="radio">
+                      <label title="5" for="star5"></label>
+                      <input value="4" name="rate" id="star4" type="radio">
+                      <label title="4" for="star4"></label>
+                      <input value="3" name="rate" id="star3" type="radio" checked="">
+                      <label title="3" for="star3"></label>
+                      <input value="2" name="rate" id="star2" type="radio">
+                      <label title="2" for="star2"></label>
+                      <input value="1" name="rate" id="star1" type="radio">
+                      <label title="1" for="star1"></label>
+                  </div>
+              </div>
+              <blockquote>
+                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+              </blockquote>
+          </div>
+      </div>
   </section>
 
   <section class="ftco-section">
@@ -209,8 +224,6 @@ require_once 'models/ItemOption.php';
   <script src="public/js/bootstrap-datepicker.js"></script>
   <script src="public/js/jquery.timepicker.min.js"></script>
   <script src="public/js/scrollax.min.js"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-  <!-- <script src="public/js/google-map.js"></script> -->
   <script src="public/js/main.js"></script>
   <script src="public/js/cart.js"></script>
 
