@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
 
     switch ($thirdlastSegment) {
         case 'edititem':
-            include 'controllers/item.controller.php';
+            require_once 'controllers/item.controller.php';
 
             $itemID = $lastSegment;
             $itemType = $segments[count($segments) - 2];
@@ -157,14 +157,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
 
         case 'deleteuser' :
-            include 'models/User.php';
+            include_once 'models/User.php';
             $user = new User;
             $userID = $_POST['id'];
             $user->delete($userID);
             redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
             exit();
             case 'makeadmin' :
-                include 'models/User.php';
+                include_once 'models/User.php';
                 $user = new User;
                 $userID = $_POST['id'];
                 $user->Makeadmin($userID);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 09:55 PM
+-- Generation Time: Dec 09, 2023 at 03:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -79,6 +79,23 @@ CREATE TABLE `desserts` (
   `Description` text NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(65) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `discount`
+--
+
+CREATE TABLE `discount` (
+  `id` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `percentage` int(50) DEFAULT NULL,
+  `coupon` varchar(100) DEFAULT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `valid` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -170,6 +187,31 @@ INSERT INTO `option_values` (`id`, `id_options`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `user_id` varchar(200) NOT NULL,
+  `item_id` varchar(200) NOT NULL,
+  `item_type` varchar(20) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `rating` set('1','2','3','4','5') NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`user_id`, `item_id`, `item_type`, `message`, `rating`, `date`) VALUES
+('28', '2', 'main', 'Delicious stuff', '5', '2023-12-09'),
+('28', '4', 'main', 'To7fa to7fa ra2e3 fo2 el gamal', '2', '2023-12-09'),
+('28', '4', 'main', 'Folaaa', '5', '2023-12-09'),
+('28', '4', 'main', 'Test 3', '1', '2023-12-09');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `saladingredients`
 --
 
@@ -225,15 +267,6 @@ INSERT INTO `sides` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePat
 
 -- --------------------------------------------------------
 
-
-
---
--- Dumping data for table `discount`
---
-
-INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start_date`, `end_date`, `valid`) VALUES
-(1, 'breakfast', 'Eggs', 10, 'Eggs10', '2023-12-05', '2024-01-05', 'YES');
-
 --
 -- Table structure for table `users`
 --
@@ -248,29 +281,14 @@ CREATE TABLE `users` (
   `Usertype` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
---
--- Table structure for table `discount`
---
-
-CREATE TABLE `discount` (
-  `id` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `percentage` int(50) DEFAULT NULL,
-  `coupon` varchar(100) DEFAULT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `valid` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `Usertype`) VALUES
 ('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, 'user'),
-('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, 'admin');
+('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, 'admin'),
+('Ramez Ehab', 'ramez@gmail.com', 'ramez', '$2y$10$PIbQHrRj3S0BEmFm1KRCLOzC0ALC7wdQT5b35.YQ/BxTOFiXYAeiO', 2147483647, 28, 'user');
 
 --
 -- Indexes for dumped tables
@@ -292,6 +310,12 @@ ALTER TABLE `categories`
 -- Indexes for table `desserts`
 --
 ALTER TABLE `desserts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `discount`
+--
+ALTER TABLE `discount`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -336,27 +360,9 @@ ALTER TABLE `sides`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
-
---
--- Indexes for table `discount`
---
-ALTER TABLE `discount`
-  ADD PRIMARY KEY (`id`);
-
-
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
-
-
---
--- AUTO_INCREMENT for table `discount`
---
-ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
 
 --
 -- AUTO_INCREMENT for table `breakfast`
@@ -374,6 +380,12 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `desserts`
 --
 ALTER TABLE `desserts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `discount`
+--
+ALTER TABLE `discount`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -416,7 +428,7 @@ ALTER TABLE `sides`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

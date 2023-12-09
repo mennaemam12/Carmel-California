@@ -1,6 +1,6 @@
 <?php
 include 'projectFolderName.php';
-include 'models/User.php';
+include_once 'models/User.php';
 @session_start();
 $user= new User;
 if(isset($_SESSION['user']))

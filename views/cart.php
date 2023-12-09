@@ -1,7 +1,7 @@
 <?php
-include 'projectFolderName.php';
-include 'models/Cart.php';
-include 'models/User.php';
+include_once 'projectFolderName.php';
+include_once 'models/Cart.php';
+include_once 'models/User.php';
 session_start();
 $user=new User;
 $user->unserialize($_SESSION['user']);
