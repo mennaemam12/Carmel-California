@@ -118,6 +118,12 @@ require_once 'models/ItemOption.php';
                   <h2 class="mb-4" style="padding-left:10px; padding-right:10px;">No Reviews were posted for this item</h2>
               </div>
           </div>
+          <form class = "review-form" id = "review-form" action="product" method="POST">
+              <label>Enter your review: </label>
+              <textarea class = "review-form-input" rows = "4"></textarea>
+              <div class="form-message-div" id = "form-message-div"></div>
+              <p><button onclick="validator.initialize()" id="addReview" type="button" class="btn btn-primary py-3 px-5" style="color: white">Add your review</button></p>
+          </form>
           <div class="user-review overlay">
               <div class="author row justify-content-left d-flex p-1" style="display:flex; flex-direction: row; align-items: center" >
                   <div class="name" style="font-weight: bold; font-size: 15px;padding-left:10px; padding-right:10px;">Louise Kelly</div>
@@ -226,6 +232,7 @@ require_once 'models/ItemOption.php';
   <script src="public/js/scrollax.min.js"></script>
   <script src="public/js/main.js"></script>
   <script src="public/js/cart.js"></script>
+  <script src="public/js/validation/review.js"></script>
 
   <script>
     $(document).ready(function() {

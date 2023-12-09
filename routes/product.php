@@ -29,6 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (isset($_POST['review-message'])) {
+//        include 'controllers/review.controller.php';
+//        $review = new ReviewController;
+//        $review->add();
+//        exit();
+    }
 //    switch($lastSegment){
 //     case 'addToCart':
         include 'controllers/cart.controller.php';
