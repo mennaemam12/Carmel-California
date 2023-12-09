@@ -115,7 +115,7 @@ include 'partials/nav.php';
               </span>
                 </div>
 
-                <p><a onclick="addToCart()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to
+                <p><a onclick="add()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to
                         Cart</a></p>
 
             </div>
@@ -282,7 +282,7 @@ include 'partials/footer.php';
 <script src="public/js/jquery.timepicker.min.js"></script>
 <script src="public/js/scrollax.min.js"></script>
 <script src="public/js/main.js"></script>
-<script src="public/js/cart.js"></script>
+<script src="public/js/Cart.js"></script>
 <script src="public/js/validation/review.js"></script>
 
 <script>
