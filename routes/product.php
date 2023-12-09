@@ -35,17 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (isset($_POST['review-message'])) {
-        $review = new ReviewController;
-        $review->add();
-        exit();
-    }
-//    switch($lastSegment){
-//     case 'addToCart':
+    // if (isset($_POST['review-message'])) {
+    //     $review = new ReviewController;
+    //     $review->add();
+    //     exit();
+    // }
+   // if(isset($_POST['id'])){
         include 'controllers/cart.controller.php';
         $cartController=new CartController;
         $cartController->addToUserSession();
-//         exit();
-//    }
+        exit();
+    //}
 
 }
