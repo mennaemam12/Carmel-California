@@ -89,11 +89,11 @@
     <section class="ftco-menu mb-5 pb-5">
     	<div class="container">
     		<div class="row justify-content-center mb-5">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-          	<span class="subheading">Discover</span>
-            <h2 class="mb-4">Our Menu</h2>
-          </div>
-        </div>
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<span class="subheading">Discover</span>
+					<h2 class="mb-4">Our Menu</h2>
+				</div>
+        	</div>
     		<div class="row d-md-flex">
 	    		<div class="col-lg-12 ftco-animate p-md-5">
 		    		<div class="row">

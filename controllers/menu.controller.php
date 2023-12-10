@@ -34,7 +34,7 @@
             
         }
 
-        private function extractUniqueCategories($categoryItems) {
+        public static function extractUniqueCategories($categoryItems) {
             $uniqueCategories = [];
     
             foreach ($categoryItems as $item) {
