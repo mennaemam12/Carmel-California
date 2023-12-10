@@ -105,6 +105,7 @@ class Cart{
     }
 
     public function getCart($user){
+        
         $sql = "SELECT * FROM `cart` WHERE User_id= :userID";
         $this->db->query($sql);
         $this->db->bind(":userID", $user->id);
@@ -115,6 +116,8 @@ class Cart{
 
         include_once 'views/cart.php';
     }
+
+  
 
 
 }

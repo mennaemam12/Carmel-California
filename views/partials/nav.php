@@ -34,7 +34,7 @@ if(isset($_SESSION['user']))
 					<?php else: ?>
 					<?php endif; ?>		
 					<li class="nav-item cart" id="cart"><a href="cart"  class="nav-link"><span
-								class="icon icon-shopping_cart"></span><span style="display:none;"
+								class="icon icon-shopping_cart"></span><span "
 								class="bag d-flex justify-content-center align-items-center" ><small id="Items_count">0</small></span></a>
 					</li>
 				</ul>

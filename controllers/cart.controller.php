@@ -41,6 +41,24 @@
                 echo $response;
            }
         }
+
+        public static function viewCart(){
+            $cartItems=array();
+            $user=new User;
+            $user->unserialize($_SESSION['user']);
+            foreach($user->getCart() as $cartItem){
+                $cart=new Cart;
+                $cart->unserialize($cartItem);
+                $cartItems[]=$cart;
+            }
+            
+    
+            foreach($cartItems as $item){
+                $items[]=Item::findItemByID($item->getItemType(),$item->getItemId());
+            }
+    
+            include_once 'views/cart.php';
+        }
     }
 
 ?>
