@@ -92,11 +92,11 @@ $rows = Item::getAllItems();
                                                 echo "<td>" . $rows[$i]->Category . "</td>";
                                                 echo "<td>" . $rows[$i]->itemType . "</td>";
                                                 echo "<td>
-                                                    <a class='itemOptions' href='product/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
+                                                    <a class='itemOptions' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
                                                     <a class='itemOptions' href='dashboard/edititem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'>
                                                         <i class='fa-regular fa-pen-to-square'></i>
                                                     </a>
-                                                    <a class='itemOptions'><i class='fa-regular fa-trash-can'></i></a>
+                                                    <a class='itemOptions' href='dashboard/deleteitem/" . $rows[$i]->itemType ."/". $rows[$i]->id . "'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
                                             }
                                             ?>
@@ -118,6 +118,12 @@ $rows = Item::getAllItems();
                                 </div>
                             </div>
                         </div>
+                        <div class="form-message-div">
+                                            <?php flash('formError') ?>
+                                        </div>
+                                        <div class="form-message-div">
+                                            <?php flash('formSuccess') ?>
+                                        </div>
                     </div>
                     <?php
                     include 'views/partials/dashboard/_footer.php'

@@ -43,11 +43,11 @@
                     $uniqueCategories[] = $category;
                 }
             }
-    
             return $uniqueCategories;
+            //include_once 'views/dashboard/discount.php';
         }
 
 
     }
-
+      
 ?>

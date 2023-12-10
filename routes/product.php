@@ -1,7 +1,6 @@
 <?php
-// Path: routes/product.php
-
-// Get the current URL
+require_once 'controllers/itemOption.controller.php';
+require_once 'controllers/review.controller.php';
 $url = $_SERVER['REQUEST_URI'];
 
 // segments
@@ -11,24 +10,41 @@ $thirdlastSegment = trim(strtolower($segments[count($segments) - 3]));
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    switch ($thirdlastSegment) {
-        case 'product':
-            include 'controllers/item.controller.php';
+        include_once 'controllers/item.controller.php';
 
-            $itemID = $lastSegment;
-            $itemType = $segments[count($segments) - 2];
+        $itemID = $_GET['id'];
+        $itemType = $_GET['type'];
 
-            // Check if the item type & item id are valid
-            if (!ItemController::doesExist($itemType, $itemID)) {
-                include 'views/404.php';
-                exit();
-            }
+        $_SESSION['itemID'] = $itemID;
+        $_SESSION['itemType'] = $itemType;
 
-            //Passed checks
-            include 'views/singleProduct.php';
-            exit();
-        default:
+        // Check if the item type & item id are valid
+        if (!ItemController::doesExist($itemType, $itemID)) {
             include 'views/404.php';
             exit();
+        }
+
+        $item = Item::findItemByID($itemType, $itemID);
+
+        $reviews = Review::getReviews($itemType, $itemID);
+
+        $result = ItemOption::getItemOptions($itemType, $itemID);
+        include 'views/singleProduct.php';
+        exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (isset($_POST['review-message'])) {
+        $review = new ReviewController;
+        $review->add();
+        exit();
     }
+    if(isset($_POST['id'])){
+        include 'controllers/cart.controller.php';
+        $cartController=new CartController;
+        $cartController->addToUserSession();
+        exit();
+    }
+
 }

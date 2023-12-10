@@ -24,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit();
     }
 
-    include 'views/cart.php';
+    include 'controllers/cart.controller.php';
+    CartController::viewCart();
     exit();
 }
 

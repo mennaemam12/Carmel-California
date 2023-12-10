@@ -8,6 +8,7 @@ require_once 'models/DessertItem.php';
 class Item {
 
     protected $db;
+    protected $id;
     protected $name;
     protected $category;
     protected $description;
@@ -16,6 +17,10 @@ class Item {
     
     public function __construct() {
         $this->db = new Database;
+    }
+
+    public function setID($id) {
+        $this->id = $id;
     }
 
     public function setName($name) {
@@ -36,6 +41,11 @@ class Item {
 
     public function setImagePath($imagePath) {
         $this->imagePath=$imagePath;
+    }
+
+    public function getID()
+    {
+        return $this->id;
     }
 
     public function getName()
@@ -152,6 +162,16 @@ class Item {
         $this->db->bind(':image_path', $this->imagePath);
     
         if ($this->db->execute()) {
+            $this->db->query('SELECT id FROM categories WHERE Name = :name');
+            $this->db->bind(':name', $this->category);
+            $result = $this->db->single();
+
+            if (!$result) {
+                $this->db->query('INSERT INTO categories (Name) VALUES (:name)');
+                $this->db->bind(':name', $this->category);
+                $this->db->execute();
+            }
+
             return true;
         } else {
             return false;
@@ -191,5 +211,20 @@ class Item {
 
         // returns true if rowCount() > 0
         return $db->rowCount() > 0;
+    }
+    public function delete($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+
+        $this->db->query('DELETE FROM ' . $itemType . ' WHERE id=:id');
+        
+        $this->db->bind(':id', $ID);
+
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

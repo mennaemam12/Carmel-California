@@ -11,7 +11,8 @@ function addActiveClass() {
 
   currentPage = currentPage.toLowerCase();
   thirdLastSegment = location.pathname.split("/").slice(-3)[0];
-
+  var element;
+  
   switch (currentPage) {
     case "dashboard":
       element = $("#sidebar-dashboard");

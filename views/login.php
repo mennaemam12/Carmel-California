@@ -32,7 +32,7 @@ include 'projectFolderName.php';
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
 	<base href="<?php echo $projectFolder?>/">
-
+	<link rel="shortcut icon" href="template/images/favicon.png" />
 	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/animate.css">
 
@@ -64,24 +64,24 @@ include 'projectFolderName.php';
 			<div class="image-holder">
 				<img src="public/images/reg.jpg" alt="">
 			</div>
-			<form action="login" method="post">
+			<form id = "login-form" action="login" method="post">
 				<h3>Login</h3>
 				<div class="form-holder active">
-					<input type="text" placeholder="Email" name="Name/Email" class="form-control">
+					<input type="text" id = "Email" placeholder="Email" name="Name/Email" class="form-control">
 				</div>
 				<div class="form-holder">
-					<input type="password" placeholder="Password" name="UserPass" class="form-control" style="font-size: 15px;">
+					<input type="password" id = "Password" placeholder="Password" name="UserPass" class="form-control" style="font-size: 15px;">
 				</div>
 				<div class="checkbox" style="display: none;">
 					<label>
 						<span class="checkmark"></span>
 					</label>
 				</div>
-				<div class="form-message-div">
+				<div class="form-message-div" id = "form-message-div">
 					<?php flash('formError') ?>
 				</div>
 				<div class="form-login">
-					<button class="button" type="submit" name="submit">Login</button>
+					<button class="button" type="button" onclick="validator.initialize();" name="submit">Login</button>
 					<p>Don't have an account? <a href='signup'>Sign&nbsp;Up</a></p>
 				</div>
 			</form>
@@ -108,6 +108,7 @@ include 'projectFolderName.php';
 	<script src="public/js/scrollax.min.js"></script>
 	<script src="public/js/main.js"></script>
 	<script src="public/js/nav.js"></script>
+	<script src="public/js/validation/login.js"></script>
 	
 </body>
 

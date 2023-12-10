@@ -1,11 +1,14 @@
 <?php
-include 'projectFolderName.php';
+include_once 'projectFolderName.php';
+include_once 'models/Cart.php';
+include_once 'models/User.php';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Coffee - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Carmel Calfornia</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -23,19 +26,20 @@ include 'projectFolderName.php';
     <link rel="stylesheet" href="public/css/magnific-popup.css">
 
     <link rel="stylesheet" href="public/css/aos.css">
-
+	<link rel="shortcut icon" href="template/images/favicon.png" />
     <link rel="stylesheet" href="public/css/ionicons.min.css">
 
     <link rel="stylesheet" href="public/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="public/css/jquery.timepicker.css">
 
-    
+    <link rel="stylesheet" href="public/css/nav.css">
+	<link rel="stylesheet" href="public/css/footer.css">
+	<link rel="stylesheet" href="public/css/cart.css">
+	
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
 	
-	<link rel="stylesheet" href="public/css/nav.css">
-	<link rel="stylesheet" href="public/css/footer.css">
-	<link rel="stylesheet" href="public/css/cart.css">
+	
 
   </head>
   <body>
@@ -63,73 +67,75 @@ include 'projectFolderName.php';
 		<section class="ftco-section ftco-cart">
 			<div class="container">
 				<div class="row">
-    			<div class="col-md-12 ftco-animate">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-primary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
-						        <th>Product</th>
-						        <th>Price</th>
-						        <th>Quantity</th>
-						        <th>Total</th>
-						      </tr>
-						    </thead>
-						    <tbody>
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(public/images/menu-2.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3 style="margin-bottom:0px;">Creamy Latte Coffee</h3>
-						        	<!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
-						        </td>
-						        
-						        <td class="price" style="color:#504831;">$4.90</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-					          	</div>
-					          </td>
-						        
-						        <td class="total" style="color:#504831;">$4.90</td>
-						      </tr><!-- END TR-->
+					<div class="col-md-12 ftco-animate">
+						<div class="cart-list">
+							<table class="table">
+								<thead class="thead-primary">
+								<tr class="text-center">
+									<th>&nbsp;</th>
+									<th>&nbsp;</th>
+									<th>Product</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Total</th>
+								</tr>
+								</thead>
+								<tbody>
+									<?php
+									$i=0;
+									$total=0;
+									foreach($items as $item){  
+									?> 
+										<tr class="text-center">
+											<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
+											
+											<td class="image-prod"><div class="img" style="background-image:url(public/images/menu-2.jpg);"></div></td>
+											
+											<td class="product-name">
+												<h3 style="margin-bottom:0px;"><?=$item->Name?></h3>
+												<!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
+											</td>
+											
+											<td class="price" style="color:#504831;"><?=$item->Price?> EGP</td>
+											
+											<td class="quantity">
+												<div class="input-group mb-3">
+													<span class="input-group-btn mr-2">
+														<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+														<i class="icon-minus"></i>
+														</button>
+													</span>
+															<input type="text" id="quantity" name="quantity" class="form-control input-number" value="<?=$cartItems[$i]->getQuantity()?>" min="1"
+																max="100">
+													<span class="input-group-btn ml-2">
+														<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+														<i class="icon-plus"></i>
+														</button>
+													</span>
+												</div>
+											</td>
+											
+											<td class="total" style="color:#504831;"><?php echo $item->Price*$cartItems[$i]->getQuantity()?> EGP</td>
+										</tr><!-- END TR-->
+									<?php
+										$total=$total+$item->Price*$cartItems[$i]->getQuantity();
+										$i++;
+										} 
+									?>
+									
 
-						      <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
-						        
-						        <td class="image-prod"><div class="img" style="background-image:url(public/images/dish-2.jpg);"></div></td>
-						        
-						        <td class="product-name">
-						        	<h3 style="margin-bottom:0px;">Grilled Ribs Beef</h3>
-						        	<!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
-						        </td>
-						        
-						        <td class="price" style="color:#504831;">$15.70</td>
-						        
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-					             	<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-					          	</div>
-					          </td>
-						        
-						        <td class="total" style="color:#504831;">$15.70</td>
-						      </tr><!-- END TR-->
-						    </tbody>
-						  </table>
-					  </div>
-    			</div>
-    		</div>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
     		<div class="row justify-content-end">
     			<div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
     						<span>Subtotal</span>
-    						<span>$20.60</span>
+    						<span><?=$total?></span>
     					</p>
     					<p class="d-flex">
     						<span>Delivery</span>
@@ -148,8 +154,8 @@ include 'projectFolderName.php';
     				<p class="text-center"><a href="checkout" class="btn btn-primary py-3 px-4" style="background-color:#006a4d;">Proceed to Checkout</a></p>
     			</div>
     		</div>
-			</div>
-		</section>
+		</div>
+	</section>
 
     <section class="ftco-section">
     	<div class="container">
@@ -238,5 +244,41 @@ include 'projectFolderName.php';
   <script src="public/js/main.js"></script>
   <script src="public/js/nav.js"></script>
     
+	<script>
+		// $(document).ready(function () {
+
+		// 	var quantitiy = 0;
+		// 	$('.quantity-right-plus').click(function (e) {
+
+		// 		// Stop acting like a button
+		// 		e.preventDefault();
+		// 		// Get the field name
+		// 		var quantity = parseInt($('#quantity').val());
+
+		// 		// If is not undefined
+
+		// 		$('#quantity').val(quantity + 1);
+
+
+		// 		// Increment
+
+		// 	});
+
+		// 	$('.quantity-left-minus').click(function (e) {
+		// 		// Stop acting like a button
+		// 		e.preventDefault();
+		// 		// Get the field name
+		// 		var quantity = parseInt($('#quantity').val());
+
+		// 		// If is not undefined
+
+		// 		// Increment
+		// 		if (quantity > 0) {
+		// 			$('#quantity').val(quantity - 1);
+		// 		}
+		// 	});
+
+		// });
+	</script>
   </body>
 </html>

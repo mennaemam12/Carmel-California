@@ -5,7 +5,7 @@ include 'projectFolderName.php';
 
 class ItemController
 {
-
+    
     private $itemModel;
     private $errorMsg = "";
     public function __construct()
@@ -155,8 +155,12 @@ class ItemController
         if ($this->validateItem($data)) {
 
             //handle image path
-            if ($_FILES['file']['size'] > 0)
+            if ($_FILES['file']['size'] > 0){
+                $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath;
+                unlink($imagePath);
                 $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
+            
+            }
             else
                 // get the current image path from the database
                 $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath; // No image was uploaded so no need to update the image
@@ -212,6 +216,7 @@ class ItemController
             return false;
     }
 
+
     public static function doesExist($itemType, $itemID)
     {
         // Check if the item type is valid
@@ -230,4 +235,100 @@ class ItemController
 
         return true;
     }
+    public function delete($itemType, $ID)
+    {
+        $itemType = strtolower($itemType);
+            // get the current image path from the database
+            $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath; // No image was uploaded so no need to update the image
+            // Validation successful, create an Item object
+            $this->itemModel = new Item();
+
+			//$this->itemModel->setImagePath($imagePath);
+
+            if ($this->itemModel->delete($itemType, $ID)) {
+                unlink($imagePath);
+                flash("formSuccess", "Item deleted successfully", 'form-message form-message-green');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/viewitems");
+                exit();
+            }else{
+            flash("formError", "Failed to delete item from the database", 'form-message form-message-red');
+            redirect($GLOBALS['projectFolder'] . "/dashboard/viewitems/");
+            exit();
+        }
+    }
+
+    public static function getAjaxCategories(){
+        $items=[];
+        include 'controllers/menu.controller.php';
+        // Instantiate the MenuController
+        $menuController = new MenuController();
+
+         // Handle AJAX request for categories
+         if (isset($_POST['type'])) {
+             switch ($_POST['type']) {
+                 case 'breakfast':
+                     $items = BreakfastItem::getBreakfastItems();
+                     break;
+                 case 'main':
+                     $items = MainItem::getMainItems();
+                     break;
+                 case 'drinks':
+                     $items = DrinkItem::getDrinkItems();
+                     break;
+                 case 'desserts':
+                     $items = DessertItem::getDessertItems();
+                     break;
+                 case 'sides':
+                     $items = SideItem::getSideItems();
+                     break;
+                 default:
+                     http_response_code(400);
+                     echo "Invalid item type";
+                     exit;
+             }
+ 
+             // Check if $items is not false (indicating an error)
+             if ($items === false) {
+                 http_response_code(500);
+                 echo "Error fetching items";
+                 exit;
+             }
+ 
+             // Check if $items is an array
+             if (!is_array($items)) {
+                 http_response_code(500);
+                 echo "Unexpected data format for items";
+                 exit;
+             }
+
+             $uniqueCategories = !empty($items)? $menuController->extractUniqueCategories($items):[];
+ 
+             // Check if $uniqueCategories is not false (indicating an error)
+             if ($uniqueCategories === false) {
+                 http_response_code(500);
+                 echo "Error extracting unique categories";
+                 exit;
+             }
+ 
+             // Return the categories as JSON
+             $jsonResponse = json_encode($uniqueCategories);
+ 
+             // Check for JSON encoding errors
+             if ($jsonResponse === false) {
+                 $jsonError = json_last_error_msg();
+                 http_response_code(500);
+                 echo "JSON encoding error: $jsonError";
+                 exit;
+             }
+ 
+             echo $jsonResponse;
+             exit;
+         } else {
+             http_response_code(400);
+             echo "Type parameter is missing";
+         }
+    }
+
+   
+
 }

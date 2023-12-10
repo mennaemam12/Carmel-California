@@ -10,8 +10,7 @@ function addActiveClass() {
     .replace(/^\/|\/$/g, "");
 
   currentPage = currentPage.toLowerCase();
-  console.log(currentPage);
-
+  
   switch (currentPage) {
     case "":
     case "home":

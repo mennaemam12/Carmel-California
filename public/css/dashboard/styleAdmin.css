@@ -13784,7 +13784,7 @@
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: #F5F7FF;
     background-clip: border-box;
     border: 1px solid #e3e3e3;
     border-radius: 20px;
@@ -19784,6 +19784,7 @@
     align-items: stretch;
     -webkit-justify-content: stretch;
     justify-content: stretch;
+    background-color: #F5F7FF;
   }
   
   .stretch-card > .card {
