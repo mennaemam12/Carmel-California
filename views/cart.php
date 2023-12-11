@@ -1,7 +1,5 @@
 <?php
-include_once 'projectFolderName.php';
-include_once 'models/Cart.php';
-include_once 'models/User.php';
+include 'projectFolderName.php';
 
 ?>
 
@@ -26,18 +24,18 @@ include_once 'models/User.php';
     <link rel="stylesheet" href="public/css/magnific-popup.css">
 
     <link rel="stylesheet" href="public/css/aos.css">
-	<link rel="shortcut icon" href="template/images/favicon.png" />
     <link rel="stylesheet" href="public/css/ionicons.min.css">
 
     <link rel="stylesheet" href="public/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="public/css/jquery.timepicker.css">
+	
+    <link rel="stylesheet" href="public/css/flaticon.css">
+    <link rel="stylesheet" href="public/css/icomoon.css">
+	<link rel="shortcut icon" href="template/images/favicon.png"/>
 
     <link rel="stylesheet" href="public/css/nav.css">
 	<link rel="stylesheet" href="public/css/footer.css">
 	<link rel="stylesheet" href="public/css/cart.css">
-	
-    <link rel="stylesheet" href="public/css/flaticon.css">
-    <link rel="stylesheet" href="public/css/icomoon.css">
 	
 	
 
@@ -89,7 +87,7 @@ include_once 'models/User.php';
 										<tr class="text-center">
 											<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
 											
-											<td class="image-prod"><div class="img" style="background-image:url(public/images/menu-2.jpg);"></div></td>
+											<td class="image-prod"><div class="img" style="background-image:url(<?=$item->ImagePath?>);"></div></td>
 											
 											<td class="product-name">
 												<h3 style="margin-bottom:0px;"><?=$item->Name?></h3>
@@ -135,20 +133,20 @@ include_once 'models/User.php';
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
     						<span>Subtotal</span>
-    						<span><?=$total?></span>
+    						<span><?=$total?> EGP</span>
     					</p>
     					<p class="d-flex">
     						<span>Delivery</span>
-    						<span>$0.00</span>
+    						<span>0.00 EGP</span>
     					</p>
     					<p class="d-flex">
     						<span>Discount</span>
-    						<span>$3.00</span>
+    						<span>0.00 EGP</span>
     					</p>
     					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
-    						<span>$17.60</span>
+    						<span><?=$total?> EGP</span>
     					</p>
     				</div>
     				<p class="text-center"><a href="checkout" class="btn btn-primary py-3 px-4" style="background-color:#006a4d;">Proceed to Checkout</a></p>
@@ -245,40 +243,40 @@ include_once 'models/User.php';
   <script src="public/js/nav.js"></script>
     
 	<script>
-		// $(document).ready(function () {
+		$(document).ready(function () {
 
-		// 	var quantitiy = 0;
-		// 	$('.quantity-right-plus').click(function (e) {
+			var quantitiy = 0;
+		 	$('.quantity-right-plus').click(function (e) {
 
-		// 		// Stop acting like a button
-		// 		e.preventDefault();
-		// 		// Get the field name
-		// 		var quantity = parseInt($('#quantity').val());
+				// Stop acting like a button
+		 		e.preventDefault();
+				// Get the field name
+				var quantity = parseInt($('#quantity').val());
 
-		// 		// If is not undefined
+			// If is not undefined
 
-		// 		$('#quantity').val(quantity + 1);
+				$('#quantity').val(quantity + 1);
 
 
-		// 		// Increment
+		 		// Increment
 
-		// 	});
+		 	});
 
-		// 	$('.quantity-left-minus').click(function (e) {
-		// 		// Stop acting like a button
-		// 		e.preventDefault();
-		// 		// Get the field name
-		// 		var quantity = parseInt($('#quantity').val());
+			$('.quantity-left-minus').click(function (e) {
+				// Stop acting like a button
+		 		e.preventDefault();
+	 	 		// Get the field name
+		 		var quantity = parseInt($('#quantity').val());
 
-		// 		// If is not undefined
+		 		// If is not undefined
 
-		// 		// Increment
-		// 		if (quantity > 0) {
-		// 			$('#quantity').val(quantity - 1);
-		// 		}
-		// 	});
+		 		// Increment
+		 		if (quantity > 0) {
+					$('#quantity').val(quantity - 1);
+		 		}
+		 	});
 
-		// });
+		 });
 	</script>
   </body>
 </html>

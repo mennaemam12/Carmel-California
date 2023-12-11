@@ -43,6 +43,7 @@
         }
 
         public static function viewCart(){
+            $items=array();
             $cartItems=array();
             $user=new User;
             $user->unserialize($_SESSION['user']);
