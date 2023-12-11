@@ -1,6 +1,6 @@
 <?php
 require_once 'database.php';
-
+require_once 'models/Review.php';
 class User {
 
     private $db;
@@ -192,12 +192,14 @@ class User {
         
         $this->db->bind(':id', $ID);
 
-        //Execute
-        if ($this->db->execute()) {
-            return true;
-        } else {
+        if (!Review::deleteReviewsWithUserId($ID))
             return false;
-        }
+
+        //Execute
+        if ($this->db->execute())
+            return true;
+
+        return false;
     }
     public function getLastInsertedID(){
        return $this->db->lastInsertId();

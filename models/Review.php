@@ -112,6 +112,13 @@ class Review
         return $db->execute();
     }
 
+    public static function deleteReviewsWithUserId($user_id) {
+        $db = new Database;
+        $db->query('DELETE FROM reviews WHERE user_id = :userID');
+        $db->bind(':userID', $user_id);
+        return $db->execute();
+    }
+
     public static function getReviews($item_type, $item_id)
     {
         $db = new Database;
