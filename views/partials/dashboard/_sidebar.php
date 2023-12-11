@@ -96,6 +96,7 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="dashboard/employee"> Employees </a></li>
           <li class="nav-item"> <a class="nav-link" href="dashboard/customer"> Customers </a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/addusertype"> Add User Type </a></li>
         </ul>
       </div>
     </li>

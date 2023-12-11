@@ -64,5 +64,17 @@ class UserType
         return false;
     }
 
+    public static function doesExist($name) {
+        $name = strtolower($name);
+        $db = new Database;
+        $db->query('SELECT * FROM user_type WHERE name = :name');
+        $db->bind(':name', $name);
+        $db->execute();
+
+        $result = $db->single();
+
+        // returns true if rowCount() > 0
+        return $db->rowCount() > 0;
+    }
 
 }

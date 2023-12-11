@@ -95,13 +95,10 @@ class Cart{
         $this->db->bind(':Item_id', $this->item_id);
         $this->db->bind(':quantity', $this->quantity);
 
-        if ($this->db->execute()){
+        if ($this->db->execute())
             return true;
-        }
-        else{
-            return false;
-        }
 
+        return false;
     }
 
     public function getCart($user){

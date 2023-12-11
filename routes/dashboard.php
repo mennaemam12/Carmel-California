@@ -4,6 +4,8 @@
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 
+require_once "controllers/user_type.controller.php";
+
 
 // Commenting till we have a proper database
 // Check if the user is already logged in
@@ -112,6 +114,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
         case 'reviews':
             include 'views/dashboard/reviews.php';
             exit();
+        case 'addusertype':
+            include 'views/dashboard/addusertype.php';
+            exit();
         default:
             include 'views/404.php';
             exit();
@@ -175,23 +180,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user->Makeadmin($userID);
             redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
             exit();
-    }
-
-    switch ($thirdlastSegment) {
-        case 'edititem';
-            include 'controllers/item.controller.php';
-            $item = new ItemController;
-
-            $itemID = $lastSegment;
-            $itemType = $segments[count($segments) - 2];
-
-            //$itemID = $_POST['itemID'];
-            //$itemType = $_POST['itemtype'];
-
-            $item->edit($itemType, $itemID);
+        case 'addusertype':
+            $userType = new UserTypeController;
+            $userType->add();
             exit();
     }
-
 
     // if (isset($_POST['type'])) {
     //     $menuController = new MenuController();
