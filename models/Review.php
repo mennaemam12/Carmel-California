@@ -104,6 +104,14 @@ class Review
         return false;
     }
 
+    public static function deleteReviews($item_type, $item_id) {
+        $db = new Database;
+        $db->query('DELETE FROM reviews WHERE item_id = :itemID AND item_type = :itemType');
+        $db->bind(':itemID', $item_id);
+        $db->bind(':itemType', $item_type);
+        return $db->execute();
+    }
+
     public static function getReviews($item_type, $item_id)
     {
         $db = new Database;
