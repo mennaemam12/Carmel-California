@@ -30,7 +30,6 @@ $rows = Item::getAllItems();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="template/images/favicon.png" />
 </head>
-
 <body>
     <div class="container-scroller">
 
@@ -93,10 +92,10 @@ $rows = Item::getAllItems();
                                                 echo "<td>" . $rows[$i]->itemType . "</td>";
                                                 echo "<td>
                                                     <a class='itemOptions' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
-                                                    <a class='itemOptions' href='dashboard/edititem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'>
+                                                    <a class='itemOptions' href='dashboard/edititem?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>
                                                         <i class='fa-regular fa-pen-to-square'></i>
-                                                    </a>
-                                                    <a class='itemOptions' href='dashboard/deleteitem/" . $rows[$i]->itemType ."/". $rows[$i]->id . "'><i class='fa-regular fa-trash-can'></i></a>
+                                                    </a>";
+                                                echo "<a class='itemOptions' onclick='deleteItem(\"".$rows[$i]->itemType."\", \"".$rows[$i]->id."\")'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
                                             }
                                             ?>
@@ -159,6 +158,8 @@ $rows = Item::getAllItems();
         <script src="template/js/file-upload.js"></script>
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
+        <script src="public/js/dashboard/itemFunctions.js"></script>
+
 </body>
 
 </html>

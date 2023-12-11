@@ -4,15 +4,6 @@ include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 require_once 'models/Item.php';
 
-$url = $_SERVER['REQUEST_URI'];
-// segments
-$segments = explode('/', $url);
-
-$itemID = trim($segments[count($segments) - 1]);
-$itemType = trim($segments[count($segments) - 2]);
-
-$item = Item::findItemByID($itemType, $itemID);
-
 ?>
 
 <!DOCTYPE html>

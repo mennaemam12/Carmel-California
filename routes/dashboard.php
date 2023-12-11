@@ -5,7 +5,6 @@ include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 
 
-
 // Commenting till we have a proper database
 // Check if the user is already logged in
 // if (isset($_SESSION['userType'])) {
@@ -28,12 +27,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
         exit();
     }
 
-    switch ($thirdlastSegment) {
+    if (strpos($lastSegment, '?') !== false)
+        $lastSegment = strstr($lastSegment, '?', true);
+
+
+    switch($lastSegment) {
         case 'edititem':
             require_once 'controllers/item.controller.php';
 
-            $itemID = $lastSegment;
-            $itemType = $segments[count($segments) - 2];
+            if (!isset($_GET['id']) || !isset($_GET['type'])) {
+                include 'views/404.php';
+                exit();
+            }
+
+            $itemID = $_GET['id'];
+            $itemType = $_GET['type'];
 
             // Check if the item type & item id are valid
             if (!ItemController::doesExist($itemType, $itemID)) {
@@ -41,27 +49,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
                 exit();
             }
 
+            $item = Item::findItemByID($itemType, $itemID);
+            include_once('views/dashboard/edititem.php');
+            exit();
+    }
+
+    switch ($thirdlastSegment) {
         case 'editdiscount':
             include 'controllers/discount.controller.php';
 
             $itemID = $lastSegment;
             $itemType = $segments[count($segments) - 2];
-    
+
             include 'views/dashboard/editdiscount.php';
             exit();
-        case 'deleteitem' :
-        include 'controllers/item.controller.php';
-            $item = new ItemController;
-
-            $itemID = $lastSegment;
-            $itemType = $segments[count($segments) - 2];
-
-            //$itemID = $_POST['itemID'];
-            //$itemType = $_POST['itemtype'];
-
-            $item->delete($itemType, $itemID);
-            exit();
-
     }
 
     // Switch based on the last segment
@@ -102,22 +103,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
         case 'points':
             include 'views/dashboard/points.php';
             exit();
-            case 'discount':
+        case 'discount':
             include 'views/dashboard/discount.php';
             exit();
-            case 'viewdiscount':
-                include 'views/dashboard/viewdiscount.php';
-                exit();
+        case 'viewdiscount':
+            include 'views/dashboard/viewdiscount.php';
+            exit();
         case 'reviews':
             include 'views/dashboard/reviews.php';
             exit();
-        
         default:
             include 'views/404.php';
             exit();
     }
-
-    
 }
 
 
@@ -136,19 +134,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $ingredient->add();
             exit();
 
-
-        case 'addoptions':     
-            $items=[];
+        case 'addoptions':
+            $items = [];
             include 'controllers/item.controller.php';
             ItemController::getAjaxCategories();
             exit();
 
         case 'addoption':
             include 'controllers/itemOption.controller.php';
-            $option=new OptionController;
+            $option = new OptionController;
             $option->addOption();
             exit();
-
 
         case'discount':
             include 'controllers/discount.controller.php';
@@ -163,14 +159,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user->delete($userID);
             redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
             exit();
-            case 'makeadmin' :
-                include_once 'models/User.php';
-                $user = new User;
-                $userID = $_POST['id'];
-                $user->Makeadmin($userID);
-                redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
-                exit();
-     
+
+        case 'deleteitem':
+            include 'controllers/item.controller.php';
+            $item = new ItemController;
+            $itemID = $_POST['id'];
+            $itemType = $_POST['type'];
+            $item->delete($itemType, $itemID);
+            exit();
+
+        case 'makeadmin' :
+            include_once 'models/User.php';
+            $user = new User;
+            $userID = $_POST['id'];
+            $user->Makeadmin($userID);
+            redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
+            exit();
     }
 
     switch ($thirdlastSegment) {
@@ -188,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
     }
 
-    
+
     // if (isset($_POST['type'])) {
     //     $menuController = new MenuController();
     //     $uniqueCategories = $menuController->extractUniqueCategories($_POST['type']);
@@ -202,8 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // } else {
     //     echo "Invalid request"; // Handle the case when 'type' is not set in POST data
     // }
-}
-else{
+} else {
     die ("something wrong in discount");
 
 }
