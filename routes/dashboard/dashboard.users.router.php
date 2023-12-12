@@ -97,12 +97,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user->delete($userID);
             redirect($GLOBALS['projectFolder'] . "/dashboard/users");
             exit();
-//        case 'deleteusertype' :
-//            $userType = new UserType;
-//            $userTypeID = $_POST['id'];
-//            $userType->delete($userTypeID);
-//            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=viewusertypes");
-//            exit();
+        case 'deleteusertype' :
+            $userType = new UserTypeController;
+            $userType->delete();
+
+            exit();
 
         default:
             include 'views/404.php';

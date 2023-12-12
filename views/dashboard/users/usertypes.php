@@ -73,11 +73,14 @@ require_once 'models/User.php';
                                         echo "<td>" . $userType->id . "</td>";
                                         echo "<td>" . $userType->name . "</td>";
                                         echo "<td>
-                                                    <a class='itemOptions' href='dashboard/users?action=edittype&id=".$userType->id."'>
-                                                        <i class='fa-regular fa-pen-to-square' ></i>
-                                                    </a>
-                                                    <a class='itemOptions'><i class='fa-regular fa-trash-can'></i></a>
-                                                    </td></tr>";
+                                            <a class='itemOptions' href='dashboard/users?action=edittype&id={$userType->id}'>
+                                                <i class='fa-regular fa-pen-to-square'></i>
+                                            </a>
+                                            <a class='itemOptions' onclick='deleteUserType({$userType->id})'>
+                                                <i class='fa-regular fa-trash-can'></i>
+                                            </a>
+                                            </td></tr>";
+
                                     }
                                     ?>
                                     </tbody>
@@ -85,12 +88,12 @@ require_once 'models/User.php';
 
                             </div>
                         </div>
-                        <div class="form-message-div">
-                            <?php flash('formError') ?>
-                        </div>
-                        <div class="form-message-div">
-                            <?php flash('formSuccess') ?>
-                        </div>
+                    </div>
+                    <div class="form-message-div">
+                        <?php flash('formError') ?>
+                    </div>
+                    <div class="form-message-div">
+                        <?php flash('formSuccess') ?>
                     </div>
                     <?php
                     include 'views/partials/dashboard/_footer.php'
@@ -127,6 +130,7 @@ require_once 'models/User.php';
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
         <script src="public/js/dashboard/dashboard.js"></script>
+        <script src="public/js/dashboard/usertypeFunctions.js"></script>
 </body>
 
 </html>

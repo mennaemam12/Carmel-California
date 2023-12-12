@@ -62,4 +62,25 @@ class UserTypeController
         redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=edittype&id=" . $_POST['id']);
         return false;
     }
+
+    public function delete() {
+        if (!isset($_POST['id']) || empty(trim($_POST['id']))) {
+            flash("formError", "Please specify a user type");
+            redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=viewusertypes");
+            exit();
+        }
+
+        $id = trim($_POST['id']);
+        $this->userTypeModel->setID($id);
+
+        if ($this->userTypeModel->delete()) {
+            flash("formError", "Successfully deleted");
+            redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=viewusertypes");
+            exit();
+        }
+
+        flash("formError", "Error deleting from database");
+        redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=viewusertypes");
+        exit();
+    }
 }

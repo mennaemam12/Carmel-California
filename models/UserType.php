@@ -7,7 +7,6 @@ class UserType
     protected $id;
     protected $name;
 
-
     public function __construct($id = null, $name = null)
     {
         $this->db = new Database;
@@ -43,6 +42,7 @@ class UserType
     public function setID($id)
     {
         $this->id = $id;
+        return true;
     }
 
     public function getID()
@@ -91,6 +91,36 @@ class UserType
         return true;
     }
 
+    public function delete()
+    {
+        $this->deletePermissions();
+        $this->deleteUsers();
+
+        $this->db->query('DELETE FROM user_type WHERE user_type.id = :id');
+        $this->db->bind(':id', $this->id);
+
+        if ($this->db->execute())
+            return true;
+
+        return false;
+    }
+
+    private
+    function deletePermissions()
+    {
+        $this->db->query('DELETE FROM usertype_permissions WHERE usertype_id = :id');
+        $this->db->bind(':id', $this->id);
+
+        $this->db->execute();
+    }
+
+    private function deleteUsers() {
+        $this->db->query('DELETE FROM users WHERE usertype = :id');
+        $this->db->bind(':id', $this->id);
+
+        $this->db->execute();
+    }
+
     public function getPermissions()
     {
         $this->db->query('SELECT * FROM usertype_permissions WHERE usertype_id = :id');
@@ -106,18 +136,6 @@ class UserType
             $permissions[] = new Permission($row->permission_id);
 
         return $permissions;
-    }
-
-    public function delete()
-    {
-        $this->deletePermissions();
-        $this->db->query('DELETE FROM user_type WHERE id = :id');
-        $this->db->bind(':id', $this->id);
-
-        if ($this->db->execute())
-            return true;
-
-        return false;
     }
 
     private function updatePermissions()
@@ -141,14 +159,7 @@ class UserType
     }
 
 
-    private
-    function deletePermissions()
-    {
-        $this->db->query('DELETE FROM usertype_permissions WHERE usertype_id = :id');
-        $this->db->bind(':id', $this->id);
 
-        $this->db->execute();
-    }
 
     public
     static function doesExist($name)

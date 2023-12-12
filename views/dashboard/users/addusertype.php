@@ -86,7 +86,7 @@ require_once 'helpers/session.helper.php';
                                         <?php flash('formError') ?>
                                     </div>
                                     <button type="submit" class="btn btn-primary mr-2">Add</button>
-                                    <a href="dashboard" class="btn btn-light">Cancel</a>
+                                    <a href="dashboard/users?action=viewusertypes" class="btn btn-light">Cancel</a>
                                 </form>
                             </div>
                         </div>
