@@ -1,11 +1,11 @@
 <?php
 require_once 'database.php';
-
+require_once 'models/Permission.php';
 class UserType
 {
-    private $db;
-    private $id;
-    private $name;
+    protected $db;
+    protected $id;
+    protected $name;
 
 
     public function __construct($id = null, $name = null)
@@ -18,13 +18,14 @@ class UserType
 
         if ($name != null) {
             $this->name = $name;
-            exit();
+            return true;
         }
 
         if (!$data = self::getData($id))
             return false;
 
         $this->name = $data->name;
+        return true;
     }
 
     private static function getData($id)
@@ -44,9 +45,19 @@ class UserType
         $this->id = $id;
     }
 
+    public function getID()
+    {
+        return $this->id;
+    }
+
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     public function add()
@@ -65,11 +76,54 @@ class UserType
         return false;
     }
 
+    public function edit() {
+        $this->db->query('UPDATE user_type SET name=:name WHERE id=:id');
+        $this->db->bind(':id', $this->id);
+        $this->db->bind(':name', $this->name);
+
+        if (!$this->db->execute())
+            return false;
+
+        $this->deletePermissions();
+        if (!$this->updatePermissions())
+            return false;
+
+        return true;
+    }
+
+    public function getPermissions()
+    {
+        $this->db->query('SELECT * FROM usertype_permissions WHERE usertype_id = :id');
+        $this->db->bind(':id', $this->id);
+
+        if (!$this->db->execute())
+            return false;
+
+        $result = $this->db->resultSet();
+        $permissions = [];
+
+        foreach ($result as $row)
+            $permissions[] = new Permission($row->permission_id);
+
+        return $permissions;
+    }
+
+    public function delete()
+    {
+        $this->deletePermissions();
+        $this->db->query('DELETE FROM user_type WHERE id = :id');
+        $this->db->bind(':id', $this->id);
+
+        if ($this->db->execute())
+            return true;
+
+        return false;
+    }
+
     private function updatePermissions()
     {
         if (!isset($_POST['selectedPermissions']))
             return false;
-
 
         $this->deletePermissions();
 
@@ -97,25 +151,22 @@ class UserType
     }
 
     public
-    function edit()
-    {
-        $this->db->query('UPDATE user_type SET name=:name WHERE id=:id');
-        $this->db->bind(':id', $this->id);
-        $this->db->bind(':name', $this->name);
-
-        if ($this->db->execute())
-            return true;
-
-        return false;
-    }
-
-    public
     static function doesExist($name)
     {
         $name = strtolower($name);
         $db = new Database;
         $db->query('SELECT * FROM user_type WHERE name = :name');
         $db->bind(':name', $name);
+        $db->execute();
+
+        return $db->rowCount() > 0;
+    }
+
+    public static function doesExistByID($id)
+    {
+        $db = new Database;
+        $db->query('SELECT * FROM user_type WHERE id = :id');
+        $db->bind(':id', $id);
         $db->execute();
 
         return $db->rowCount() > 0;

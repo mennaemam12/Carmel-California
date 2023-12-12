@@ -23,6 +23,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $permissions = Permission::getAllPermissions();
             include 'views/dashboard/users/addusertype.php';
             exit();
+
+        case 'edittype':
+
+            if (!isset($_GET['id'])) {
+                include 'views/404.php';
+                exit();
+            }
+
+            $userTypeID = $_GET['id'];
+
+            // Check if the UserType exists
+            if (!UserType::doesExistByID($userTypeID)) {
+                include 'views/404.php';
+                exit();
+            }
+
+            $userType = new UserType($userTypeID);
+            $permissions = Permission::getAllPermissions();
+            $selectedPermissions = $userType->getPermissions();
+
+            $unselectedPermissions = [];
+
+            foreach ($permissions as $permission) {
+                $found = false;
+
+                foreach ($selectedPermissions as $selectedPermission) {
+                    if ($permission->getID() == $selectedPermission->getID()) {
+                        $found = true;
+                        break;
+                    }
+                }
+
+                if (!$found)
+                    $unselectedPermissions[] = $permission;
+            }
+
+            include 'views/dashboard/users/editusertype.php';
+            exit();
+        default:
+            include 'views/404.php';
+            exit();
     }
 }
 
@@ -40,6 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userType = new UserTypeController;
             $userType->add();
             exit();
+        case 'edittype':
+            $userType = new UserTypeController;
+            $userType->edit();
+            exit();
         case 'makeadmin' :
             $user = new User;
             $userID = $_POST['id'];
@@ -51,6 +96,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userID = $_POST['id'];
             $user->delete($userID);
             redirect($GLOBALS['projectFolder'] . "/dashboard/users");
+            exit();
+//        case 'deleteusertype' :
+//            $userType = new UserType;
+//            $userTypeID = $_POST['id'];
+//            $userType->delete($userTypeID);
+//            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=viewusertypes");
+//            exit();
+
+        default:
+            include 'views/404.php';
             exit();
     }
 }

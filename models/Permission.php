@@ -2,10 +2,10 @@
 require_once 'database.php';
 class Permission
 {
-    private $db;
-    private $id;
-    private $description;
-    private $path;
+    protected $db;
+    protected $id;
+    protected $description;
+    protected $path;
 
     public function __construct($id = null, $description = null, $path = null)
     {
@@ -14,24 +14,31 @@ class Permission
             return false;
 
         $this->id = $id;
-        $this->description = $description;
-        $this->path = $path;
+
+        if ($description != null && $path != null) {
+            $this->description = $description;
+            $this->path = $path;
+            return true;
+        }
+
+        if (!$data = self::getData($id))
+            return false;
+
+        $this->description = $data->description;
+        $this->path = $data->path;
         return true;
     }
 
-    public function setID($id)
+    private static function getData($id)
     {
-        $this->id = $id;
-    }
+        $db = new Database;
+        $db->query('SELECT * FROM permissions where id = :id');
+        $db->bind(':id', $id);
 
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
+        if (!$db->execute())
+            return false;
 
-    public function setPath($path)
-    {
-        $this->path = $path;
+        return $db->single();
     }
 
     public function getID()
@@ -57,10 +64,9 @@ class Permission
         $result = $db->resultSet();
         $permissions = [];
 
-        foreach ($result as $row) {
-            $permission = new Permission($row->id, $row->description, $row->path);
-            $permissions[] = $permission;
-        }
+        foreach ($result as $row)
+            $permissions[] = new Permission($row->id, $row->description, $row->path);
+
 
         return $permissions;
     }

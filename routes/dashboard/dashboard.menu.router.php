@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
     $action = strtolower(trim($_GET['action']));
-
+    
     switch ($action) {
         case 'additem':
             include 'views/dashboard/menu/additem.php';
@@ -31,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
             $item = Item::findItemByID($itemType, $itemID);
             include 'views/dashboard/menu/edititem.php';
+            exit();
+        default:
+            include 'views/404.php';
             exit();
     }
 }
@@ -68,6 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $itemID = $_POST['id'];
             $itemType = $_POST['type'];
             $item->delete($itemType, $itemID);
+            exit();
+        default:
+            include 'views/404.php';
             exit();
     }
 }

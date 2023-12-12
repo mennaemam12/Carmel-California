@@ -51,39 +51,40 @@ require_once 'helpers/session.helper.php';
                             <div class="card-body">
                                 <h4 class="card-title">Edit User Type </h4>
                                 <p class="card-description"></p>
-                                <form class="forms-sample" method="post" action="dashboard/users?action=addtype"
+                                <form class="forms-sample" method="post" action="dashboard/users?action=edittype"
                                       enctype='multipart/form-data'>
                                     <div class="form-group">
                                         <label for="usertype-name">Name</label>
                                         <input type="text" class="form-control" id="usertype-name" name="usertype-name"
-                                               required>
+                                               required value="<?php echo $userType->getName();?>">
                                     </div>
 
                                     <div class="permissions">
                                         <div class="form-group">
-                                            <label for="permissions">All Permissions</label>
+                                            <label for="permissions">Permissions</label>
                                             <select multiple class="form-control"
                                                     id="permissions" name="permissions">
-                                                <?php for ($i = 8; $i < count($permissions); $i++) {
-                                                    echo "<option value='" . $permissions[$i]->getID() . "'>" . $permissions[$i]->getDescription() . "</option>";
+                                                <?php for ($i = 0; $i < count($unselectedPermissions); $i++) {
+                                                    echo "<option value='" . $unselectedPermissions[$i]->getID() . "'>" . $unselectedPermissions[$i]->getDescription() . "</option>";
                                                 } ?>
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="selectedPermissions">Selected Permissions</label>
-                                            <select multiple class="form-control"
-                                                    id="selectedPermissions" name="selectedPermissions">
-                                                <?php for ($i = 0; $i < 8; $i++) {
-                                                    echo "<option value='" . $permissions[$i]->getID() . "'>" . $permissions[$i]->getDescription() . "</option>";
+                                            <select multiple class="form-control" id="selectedPermissions" name="selectedPermissions[]">
+                                                <?php for ($i = 0; $i < count($selectedPermissions); $i++) {
+                                                    echo "<option selected value='" . $selectedPermissions[$i]->getID() . "'>" . $selectedPermissions[$i]->getDescription() . "</option>";
                                                 } ?>
                                             </select>
                                         </div>
+                                        <input type = "hidden" name = "id" value = "<?php echo $userType->getID();?>">
+
                                     </div>
                                     <div class="form-message-div">
                                         <?php flash('formError') ?>
                                     </div>
-                                    <button type="submit" class="btn btn-primary mr-2">Add</button>
+                                    <button type="submit" class="btn btn-primary mr-2">Edit</button>
                                     <a href="dashboard" class="btn btn-light">Cancel</a>
                                 </form>
                             </div>
@@ -95,7 +96,6 @@ require_once 'helpers/session.helper.php';
                 ?>
             </div>
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -129,6 +129,6 @@ require_once 'helpers/session.helper.php';
 
     <script src="public/js/dashboard/imagePreview.js"></script>
     <script src="public/js/dashboard/permissions.js"></script>
-</body>
 
+</body>
 </html>

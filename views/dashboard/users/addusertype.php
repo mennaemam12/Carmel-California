@@ -63,7 +63,7 @@ require_once 'helpers/session.helper.php';
 
                                     <div class="permissions">
                                         <div class="form-group">
-                                            <label for="permissions">All Permissions</label>
+                                            <label for="permissions">Permissions</label>
                                             <select multiple class="form-control"
                                                     id="permissions" name="permissions">
                                                 <?php for ($i = 8; $i < count($permissions); $i++) {
@@ -97,7 +97,6 @@ require_once 'helpers/session.helper.php';
                 ?>
             </div>
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -131,21 +130,6 @@ require_once 'helpers/session.helper.php';
 
     <script src="public/js/dashboard/imagePreview.js"></script>
     <script src="public/js/dashboard/permissions.js"></script>
-<!--    <script>-->
-<!--        document.addEventListener('DOMContentLoaded', function () {-->
-<!--            var form = document.querySelector('.forms-sample');-->
-<!---->
-<!--            form.addEventListener('submit', function () {-->
-<!--                var selectedPermissionsSelect = document.getElementById('selectedPermissions');-->
-<!---->
-<!--                // Mark all options as selected-->
-<!--                for (var i = 0; i < selectedPermissionsSelect.options.length; i++) {-->
-<!--                    selectedPermissionsSelect.options[i].selected = true;-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
 
 </body>
-
 </html>

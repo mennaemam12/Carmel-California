@@ -48,11 +48,14 @@ require_once 'models/User.php';
 
         <!-- partial -->
         <div class="main-panel">
+
             <div class="content-wrapper" style="background-color: #DFE0DA;">
+                <a href="dashboard/users?action=addtype" class="btn btn-primary mb-4">Add User Type</a>
                 <div class="row">
 
                     <div class="col-12 grid-margin stretch-card">
                         <div class="card">
+
                             <div class="viewItemsContainer">
                                 <table>
                                     <thead>
@@ -70,8 +73,8 @@ require_once 'models/User.php';
                                         echo "<td>" . $userType->id . "</td>";
                                         echo "<td>" . $userType->name . "</td>";
                                         echo "<td>
-                                                    <a class='itemOptions'>
-                                                        <i class='fa-regular fa-pen-to-square'></i>
+                                                    <a class='itemOptions' href='dashboard/users?action=edittype&id=".$userType->id."'>
+                                                        <i class='fa-regular fa-pen-to-square' ></i>
                                                     </a>
                                                     <a class='itemOptions'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
