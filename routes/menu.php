@@ -1,4 +1,6 @@
 <?php
+@session_start();
+require_once 'models/User.php';
 // Path: routes/menu.php
 
 if (isset($_SESSION['user'])) {

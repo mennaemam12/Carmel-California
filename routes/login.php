@@ -1,4 +1,5 @@
 <?php
+@session_start();
 // Path: routes/login.php
 
 include 'projectFolderName.php';

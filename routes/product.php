@@ -1,4 +1,5 @@
 <?php
+@session_start();
 require_once 'controllers/itemOption.controller.php';
 require_once 'controllers/review.controller.php';
 

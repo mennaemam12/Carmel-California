@@ -1,5 +1,7 @@
 <?php
+@session_start();
 // Path: routes/contact.php
+require_once 'models/User.php';
 
 $url = $_SERVER['REQUEST_URI'];
 
@@ -29,5 +31,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     include 'views/contact.php';
     exit();
 }
-
-

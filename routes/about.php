@@ -1,6 +1,7 @@
 <?php
+@session_start();
 // Path: routes/about.php
-
+require_once 'models/User.php';
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];
 

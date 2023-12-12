@@ -1,4 +1,5 @@
 <?php
+@session_start();
 // Path: routes/dashboard.php
 
 include 'projectFolderName.php';

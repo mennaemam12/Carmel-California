@@ -1,4 +1,5 @@
 <?php
+@session_start();
 // Path: routes/cart.php
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
