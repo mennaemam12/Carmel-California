@@ -29,7 +29,7 @@ if(isset($_SESSION['user']))
                     <?php else: ?>
                         <li class='nav-item' id="login"><a class='nav-link' href='login'>Sign In</a></li>
 					<?php endif; ?>
-					<?php if(isset($_SESSION['user']) && strpos($user->getType(), "admin") !== false): ?>
+					<?php if(isset($_SESSION['user'])): ?>
 						<li class='nav-item' id="dashboard"><a class='nav-link'  href='dashboard'>Dashboard</a></li>
 					<?php else: ?>
 					<?php endif; ?>		

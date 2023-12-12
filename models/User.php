@@ -1,6 +1,7 @@
 <?php
 require_once 'database.php';
 require_once 'models/Review.php';
+require_once 'models/UserType.php';
 class User {
 
     private $db;
@@ -62,11 +63,14 @@ class User {
     }
 
     public function setType($type) {
-        $this->type = $type;
+        $this->type = new UserType($type);
+        $this->type = $this->type->serialize();
     }
 
     public function getType() {
-        return $this->type;
+        $userType = new UserType();
+        $userType->unserialize($this->type);
+        return $userType;
     }
 
     public function addToCart($item) {
@@ -119,14 +123,26 @@ class User {
         }
     }
 
-    public function getalluser(){
-        $this->db->query('SELECT * FROM users');
-        $rows = $this->db->resultSet();
-        if ($this->db->rowCount() > 0) {
-            return $rows;
-        } else {
-            return false;
+    public static function getAllUsers(){
+        $db = new Database();
+        $db->query('SELECT * FROM users');
+        $rows = $db->resultSet();
+        if ($db->rowCount() < 0)
+            return [];
+
+        $users = [];
+        for ($i = 0; $i < count($rows); $i++) {
+            $user = new User();
+            $user->setID($rows[$i]->id);
+            $user->setFullName($rows[$i]->FullName);
+            $user->setEmail($rows[$i]->Email);
+            $user->setUsername($rows[$i]->UserName);
+            $user->setPhone($rows[$i]->PhoneNumber);
+            $user->setType($rows[$i]->Usertype);
+            $users[] = $user;
         }
+
+        return $users;
     }
 
     //Register User

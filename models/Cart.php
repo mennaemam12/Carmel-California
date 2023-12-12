@@ -110,7 +110,6 @@ class Cart{
         foreach($rows as $row){
             $items[]=Item::findItemByID($row->Item_type,$row->Item_id);
         }
-
         include_once 'views/cart.php';
     }
 

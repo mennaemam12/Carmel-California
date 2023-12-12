@@ -3,8 +3,8 @@
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 require_once 'models/User.php';
-$user =new  User;
-$rows=$user->getalluser();
+
+$users = User::getAllUsers();
 ?>
 
 <!DOCTYPE html>
@@ -49,20 +49,20 @@ $rows=$user->getalluser();
             document.body.appendChild(form); 
             form.submit();
         }
-        function Makeadmin(Userid) {
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'dashboard/users?action=makeadmin';
-
-            let input = document.createElement("input");
-            input.type = "hidden";
-            input.name = "id";
-            input.value = Userid;
-
-            form.appendChild(input);
-            document.body.appendChild(form); 
-            form.submit();
-        }
+        // function Makeadmin(Userid) {
+        //     var form = document.createElement('form');
+        //     form.method = 'POST';
+        //     form.action = 'dashboard/users?action=makeadmin';
+        //
+        //     let input = document.createElement("input");
+        //     input.type = "hidden";
+        //     input.name = "id";
+        //     input.value = Userid;
+        //
+        //     form.appendChild(input);
+        //     document.body.appendChild(form);
+        //     form.submit();
+        // }
     </script>
 
 
@@ -119,17 +119,17 @@ $rows=$user->getalluser();
 
                                             <?php
 
-                                            for ($i = 0; $i < count($rows); $i++) {
-                                                echo "<td>" . $rows[$i]->id . "</td>";
-                                                echo "<td>" . $rows[$i]->FullName . "</td>";
-                                                echo "<td>" . $rows[$i]->Email . "</td>";
-                                                echo "<td>" . $rows[$i]->PhoneNumber . "</td>";
-                                                echo "<td>" . $rows[$i]->Usertype . "</td>";
+                                            foreach ($users as $user) {
+                                                echo "<td>" . $user->getID() . "</td>";
+                                                echo "<td>" . $user->getFullName() . "</td>";
+                                                echo "<td>" . $user->getEmail() . "</td>";
+                                                echo "<td>" . $user->getPhone() . "</td>";
+                                                echo "<td>" . $user->getType()->getName() . "</td>";
                                                 echo "<td>
                                                     <a class='itemOptions'>
-                                                        <i class='fa-regular fa-pen-to-square' onclick='Makeadmin(".$rows[$i]->id.")'></i>
+                                                        <i class='fa-regular fa-pen-to-square' onclick='Makeadmin(".$user->getID().")'></i>
                                                     </a>
-                                                    <a class='itemOptions' onclick='deleteUser(".$rows[$i]->id.")'><i class='fa-regular fa-trash-can'></i></a>
+                                                    <a class='itemOptions' onclick='deleteUser(".$user->getID().")'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
                                             }
                                             ?>

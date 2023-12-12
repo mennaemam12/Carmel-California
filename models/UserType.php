@@ -192,4 +192,18 @@ class UserType
 
         return $db->resultSet();
     }
+
+    public function serialize() {
+        return serialize([
+            $this->id,
+            $this->name,
+        ]);
+    }
+
+    public function unserialize($serialized) {
+        list(
+            $this->id,
+            $this->name,
+        ) = unserialize($serialized);
+    }
 }

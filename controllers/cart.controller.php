@@ -31,7 +31,7 @@
                     $selectedOption = $_POST['selectedOption'];
                     $this->cartModel->setSelectedOption($selectedOption);
                 } 
-            
+
                $user->addToCart($this->cartModel->serialize());
                $_SESSION['user'] = $user->serialize();
 

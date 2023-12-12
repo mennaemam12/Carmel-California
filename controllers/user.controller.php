@@ -72,7 +72,7 @@ class UserController
         $this->userModel->setUsername($data['Username']);
         $this->userModel->setPassword($data['UserPass']);
         $this->userModel->setPhone($data['PhoneNumber']);
-        $this->userModel->setType("user");
+        $this->userModel->setType(0);
 
         //Register User
         if ($this->userModel->register()) {
