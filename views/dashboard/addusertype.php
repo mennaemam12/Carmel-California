@@ -57,6 +57,16 @@ require_once 'helpers/session.helper.php';
                                         <label for="usertype-name">Name</label>
                                         <input type="text" class="form-control" id="usertype-name" name="usertype-name" required>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="permissions">Permissions</label>
+                                        <select multiple class="form-control" id="permissions" name="permissions">
+                                            <!-- Add options for different permissions -->
+                                            <option value="read">Read</option>
+                                            <option value="write">Write</option>
+                                            <!-- Add more options as needed -->
+                                        </select>
+                                    </div>
                                     <div class="form-message-div">
                                         <?php flash('formError') ?>
                                     </div>

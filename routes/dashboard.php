@@ -20,40 +20,16 @@ $url = $_SERVER['REQUEST_URI'];
 // segments
 $segments = explode('/', $url);
 $lastSegment = trim(strtolower($segments[count($segments) - 1]));
+if (strpos($lastSegment, '?') !== false)
+    $lastSegment = strstr($lastSegment, '?', true);
+
 $thirdlastSegment = trim(strtolower($segments[count($segments) - 3]));
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if (count($segments) < 4) {
         include 'views/dashboard/dashboard.php';
         exit();
-    }
-
-    if (strpos($lastSegment, '?') !== false)
-        $lastSegment = strstr($lastSegment, '?', true);
-
-
-    switch($lastSegment) {
-        case 'edititem':
-            require_once 'controllers/item.controller.php';
-
-            if (!isset($_GET['id']) || !isset($_GET['type'])) {
-                include 'views/404.php';
-                exit();
-            }
-
-            $itemID = $_GET['id'];
-            $itemType = $_GET['type'];
-
-            // Check if the item type & item id are valid
-            if (!ItemController::doesExist($itemType, $itemID)) {
-                include 'views/404.php';
-                exit();
-            }
-
-            $item = Item::findItemByID($itemType, $itemID);
-            include_once('views/dashboard/edititem.php');
-            exit();
     }
 
     switch ($thirdlastSegment) {
@@ -69,11 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
 
     // Switch based on the last segment
     switch ($lastSegment) {
-        case 'additem':
-            include 'views/dashboard/additem.php';
-            exit();
-        case 'viewitems':
-            include 'views/dashboard/viewitems.php';
+        case 'menu':
+            include_once 'routes/dashboard/dashboard.menu.router.php';
             exit();
         case 'addingredient':
             include 'views/dashboard/addingredient.php';
@@ -127,10 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['action'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     switch ($lastSegment) {
-        case 'additem':
-            include 'controllers/item.controller.php';
-            $item = new ItemController;
-            $item->add();
+        case 'menu':
+            include_once 'routes/dashboard/dashboard.menu.router.php';
             exit();
 
         case 'addingredient':
@@ -163,14 +134,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userID = $_POST['id'];
             $user->delete($userID);
             redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
-            exit();
-
-        case 'deleteitem':
-            include 'controllers/item.controller.php';
-            $item = new ItemController;
-            $itemID = $_POST['id'];
-            $itemType = $_POST['type'];
-            $item->delete($itemType, $itemID);
             exit();
 
         case 'makeadmin' :

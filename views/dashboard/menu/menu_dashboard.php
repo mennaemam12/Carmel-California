@@ -92,7 +92,7 @@ $rows = Item::getAllItems();
                                                 echo "<td>" . $rows[$i]->itemType . "</td>";
                                                 echo "<td>
                                                     <a class='itemOptions' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
-                                                    <a class='itemOptions' href='dashboard/edititem?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>
+                                                    <a class='itemOptions' href='dashboard/menu?action=edititem&type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>
                                                         <i class='fa-regular fa-pen-to-square'></i>
                                                     </a>";
                                                 echo "<a class='itemOptions' onclick='deleteItem(\"".$rows[$i]->itemType."\", \"".$rows[$i]->id."\")'><i class='fa-regular fa-trash-can'></i></a>

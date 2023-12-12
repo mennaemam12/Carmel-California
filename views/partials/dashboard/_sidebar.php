@@ -15,8 +15,8 @@
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">View Menu</a></li> -->
-          <li class="nav-item"> <a class="nav-link" href="dashboard/additem">Add Menu Item</a></li>
-          <li class="nav-item"> <a class="nav-link" href="dashboard/viewitems">View/ Edit Menu</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/menu?action=additem">Add Menu Item</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/menu">View/ Edit Menu</a></li>
           <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Delete Menu</a></li> -->
         </ul>
       </div>

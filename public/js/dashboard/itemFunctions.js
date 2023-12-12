@@ -1,7 +1,7 @@
 function deleteItem(itemType, itemID) {
     let form = document.createElement('form');
     form.method = 'post';
-    form.action = 'dashboard/deleteitem';
+    form.action = 'dashboard/menu?action=deleteitem';
     let input = document.createElement('input');
     input.type = 'hidden';
     input.name = 'type';
