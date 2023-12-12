@@ -38,7 +38,7 @@ $rows=$user->getalluser();
         function deleteUser(Userid) {
             var form = document.createElement('form');
             form.method = 'POST';
-            form.action = 'dashboard/deleteuser';
+            form.action = 'dashboard/users?action=deleteuser';
 
             let input = document.createElement("input");
             input.type = "hidden";
@@ -52,7 +52,7 @@ $rows=$user->getalluser();
         function Makeadmin(Userid) {
             var form = document.createElement('form');
             form.method = 'POST';
-            form.action = 'dashboard/makeadmin';
+            form.action = 'dashboard/users?action=makeadmin';
 
             let input = document.createElement("input");
             input.type = "hidden";

@@ -15,7 +15,7 @@ class UserTypeController
     {
         if (!isset($_POST['usertype-name']) || empty(trim($_POST['usertype-name']))) {
             flash("formError", "Please specify a name for this user type");
-            redirect($GLOBALS['projectFolder'] . "\dashboard\addusertype");
+            redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=addtype");
             exit();
         }
 
@@ -23,19 +23,19 @@ class UserTypeController
 
         if (UserType::doesExist($name)) {
             flash("formError", "This name already exists");
-            redirect($GLOBALS['projectFolder'] . "\dashboard\addusertype");
+            redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=addtype");
             exit();
         }
 
         $this->userTypeModel->setName($name);
         if ($this->userTypeModel->add()) {
             flash("formError", "Successfully added");
-            redirect($GLOBALS['projectFolder']. "\dashboard\addusertype");
+            redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=addtype");
             return true;
         }
 
         flash("formError", "Error saving into database");
-        redirect($GLOBALS['projectFolder']. "\dashboard\addusertype");
+        redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=addtype");
         return false;
     }
 }

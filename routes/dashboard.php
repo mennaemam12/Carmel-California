@@ -48,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'menu':
             include_once 'routes/dashboard/dashboard.menu.router.php';
             exit();
+        case 'users':
+            include_once 'routes/dashboard/dashboard.users.router.php';
+            exit();
         case 'addingredient':
             include 'views/dashboard/addingredient.php';
             exit();
@@ -69,12 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'registeradmin':
             include 'views/dashboard/registeradmin.php';
             exit();
-        case 'employee':
-            include 'views/dashboard/employee.php';
-            exit();
-        case 'customer':
-            include 'views/dashboard/customer.php';
-            exit();
         case 'points':
             include 'views/dashboard/points.php';
             exit();
@@ -86,9 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             exit();
         case 'reviews':
             include 'views/dashboard/reviews.php';
-            exit();
-        case 'addusertype':
-            include 'views/dashboard/addusertype.php';
             exit();
         default:
             include 'views/404.php';
@@ -102,6 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     switch ($lastSegment) {
         case 'menu':
             include_once 'routes/dashboard/dashboard.menu.router.php';
+            exit();
+
+        case 'users':
+            include_once 'routes/dashboard/dashboard.users.router.php';
             exit();
 
         case 'addingredient':
@@ -126,26 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             include 'controllers/discount.controller.php';
             $discount = new DiscountController;
             $discount->add();
-            exit();
-
-        case 'deleteuser' :
-            include_once 'models/User.php';
-            $user = new User;
-            $userID = $_POST['id'];
-            $user->delete($userID);
-            redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
-            exit();
-
-        case 'makeadmin' :
-            include_once 'models/User.php';
-            $user = new User;
-            $userID = $_POST['id'];
-            $user->Makeadmin($userID);
-            redirect($GLOBALS['projectFolder'] . "/dashboard/customer");
-            exit();
-        case 'addusertype':
-            $userType = new UserTypeController;
-            $userType->add();
             exit();
     }
 

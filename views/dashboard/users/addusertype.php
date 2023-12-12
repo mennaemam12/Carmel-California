@@ -52,7 +52,7 @@ require_once 'helpers/session.helper.php';
                             <div class="card-body">
                                 <h4 class="card-title">Add User Type </h4>
                                 <p class="card-description"></p>
-                                <form class="forms-sample" method="post" action="dashboard/addusertype" enctype='multipart/form-data'>
+                                <form class="forms-sample" method="post" action="dashboard/users?action=addtype" enctype='multipart/form-data'>
                                     <div class="form-group">
                                         <label for="usertype-name">Name</label>
                                         <input type="text" class="form-control" id="usertype-name" name="usertype-name" required>
@@ -70,7 +70,7 @@ require_once 'helpers/session.helper.php';
                                     <div class="form-message-div">
                                         <?php flash('formError') ?>
                                     </div>
-                                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                    <button type="submit" class="btn btn-primary mr-2">Add</button>
                                     <a href="dashboard" class="btn btn-light">Cancel</a>
                                 </form>
                             </div>
