@@ -36,6 +36,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include 'views/dashboard/users/addusertype.php';
             exit();
 
+        case 'edituser':
+            if (!isset($_GET['id'])) {
+                include 'views/404.php';
+                exit();
+            }
+
+            $userID = $_GET['id'];
+
+            // Check if the user exists
+            $user = User::findUserByID($userID);
+            if (!$user) {
+                include 'views/404.php';
+                exit();
+            }
+
+            $userTypes = UserType::getAllUserTypes();
+
+            include 'views/dashboard/users/edituser.php';
+            exit();
+
         case 'edittype':
 
             if (!isset($_GET['id'])) {

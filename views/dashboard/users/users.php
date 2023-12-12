@@ -126,8 +126,8 @@ $users = User::getAllUsers();
                                                 echo "<td>" . $user->getPhone() . "</td>";
                                                 echo "<td>" . $user->getType()->getName() . "</td>";
                                                 echo "<td>
-                                                    <a class='itemOptions'>
-                                                        <i class='fa-regular fa-pen-to-square' onclick='Makeadmin(".$user->getID().")'></i>
+                                                    <a class='itemOptions' href ='dashboard/users?action=edituser&id=".$user->getID()."'>
+                                                        <i class='fa-regular fa-pen-to-square'></i>
                                                     </a>
                                                     <a class='itemOptions' onclick='deleteUser(".$user->getID().")'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";

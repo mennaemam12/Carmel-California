@@ -116,11 +116,32 @@ class User {
         $row = $this->db->single();
 
         //Check row
-        if($this->db->rowCount() > 0){
+        if($this->db->rowCount() > 0)
             return $row;
-        }else{
-            return false;
+
+        return false;
+    }
+
+    public static function findUserByID($id){
+        $db = new Database();
+        $db->query('SELECT * FROM users WHERE id = :id');
+        $db->bind(':id', $id);
+
+        $row = $db->single();
+
+        //Check row
+        if($db->rowCount() > 0) {
+            $user = new User();
+            $user->setID($row->id);
+            $user->setFullName($row->FullName);
+            $user->setEmail($row->Email);
+            $user->setUsername($row->UserName);
+            $user->setPhone($row->PhoneNumber);
+            $user->setType($row->Usertype);
+            return $user;
         }
+
+        return false;
     }
 
     public static function getAllUsers(){
