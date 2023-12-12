@@ -1,6 +1,6 @@
 <?php
 require_once 'models/User.php';
-require_once 'models/UserType.php';
+require_once 'models/Permission.php';
 require_once 'controllers/user_type.controller.php';
 require_once 'controllers/user.controller.php';
 
@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     switch ($action) {
         case 'addtype':
+            $permissions = Permission::getAllPermissions();
             include 'views/dashboard/users/addusertype.php';
             exit();
     }

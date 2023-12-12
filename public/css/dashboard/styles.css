@@ -517,3 +517,27 @@ form .image-preview img {
 .form-message-green {
     color: green;
 }
+
+.permissions {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content: flex-start;
+    column-gap: 10px;
+}
+
+.permissions .form-group {
+    width:100%;
+}
+
+.permissions .form-group select {
+    height:200px;
+}
+
+@media (max-width: 768px) {
+    .permissions {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+}

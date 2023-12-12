@@ -5,7 +5,8 @@ class UserType
     private $db;
     private $id;
     private $name;
-//    private $pages;
+
+
 
     public function __construct($id = null)
     {
@@ -71,10 +72,6 @@ class UserType
         $db->bind(':name', $name);
         $db->execute();
 
-        $result = $db->single();
-
-        // returns true if rowCount() > 0
         return $db->rowCount() > 0;
     }
-
 }
