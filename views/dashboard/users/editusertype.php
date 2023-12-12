@@ -49,7 +49,7 @@ require_once 'helpers/session.helper.php';
                     <div class="col-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Add User Type </h4>
+                                <h4 class="card-title">Edit User Type </h4>
                                 <p class="card-description"></p>
                                 <form class="forms-sample" method="post" action="dashboard/users?action=addtype"
                                       enctype='multipart/form-data'>
@@ -58,8 +58,6 @@ require_once 'helpers/session.helper.php';
                                         <input type="text" class="form-control" id="usertype-name" name="usertype-name"
                                                required>
                                     </div>
-
-                                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
                                     <div class="permissions">
                                         <div class="form-group">
@@ -74,13 +72,13 @@ require_once 'helpers/session.helper.php';
 
                                         <div class="form-group">
                                             <label for="selectedPermissions">Selected Permissions</label>
-                                            <select multiple class="form-control" id="selectedPermissions" name="selectedPermissions[]">
+                                            <select multiple class="form-control"
+                                                    id="selectedPermissions" name="selectedPermissions">
                                                 <?php for ($i = 0; $i < 8; $i++) {
-                                                    echo "<option selected value='" . $permissions[$i]->getID() . "'>" . $permissions[$i]->getDescription() . "</option>";
+                                                    echo "<option value='" . $permissions[$i]->getID() . "'>" . $permissions[$i]->getDescription() . "</option>";
                                                 } ?>
                                             </select>
                                         </div>
-
                                     </div>
                                     <div class="form-message-div">
                                         <?php flash('formError') ?>
@@ -131,21 +129,6 @@ require_once 'helpers/session.helper.php';
 
     <script src="public/js/dashboard/imagePreview.js"></script>
     <script src="public/js/dashboard/permissions.js"></script>
-<!--    <script>-->
-<!--        document.addEventListener('DOMContentLoaded', function () {-->
-<!--            var form = document.querySelector('.forms-sample');-->
-<!---->
-<!--            form.addEventListener('submit', function () {-->
-<!--                var selectedPermissionsSelect = document.getElementById('selectedPermissions');-->
-<!---->
-<!--                // Mark all options as selected-->
-<!--                for (var i = 0; i < selectedPermissionsSelect.options.length; i++) {-->
-<!--                    selectedPermissionsSelect.options[i].selected = true;-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!--    </script>-->
-
 </body>
 
 </html>

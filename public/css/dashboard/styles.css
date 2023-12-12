@@ -518,13 +518,7 @@ form .image-preview img {
     color: green;
 }
 
-.permissions {
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content: flex-start;
-    column-gap: 10px;
-}
+
 
 .permissions .form-group {
     width:100%;
@@ -540,4 +534,12 @@ form .image-preview img {
         align-items: flex-start;
         justify-content: flex-start;
     }
+}
+
+.permissions {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content: flex-start;
+    column-gap: 10px;
 }

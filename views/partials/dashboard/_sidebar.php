@@ -95,7 +95,7 @@
       <div class="collapse" id="users">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="dashboard/users"> View/Edit Users </a></li>
-          <li class="nav-item"> <a class="nav-link" href="dashboard/users?action=addtype"> Add User Type </a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/users?action=viewusertypes"> User Types </a></li>
         </ul>
       </div>
     </li>

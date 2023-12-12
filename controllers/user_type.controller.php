@@ -28,6 +28,7 @@ class UserTypeController
         }
 
         $this->userTypeModel->setName($name);
+
         if ($this->userTypeModel->add()) {
             flash("formError", "Successfully added");
             redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=addtype");
