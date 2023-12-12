@@ -113,26 +113,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userType = new UserTypeController;
             $userType->add();
             exit();
+
         case 'edittype':
             $userType = new UserTypeController;
             $userType->edit();
             exit();
-        case 'makeadmin' :
-            $user = new User;
-            $userID = $_POST['id'];
-            $user->Makeadmin($userID);
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users");
+
+        case 'edituser':
+            $user = new UserController;
+            $user->editUserType();
             exit();
+
         case 'deleteuser' :
             $user = new User;
             $userID = $_POST['id'];
             $user->delete($userID);
             redirect($GLOBALS['projectFolder'] . "/dashboard/users");
             exit();
+
         case 'deleteusertype' :
             $userType = new UserTypeController;
             $userType->delete();
-
             exit();
 
         default:

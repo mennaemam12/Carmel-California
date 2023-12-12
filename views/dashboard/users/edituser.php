@@ -56,26 +56,26 @@ require_once 'models/Item.php';
                             <div class="card-body">
                                 <h4 class="card-title">Edit User </h4>
                                 <p class="card-description">
-                                    Edit User
+                                    Edit User Type
                                 </p>
-                                <form class="forms-sample" method="post" action="dashboard/menu?action=edititem"
+                                <form class="forms-sample" method="post" action="dashboard/users?action=edituser"
                                       enctype='multipart/form-data'>
                                     <div class="form-group">
                                         <label for="exampleInputName1">Full Name</label>
-                                        <input type="text" class="form-control" name="fullname" placeholder="Full Name"
+                                        <input disabled type="text" class="form-control" name="fullname" placeholder="Full Name"
                                                value='<?php echo $user->getFullName(); ?>'>
 
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputName1">User Email</label>
-                                        <input type="text" class="form-control" name="email"
+                                        <input disabled type="text" class="form-control" name="email"
                                                placeholder="Email" <?php
                                         echo 'value=' . $user->getEmail();
                                         ?>>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputName1">Username</label>
-                                        <input type="text" class="form-control" name="username"
+                                        <input disabled type="text" class="form-control" name="username"
                                                placeholder="Username" <?php
                                         echo 'value=' . $user->getUsername();
                                         ?>>
@@ -83,7 +83,7 @@ require_once 'models/Item.php';
 
                                     <div class="form-group">
                                         <label for="exampleInputName1">Phone Number</label>
-                                        <input type="text" class="form-control" name="phone"
+                                        <input disabled type="text" class="form-control" name="phone"
                                                placeholder="Phone Number" <?php
                                         echo 'value=' . $user->getPhone();
                                         ?>>
@@ -94,9 +94,10 @@ require_once 'models/Item.php';
                                         <select class="form-control" id="usertype" name="usertype">
                                             <?php foreach ($userTypes as $usertype) {
                                                 echo "<option ";
-                                                if ($user->getType()->getID() == $usertype->id)
+                                                if ($user->getType()->getID() == $usertype->id) {
                                                     echo "selected";
-                                                echo "value='" . $usertype->id . "'>" . $usertype->name . "</option>";
+                                                }
+                                                echo " value='" . $usertype->id . "'>" . $usertype->name . "</option>";
                                             } ?>
                                         </select>
                                     </div>

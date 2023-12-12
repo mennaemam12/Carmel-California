@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2023 at 03:00 AM
+-- Generation Time: Dec 12, 2023 at 10:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -316,9 +316,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `Usertype`) VALUES
-('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, 'user'),
-('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, 'admin'),
-('Ramez Ehab', 'ramez@gmail.com', 'ramez', '$2y$10$PIbQHrRj3S0BEmFm1KRCLOzC0ALC7wdQT5b35.YQ/BxTOFiXYAeiO', 2147483647, 28, 'admin');
+('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, '1'),
+('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, '1'),
+('Ramez Ehab', 'ramez@gmail.com', 'ramez', '$2y$10$PIbQHrRj3S0BEmFm1KRCLOzC0ALC7wdQT5b35.YQ/BxTOFiXYAeiO', 2147483647, 28, '2'),
+('Admin Universal', 'admin@gmail.com', 'admin', '$2y$10$e6fkBOvwdfkkU62V0xsS1eEs0Rs9y8IHSb3Ca71vJTKpVONq//KBu', 2147483647, 29, '2'),
+('User Universal', 'user@gmail.com', 'user', '$2y$10$Tpxk2DpwDP.ugQj0XtFND.hQAk5rEXkD2j4KCeBTm2bP7FPKu40d.', 20123123, 30, '1');
 
 -- --------------------------------------------------------
 
@@ -330,6 +332,31 @@ CREATE TABLE `usertype_permissions` (
   `usertype_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `usertype_permissions`
+--
+
+INSERT INTO `usertype_permissions` (`usertype_id`, `permission_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(2, 5),
+(2, 6),
+(2, 7),
+(2, 8),
+(2, 9),
+(2, 10),
+(2, 11);
 
 -- --------------------------------------------------------
 
@@ -348,8 +375,7 @@ CREATE TABLE `user_type` (
 
 INSERT INTO `user_type` (`id`, `name`) VALUES
 (1, 'user'),
-(2, 'admin'),
-(8, 'guest');
+(2, 'admin');
 
 --
 -- Indexes for dumped tables
@@ -513,7 +539,7 @@ ALTER TABLE `sides`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user_type`

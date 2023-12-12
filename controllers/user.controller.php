@@ -14,6 +14,43 @@ class UserController
         $this->userModel = new User;
     }
 
+    public function editUserType() {
+        if (!isset($_POST['id']) || !isset($_POST['usertype'])) {
+            flash("formError", "Please fill out all inputs");
+            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            exit();
+        }
+
+        $id = trim($_POST['id']);
+        $usertype = trim($_POST['usertype']);
+
+        if (!is_numeric($id) || !is_numeric($usertype)) {
+            flash("formError", "Invalid input");
+            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            exit();
+        }
+
+        if (empty($id) || empty($usertype)) {
+            flash("formError", "Please fill out all inputs");
+            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            exit();
+        }
+
+        $this->userModel->setID($id);
+        $this->userModel->setType($usertype);
+
+        if ($this->userModel->editUserType()) {
+            flash("formSuccess", "User updated successfully");
+            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            exit();
+        }
+
+        flash("formError", "Something went wrong");
+        redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+        exit();
+
+    }
+
     public function register()
     {
         //Process form
@@ -142,29 +179,6 @@ class UserController
         session_destroy();
         redirect($GLOBALS['projectFolder'] . "/index");
     }
+
+
 }
-
-    // $init = new UserController;
-
-    // //Ensure that user is sending a post request
-    // if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    //     switch($_POST['type']){
-    //         case 'register':
-    //             $init->register();
-    //             break;
-    //         case 'login':
-    //             $init->login();
-    //             break;
-    //         default:
-    //         redirect($GLOBALS['projectFolder']."/index");
-    //     }
-        
-    // }else{
-    //     switch($_GET['q']){
-    //         case 'logout':
-    //             $init->logout();
-    //             break;
-    //         default:
-    //         redirect($GLOBALS['projectFolder']."/index");
-    //     }
-    // }

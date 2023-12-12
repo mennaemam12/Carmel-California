@@ -176,20 +176,20 @@ class User {
         $this->db->bind(':username', $this->username);
         $this->db->bind(':userpass', $this->password);
         $this->db->bind(':phonenumber', $this->phone);
-        $this->db->bind(':usertype',$this->type);
+        $this->db->bind(':usertype',$this->getType()->getID());
         //Execute
-        if($this->db->execute()){
+        if($this->db->execute())
             return true;
-        }else{
-            return false;
-        }
+
+        return false;
     }
 
     //Login user
     public function login($nameOrEmail, $password){
         $row = $this->findUserByEmailOrUsername($nameOrEmail, $nameOrEmail);
 
-        if($row == false) return false;
+        if(!$row)
+            return false;
 
         $hashedPassword = $row->UserPass;
         if(password_verify($password, $hashedPassword)){
@@ -212,17 +212,20 @@ class User {
             return false;
         }
     }
-    public function Makeadmin($ID){
-        $this->db->query('UPDATE users SET Usertype="admin" WHERE id=:id');
-        $this->db->bind(':id', $ID);
 
-        //Execute
-        if($this->db->execute()){
-            return true;
-        }else{
+    public function editUserType() {
+        $usertype = self::getType()->getID();
+
+        $this->db->query('UPDATE users SET Usertype=:usertype WHERE id=:id');
+        $this->db->bind(':id', $this->id);
+        $this->db->bind(':usertype', $usertype);
+
+        if (!$this->db->execute())
             return false;
-        }
+
+        return true;
     }
+
     public function delete($ID)
     {
         $this->db->query('DELETE FROM users  WHERE id=:id');
