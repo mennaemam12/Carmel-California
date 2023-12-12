@@ -16,6 +16,11 @@ $url = $_SERVER['REQUEST_URI'];
 // segments
 $segments = explode('/', $url);
 
+if (isset($_SESSION['user'])) {
+    redirect($GLOBALS['projectFolder'] . "/"); // Redirect to the home page
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     
     // EXAMPLE: if the url is /login/anythingElse

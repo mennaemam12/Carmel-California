@@ -4,12 +4,10 @@
 include 'projectFolderName.php';
 
 
-// Commenting till we have a proper database
-// Check if the user is already logged in
-// if (isset($_SESSION['userType'])) {
-//     header('Location: ' .$projectFolder. '/'); // Redirect to the home page
-//     exit();
-// }
+if (isset($_SESSION['user'])) {
+    redirect ($GLOBALS['projectFolder'] . "/"); // Redirect to the home page
+    exit();
+}
 
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];

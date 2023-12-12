@@ -158,8 +158,15 @@ class UserType
         return true;
     }
 
+    public function isAllowed($path) {
+        $permissions = $this->getPermissions();
 
+        foreach ($permissions as $permission)
+            if ($permission->getPath() == $path)
+                return true;
 
+        return false;
+    }
 
     public
     static function doesExist($name)

@@ -69,7 +69,7 @@ class UserTypeController
             redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=viewusertypes");
             exit();
         }
-
+        
         $id = trim($_POST['id']);
         $this->userTypeModel->setID($id);
 

@@ -1,13 +1,23 @@
 <?php
 // Path: routes/cart.php
 include 'projectFolderName.php';
+require_once 'helpers/session.helper.php';
+require_once "models/User.php";
 
-// Check if the user is not logged in
-// Commenting till we have a proper database
-// if (!isset($_SESSION['userType'])) {
-//     header('Location: ' .$projectFolder. '/'); // Redirect to the home page
-//     exit();
-// }
+if (!isset($_SESSION['user'])) {
+    redirect($GLOBALS['projectFolder'] . "/login");
+    exit();
+}
+
+$user = new User;
+$user->unserialize($_SESSION['user']);
+$userType = $user->getType();
+
+// Check if the user is allowed to access this page
+if (!$userType->isAllowed('cart')) {
+    include 'views/404.php';
+    exit();
+}
 
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];
@@ -16,7 +26,7 @@ $url = $_SERVER['REQUEST_URI'];
 $segments = explode('/', $url);
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    
+
     // EXAMPLE: if the url is /cart/anythingElse
     // Then dont show the cart page
     if (count($segments) > 3) {

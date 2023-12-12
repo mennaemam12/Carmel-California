@@ -2,13 +2,23 @@
 // Path: routes/checkout.php
 
 include 'projectFolderName.php';
+require_once 'helpers/session.helper.php';
+require_once "models/User.php";
 
-// Commenting till we have a proper database
-// Check if the user is not logged in
-// if (!isset($_SESSION['userType'])) {
-//     header('Location: ' .$projectFolder. '/'); // Redirect to the home page    
-//     exit();
-// }
+if (!isset($_SESSION['user'])) {
+    redirect($GLOBALS['projectFolder'] . "/login");
+    exit();
+}
+
+$user = new User;
+$user->unserialize($_SESSION['user']);
+$userType = $user->getType();
+
+// Check if the user is allowed to access this page
+if (!$userType->isAllowed('checkout')) {
+    include 'views/404.php';
+    exit();
+}
 
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];

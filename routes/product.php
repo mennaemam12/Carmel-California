@@ -1,12 +1,18 @@
 <?php
 require_once 'controllers/itemOption.controller.php';
 require_once 'controllers/review.controller.php';
-$url = $_SERVER['REQUEST_URI'];
 
-// segments
-$segments = explode('/', $url);
-$lastSegment = trim(strtolower($segments[count($segments) - 1]));
-$thirdlastSegment = trim(strtolower($segments[count($segments) - 3]));
+if (isset($_SESSION['user'])) {
+    $user = new User;
+    $user->unserialize($_SESSION['user']);
+    $userType = $user->getType();
+
+    // Check if the user is allowed to access this page
+    if (!$userType->isAllowed('product')) {
+        include 'views/404.php';
+        exit();
+    }
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 

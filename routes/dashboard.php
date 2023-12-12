@@ -3,16 +3,24 @@
 
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
-
 require_once "controllers/user_type.controller.php";
+require_once "models/User.php";
 
-
-// Commenting till we have a proper database
 // Check if the user is already logged in
-// if (isset($_SESSION['userType'])) {
-//     header('Location: ' .$projectFolder. '/'); // Redirect to the home page
-//     exit();
-// }
+if (!isset($_SESSION['user'])) {
+    include 'views/404.php';
+    exit();
+}
+
+$user = new User;
+$user->unserialize($_SESSION['user']);
+$userType = $user->getType();
+
+// Check if the user is allowed to access this page
+if (!$userType->isAllowed('dashboard')) {
+    include 'views/404.php';
+    exit();
+}
 
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];
