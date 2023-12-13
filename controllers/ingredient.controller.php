@@ -131,7 +131,7 @@ class IngredientController
                 case 'Base':
                     $bases[] = $ingredient;
                     break;
-                case 'Vegetable':
+                case 'Topping':
                     $toppings[] = $ingredient;
                     break;
                 case 'Protein':
