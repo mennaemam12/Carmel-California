@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 09:55 PM
+-- Generation Time: Dec 12, 2023 at 10:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,7 @@ CREATE TABLE `breakfast` (
 --
 
 INSERT INTO `breakfast` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath`) VALUES
-(3, 'Eggs Benedict', 'Eggs', 'Poached eggs, smoked salmon, spinach, homemade brioche, warm holl', 249, 'public/images/breakfast/image_6561b7d57b7ac.jpg');
+(3, 'Eggs', 'Eggs', 'Poached eggs, smoked salmon, spinach, homemade brioche, warm holl', 249, 'public/images/breakfast/image_6561b7d57b7ac.jpg');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,8 @@ INSERT INTO `categories` (`id`, `Name`) VALUES
 (3, 'Coffee'),
 (4, 'Eggs'),
 (5, 'Starters'),
-(6, 'Soups');
+(6, 'Soups'),
+(7, '123');
 
 -- --------------------------------------------------------
 
@@ -79,6 +80,23 @@ CREATE TABLE `desserts` (
   `Description` text NOT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(65) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `discount`
+--
+
+CREATE TABLE `discount` (
+  `id` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `percentage` int(50) DEFAULT NULL,
+  `coupon` varchar(100) DEFAULT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `valid` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -170,6 +188,60 @@ INSERT INTO `option_values` (`id`, `id_options`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` int(11) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `path` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `description`, `path`) VALUES
+(1, 'View Homepage', ''),
+(2, 'View Menu Page', 'menu'),
+(3, 'View Product Page', 'product'),
+(4, 'View Services Page', 'services'),
+(5, 'View About Page', 'about'),
+(6, 'View Contact Page', 'contact'),
+(7, 'View Cart Page', 'cart'),
+(8, 'View Checkout Page', 'checkout'),
+(9, 'View Dashboard Home', 'dashboard'),
+(10, 'Add/Edit/View Menu', 'dashboard/menu'),
+(11, 'Add/Edit/View Users', 'dashboard/users');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `user_id` varchar(200) NOT NULL,
+  `item_id` varchar(200) NOT NULL,
+  `item_type` varchar(20) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `rating` set('1','2','3','4','5') NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`user_id`, `item_id`, `item_type`, `message`, `rating`, `date`) VALUES
+('28', '2', 'main', 'Delicious stuff', '5', '2023-12-09'),
+('28', '4', 'main', 'To7fa to7fa ra2e3 fo2 el gamal', '2', '2023-12-09'),
+('28', '4', 'main', 'Folaaa', '5', '2023-12-09'),
+('28', '4', 'main', 'Test 3', '1', '2023-12-09');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `saladingredients`
 --
 
@@ -225,15 +297,6 @@ INSERT INTO `sides` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePat
 
 -- --------------------------------------------------------
 
-
-
---
--- Dumping data for table `discount`
---
-
-INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start_date`, `end_date`, `valid`) VALUES
-(1, 'breakfast', 'Eggs', 10, 'Eggs10', '2023-12-05', '2024-01-05', 'YES');
-
 --
 -- Table structure for table `users`
 --
@@ -248,29 +311,71 @@ CREATE TABLE `users` (
   `Usertype` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
---
--- Table structure for table `discount`
---
-
-CREATE TABLE `discount` (
-  `id` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `percentage` int(50) DEFAULT NULL,
-  `coupon` varchar(100) DEFAULT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `valid` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `Usertype`) VALUES
-('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, 'user'),
-('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, 'admin');
+('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, '1'),
+('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, '1'),
+('Ramez Ehab', 'ramez@gmail.com', 'ramez', '$2y$10$PIbQHrRj3S0BEmFm1KRCLOzC0ALC7wdQT5b35.YQ/BxTOFiXYAeiO', 2147483647, 28, '2'),
+('Admin Universal', 'admin@gmail.com', 'admin', '$2y$10$e6fkBOvwdfkkU62V0xsS1eEs0Rs9y8IHSb3Ca71vJTKpVONq//KBu', 2147483647, 29, '2'),
+('User Universal', 'user@gmail.com', 'user', '$2y$10$Tpxk2DpwDP.ugQj0XtFND.hQAk5rEXkD2j4KCeBTm2bP7FPKu40d.', 20123123, 30, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usertype_permissions`
+--
+
+CREATE TABLE `usertype_permissions` (
+  `usertype_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `usertype_permissions`
+--
+
+INSERT INTO `usertype_permissions` (`usertype_id`, `permission_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(2, 5),
+(2, 6),
+(2, 7),
+(2, 8),
+(2, 9),
+(2, 10),
+(2, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_type`
+--
+
+CREATE TABLE `user_type` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_type`
+--
+
+INSERT INTO `user_type` (`id`, `name`) VALUES
+(1, 'user'),
+(2, 'admin');
 
 --
 -- Indexes for dumped tables
@@ -292,6 +397,12 @@ ALTER TABLE `categories`
 -- Indexes for table `desserts`
 --
 ALTER TABLE `desserts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `discount`
+--
+ALTER TABLE `discount`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -319,6 +430,12 @@ ALTER TABLE `option_values`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `saladingredients`
 --
 ALTER TABLE `saladingredients`
@@ -336,27 +453,21 @@ ALTER TABLE `sides`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `usertype_permissions`
+--
+ALTER TABLE `usertype_permissions`
+  ADD PRIMARY KEY (`usertype_id`,`permission_id`);
 
 --
--- Indexes for table `discount`
+-- Indexes for table `user_type`
 --
-ALTER TABLE `discount`
+ALTER TABLE `user_type`
   ADD PRIMARY KEY (`id`);
-
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
-
-
---
--- AUTO_INCREMENT for table `discount`
---
-ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
 
 --
 -- AUTO_INCREMENT for table `breakfast`
@@ -368,7 +479,7 @@ ALTER TABLE `breakfast`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `desserts`
@@ -377,16 +488,22 @@ ALTER TABLE `desserts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `discount`
+--
+ALTER TABLE `discount`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `drinks`
 --
 ALTER TABLE `drinks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `main`
 --
 ALTER TABLE `main`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `options`
@@ -399,6 +516,12 @@ ALTER TABLE `options`
 --
 ALTER TABLE `option_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `saladingredients`
@@ -416,7 +539,13 @@ ALTER TABLE `sides`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `user_type`
+--
+ALTER TABLE `user_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

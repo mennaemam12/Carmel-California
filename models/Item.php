@@ -5,6 +5,8 @@ require_once 'models/DrinkItem.php';
 require_once 'models/MainItem.php';
 require_once 'models/SideItem.php';
 require_once 'models/DessertItem.php';
+
+require_once 'models/Review.php';
 class Item {
 
     protected $db;
@@ -150,8 +152,7 @@ class Item {
     }
 
     public function add($item_type) {
-      
-        
+
         $this->db->query('INSERT INTO ' . $item_type . ' (Name, Category, Description, Price, ImagePath) 
             VALUES (:item_name, :category, :description, :price, :image_path)');
     
@@ -220,11 +221,13 @@ class Item {
         
         $this->db->bind(':id', $ID);
 
-        //Execute
-        if ($this->db->execute()) {
-            return true;
-        } else {
+        if (!Review::deleteReviews($itemType, $ID))
             return false;
-        }
+
+        //Execute
+        if ($this->db->execute())
+            return true;
+
+        return false;
     }
 }

@@ -2,9 +2,8 @@
 @session_start();
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
-require_once 'models/User.php';
-$user =new  User;
-$rows=$user->getalluser();
+require_once 'models/Item.php';
+$rows = Item::getAllItems();
 ?>
 
 <!DOCTYPE html>
@@ -31,43 +30,7 @@ $rows=$user->getalluser();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="template/images/favicon.png" />
 </head>
-
 <body>
-
-    <script>
-        function deleteUser(Userid) {
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'dashboard/deleteuser';
-
-            let input = document.createElement("input");
-            input.type = "hidden";
-            input.name = "id";
-            input.value = Userid;
-
-            form.appendChild(input);
-            document.body.appendChild(form); 
-            form.submit();
-        }
-        function Makeadmin(Userid) {
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'dashboard/makeadmin';
-
-            let input = document.createElement("input");
-            input.type = "hidden";
-            input.name = "id";
-            input.value = Userid;
-
-            form.appendChild(input);
-            document.body.appendChild(form); 
-            form.submit();
-        }
-    </script>
-
-
-
-
     <div class="container-scroller">
 
         <!-- Navbar -->
@@ -100,18 +63,19 @@ $rows=$user->getalluser();
 
                                         <div class="filter" style="color: black;">
                                             <label for="search" id="searchLabel">Search:</label>
-                                            <input type="search" name="" id="search" placeholder="Enter username">
+                                            <input type="search" name="" id="search" placeholder="Enter product name">
                                         </div>
                                     </div>
 
                                     <table>
                                         <thead>
                                             <tr class="heading">
+                                                <th></th>
                                                 <th>ID</th>
-                                                <th>Full Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>User Type</th>
+                                                <th>Item Name</th>
+                                                <th>Price</th>
+                                                <th>Category</th>
+                                                <th>Type</th>
                                             </tr>
                                         </thead>
 
@@ -120,16 +84,18 @@ $rows=$user->getalluser();
                                             <?php
 
                                             for ($i = 0; $i < count($rows); $i++) {
+                                                echo "<tr><td><img src='" . $rows[$i]->ImagePath . "' alt='' width='40' height='40'> </td>";
                                                 echo "<td>" . $rows[$i]->id . "</td>";
-                                                echo "<td>" . $rows[$i]->FullName . "</td>";
-                                                echo "<td>" . $rows[$i]->Email . "</td>";
-                                                echo "<td>" . $rows[$i]->PhoneNumber . "</td>";
-                                                echo "<td>" . $rows[$i]->Usertype . "</td>";
+                                                echo "<td>" . $rows[$i]->Name . "</td>";
+                                                echo "<td>" . $rows[$i]->Price . "</td>";
+                                                echo "<td>" . $rows[$i]->Category . "</td>";
+                                                echo "<td>" . $rows[$i]->itemType . "</td>";
                                                 echo "<td>
-                                                    <a class='itemOptions'>
-                                                        <i class='fa-regular fa-pen-to-square' onclick='Makeadmin(".$rows[$i]->id.")'></i>
-                                                    </a>
-                                                    <a class='itemOptions' onclick='deleteUser(".$rows[$i]->id.")'><i class='fa-regular fa-trash-can'></i></a>
+                                                    <a class='itemOptions' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
+                                                    <a class='itemOptions' href='dashboard/menu?action=edititem&type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>
+                                                        <i class='fa-regular fa-pen-to-square'></i>
+                                                    </a>";
+                                                echo "<a class='itemOptions' onclick='deleteItem(\"".$rows[$i]->itemType."\", \"".$rows[$i]->id."\")'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
                                             }
                                             ?>
@@ -180,7 +146,7 @@ $rows=$user->getalluser();
         <!-- inject:js -->
         <script src="template/js/off-canvas.js"></script>
         <script src="template/js/hoverable-collapse.js"></script>
-        
+        <script src="public/js/dashboard/dashboard.js"></script>
 
         <script src="template/js/settings.js"></script>
         <script src="template/js/todolist.js"></script>
@@ -192,7 +158,8 @@ $rows=$user->getalluser();
         <script src="template/js/file-upload.js"></script>
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
-        <script src="public/js/dashboard/dashboard.js"></script>
+        <script src="public/js/dashboard/itemFunctions.js"></script>
+
 </body>
 
 </html>

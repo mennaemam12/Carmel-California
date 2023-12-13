@@ -167,7 +167,7 @@
 						<p class="mb-4">All our items are handmade, working with speciality farmers and gourmet
 							suppliers to ensure that our raw materials are up to our premium standard.
 						Carmel's team cares about your experience, and offers a 100 % guarantee policy</p>
-						<p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+						<p><a href="menu" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
 					
 	          </div>
     			</div>

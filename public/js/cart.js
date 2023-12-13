@@ -1,4 +1,4 @@
-function addToCart(){
+function add(){
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
     const type = urlParams.get('type');
@@ -20,8 +20,15 @@ function addToCart(){
             quantity: quantity
         },
         success: function(response) {
+            console.log(response);
             if(response){
+                var currentItemCount = parseInt($("#Items_count").text(), 10);
+                var newItemCount = currentItemCount + 1;
+  
+                $("#Items_count").text(newItemCount);
+                $('#addCart').prop('disabled', true);
                 $('#addCart').text("Added to Cart");
+                
             }
         },
         error: function(xhr, status, error) {

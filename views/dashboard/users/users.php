@@ -2,8 +2,9 @@
 @session_start();
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
-require_once 'models/Item.php';
-$rows = Item::getAllItems();
+require_once 'models/User.php';
+
+$users = User::getAllUsers();
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +33,41 @@ $rows = Item::getAllItems();
 </head>
 
 <body>
+
+    <script>
+        function deleteUser(Userid) {
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'dashboard/users?action=deleteuser';
+
+            let input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "id";
+            input.value = Userid;
+
+            form.appendChild(input);
+            document.body.appendChild(form); 
+            form.submit();
+        }
+        // function Makeadmin(Userid) {
+        //     var form = document.createElement('form');
+        //     form.method = 'POST';
+        //     form.action = 'dashboard/users?action=makeadmin';
+        //
+        //     let input = document.createElement("input");
+        //     input.type = "hidden";
+        //     input.name = "id";
+        //     input.value = Userid;
+        //
+        //     form.appendChild(input);
+        //     document.body.appendChild(form);
+        //     form.submit();
+        // }
+    </script>
+
+
+
+
     <div class="container-scroller">
 
         <!-- Navbar -->
@@ -64,19 +100,18 @@ $rows = Item::getAllItems();
 
                                         <div class="filter" style="color: black;">
                                             <label for="search" id="searchLabel">Search:</label>
-                                            <input type="search" name="" id="search" placeholder="Enter product name">
+                                            <input type="search" name="" id="search" placeholder="Enter username">
                                         </div>
                                     </div>
 
                                     <table>
                                         <thead>
                                             <tr class="heading">
-                                                <th></th>
                                                 <th>ID</th>
-                                                <th>Item Name</th>
-                                                <th>Price</th>
-                                                <th>Category</th>
-                                                <th>Type</th>
+                                                <th>Full Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>User Type</th>
                                             </tr>
                                         </thead>
 
@@ -84,19 +119,17 @@ $rows = Item::getAllItems();
 
                                             <?php
 
-                                            for ($i = 0; $i < count($rows); $i++) {
-                                                echo "<tr><td><img src='" . $rows[$i]->ImagePath . "' alt='' width='40' height='40'> </td>";
-                                                echo "<td>" . $rows[$i]->id . "</td>";
-                                                echo "<td>" . $rows[$i]->Name . "</td>";
-                                                echo "<td>" . $rows[$i]->Price . "</td>";
-                                                echo "<td>" . $rows[$i]->Category . "</td>";
-                                                echo "<td>" . $rows[$i]->itemType . "</td>";
+                                            foreach ($users as $user) {
+                                                echo "<td>" . $user->getID() . "</td>";
+                                                echo "<td>" . $user->getFullName() . "</td>";
+                                                echo "<td>" . $user->getEmail() . "</td>";
+                                                echo "<td>" . $user->getPhone() . "</td>";
+                                                echo "<td>" . $user->getType()->getName() . "</td>";
                                                 echo "<td>
-                                                    <a class='itemOptions' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
-                                                    <a class='itemOptions' href='dashboard/edititem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'>
+                                                    <a class='itemOptions' href ='dashboard/users?action=edituser&id=".$user->getID()."'>
                                                         <i class='fa-regular fa-pen-to-square'></i>
                                                     </a>
-                                                    <a class='itemOptions' href='dashboard/deleteitem/" . $rows[$i]->itemType ."/". $rows[$i]->id . "'><i class='fa-regular fa-trash-can'></i></a>
+                                                    <a class='itemOptions' onclick='deleteUser(".$user->getID().")'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
                                             }
                                             ?>
@@ -147,7 +180,7 @@ $rows = Item::getAllItems();
         <!-- inject:js -->
         <script src="template/js/off-canvas.js"></script>
         <script src="template/js/hoverable-collapse.js"></script>
-        <script src="public/js/dashboard/dashboard.js"></script>
+        
 
         <script src="template/js/settings.js"></script>
         <script src="template/js/todolist.js"></script>
@@ -159,6 +192,7 @@ $rows = Item::getAllItems();
         <script src="template/js/file-upload.js"></script>
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
+        <script src="public/js/dashboard/dashboard.js"></script>
 </body>
 
 </html>

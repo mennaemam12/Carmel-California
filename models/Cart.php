@@ -95,16 +95,14 @@ class Cart{
         $this->db->bind(':Item_id', $this->item_id);
         $this->db->bind(':quantity', $this->quantity);
 
-        if ($this->db->execute()){
+        if ($this->db->execute())
             return true;
-        }
-        else{
-            return false;
-        }
 
+        return false;
     }
 
     public function getCart($user){
+        
         $sql = "SELECT * FROM `cart` WHERE User_id= :userID";
         $this->db->query($sql);
         $this->db->bind(":userID", $user->id);
@@ -112,9 +110,10 @@ class Cart{
         foreach($rows as $row){
             $items[]=Item::findItemByID($row->Item_type,$row->Item_id);
         }
-
         include_once 'views/cart.php';
     }
+
+  
 
 
 }

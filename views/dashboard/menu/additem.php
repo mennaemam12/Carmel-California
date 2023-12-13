@@ -55,7 +55,7 @@ require_once 'helpers/session.helper.php';
                                     <p class="card-description">
                                         Add Product To Menu
                                     </p>
-                                    <form class="forms-sample" method="post" action="dashboard/additem" enctype='multipart/form-data'>
+                                    <form class="forms-sample" method="post" action="dashboard/menu?action=additem" enctype='multipart/form-data'>
                                         <div class="form-group">
                                             <label for="exampleInputName1">Product Name</label>
                                             <input type="text" class="form-control" id="itemname" name="itemname" placeholder="Product Name">

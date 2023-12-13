@@ -73,7 +73,7 @@ $rows = Discount::getAllDiscounts();
                                     <table>
                                         <thead>
                                             <tr class="heading">
-                                                <th></th>
+                                                
                                                 <th>ID</th>
                                                 <th>Type</th>
                                                 <th>Category</th>
@@ -99,7 +99,7 @@ $rows = Discount::getAllDiscounts();
                                                 }
                                                 echo "<td>" . $rows[$i]->valid . "</td>";
                                                 echo "<td>
-                                                    <a class='itemOptions' href='product?type=" . $rows[$i]->category . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
+                                                    <a class='itemOptions' href='product?type=" . $rows[$i]->type . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
                                                     <a class='itemOptions' href='dashboard/editdiscount/" . $rows[$i]->category . $rows[$i]->percentage ."/" . $rows[$i]->id . "'>
                                                         <i class='fa-regular fa-pen-to-square'></i>
                                                     </a>

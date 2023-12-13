@@ -1,6 +1,7 @@
 <?php
 require_once 'database.php';
-
+require_once 'models/Review.php';
+require_once 'models/UserType.php';
 class User {
 
     private $db;
@@ -62,11 +63,14 @@ class User {
     }
 
     public function setType($type) {
-        $this->type = $type;
+        $this->type = new UserType($type);
+        $this->type = $this->type->serialize();
     }
 
     public function getType() {
-        return $this->type;
+        $userType = new UserType();
+        $userType->unserialize($this->type);
+        return $userType;
     }
 
     public function addToCart($item) {
@@ -112,21 +116,54 @@ class User {
         $row = $this->db->single();
 
         //Check row
-        if($this->db->rowCount() > 0){
+        if($this->db->rowCount() > 0)
             return $row;
-        }else{
-            return false;
-        }
+
+        return false;
     }
 
-    public function getalluser(){
-        $this->db->query('SELECT * FROM users');
-        $rows = $this->db->resultSet();
-        if ($this->db->rowCount() > 0) {
-            return $rows;
-        } else {
-            return false;
+    public static function findUserByID($id){
+        $db = new Database();
+        $db->query('SELECT * FROM users WHERE id = :id');
+        $db->bind(':id', $id);
+
+        $row = $db->single();
+
+        //Check row
+        if($db->rowCount() > 0) {
+            $user = new User();
+            $user->setID($row->id);
+            $user->setFullName($row->FullName);
+            $user->setEmail($row->Email);
+            $user->setUsername($row->UserName);
+            $user->setPhone($row->PhoneNumber);
+            $user->setType($row->Usertype);
+            return $user;
         }
+
+        return false;
+    }
+
+    public static function getAllUsers(){
+        $db = new Database();
+        $db->query('SELECT * FROM users');
+        $rows = $db->resultSet();
+        if ($db->rowCount() < 0)
+            return [];
+
+        $users = [];
+        for ($i = 0; $i < count($rows); $i++) {
+            $user = new User();
+            $user->setID($rows[$i]->id);
+            $user->setFullName($rows[$i]->FullName);
+            $user->setEmail($rows[$i]->Email);
+            $user->setUsername($rows[$i]->UserName);
+            $user->setPhone($rows[$i]->PhoneNumber);
+            $user->setType($rows[$i]->Usertype);
+            $users[] = $user;
+        }
+
+        return $users;
     }
 
     //Register User
@@ -139,20 +176,20 @@ class User {
         $this->db->bind(':username', $this->username);
         $this->db->bind(':userpass', $this->password);
         $this->db->bind(':phonenumber', $this->phone);
-        $this->db->bind(':usertype',$this->type);
+        $this->db->bind(':usertype',$this->getType()->getID());
         //Execute
-        if($this->db->execute()){
+        if($this->db->execute())
             return true;
-        }else{
-            return false;
-        }
+
+        return false;
     }
 
     //Login user
     public function login($nameOrEmail, $password){
         $row = $this->findUserByEmailOrUsername($nameOrEmail, $nameOrEmail);
 
-        if($row == false) return false;
+        if(!$row)
+            return false;
 
         $hashedPassword = $row->UserPass;
         if(password_verify($password, $hashedPassword)){
@@ -175,29 +212,34 @@ class User {
             return false;
         }
     }
-    public function Makeadmin($ID){
-        $this->db->query('UPDATE users SET Usertype="admin" WHERE id=:id');
-        $this->db->bind(':id', $ID);
 
-        //Execute
-        if($this->db->execute()){
-            return true;
-        }else{
+    public function editUserType() {
+        $usertype = self::getType()->getID();
+
+        $this->db->query('UPDATE users SET Usertype=:usertype WHERE id=:id');
+        $this->db->bind(':id', $this->id);
+        $this->db->bind(':usertype', $usertype);
+
+        if (!$this->db->execute())
             return false;
-        }
+
+        return true;
     }
+
     public function delete($ID)
     {
         $this->db->query('DELETE FROM users  WHERE id=:id');
         
         $this->db->bind(':id', $ID);
 
-        //Execute
-        if ($this->db->execute()) {
-            return true;
-        } else {
+        if (!Review::deleteReviewsWithUserId($ID))
             return false;
-        }
+
+        //Execute
+        if ($this->db->execute())
+            return true;
+
+        return false;
     }
     public function getLastInsertedID(){
        return $this->db->lastInsertId();

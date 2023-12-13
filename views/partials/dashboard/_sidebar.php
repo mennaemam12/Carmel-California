@@ -14,10 +14,8 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">View Menu</a></li> -->
-          <li class="nav-item"> <a class="nav-link" href="dashboard/additem">Add Menu Item</a></li>
-          <li class="nav-item"> <a class="nav-link" href="dashboard/viewitems">View/ Edit Menu</a></li>
-          <!-- <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Delete Menu</a></li> -->
+          <li class="nav-item"> <a class="nav-link" href="dashboard/menu?action=additem">Add Menu Item</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/menu">View/ Edit Menu</a></li>
         </ul>
       </div>
     </li>
@@ -86,7 +84,7 @@
         </ul>
       </div>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" id = "sidebar-users">
       <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="auth">
         <i class="icon-head menu-icon"></i>
         <span class="menu-title">Users</span>
@@ -94,8 +92,8 @@
       </a>
       <div class="collapse" id="users">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="dashboard/employee"> Employees </a></li>
-          <li class="nav-item"> <a class="nav-link" href="dashboard/customer"> Customers </a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/users"> View/Edit Users </a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/users?action=viewusertypes"> User Types </a></li>
         </ul>
       </div>
     </li>

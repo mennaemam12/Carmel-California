@@ -14,7 +14,6 @@
         }
 
         public function getMenu(){
-            
 
             $breakfastItems= BreakfastItem::getBreakfastItems();
             $mainItems= MainItem::getMainItems();
@@ -32,7 +31,6 @@
             
             // Include the view file and pass the variables to it
             include_once 'views/menu.php';
-           
             
         }
 
