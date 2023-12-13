@@ -4,10 +4,14 @@ $(document).ready(function () {
 
 //Add active class to nav-link based on url dynamically
 function addActiveClass() {
-  var currentPage = location.pathname
-    .split("/")
-    .slice(-1)[0]
-    .replace(/^\/|\/$/g, "");
+  // let current page = last part of url
+    var currentPage = window.location.href.substring(
+    window.location.href.lastIndexOf("/") + 1
+    );
+
+    console.log(currentPage);
+    // remove any query string from current page
+  currentPage = currentPage.split("?")[0];
 
   if (currentPage.indexOf("?") > -1)
       currentPage = currentPage.substring(0, currentPage.indexOf("?"));
@@ -20,14 +24,13 @@ function addActiveClass() {
       element = $("#sidebar-dashboard");
       break;
 
-    case "additem":
-    case "viewitems":
+    case "menu":
       element = $("#sidebar-menu");
       break;
 
-    case 'edititem':
-      element = $("#sidebar-menu");
-      break;
+    case "users":
+        element = $("#sidebar-users");
+        break;
   }
 
   element.addClass("active");

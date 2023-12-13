@@ -69,6 +69,12 @@ class UserTypeController
             redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=viewusertypes");
             exit();
         }
+
+        if (UserType::isDefault($_POST['id'])) {
+            flash("formError", "You cannot delete the default user type");
+            redirect($GLOBALS['projectFolder'] . "\dashboard\users?action=viewusertypes");
+            exit();
+        }
         
         $id = trim($_POST['id']);
         $this->userTypeModel->setID($id);

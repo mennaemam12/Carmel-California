@@ -213,4 +213,11 @@ class UserType
             $this->name,
         ) = unserialize($serialized);
     }
+
+    public static function isDefault($id) {
+        if ($id == 1)
+            return true;
+
+        return false;
+    }
 }
