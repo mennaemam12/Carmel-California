@@ -1,6 +1,36 @@
 <html>
   <head>
-    
+    <script>
+    function getTotal(){
+      var inputs = document.querySelectorAll('input[type="number"]');
+      var chosen = Array.from(inputs).filter(function(input){
+        return input.value > 1;
+      })
+    }
+
+    function restriction(input, type, max){
+      document.getElementById(type+'serror').innerHTML="";
+      var inputs = document.querySelectorAll("input[type='number'][id*="+type+"]");
+      var chosen = Array.from(inputs).filter(function(input){
+        return input.value > 0;
+      })
+      
+      if(chosen.length>max){
+        document.getElementById(type+'serror').innerHTML=`You can only choose up to ${input.max} ${type}s`;
+        document.getElementById(type+'serror').style.display='block';
+        input.value = 0;
+      }
+
+    }
+
+    function add(item){
+      console.log("hello");
+      <?php
+      array_push($GLOBALS['$items'], $item);
+      echo $GLOBALS['$items'];
+      ?>
+    }
+  </script> 
     
     <link
       rel="stylesheet"
@@ -160,13 +190,15 @@
 
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
-	
-	  <link rel="stylesheet" href="public/css/nav.css">
-	  <link rel="stylesheet" href="public/css/footer.css">
-
-
-
+  
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/footer.css">
   </head>
+
+
+  
+
+  
 
 
   <body>
@@ -223,12 +255,12 @@
                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                               <!-- NO QUANTITY -->
                               <button id="<?php echo $b->Name;
-                                echo $GLOBALS['counter']; ?>" class="btn btn-link px-2">
-                                <i class="fas fa-plus"></i>
-                              </button>
-                            </div>
-                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6 class="mb-0">LE <?php echo $b->Price?>.00</h6>
+                                echo $GLOBALS['counter']++; ?>" class="btn btn-link px-2">
+                                    <i class="fas fa-plus"></i>
+                                  </button>
+                                </div>
+                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                  <h6 class="mb-0">LE <?php echo $b->Price?>.00</h6>
                             </div>
                           </div>
                         </li>
@@ -706,7 +738,7 @@
   </section>
 </body>
 
-  <script>
+ <script>
     function getTotal(){
       var inputs = document.querySelectorAll('input[type="number"]');
       var chosen = Array.from(inputs).filter(function(input){
@@ -729,5 +761,16 @@
 
     }
 
-  </script>
+    function addToOrder(item){
+      console.log("inside add to order");
+      <?php
+      array_push($GLOBALS['$items'], $item);
+      $GLOBALS['$items'] = array_unique($GLOBALS['$items']);
+      echo $GLOBALS['$items'];
+      ?>
+    }
+  </script> 
+
+  
+
 </html>
