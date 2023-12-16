@@ -90,8 +90,9 @@ $item = Item::findItemByID($itemType, $itemID);
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail3">Category</label>
-                                            <input type="text" class="form-control" id="category" name="category" placeholder="Category" <?php
-                                                                                                                                            echo 'value=' . $item->Category;
+                                            <input type="text" class="form-control" id="category" name="category" placeholder="Category" 
+                                            <?php
+                                                                                                                                            echo 'value=' . $item->category;
                                                                                                                                             ?>>
                                         </div>
                                         <div class="form-group">
