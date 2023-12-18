@@ -62,9 +62,7 @@ include 'partials/nav.php';
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate">
-                <a href="<?php echo $item->ImagePath; ?>" class="image-popup"><img src="<?php echo $item->ImagePath; ?>"
-                                                                                   class="img-fluid"
-                                                                                   alt="Colorlib Template"></a>
+                <a href="<?=$item->ImagePath?>" class="image-popup"><img src="<?=$item->ImagePath?>" class="img-fluid" alt="Colorlib Template"></a>
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                 <!-- <h3>Creamy Latte Coffee</h3> -->
