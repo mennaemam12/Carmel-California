@@ -11,8 +11,8 @@ class RedBeans extends SaladDecorator
 
     public function getPrice()
     {
-        $price = Ingredient::findIngredientByName('Red Beans')['Price'];
-        return $price + $this->base->getPrice();
+        $this->price =  Ingredient::findIngredientByName('Red Beans')->Price;
+        return $this->price;
     }
 }
 ?>
