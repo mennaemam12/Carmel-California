@@ -11,8 +11,8 @@ class CherryTomato extends SaladDecorator
 
     public function getPrice()
     {
-        $price = Ingredient::findIngredientByName('Cherry Tomato')['Price'];
-        return $price + $this->base->getPrice();
+        $this->price = Ingredient::findIngredientByName('Cherry Tomato')->Price;
+        return $this->price;
     }
 }
 ?>

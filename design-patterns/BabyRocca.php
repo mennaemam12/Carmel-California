@@ -1,5 +1,5 @@
 <?php
-
+include_once 'design-patterns/BaseComponent.php';
 class BabyRocca extends BaseComponent
 {
     public function __construct()
@@ -8,8 +8,7 @@ class BabyRocca extends BaseComponent
     }
     public function getPrice()
     {
-        $price = Ingredient::findIngredientByName('BabyRocca')['Price'];
-        $this->price = $price;
+        $this->price = Ingredient::findIngredientByName('BabyRocca')->Price;
         return $this->price;
     }
     

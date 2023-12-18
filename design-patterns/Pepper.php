@@ -11,8 +11,8 @@ class Pepper extends SaladDecorator
 
     public function getPrice()
     {
-        $price = Ingredient::findIngredientByName('Pepper')['Price'];
-        return $price + $this->base->getPrice();
+        $this->price = Ingredient::findIngredientByName('Pepper')->Price;
+        return $this->price;
     }
 }
 ?>
