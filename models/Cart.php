@@ -11,6 +11,7 @@ class Cart{
     protected $item_id;
     protected $selected_option;
     protected $quantity;
+    protected $index;
 
     public function __construct(){
         $this->db = new Database;
@@ -23,6 +24,7 @@ class Cart{
     public function getId() {
         return $this->id;
     }
+
 
     public function setUserId($user_id) {
         $this->user_id = $user_id;

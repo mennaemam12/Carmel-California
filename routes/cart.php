@@ -25,6 +25,7 @@ $url = $_SERVER['REQUEST_URI'];
 
 // segments
 $segments = explode('/', $url);
+$lastSegment=$segments[count($segments)-1];
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
@@ -42,5 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Include Controller
+    include 'controllers/cart.controller.php';
+    switch($lastSegment){
+        case 'increment':
+            CartController::updateQuantity(true);
+            exit();
+        case 'decrement':
+            CartController::updateQuantity(false);
+            exit();
+        case 'remove':
+            CartController::removeItem();
+            exit();
+
+    }
 }
 

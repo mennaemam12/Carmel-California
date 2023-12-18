@@ -37,7 +37,15 @@ include 'projectFolderName.php';
 	<link rel="stylesheet" href="public/css/footer.css">
 	<link rel="stylesheet" href="public/css/cart.css">
 	
-	
+	<style>
+		.remove-btn:hover{
+  			cursor: pointer;
+		  
+		}
+		.icon-close:hover{
+			cursor: pointer;
+		}
+	</style>
 
   </head>
   <body>
@@ -85,12 +93,25 @@ include 'projectFolderName.php';
 									foreach($items as $item){  
 									?> 
 										<tr class="text-center">
-											<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
+										<form id="form-remove-<?=$i?>" action="cart/remove" method="POST">
+											<input type="hidden" name="i" value=<?=$i?>>
+											
+											<td class="product-remove">
+												<button type="submit" class="remove-btn" style="border:none;">
+													<span class="icon-close"></span>
+												</button>
+											</td>
+											
+										</form>
 											
 											<td class="image-prod"><div class="img" style="background-image:url(<?=$item->ImagePath?>);"></div></td>
 											
 											<td class="product-name">
-												<h3 style="margin-bottom:0px;"><?=$item->Name?></h3>
+												<?php if($cartItems[$i]->getSelectedOption()==''){?>
+													<h3 style="margin-bottom:0px;"><?=$item->Name?></h3>
+												<?php }else{?>
+													<h3 style="margin-bottom:0px;"><?=$item->Name?>  (<?=$cartItems[$i]->getSelectedOption()?>)</h3>
+												<?php }?>
 												<!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
 											</td>
 											
@@ -99,14 +120,14 @@ include 'projectFolderName.php';
 											<td class="quantity">
 												<div class="input-group mb-3">
 													<span class="input-group-btn mr-2">
-														<button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+														<button type="button" onclick="decrementQuantity(<?=$i?>)" class="quantity-left-minus btn" data-type="minus" data-field="">
 														<i class="icon-minus"></i>
 														</button>
 													</span>
 															<input type="text" id="quantity" name="quantity" class="form-control input-number" value="<?=$cartItems[$i]->getQuantity()?>" min="1"
 																max="100">
 													<span class="input-group-btn ml-2">
-														<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+														<button type="button" onclick="incrementQuantity(<?=$i?>)" class="quantity-right-plus btn" data-type="plus" data-field="">
 														<i class="icon-plus"></i>
 														</button>
 													</span>
@@ -118,8 +139,9 @@ include 'projectFolderName.php';
 									<?php
 										$total=$total+$item->Price*$cartItems[$i]->getQuantity();
 										$i++;
-										} 
 									?>
+									
+									<?php } ?>
 									
 
 								</tbody>
@@ -216,6 +238,7 @@ include 'projectFolderName.php';
 	<?php
 		include 'partials/footer.php'
     ?>
+	
     
   
 
@@ -223,6 +246,7 @@ include 'projectFolderName.php';
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
+  <script src="public/js/Cart.js"></script>
   <script src="public/js/jquery.min.js"></script>
   <script src="public/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="public/js/popper.min.js"></script>
@@ -241,42 +265,8 @@ include 'projectFolderName.php';
   <!-- <script src="public/js/google-map.js"></script> -->
   <script src="public/js/main.js"></script>
   <script src="public/js/nav.js"></script>
+  
     
-	<script>
-		$(document).ready(function () {
-
-			var quantitiy = 0;
-		 	$('.quantity-right-plus').click(function (e) {
-
-				// Stop acting like a button
-		 		e.preventDefault();
-				// Get the field name
-				var quantity = parseInt($('#quantity').val());
-
-			// If is not undefined
-
-				$('#quantity').val(quantity + 1);
-
-
-		 		// Increment
-
-		 	});
-
-			$('.quantity-left-minus').click(function (e) {
-				// Stop acting like a button
-		 		e.preventDefault();
-	 	 		// Get the field name
-		 		var quantity = parseInt($('#quantity').val());
-
-		 		// If is not undefined
-
-		 		// Increment
-		 		if (quantity > 0) {
-					$('#quantity').val(quantity - 1);
-		 		}
-		 	});
-
-		 });
-	</script>
+	
   </body>
 </html>
