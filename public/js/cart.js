@@ -37,3 +37,55 @@ function add(){
         }
     });
 }
+
+function incrementQuantity(index){
+    var quantityElements = document.querySelectorAll('#quantity');
+    var quantity = parseInt(quantityElements[index].value);
+    quantityElements[index].value = quantity + 1;
+
+    $.ajax({
+        url: "cart/increment",
+        method: "POST",
+        data: {
+            index:index
+        },
+        success: function(response) {
+            console.log(response);
+            
+        },
+        error: function(xhr, status, error) {
+            // Handle errors
+            console.error("Error with the request. Status code:", xhr.status);
+        }
+    });
+}
+
+function decrementQuantity(index){
+    var quantityElements = document.querySelectorAll('#quantity');
+    var quantity = parseInt(quantityElements[index].value);
+    quantityElements[index].value = quantity - 1;
+
+    $.ajax({
+        url: "cart/decrement",
+        method: "POST",
+        data: {
+            index:index
+        },
+        success: function(response) {
+            console.log(response);
+            if(response){
+        
+                
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors
+            console.error("Error with the request. Status code:", xhr.status);
+        }
+    });
+}
+
+
+
+
+

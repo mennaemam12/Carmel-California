@@ -76,6 +76,9 @@ class User {
     public function addToCart($item) {
         $this->cart[] = $item;
     }
+    public function emptyCart() {
+        $this->cart =array();
+    }
 
     public function getCart() {
         return $this->cart;
