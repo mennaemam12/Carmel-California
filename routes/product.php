@@ -15,6 +15,7 @@ if (isset($_SESSION['user'])) {
     }
 }
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         include_once 'controllers/item.controller.php';
@@ -41,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+
 
     if (isset($_POST['review-message'])) {
         $review = new ReviewController;
@@ -48,10 +51,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
     if(isset($_POST['id'])){
+    
         include 'controllers/cart.controller.php';
         $cartController=new CartController;
         $cartController->addToUserSession();
         exit();
+        
     }
-
 }
+
+

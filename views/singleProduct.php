@@ -112,10 +112,11 @@ include 'partials/nav.php';
                 </button>
               </span>
                 </div>
-
-                <p><a onclick="add()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to
-                        Cart</a></p>
-
+            <?php if(isset($_SESSION['user'])){?>
+                <p><a onclick="add()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
+            <?php }else{?>
+                <p><a href='<?=$projectFolder?>/login' class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
+            <?php }?>
             </div>
         </div>
     </div>
