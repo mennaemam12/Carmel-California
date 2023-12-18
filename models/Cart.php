@@ -11,7 +11,7 @@ class Cart{
     protected $item_id;
     protected $selected_option;
     protected $quantity;
-    protected $index;
+
 
     public function __construct(){
         $this->db = new Database;

@@ -73,10 +73,6 @@ function decrementQuantity(index){
         },
         success: function(response) {
             console.log(response);
-            if(response){
-        
-                
-            }
         },
         error: function(xhr, status, error) {
             // Handle errors

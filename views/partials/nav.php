@@ -40,4 +40,5 @@ if(isset($_SESSION['user']))
 				</ul>
 			</div>
 		</div>
-	</nav>
+		
+</nav>

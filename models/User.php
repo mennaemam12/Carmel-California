@@ -1,6 +1,7 @@
 <?php
 require_once 'database.php';
 require_once 'models/Review.php';
+require_once 'models/Cart.php';
 require_once 'models/UserType.php';
 class User {
 
@@ -246,5 +247,21 @@ class User {
     }
     public function getLastInsertedID(){
        return $this->db->lastInsertId();
+    }
+
+    public function saveCart($item){
+        $this->db->query('INSERT INTO cart (User_id, Item_type, Item_id, Selected_Option, Quantity) 
+        VALUES (:userid, :itemtype, :itemid, :selectedoption, :quantity)');
+        //Bind values
+        $this->db->bind(':userid', $item->getUserId());
+        $this->db->bind(':itemtype', $item->getItemType());
+        $this->db->bind(':itemid', $item->getItemId());
+        $this->db->bind(':selectedoption', $item->getSelectedOption());
+        $this->db->bind(':quantity', $item->getQuantity());
+        //Execute
+        if($this->db->execute())
+            return true;
+
+        return false;
     }
 }

@@ -3,6 +3,7 @@
 
 include 'projectFolderName.php';
 
+
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];
 
@@ -63,6 +64,8 @@ switch ($page) {
     case 'salad-order':
         include 'routes/custom.salad.php';
         break;
+   
+
     default:
         include 'views/404.php';
         break;

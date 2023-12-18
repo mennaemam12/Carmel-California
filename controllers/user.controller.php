@@ -1,5 +1,6 @@
 <?php
 require_once 'models/User.php';
+require_once 'models/Cart.php';
 require_once 'helpers/session.helper.php';
 include 'projectFolderName.php';
 
@@ -175,9 +176,26 @@ class UserController
 
     public function logout()
     {
+        $this->saveCart();
         unset($_SESSION['user']);
         session_destroy();
         redirect($GLOBALS['projectFolder'] . "/index");
+    }
+
+    public function saveCart(){
+        $cartItems=array();
+        $user=new User;
+        $user->unserialize($_SESSION['user']);
+        foreach($user->getCart() as $cartItem){
+            $cart=new Cart;
+            $cart->unserialize($cartItem);
+            $cartItems[]=$cart;
+        }
+
+        foreach($cartItems as $item){
+            $user->saveCart($item);
+        }
+
     }
 
 
