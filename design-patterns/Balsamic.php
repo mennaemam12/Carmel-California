@@ -1,6 +1,6 @@
 <?php
 
-class Onions extends SaladDecorator
+class Balsamic extends SaladDecorator
 {
     protected $base;
     public function __construct(BaseComponent $base)
@@ -8,11 +8,11 @@ class Onions extends SaladDecorator
         parent::__construct($base);
         $this->base = $base;
     }
-
     public function getPrice()
     {
-        $this->price = Ingredient::findIngredientByName('Onions')->Price;
+        $this->price = Ingredient::findIngredientByName('Balsamic')->Price;
         return $this->price;
     }
+
 }
 ?>

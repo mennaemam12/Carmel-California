@@ -1,5 +1,5 @@
 <?php
-
+include_once 'design-patterns/BaseComponent.php';
 class MixGreens extends BaseComponent
 {
     public function __construct()
@@ -8,8 +8,7 @@ class MixGreens extends BaseComponent
     }
     public function getPrice()
     {
-        $price = Ingredient::findIngredientByName('Mix Greens')['Price'];
-        $this->price = $price;
+        $this->price = Ingredient::findIngredientByName('Mix Greens')->Price;;
         return $this->price;
     }
     

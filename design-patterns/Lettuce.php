@@ -1,13 +1,12 @@
 <?php
-
 class Lettuce extends BaseComponent{
     
     public function __construct(){
         $this->description = 'Lettuce';
     }
+
     public function getPrice(){
-        $price = Ingredient::findIngredientByName('Lettuce')['Price'];
-        $this->price = $price;
+        $this->price = Ingredient::findIngredientByName('Lettuce')->Price;
         return $this->price;
     }
     

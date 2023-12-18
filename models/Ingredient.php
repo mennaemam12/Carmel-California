@@ -10,12 +10,12 @@ class Ingredient
     protected $imagePath;
 
 
-    public static function construct()
+    public function construct()
     {
-        $db = new Database;
+        $this->db = new Database;
     }
-    
-    public function __construct($name=NULL, $category = NULL, $categorymax=NULL, $price = NULL, $imagePath = NULL)
+
+    public function __construct($name = NULL, $category = NULL, $categorymax = NULL, $price = NULL, $imagePath = NULL)
     {
         $this->db = new Database;
         $this->name = $name;
@@ -59,9 +59,9 @@ class Ingredient
         $row = $db->single();
 
         //Check row
-        if($db->rowCount() > 0)
+        if ($db->rowCount() > 0) {
             return $row;
-        else
+        } else
             return false;
     }
 
@@ -95,6 +95,8 @@ class Ingredient
             return false;
         }
     }
+
+    
 
     //Update item
     // public function resetPassword($data){

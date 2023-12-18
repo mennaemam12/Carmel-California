@@ -8,8 +8,7 @@ class Coriander extends BaseComponent
     }
     public function getPrice()
     {
-        $price = Ingredient::findIngredientByName('Coriander')['Price'];
-        $this->price = $price;
+        $this->price = Ingredient::findIngredientByName('Coriander')->Price;
         return $this->price;
     }
     

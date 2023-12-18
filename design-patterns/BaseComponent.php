@@ -1,5 +1,4 @@
 <?php
-include_once '../models/Ingredient.php';
 abstract class BaseComponent{
     protected $price;
     protected $description;

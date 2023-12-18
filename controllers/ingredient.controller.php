@@ -155,4 +155,151 @@ class IngredientController
         $items = array();
         include_once('views/customize.php');
     }
+
+
+    public static function getAjaxTotal()
+    {
+        $json_data = file_get_contents("php://input");
+
+        $order = json_decode($json_data, true);
+
+        $orderObjects = array();
+
+        $baseTotal = 0;
+        $baseChoice = (!empty($order['base'])) ? $order['base'] : '';
+        $base = '';
+        if ($baseChoice != '') {
+            switch ($baseChoice) {
+                case 'Lettuce':
+                    include 'design-patterns/Lettuce.php';
+                    $base = new Lettuce();
+                    $orderObjects[] = $base;
+                    break;
+                case 'Arugula':
+                    include_once 'design-patterns/Arugula.php';
+                    $base = new Arugula();
+                    $orderObjects[] = $base;
+                    break;
+                case 'Baby Rocca':
+                    include 'design-patterns/BabyRocca.php';
+                    $base = new BabyRocca();
+                    $orderObjects[] = $base;
+                    break;
+                case 'Coriander':
+                    include 'design-patterns/Coriander.php';
+                    $base = new Coriander();
+                    $orderObjects[] = $base;
+                    break;
+                default:
+                    include_once 'design-patterns/AddedBase.php';
+                    $added = new AddedBase($baseChoice);
+                    $orderObjects[] = $added;
+                    break;
+            }
+        }
+
+
+
+
+        $toppings = $order['topping'];
+        if (!empty($toppings)) {
+            $toppings = explode(',', $order['topping']);
+            foreach ($toppings as $toppingChoice):
+                switch ($toppingChoice) {
+                    case 'Onions':
+                        include 'design-patterns/Onions.php';
+                        $onions = new Onions($base);
+                        $orderObjects[] = $onions;
+                        break;
+                    case 'Red Beans':
+                        include 'design-patterns/RedBeans.php';
+                        $redbeans = new RedBeans($base);
+                        $orderObjects[] = $redbeans;
+                        break;
+                    case 'Cherry Tomato':
+                        include 'design-patterns/CherryTomato.php';
+                        $cherrytom = new CherryTomato($base);
+                        $orderObjects[] = $cherrytom;
+                        break;
+                    case 'Pepper':
+                        include 'design-patterns/Pepper.php';
+                        $pepper = new Pepper($base);
+                        $orderObjects[] = $pepper;
+                        break;
+                    default:
+                        include 'design-patterns/AddedDecorator.php';
+                        $added = new AddedDecorator($base, $toppingChoice);
+                        $orderObjects[] = $added;
+                        break;
+                }
+            endforeach;
+        }
+
+        $proteins = $order['protein'];
+        if (!empty($proteins)) {
+            $proteins = explode(',', $order['protein']);
+            foreach ($proteins as $proteinChoice):
+                switch ($proteinChoice) {
+                    case 'Grilled Chicken':
+                        include 'design-patterns/GrilledChicken.php';
+                        $chick = new GrilledChicken($base);
+                        $orderObjects[] = $chick;
+                        break;
+                    case 'Grilled Turkey':
+                        include 'design-patterns/GrilledTurkey.php';
+                        $turkey = new GrilledChicken($base);
+                        $orderObjects[] = $turkey;
+                        break;
+                    case 'Grilled Shrimp':
+                        include 'design-patterns/GrilledShrimp.php';
+                        $shrimp = new GrilledShrimp($base);
+                        $orderObjects[] = $shrimp;
+                        break;
+                    default:
+                        include 'design-patterns/AddedDecorator.php';
+                        $added = new AddedDecorator($base, $proteinChoice);
+                        $orderObjects[] = $added;
+                        break;
+                }
+            endforeach;
+        }
+
+        $dressingChoice = (!empty($order['dressing'])) ? $order['dressing'] : '';
+        if ($dressingChoice != '') {
+            switch ($dressingChoice) {
+                case 'Balsamic':
+                    include 'design-patterns/Balsamic.php';
+                    $dressing = new Balsamic($base);
+                    $orderObjects[] = $dressing;
+                    break;
+                case 'Lemon Mustard':
+                    include 'design-patterns/LemonMustard.php';
+                    $dressing = new LemonMustard($base);
+                    $orderObjects[] = $dressing;
+                    break;
+                case 'Thai Ranch':
+                    include 'design-patterns/ThaiRanch.php';
+                    $dressing = new ThaiRanch($base);
+                    $orderObjects[] = $dressing;
+                    break;
+                default:
+                    include 'design-patterns/AddedDecorator.php';
+                    $added = new AddedDecorator($base, $proteinChoice);
+                    $orderObjects[] = $added;
+                    break;
+            }
+        }
+
+
+        $total = 0;
+        foreach ($orderObjects as $item) {
+            $total += $item->getPrice();
+        }
+
+        return $total;
+
+
+    }
+
+   
 }
