@@ -1,10 +1,19 @@
 <?php
 include 'projectFolderName.php';
 include_once 'models/User.php';
+include_once 'models/Cart.php';
 @session_start();
 $user= new User;
-if(isset($_SESSION['user']))
+$cItems=array();
+$quantity=0;
+if(isset($_SESSION['user'])){
 	$user->unserialize($_SESSION['user']);
+	foreach($user->getCart() as $cartItem){
+		$cart=new Cart;
+		$cart->unserialize($cartItem);
+		$cItems[]=$cart;
+	}
+}
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar"
@@ -33,9 +42,16 @@ if(isset($_SESSION['user']))
 						<li class='nav-item' id="dashboard"><a class='nav-link'  href='dashboard'>Dashboard</a></li>
 					<?php else: ?>
 					<?php endif; ?>		
-					<li class="nav-item cart" id="cart"><a href="cart"  class="nav-link"><span
-								class="icon icon-shopping_cart"></span><span "
-								class="bag d-flex justify-content-center align-items-center" ><small id="Items_count">0</small></span></a>
+					<li class="nav-item cart" id="cart"><a href="cart"  class="nav-link">
+								<span class="icon icon-shopping_cart"></span>
+								<?php if(isset($_SESSION['user'])){
+									foreach($cItems as $item){
+										$quantity+=$item->getQuantity();
+									}?>
+									<span class="bag d-flex justify-content-center align-items-center" ><small id="Items_count"><?=$quantity?></small></span></a>
+								 <?php }else{?>
+									<span class="bag d-flex justify-content-center align-items-center" ><small id="Items_count">0</small></span></a>
+								<?php }?> 
 					</li>
 				</ul>
 			</div>
