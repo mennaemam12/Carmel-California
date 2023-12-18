@@ -119,7 +119,7 @@
             
             $_SESSION['user'] = $user->serialize();    
             
-            $response=$_POST['index'];
+            $response=true;
             echo $response;
         }
 
@@ -143,7 +143,7 @@
                 $user->addToCart($cartItem->serialize());
             }
             $_SESSION['user'] = $user->serialize(); 
-            
+
             redirect($GLOBALS['projectFolder'] . "/cart");
             echo $_POST['i'];
            

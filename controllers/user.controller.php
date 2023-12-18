@@ -168,8 +168,28 @@ class UserController
         }
     }
 
+    public function readCart($userid){
+        $results=$this->userModel->readCart($userid);
+        $cartItems=array();
+        foreach($results as $result){
+            $cart=new Cart;
+            $cart->setUserId($result->User_id);
+            $cart->setItemType($result->Item_type);
+            $cart->setItemId($result->Item_id);
+            $cart->setSelectedOption($result->Selected_Option);
+            $cart->setQuantity($result->Quantity);
+            $cartItems[]=$cart;
+        }
+        return $cartItems; 
+    }
+
     public function createUserSession($user)
     {
+        $cartItems=$this->readCart($user->getID());
+        foreach($cartItems as $cartItem){
+            $user->addToCart($cartItem->serialize());
+        }
+        $this->userModel->eraseCart($user->getID());
         $_SESSION['user'] = $user->serialize();
         header("location:" . $GLOBALS['projectFolder'] . "/index");
     }

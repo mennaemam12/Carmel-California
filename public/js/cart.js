@@ -51,6 +51,9 @@ function incrementQuantity(index){
         },
         success: function(response) {
             console.log(response);
+            if(response){
+                location.reload()
+            }
             
         },
         error: function(xhr, status, error) {
@@ -73,6 +76,9 @@ function decrementQuantity(index){
         },
         success: function(response) {
             console.log(response);
+            if(response){
+                location.reload()
+            }
         },
         error: function(xhr, status, error) {
             // Handle errors

@@ -249,6 +249,19 @@ class User {
        return $this->db->lastInsertId();
     }
 
+    public function readCart($userid){
+        $this->db->query('SELECT * FROM cart WHERE User_id = :userid ');
+        $this->db->bind(':userid', $userid);
+        $cart=$this->db->resultset();
+        return $cart;
+    }
+
+    public function eraseCart($userid){
+        $this->db->query('DELETE FROM cart WHERE User_id = :userid');
+        $this->db->bind(':userid', $userid);
+        $this->db->execute();
+    }
+
     public function saveCart($item){
         $this->db->query('INSERT INTO cart (User_id, Item_type, Item_id, Selected_Option, Quantity) 
         VALUES (:userid, :itemtype, :itemid, :selectedoption, :quantity)');
