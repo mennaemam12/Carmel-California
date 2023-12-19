@@ -1,5 +1,4 @@
 <?php
-include 'projectFolderName.php';
 require_once 'models/Item.php';
 $rows = Item::getAllItems();
 ?>
