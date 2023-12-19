@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function retrieveCategoriesByType(selectedType) {
         // Use the $.ajax function
         $.ajax({
-            url: "dashboard/addoptions",
+            url: "dashboard/menu?action=addoptions",
             method: "POST",
             data: {
 

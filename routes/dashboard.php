@@ -53,34 +53,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             include_once 'routes/dashboard/dashboard.discount.router.php';
             exit();
 
-        case 'addingredient':
-            include 'views/dashboard/addingredient.php';
+        case 'reports':
+            include_once 'routes/dashboard/dashboard.reports.router.php';
             exit();
-        case 'addoption':
-            include 'views/dashboard/addItemOption.php';
-            exit();
-        case 'chartjs':
-            include 'views/dashboard/chartjs.php';
-            exit();
-        case 'ordertracks':
-            include 'views/dashboard/ordertracks.php';
-            exit();
-        case 'drivers':
-            include 'views/dashboard/drivers.php';
-            exit();
-        case 'loginadmin':
-            include 'views/dashboard/loginadmin.php';
-            exit();
-        case 'registeradmin':
-            include 'views/dashboard/registeradmin.php';
-            exit();
-        case 'points':
-            include 'views/dashboard/points.php';
+
+        case 'orders':
+            include_once 'routes/dashboard/dashboard.orders.router.php';
             exit();
 
         case 'reviews':
-            include 'views/dashboard/reviews.php';
+            include_once 'routes/dashboard/dashboard.reviews.router.php';
             exit();
+//        case 'drivers':
+//            include 'views/dashboard/drivers.php';
+//            exit();
+//        case 'loginadmin':
+//            include 'views/dashboard/loginadmin.php';
+//            exit();
+//        case 'registeradmin':
+//            include 'views/dashboard/registeradmin.php';
+//            exit();
+//        case 'points':
+//            include 'views/dashboard/points.php';
+//            exit();
         default:
             include 'views/404.php';
             exit();
@@ -101,24 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         case 'discount':
             include_once 'routes/dashboard/dashboard.discount.router.php';
-            exit();
-
-        case 'addingredient':
-            include 'controllers/ingredient.controller.php';
-            $ingredient = new IngredientController;
-            $ingredient->add();
-            exit();
-
-        case 'addoptions':
-            $items = [];
-            include 'controllers/item.controller.php';
-            ItemController::getAjaxCategories();
-            exit();
-
-        case 'addoption':
-            include 'controllers/itemOption.controller.php';
-            $option = new OptionController;
-            $option->addOption();
             exit();
     }
 } else {
