@@ -161,7 +161,7 @@ class IngredientController
     {
         $json_data = file_get_contents("php://input");
 
-        $order = json_decode($json_data, true);
+        $order = json_decode($json_data, true); 
 
         $orderObjects = array();
 
@@ -197,7 +197,6 @@ class IngredientController
                     break;
             }
         }
-
 
 
 
@@ -296,8 +295,7 @@ class IngredientController
             $total += $item->getPrice();
         }
 
-        return $total;
-
+        echo $total;
 
     }
 
