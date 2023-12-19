@@ -37,6 +37,8 @@ include 'projectFolderName.php';
 	<link rel="stylesheet" href="public/css/footer.css">
 	<link rel="stylesheet" href="public/css/cart.css">
 	
+	
+	
 	<style>
 		.remove-btn:hover{
   			cursor: pointer;

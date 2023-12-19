@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="public/css/nav.css">
   <link rel="stylesheet" href="public/css/footer.css">
   <link rel="stylesheet" href="public/css/checkout.css">
+  
 </head>
 
 <body>
