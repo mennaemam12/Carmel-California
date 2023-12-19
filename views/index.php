@@ -189,17 +189,17 @@ $rows = Item::getAllItems();
 				</div>
 				<div class="col-md-6">
 				<div class="row">
-						<div class="col-md-6">
-						<div class="menu-entry">
 						<?php
-				for ($i = 0; $i < 4; $i++) {
+					for ($i = 0; $i < 4; $i++) {
+					echo "<div class='col-md-6'>";
+					echo "<div class='menu-entry'>";
 					echo "<a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>";
 					echo "<img src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
 					echo "</a>";
+					echo "</div>";
+					echo "</div>";
                                             }
 											?>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
