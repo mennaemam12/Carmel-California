@@ -226,50 +226,27 @@ $rows = Item::getAllItems();
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="#" class="img" style="background-image: url(public/images/menu-1.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3><a href="#">Coffee Capuccino</a></h3>
-							<p>A small river named Duden flows by their place and supplies</p>
-							<p class="price"><span>$5.90</span></p>
-							<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="#" class="img" style="background-image: url(public/images/menu-2.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3><a href="#">Coffee Capuccino</a></h3>
-							<p>A small river named Duden flows by their place and supplies</p>
-							<p class="price"><span>$5.90</span></p>
-							<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="#" class="img" style="background-image: url(public/images/menu-3.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3><a href="#">Coffee Capuccino</a></h3>
-							<p>A small river named Duden flows by their place and supplies</p>
-							<p class="price"><span>$5.90</span></p>
-							<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="menu-entry">
-						<a href="#" class="img" style="background-image: url(public/images/menu-4.jpg);"></a>
-						<div class="text text-center pt-4">
-							<h3><a href="#">Coffee Capuccino</a></h3>
-							<p>A small river named Duden flows by their place and supplies</p>
-							<p class="price"><span>$5.90</span></p>
-							<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
-						</div>
-					</div>
-				</div>
+			<?php
+				for ($i = 0; $i < 4; $i++) {
+					echo "<div class='col-md-3'>";
+					echo "<div class='text text-center pt-4'>";
+					echo "<div class='menu-entry'>";
+					echo "<a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>";
+					echo "<img src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
+					echo "</a>";
+					echo "<h3><a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>".$rows[$i]->Name."</a></h3>";
+					echo "<p></p>";
+					echo "<p><span>".$rows[$i]->Price."</span></p>";
+					echo "<p><a class='btn btn-primary btn-outline-primary' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>Add to Cart</a></p>";
+				
+					echo "</div>";
+					echo "</div>";
+					echo "</div>";
+                                            }
+											?>
+							
+							
+							
 			</div>
 		</div>
 	</section>
@@ -426,6 +403,7 @@ $rows = Item::getAllItems();
 	<script src="public/js/scrollax.min.js"></script>
 	<script src="public/js/main.js"></script>
 	<script src="public/js/nav.js"></script>
+	<script src="public/js/Cart.js"></script>
 
 </body>
 
