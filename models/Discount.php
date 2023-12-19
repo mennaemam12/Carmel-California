@@ -6,7 +6,8 @@ require_once 'models/MainItem.php';
 require_once 'models/SideItem.php';
 require_once 'models/DessertItem.php';
 require_once 'models/Item.php';
-class Discount{
+class Discount
+{
 
     //type , category , percentage , coupon , start_date , end_date , valid
     protected $db;
@@ -18,7 +19,8 @@ class Discount{
     protected $end_date;
     protected $valid;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database;
     }
 
@@ -46,37 +48,38 @@ class Discount{
         $this->start_date = $formattedStartDate->format('Y-m-d');
     }
     public function setEndDate($end_date)
-{
-    // Convert 'd/m/Y' to 'Y-m-d' format
-    $formattedEndDate = DateTime::createFromFormat('d/m/Y', $end_date);
+    {
+        // Convert 'd/m/Y' to 'Y-m-d' format
+        $formattedEndDate = DateTime::createFromFormat('d/m/Y', $end_date);
 
-    // Add 30 days to the start date
-    $startDate = DateTime::createFromFormat('Y-m-d', $this->start_date);
-    $startDate->add(new DateInterval('P30D')); // Adding 30 days
+        // Add 30 days to the start date
+        $startDate = DateTime::createFromFormat('Y-m-d', $this->start_date);
+        $startDate->add(new DateInterval('P30D')); // Adding 30 days
 
-    // Set the end date as 30 days after the start date
-    $this->end_date = $startDate->format('Y-m-d');
-}
-
-public function setValid() {
-    // Convert start date and end date strings to DateTime objects
-    $startDateTime = new DateTime($this->getStartDate());
-    $endDateTime = new DateTime($this->getEndDate());
-
-    // Calculate the difference between dates
-    $interval = $endDateTime->diff($startDateTime);
-
-    // Get the difference in days
-    $daysDifference = $interval->days;
-
-    // Check if there are days left
-    if ($daysDifference > 0) {
-        $this->valid = "YES"; // There are days left between start and end dates
-    } else {
-        $this->valid = "NO"; // There are no days left between start and end dates
+        // Set the end date as 30 days after the start date
+        $this->end_date = $startDate->format('Y-m-d');
     }
-}
-    
+
+    public function setValid()
+    {
+        // Convert start date and end date strings to DateTime objects
+        $startDateTime = new DateTime($this->getStartDate());
+        $endDateTime = new DateTime($this->getEndDate());
+
+        // Calculate the difference between dates
+        $interval = $endDateTime->diff($startDateTime);
+
+        // Get the difference in days
+        $daysDifference = $interval->days;
+
+        // Check if there are days left
+        if ($daysDifference > 0) {
+            $this->valid = "YES"; // There are days left between start and end dates
+        } else {
+            $this->valid = "NO"; // There are no days left between start and end dates
+        }
+    }
+
     //getters
     public function getType()
     {
@@ -112,43 +115,43 @@ public function setValid() {
     }
 
 
-     //add discount
-     public function addDiscount()
-     {
-         // Retrieve existing discount with same category and percentage
-         $sql = "SELECT * FROM discount WHERE category = :category AND percentage = :percentage";
-         $this->db->query($sql);
-         $this->db->bind(':category', $this->category);
-         $this->db->bind(':percentage', $this->percentage);
-         $existingDiscount = $this->db->single();
-     
-         if ($existingDiscount) {
+    //add discount
+    public function addDiscount()
+    {
+        // Retrieve existing discount with same category and percentage
+        $sql = "SELECT * FROM discount WHERE category = :category AND percentage = :percentage";
+        $this->db->query($sql);
+        $this->db->bind(':category', $this->category);
+        $this->db->bind(':percentage', $this->percentage);
+        $existingDiscount = $this->db->single();
+
+        if ($existingDiscount) {
             // call edit function 
             $this->editDiscount($existingDiscount->id);
-             return true;
-     
-         } else {
-             // Add new discount
-             $sql = "INSERT INTO discount (type , category , percentage , coupon , start_date , end_date , valid) VALUES (:type , :category , :percentage , :coupon , :start_date , :end_date , :valid)";
-             $this->db->query($sql);
-             $this->db->bind(':type', $this->type);
-             $this->db->bind(':category', $this->category);
-             $this->db->bind(':percentage', $this->percentage);
-             $this->db->bind(':coupon', $this->coupon);
-             $this->db->bind(':start_date', $this->start_date);
-             $this->db->bind(':end_date', $this->end_date);
-             $this->db->bind(':valid', $this->valid);
-             if ($this->db->execute()) {
-                 return true;
-             }
-         }
-     
-         return false;
-     }
-    
+            return true;
+
+        } else {
+            // Add new discount
+            $sql = "INSERT INTO discount (type , category , percentage , coupon , start_date , end_date , valid) VALUES (:type , :category , :percentage , :coupon , :start_date , :end_date , :valid)";
+            $this->db->query($sql);
+            $this->db->bind(':type', $this->type);
+            $this->db->bind(':category', $this->category);
+            $this->db->bind(':percentage', $this->percentage);
+            $this->db->bind(':coupon', $this->coupon);
+            $this->db->bind(':start_date', $this->start_date);
+            $this->db->bind(':end_date', $this->end_date);
+            $this->db->bind(':valid', $this->valid);
+            if ($this->db->execute()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 
-     //get all discounts
+
+    //get all discounts
     public static function getAllDiscounts()
     {
         $db = new Database;
@@ -161,36 +164,22 @@ public function setValid() {
         }
     }
 
-     //find item by category
-        public static function findDiscountByCategory($category)
-        {
-            $db = new Database;
-            $db->query('SELECT * FROM discount WHERE category = :category');
-            $db->bind(':category', $category);
-            $row = $db->single();
-            if ($db->rowCount() > 0) {
-                return $row;
-            } else {
-                return false;
-            }
+    //find item by category
+    public static function findDiscountByCategory($category)
+    {
+        $db = new Database;
+        $db->query('SELECT * FROM discount WHERE category = :category');
+        $db->bind(':category', $category);
+        $row = $db->single();
+        if ($db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
         }
-    
+    }
 
 
-     //get discount by coupon
-        public static function getDiscountBycoupon($coupon)
-        {
-            $db = new Database;
-            $db->query('SELECT * FROM discount WHERE coupon = :coupon');
-            $db->bind(':coupon', $coupon);
-            $row = $db->single();
-            if ($db->rowCount() > 0) {
-                return $row;
-            } else {
-                return false;
-            }
-        }
-    
+
 
 
     //get discount by type
@@ -206,23 +195,23 @@ public function setValid() {
             return false;
         }
     }
-     //edit discount
-        public function editDiscount($id)
-        {
-            $sql = "UPDATE discount SET type = :type , category = :category , percentage = :percentage , coupon = :coupon , start_date = :start_date , end_date = :end_date , valid = :valid WHERE id = :id";
-            $this->db->query($sql);
-            $this->db->bind(':type', $this->type);
-            $this->db->bind(':category', $this->category);
-            $this->db->bind(':percentage', $this->percentage);
-            $this->db->bind(':coupon', $this->coupon);
-            $this->db->bind(':start_date', $this->start_date);
-            $this->db->bind(':end_date', $this->end_date);
-            $this->db->bind(':valid', $this->valid);
-            $this->db->bind(':id', $id);
-            $this->db->execute();
-        }
-    
-    
+    //edit discount
+    public function editDiscount($id)
+    {
+        $sql = "UPDATE discount SET type = :type , category = :category , percentage = :percentage , coupon = :coupon , start_date = :start_date , end_date = :end_date , valid = :valid WHERE id = :id";
+        $this->db->query($sql);
+        $this->db->bind(':type', $this->type);
+        $this->db->bind(':category', $this->category);
+        $this->db->bind(':percentage', $this->percentage);
+        $this->db->bind(':coupon', $this->coupon);
+        $this->db->bind(':start_date', $this->start_date);
+        $this->db->bind(':end_date', $this->end_date);
+        $this->db->bind(':valid', $this->valid);
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+    }
+
+
 
     ///edit discount coupon
     public function editDiscountcoupon($id)
@@ -243,10 +232,21 @@ public function setValid() {
         $db->execute();
     }
 
-    
-    
-    
-    
+    //find discount by code
+    public static function findDiscountByCode($code)
+    {
+        $db = new Database;
+        $db->query('SELECT * FROM discount WHERE coupon = :code');
+        $db->bind(':code', $code);
+        $row = $db->single();
+        if ($db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
 
 
 
