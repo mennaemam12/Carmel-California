@@ -82,7 +82,7 @@ class CheckoutController
             $items[] = Item::findItemByID($item->getItemType(), $item->getItemId());
         }
 
-        $result = Discount::findDiscountByCode($code);
+        $result = Discount::getDiscountByCoupon($code);
         $discount = 0;
         if ($result) {
             foreach ($items as $item) {
