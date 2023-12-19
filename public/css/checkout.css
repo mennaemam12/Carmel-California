@@ -824,6 +824,7 @@
     display: block;
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 20px;
+    text-align: center;
   }
   
   .cart-total h3 {
@@ -840,6 +841,7 @@
     display: block;
     width: 50%;
     color: black !important;
+    text-align: right;
   }
   
   .cart-total p.total-price span {
