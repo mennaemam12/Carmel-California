@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 12:57 AM
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 19, 2023 at 05:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -106,13 +106,24 @@ CREATE TABLE `desserts` (
 CREATE TABLE `discount` (
   `id` int(11) NOT NULL,
   `type` varchar(100) NOT NULL,
-  `category` varchar(100) NOT NULL,
+  `category` varchar(100) DEFAULT NULL,
   `percentage` int(50) DEFAULT NULL,
   `coupon` varchar(100) DEFAULT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `valid` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `discount`
+--
+
+INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start_date`, `end_date`, `valid`) VALUES
+(20, 'breakfast', 'Eggs', 22, 'Eggs22', '2023-12-08', '2024-01-07', 'YES'),
+(21, 'main', 'Burger', 10, 'Burger10', '2023-12-08', '2024-01-07', 'YES'),
+(22, 'sides', 'Starters', 40, 'Starters40', '2023-12-08', '2024-01-07', 'YES'),
+(23, 'main', 'Burger', 22, 'Burger22', '2023-12-08', '2024-01-07', 'YES'),
+(24, 'drinks', 'Coffee', 30, NULL, '2023-12-08', '2024-01-07', 'YES');
 
 -- --------------------------------------------------------
 
@@ -227,7 +238,8 @@ INSERT INTO `permissions` (`id`, `description`, `path`) VALUES
 (8, 'View Checkout Page', 'checkout'),
 (9, 'View Dashboard Home', 'dashboard'),
 (10, 'Add/Edit/View Menu', 'dashboard/menu'),
-(11, 'Add/Edit/View Users', 'dashboard/users');
+(11, 'Add/Edit/View Users', 'dashboard/users'),
+(12, 'View/ Add Discounts', 'dashboard/discount');
 
 -- --------------------------------------------------------
 
@@ -371,7 +383,8 @@ INSERT INTO `usertype_permissions` (`usertype_id`, `permission_id`) VALUES
 (2, 8),
 (2, 9),
 (2, 10),
-(2, 11);
+(2, 11),
+(2, 12);
 
 -- --------------------------------------------------------
 
@@ -518,7 +531,7 @@ ALTER TABLE `desserts`
 -- AUTO_INCREMENT for table `discount`
 --
 ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `drinks`
@@ -548,7 +561,7 @@ ALTER TABLE `option_values`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `saladingredients`

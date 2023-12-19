@@ -1,5 +1,7 @@
 <?php
 require_once 'controllers/item.controller.php';
+require_once 'controllers/itemOption.controller.php';
+require_once 'controllers/ingredient.controller.php';
 require_once 'models/Item.php';
 
 if (isset($_SESSION['user'])) {
@@ -44,6 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $item = Item::findItemByID($itemType, $itemID);
             include 'views/dashboard/menu/edititem.php';
             exit();
+
+        case 'addoption':
+            include 'views/dashboard/menu/addItemOption.php';
+            exit();
+        case 'addingredient':
+            include 'views/dashboard/menu/addingredient.php';
+            exit();
         default:
             include 'views/404.php';
             exit();
@@ -83,6 +92,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $itemID = $_POST['id'];
             $itemType = $_POST['type'];
             $item->delete($itemType, $itemID);
+            exit();
+
+        case 'addoption':
+            $option = new OptionController;
+            $option->addOption();
+            exit();
+
+        case 'addoptions':
+            $items = [];
+            ItemController::getAjaxCategories();
+            exit();
+
+        case 'addingredient':
+            $ingredient = new IngredientController;
+            $ingredient->add();
             exit();
         default:
             include 'views/404.php';

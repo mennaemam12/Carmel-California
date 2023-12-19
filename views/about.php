@@ -1,3 +1,8 @@
+<?php
+include 'projectFolderName.php';
+require_once 'models/Item.php';
+$rows = Item::getAllItems();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,30 +37,15 @@
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/footer.css">
     <link rel="stylesheet" href="public/css/about.css">
+	
+	
   </head>
   <body>
     <?php
 		include 'partials/nav.php';
 	?>
 
-    <section class="home-slider owl-carousel">
-
-      <div class="slider-item" style="background-image: url(public/images/bg_7.png);" data-stellar-background-ratio="0.5">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center">
-
-            <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">About Us</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="../index.php">Home</a></span> <span>About</span></p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-about d-md-flex">
+    <section class="ftco-about d-md-flex mt-5">
 		<div class="one-half img" style="background-image: url(public/images/bgstory_3.jpg); background-size: 88%;"></div>
 		<div class="one-half ftco-animate">
 			
@@ -171,29 +161,20 @@
 					
 	          </div>
     			</div>
-    			<div class="col-md-6">
+				<div class="col-md-6">
     				<div class="row">
-    					<div class="col-md-6">
-    						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(public/images/menu-1.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(public/images/menu-2.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(public/images/menu-3.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(public/images/menu-4.jpg);"></a>
-		    				</div>
-    					</div>
-    				</div>
+						<?php
+					for ($i = 0; $i < 4; $i++) {
+					echo "<div class='col-md-6'>";
+					echo "<div class='menu-entry'>";
+					echo "<a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>";
+					echo "<img src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
+					echo "</a>";
+					echo "</div>";
+					echo "</div>";
+                                            }
+											?>
+					</div>
     			</div>
     		</div>
     	</div>

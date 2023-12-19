@@ -36,6 +36,8 @@ include 'projectFolderName.php';
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/footer.css">
     <link rel="stylesheet" href="public/css/404.css">
+    
+    
 </head>
 
 <body>

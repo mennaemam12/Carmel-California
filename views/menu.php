@@ -30,14 +30,18 @@ include 'projectFolderName.php';
 	<link rel="stylesheet" href="public/css/flaticon.css">
 	<link rel="stylesheet" href="public/css/icomoon.css">
 	<link rel="shortcut icon" href="template/images/favicon.png" />
-	<link rel="stylesheet" href="public/css/nav.css">
-	<link rel="stylesheet" href="public/css/footer.css">
-	<link rel="stylesheet" href="public/css/menu.css">
+    <link rel="stylesheet" href="public/css/nav.css">
+    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="public/css/menu.css">
+	<link rel="stylesheet" href="public/css/index.css">
+	
+	<link rel="stylesheet" href="public/css/chatbot.css">
 	
   </head>
   <body>
-	<?php
-	include 'partials/nav.php';
+    <?php
+		include 'partials/nav.php';
+		include_once 'partials/chatbot.php'
 	?>
 
 	<section class="home-slider owl-carousel">
@@ -192,9 +196,13 @@ include 'projectFolderName.php';
 	</section>
 
 <?php
-include 'partials/footer.php'
-	?>
+	include 'partials/footer.php';
 	
+	
+?>
+
+
+    
   
 
   <!-- loader -->

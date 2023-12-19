@@ -27,7 +27,9 @@ $rows = Item::getAllItems();
     <link rel="stylesheet" href="public/css/dashboard/styleAdmin.css">
     <link rel="stylesheet" href="public/css/dashboard/styles.css">
     <!-- endinject -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="template/images/favicon.png" />
 </head>
 <body>
@@ -77,7 +79,7 @@ $rows = Item::getAllItems();
                                                 <th>Category</th>
                                                 <th>Type</th>
                                             </tr>
-                                        </thead>
+                                        </thead>ْ
 
                                         <tbody class="menuInfo">
 
@@ -118,15 +120,15 @@ $rows = Item::getAllItems();
                             </div>
                         </div>
                         <div class="form-message-div">
-                                            <?php flash('formError') ?>
-                                        </div>
-                                        <div class="form-message-div">
-                                            <?php flash('formSuccess') ?>
-                                        </div>
+                            <?php flash('formError') ?>
+                        </div>
+                        <div class="form-message-div">
+                            <?php flash('formSuccess') ?>
+                        </div>
                     </div>
                     <?php
                     include 'views/partials/dashboard/_footer.php'
-                    ?>
+                        ?>
                 </div>
             </div>
             <!-- page-body-wrapper ends -->

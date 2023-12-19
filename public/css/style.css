@@ -84,6 +84,39 @@ body {
   outline: 0 !important;
 }
 
+  df-messenger {
+   --df-messenger-bot-message: #006a4d;
+   --df-messenger-button-titlebar-color: #006a4d;
+   --df-messenger-chat-background-color: #fafafa;
+   --df-messenger-font-color: white;
+   --df-messenger-send-icon:#363635;
+   --df-messenger-user-message: #8f8e8e;
+  }
+
+  .chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.568);
+  z-index: 1000;
+ 
+}
+
+
+
+
+.chat-pop{
+
+padding: 5px 0 5px 20px;
+overflow-x: hidden;
+border-top: solid 1px rgba(228, 228, 228, 0.897);
+border-bottom: solid 1px rgba(228, 228, 228, 0.897);
+
+}
+.chat-pop .side-btn2{
+margin-left:160px;
+}
 hr {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;

@@ -1,5 +1,5 @@
 <?php
-
+include_once 'design-patterns/SaladDecorator.php';
 class RedBeans extends SaladDecorator
 {
     protected $base;
