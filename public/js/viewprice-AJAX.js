@@ -2,7 +2,7 @@
     function getSaladTotal(order) {
         // Use the $.ajax function
         $.ajax({
-            url: "salad-order/viewTotal",
+            url: "salad-order/viewtotal",
             method: "POST",
             contentType: 'application/json',
             data: JSON.stringify(order),
