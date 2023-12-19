@@ -1,4 +1,5 @@
 <?php
+include_once 'design-patterns/BaseComponent.php';
 class Lettuce extends BaseComponent{
     
     public function __construct(){

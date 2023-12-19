@@ -166,6 +166,7 @@ class IngredientController
         $baseTotal = 0;
         $baseChoice = (!empty($order['base'])) ? $order['base'] : '';
         $base = '';
+        $baseChoice=trim($baseChoice);
         if ($baseChoice != '') {
             switch ($baseChoice) {
                 case 'Lettuce':
@@ -176,6 +177,11 @@ class IngredientController
                 case 'Arugula':
                     include_once 'design-patterns/Arugula.php';
                     $base = new Arugula();
+                    $orderObjects[] = $base;
+                    break;
+                case 'Mix Greens':
+                    include 'design-patterns/MixGreens.php';
+                    $base = new MixGreens();
                     $orderObjects[] = $base;
                     break;
                 case 'Baby Rocca':
@@ -294,7 +300,8 @@ class IngredientController
             $total += $item->getPrice();
         }
 
-        return $total;
+        $response=$total;
+        echo $response;
 
 
     }

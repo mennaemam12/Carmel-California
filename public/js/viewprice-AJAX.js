@@ -7,13 +7,14 @@
             contentType: 'application/json',
             data: JSON.stringify(order),
             success: function(response) {
-            if (response) {
+            console.log(response);
+            // if (response) {
                 try {
                     document.getElementById('total').innerHTML = parseInt(response);
                 }catch (e) {
                     console.error("Error caught:", e);
                 }
-            }
+            // }
 },
             error: function(xhr, status, error) {
                 // Handle errors
