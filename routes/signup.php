@@ -2,11 +2,10 @@
 @session_start();
 // Path: routes/cart.php
 
-include 'projectFolderName.php';
 
 
 if (isset($_SESSION['user'])) {
-    redirect ($GLOBALS['projectFolder'] . "/"); // Redirect to the home page
+    redirect ("/"); // Redirect to the home page
     exit();
 }
 

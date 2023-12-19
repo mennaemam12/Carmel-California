@@ -2,12 +2,10 @@
 require_once 'models/User.php';
 require_once 'models/Cart.php';
 require_once 'helpers/session.helper.php';
-include 'projectFolderName.php';
 
 
 class UserController
 {
-
     private $userModel;
 
     public function __construct()
@@ -18,7 +16,7 @@ class UserController
     public function editUserType() {
         if (!isset($_POST['id']) || !isset($_POST['usertype'])) {
             flash("formError", "Please fill out all inputs");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
             exit();
         }
 
@@ -27,13 +25,13 @@ class UserController
 
         if (!is_numeric($id) || !is_numeric($usertype)) {
             flash("formError", "Invalid input");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
             exit();
         }
 
         if (empty($id) || empty($usertype)) {
             flash("formError", "Please fill out all inputs");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
             exit();
         }
 
@@ -42,12 +40,12 @@ class UserController
 
         if ($this->userModel->editUserType()) {
             flash("formSuccess", "User updated successfully");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
             exit();
         }
 
         flash("formError", "Something went wrong");
-        redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+        redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
         exit();
 
     }
@@ -75,31 +73,31 @@ class UserController
             empty($data['UserPass']) || empty($data['UserConfPass'])
         ) {
             flash("formError", "Please fill out all inputs");
-            redirect($GLOBALS['projectFolder'] . "/signup");
+            redirect("/signup");
         }
 
         if (!preg_match("/^[a-zA-Z0-9]*$/", $data['Username'])) {
             flash("formError", "Invalid Username");
-            redirect($GLOBALS['projectFolder'] . "/signup");
+            redirect("/signup");
         }
 
         if (!filter_var($data['Email'], FILTER_VALIDATE_EMAIL)) {
             flash("formError", "Invalid Email");
-            redirect($GLOBALS['projectFolder'] . "/signup");
+            redirect("/signup");
         }
 
         if (strlen($data['UserPass']) < 8) {
             flash("formError", "Password must be at least 8 characters long");
-            redirect($GLOBALS['projectFolder'] . "/signup");
+            redirect("/signup");
         } else if ($data['UserPass'] !== $data['UserConfPass']) {
             flash("formError", "Passwords don't match");
-            redirect($GLOBALS['projectFolder'] . "/signup");
+            redirect("/signup");
         }
 
         //User with the same email or password already exists
         if ($this->userModel->findUserByEmailOrUsername($data['Email'], $data['Username'])) {
             flash("formError", "Username or Email already taken");
-            redirect($GLOBALS['projectFolder'] . "/signup");
+            redirect("/signup");
         }
 
         //Passed all validation checks.
@@ -141,7 +139,7 @@ class UserController
 
         if (empty($data['Name/Email']) || empty($data['UserPass'])) {
             flash("formError", "Please fill out all inputs");
-            header("location:" . $GLOBALS['projectFolder'] . "/login");
+            header("location:/login");
             exit();
         }
 
@@ -160,11 +158,11 @@ class UserController
                 $this->createUserSession($this->userModel);
             } else {
                 flash("formError", "Password Incorrect");
-                header("location:" . $GLOBALS['projectFolder'] . "/login");
+                header("location:/login");
             }
         } else {
             flash("formError", "No user found");
-            header("location:" . $GLOBALS['projectFolder'] . "/login");
+            header("location:/login");
         }
     }
 
@@ -191,7 +189,7 @@ class UserController
         }
         $this->userModel->eraseCart($user->getID());
         $_SESSION['user'] = $user->serialize();
-        header("location:" . $GLOBALS['projectFolder'] . "/index");
+        header("location:/index");
     }
 
     public function logout()
@@ -199,7 +197,7 @@ class UserController
         $this->saveCart();
         unset($_SESSION['user']);
         session_destroy();
-        redirect($GLOBALS['projectFolder'] . "/index");
+        redirect("/index");
     }
 
     public function saveCart(){

@@ -1,11 +1,9 @@
 <?php
-include 'projectFolderName.php';
 require_once 'models/Item.php';
 require_once 'models/ItemOption.php';
 require_once 'models/Review.php';
 @session_start();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +16,6 @@ require_once 'models/Review.php';
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-
-    <base href="<?php echo $projectFolder ?>/"/>
 
     <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/animate.css">
@@ -116,7 +112,7 @@ include 'partials/nav.php';
             <?php if(isset($_SESSION['user'])){?>
                 <p><a onclick="add()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
             <?php }else{?>
-                <p><a href='<?=$projectFolder?>/login' class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
+                <p><a href='/login' class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
             <?php }?>
             </div>
         </div>

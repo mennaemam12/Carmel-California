@@ -1,6 +1,5 @@
 <?php
 @session_start();
-include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 ?>
 
@@ -13,7 +12,6 @@ require_once 'helpers/session.helper.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Carmel Dashboard</title>
 
-    <base href="<?php echo $projectFolder; ?>/">
     <!-- plugins:css -->
     <link rel="stylesheet" href="template/vendors/feather/feather.css">
     <link rel="stylesheet" href="template/vendors/ti-icons/css/themify-icons.css">

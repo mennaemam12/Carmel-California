@@ -2,10 +2,9 @@
 @session_start();
 // Path: routes/logout.php
 require_once 'helpers/session.helper.php';
-include 'projectFolderName.php';
 
 if (!isset($_SESSION['user'])) {
-    redirect($GLOBALS['projectFolder'] . "/"); // Redirect to the home page
+    redirect("/"); // Redirect to the home page
     exit();
 }
 

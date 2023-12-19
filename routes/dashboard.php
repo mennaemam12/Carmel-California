@@ -2,7 +2,6 @@
 @session_start();
 // Path: routes/dashboard.php
 
-include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 require_once "controllers/user_type.controller.php";
 require_once "models/User.php";

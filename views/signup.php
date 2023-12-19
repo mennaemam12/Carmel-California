@@ -1,24 +1,5 @@
 <?php
 require_once 'helpers/session.helper.php';
-include 'projectFolderName.php';
-// $con = mysqli_connect("localhost", "root", "","carmel");
-// if(isset($_POST['Submit'])){
-
-// 	$Name=$_POST['name'];
-// 	$Email=$_POST['email'];
-//     $Phone=$_POST['phone'];
-//     $Password=$_POST['password'];
-// 	$confirm_password=$_POST['confirmPassword'];
-
-
-// 	$sql="insert into users(name,email,phone,password) values ('$Name','$Email','$Phone','$Password')";
-// 		if(mysqli_query($GLOBALS['con'],$sql)){
-// 			$lastInsertedID = mysqli_insert_id($GLOBALS['con']);
-// 			session_start();
-//             $_SESSION["UserID"] = $lastInsertedID;
-//             header('Location: ' .$projectFolder. '/'); // Redirect to the home page
-//         }
-// }
 ?>
 
 <!DOCTYPE html>
@@ -34,8 +15,6 @@ include 'projectFolderName.php';
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-
-	<base href="<?php echo $projectFolder?>/">
 
 	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/animate.css">

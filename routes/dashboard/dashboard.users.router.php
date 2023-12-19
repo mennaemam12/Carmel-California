@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = new User;
             $userID = $_POST['id'];
             $user->delete($userID);
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users");
+            redirect("/dashboard/users");
             exit();
 
         case 'deleteusertype' :

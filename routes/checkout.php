@@ -2,12 +2,11 @@
 @session_start();
 // Path: routes/checkout.php
 
-include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 require_once "models/User.php";
 
 if (!isset($_SESSION['user'])) {
-    redirect($GLOBALS['projectFolder'] . "/login");
+    redirect("/login");
     exit();
 }
 

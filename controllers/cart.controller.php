@@ -2,8 +2,6 @@
     require_once 'models/Cart.php'; 
     require_once 'models/User.php'; 
     require_once 'helpers/session.helper.php';
-    include 'projectFolderName.php';
-
     class CartController{
         private $cartModel;
         public function __construct(){
@@ -144,14 +142,9 @@
             }
             $_SESSION['user'] = $user->serialize(); 
 
-            redirect($GLOBALS['projectFolder'] . "/cart");
+            redirect("/cart");
             echo $_POST['i'];
-           
-          
         }
-
-      
-    
     }
  
 ?>

@@ -2,8 +2,6 @@
 require_once 'models/Item.php';
 require_once 'models/Discount.php';
 require_once 'helpers/session.helper.php';
-include 'projectFolderName.php';
-
 class DiscountController
 {
     private $discountModel;
@@ -70,7 +68,7 @@ class DiscountController
 
         if (!$this->validateDiscount($data)) {
             flash("formError", $this->errorMsg, 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/discount?action=add");
+            redirect("/dashboard/discount?action=add");
             exit();
         }
 
@@ -87,13 +85,13 @@ class DiscountController
 
         if ($this->discountModel->addDiscount()) {
             flash("formSuccess", "Discount added successfully", 'form-message form-message-green');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/discount?action=add");
+            redirect("/dashboard/discount?action=add");
             exit();
         } else
             $this->errorMsg = "Failed to add discount to the database";
 
         flash("formError", $this->errorMsg);
-        redirect($GLOBALS['projectFolder'] . "/dashboard/discount?action=add");
+        redirect("/dashboard/discount?action=add");
         exit();
     }
 
@@ -103,7 +101,7 @@ class DiscountController
         if (!isset($_POST['id'])) {
             $this->errorMsg = "Invalid discount";
             flash("formError", $this->errorMsg);
-            redirect($GLOBALS['projectFolder'] . "/dashboard/discount?action=edit&id=" . $_POST['id']);
+            redirect("/dashboard/discount?action=edit&id=" . $_POST['id']);
             exit();
         }
 
@@ -123,7 +121,7 @@ class DiscountController
 
         if (!$this->validateDiscount($data)) {
             flash("formError", $this->errorMsg, 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/discount?action=edit&id=" . $_POST['id']);
+            redirect("/dashboard/discount?action=edit&id=" . $_POST['id']);
             exit();
         }
 
@@ -138,7 +136,7 @@ class DiscountController
 
         if ($this->discountModel->editDiscount($ID)) {
             flash("formSuccess", "Discount edited successfully", 'form-message form-message-green');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/discount?action=edit&id=" . $_POST['id']);
+            redirect("/dashboard/discount?action=edit&id=" . $_POST['id']);
             exit();
         }
         flash("formError", "Failed to edit discount");

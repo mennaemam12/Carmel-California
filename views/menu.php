@@ -1,6 +1,3 @@
-<?php
-	include 'projectFolderName.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +22,6 @@
 
     <link rel="stylesheet" href="public/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="public/css/jquery.timepicker.css">
-
     
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">

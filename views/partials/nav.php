@@ -1,5 +1,4 @@
 <?php
-include 'projectFolderName.php';
 include_once 'models/User.php';
 include_once 'models/Cart.php';
 @session_start();

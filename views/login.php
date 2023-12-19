@@ -1,21 +1,5 @@
 <?php
 require_once 'helpers/session.helper.php';
-include 'projectFolderName.php';
-
-// $con = mysqli_connect("localhost", "root", "","carmel");
-// if(isset($_POST['submit'])){
-// 	$Email=$_POST["email"];
-// 	$Password=$_POST["password"];
-
-// 	$sql="SELECT * FROM users WHERE email='$Email' and password='$Password'";	
-// 		$result=mysqli_query($GLOBALS['con'],$sql);
-//         if ($row=mysqli_fetch_array($result)){
-//             session_start();
-//             $_SESSION["UserID"]=$row[0];
-//             header('Location: ' .$projectFolder. '/'); // Redirect to the home page	
-// 		}
-
-// }
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +15,6 @@ include 'projectFolderName.php';
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-	<base href="<?php echo $projectFolder?>/">
 	<link rel="shortcut icon" href="template/images/favicon.png" />
 	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/animate.css">
