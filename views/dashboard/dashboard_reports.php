@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="template/vendors/feather/feather.css">
     <link rel="stylesheet" href="template/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="template/vendors/css/vendor.bundle.base.css">
+
+    <base href = "/">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
