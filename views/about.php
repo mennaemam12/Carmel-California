@@ -38,24 +38,7 @@
 		include 'partials/nav.php';
 	?>
 
-    <section class="home-slider owl-carousel">
-
-      <div class="slider-item" style="background-image: url(public/images/bg_7.png);" data-stellar-background-ratio="0.5">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center">
-
-            <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">About Us</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="../index.php">Home</a></span> <span>About</span></p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-about d-md-flex">
+    <section class="ftco-about d-md-flex mt-5">
 		<div class="one-half img" style="background-image: url(public/images/bgstory_3.jpg); background-size: 88%;"></div>
 		<div class="one-half ftco-animate">
 			

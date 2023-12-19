@@ -31,6 +31,10 @@ function addActiveClass() {
     case "users":
         element = $("#sidebar-users");
         break;
+
+    case "discount":
+        element = $("#sidebar-discount");
+        break;
   }
 
   element.addClass("active");

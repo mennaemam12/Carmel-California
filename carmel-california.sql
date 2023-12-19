@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 12:57 AM
+-- Generation Time: Dec 19, 2023 at 11:36 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -113,6 +113,13 @@ CREATE TABLE `discount` (
   `end_date` date NOT NULL,
   `valid` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `discount`
+--
+
+INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start_date`, `end_date`, `valid`) VALUES
+(1, 'main', 'Burger', 12, 'Burger12', '2023-12-19', '2024-01-18', 'YES');
 
 -- --------------------------------------------------------
 
@@ -227,7 +234,8 @@ INSERT INTO `permissions` (`id`, `description`, `path`) VALUES
 (8, 'View Checkout Page', 'checkout'),
 (9, 'View Dashboard Home', 'dashboard'),
 (10, 'Add/Edit/View Menu', 'dashboard/menu'),
-(11, 'Add/Edit/View Users', 'dashboard/users');
+(11, 'Add/Edit/View Users', 'dashboard/users'),
+(12, 'View/ Add Discounts', 'dashboard/discount');
 
 -- --------------------------------------------------------
 
@@ -371,7 +379,8 @@ INSERT INTO `usertype_permissions` (`usertype_id`, `permission_id`) VALUES
 (2, 8),
 (2, 9),
 (2, 10),
-(2, 11);
+(2, 11),
+(2, 12);
 
 -- --------------------------------------------------------
 
@@ -518,7 +527,7 @@ ALTER TABLE `desserts`
 -- AUTO_INCREMENT for table `discount`
 --
 ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `drinks`
@@ -548,7 +557,7 @@ ALTER TABLE `option_values`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `saladingredients`

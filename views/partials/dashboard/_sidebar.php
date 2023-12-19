@@ -58,7 +58,7 @@
       </div>
     </li>
     <!-- discounts -->
-    <li class="nav-item" >
+    <li class="nav-item" id = "sidebar-discount" >
       <a class="nav-link" data-toggle="collapse" href="#dis" aria-expanded="false" aria-controls="ui-basic">
         <i class="icon-delete menu-icon"></i>
         <span class="menu-title">Discounts</span>
@@ -66,8 +66,8 @@
       </a>
       <div class="collapse" id="dis">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="dashboard/discount">Add Discount</a></li>
-          <li class="nav-item"> <a class="nav-link" href="dashboard/viewdiscount">View Discounts</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/discount?action=add">Add Discount</a></li>
+          <li class="nav-item"> <a class="nav-link" href="dashboard/discount">View Discounts</a></li>
         </ul>
       </div>
     </li>
