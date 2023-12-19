@@ -253,7 +253,7 @@ include 'partials/footer.php';
 <script src="public/js/jquery.timepicker.min.js"></script>
 <script src="public/js/scrollax.min.js"></script>
 <script src="public/js/main.js"></script>
-<script src="public/js/Cart.js"></script>
+<script src="public/js/cart.js"></script>
 <script src="public/js/validation/review.js"></script>
 
 <script>
