@@ -33,11 +33,15 @@
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/footer.css">
     <link rel="stylesheet" href="public/css/menu.css">
+	<link rel="stylesheet" href="public/css/index.css">
+	
+	<link rel="stylesheet" href="public/css/chatbot.css">
 	
   </head>
   <body>
     <?php
 		include 'partials/nav.php';
+		include_once 'partials/chatbot.php'
 	?>
 
     <section class="home-slider owl-carousel">
@@ -188,7 +192,8 @@
 
 <?php
 	include 'partials/footer.php';
-	include  'partials/chatbot.php';
+	
+	
 ?>
 
 

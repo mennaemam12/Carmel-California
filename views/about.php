@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/footer.css">
     <link rel="stylesheet" href="public/css/about.css">
+	
+	
   </head>
   <body>
     <?php
