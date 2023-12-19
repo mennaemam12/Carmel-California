@@ -12,8 +12,8 @@
 
     <style>
   df-messenger {
-   --df-messenger-bot-message: #363635d5;
-   --df-messenger-button-titlebar-color: #363635d5;
+   --df-messenger-bot-message: #006a4d;
+   --df-messenger-button-titlebar-color: #006a4d;
    --df-messenger-chat-background-color: #fafafa;
    --df-messenger-font-color: white;
    --df-messenger-send-icon:#363635;
@@ -27,7 +27,7 @@
   right: 15px;
   box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.568);
   z-index: 1000;
-  background:#006a4d;
+ 
 }
 
 
@@ -35,16 +35,13 @@
 
 .chat-pop{
 
-
 padding: 5px 0 5px 20px;
 overflow-x: hidden;
 border-top: solid 1px rgba(228, 228, 228, 0.897);
 border-bottom: solid 1px rgba(228, 228, 228, 0.897);
 
 }
-
 .chat-pop .side-btn2{
-
 margin-left:160px;
 }
 
@@ -57,7 +54,7 @@ margin-left:160px;
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
   <script src="public/js/chatbot.js"></script>
 
-  <df-messenger
+  <df-messenger style="background-color: #006a4d;"
     intent="WELCOME"
     chat-title="Carmel-Calfornia"
     agent-id="dc2cb33c-d133-4d66-819f-90102af7268c"
