@@ -31,6 +31,16 @@
   <link rel="stylesheet" href="public/css/nav.css">
   <link rel="stylesheet" href="public/css/footer.css">
   <link rel="stylesheet" href="public/css/checkout.css">
+  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="public/js/applydiscount-AJAX.js"></script>
+    <script src="public/js/validation/validatecheckout-AJAX.js"></script>
+
+  <style>
+    .discount{
+      display:none;
+    }
+  </style>
 </head>
 
 <body>
@@ -57,110 +67,131 @@
   </section> -->
 
   <section class="ftco-section">
-    <div class="container">
+    <div class="container" >
       <div class="row">
         <div class="col-xl-8 ftco-animate">
           <form action="#" class="billing-form p-3 p-md-5">
-            <h3 class="mb-4 billing-heading">Billing Details</h3>
-            <div class="row align-items-end">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="firstname">First Name</label>
-                  <input type="text" class="form-control" placeholder="">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="lastname">Last Name</label>
-                  <input type="text" class="form-control" placeholder="">
-                </div>
-              </div>
-              <div class="w-100"></div>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="country">State / Country</label>
-                  <div class="select-wrap">
-                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                    <select name="" id="" class="form-control">
-                      <option value="">France</option>
-                      <option value="">Italy</option>
-                      <option value="">Philippines</option>
-                      <option value="">South Korea</option>
-                      <option value="">Hongkong</option>
-                      <option value="">Japan</option>
-                    </select>
+              <h3 class="mb-4 billing-heading">Billing Details</h3>
+              <div class="row align-items-end" >
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="firstname">First Name <span style='color:red'> *</span></label>
+                    <input type="text" id="firstname" name="firstname" class="form-control" value='<?= $firstname ?>'>
                   </div>
                 </div>
-              </div>
-              <div class="w-100"></div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="streetaddress">Street Address</label>
-                  <input type="text" class="form-control" placeholder="House number and street name">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
-                </div>
-              </div>
-              <div class="w-100"></div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="towncity">Town / City</label>
-                  <input type="text" class="form-control" placeholder="">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="postcodezip">Postcode / ZIP *</label>
-                  <input type="text" class="form-control" placeholder="">
-                </div>
-              </div>
-              <div class="w-100"></div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="phone">Phone</label>
-                  <input type="text" class="form-control" placeholder="">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="emailaddress">Email Address</label>
-                  <input type="text" class="form-control" placeholder="">
-                </div>
-              </div>
-              <div class="w-100"></div>
-              <div class="col-md-12">
-                <div class="form-group mt-4">
-                  <div class="radio">
-                    <label class="mr-3"><input type="radio" name="optradio"> Create an Account? </label>
-                    <label><input type="radio" name="optradio"> Ship to different address</label>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="lastname">Last Name <span style='color:red'> *</span></label>
+                    <input type="text" id='lastname' name="lastname" class="form-control" value='<?= $lastname ?>'>
                   </div>
                 </div>
+
+                <div class="w-100"></div>
+              
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="country">Area <span style='color:red'>*</span></label>
+                    <div class="select-wrap">
+                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                      <select name="area" id="area" value='<?= $area ?>' class="form-control">
+                        <option value="Maadi">Maadi</option>
+                        <option value="Nasr City">Nasr City</option>
+                        <option value="Heliopolis">Heliopolis</option>
+                        <option value="Obour City">Obour City</option>
+                        <option value="Shorouk City">Shorouk City</option>
+                        <option value="Sheikh Zayed">Sheikh Zayed</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="streetname">Street Name <span style='color:red'> *</span></label>
+                    <input type="text" name='street' id="street" class="form-control"value='<?= $street ?>'>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="building">Building Number <span style='color:red'> *</span></label>
+                    <input type="text" name='building' id="building" class="form-control" value='<?= $building ?>'>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="floor">Floor Number <span style='color:red'> *</span></label>
+                    <input type="text" name='floor' id="floor" class="form-control"value='<?=$floor ?>'>
+                  </div>
+                </div>
+              
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="apartment">Apartment Number <span style='color:red'> *</span></label>
+                    <input type="text" name='apartment' id="apartment" class="form-control" value='<?= $apartment ?>'>
+                  </div>
+                </div>
+
+                 <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="apartment">Postcode/ZIP</label>
+                    <input type="text" name='postalcode' id="postalcode" class="form-control" value='<?=$postalcode ?>'>
+                  </div>
+                </div>
+              
+
+                <div class="w-100"></div>
+                <div class="col-md-12">
+                  <div class="form-group mt-4">
+                    <div class="radio">
+                      <label class="mr-3"><input type="radio" id='save' name="optradio"> Save information? </label>
+                    </div>
+                  </div>
+                </div>
+
+              
+
               </div>
-            </div>
+            <script>
+              function checkdiscount(){
+                var code = document.getElementById('discountcode').value;
+                applyDiscount(code);
+              }
+            </script>
+
           </form><!-- END -->
-          <div class="row mt-5 pt-3 d-flex">
+
+          
+          <div class="row mt-5  d-flex" style="padding-top:0;">
             <div class="col-md-6 d-flex">
               <div class="cart-detail cart-total p-3 p-md-4">
                 <h3 class="billing-heading mb-4">Cart Total</h3>
+                <div>
+                  <label for="discount">Have a discount code?</label>
+                  <input type="text" id='discountcode' name='discountcode' style="border:solid gray 1px; padding:5px; margin-bottom:15px;">
+                  <button onclick='checkdiscount()' type="button" style="height:39px;cursor:pointer; border:none; padding:5px; background-color:#006a4d; color:white; font-size:small">Apply</button>
+                  <p id='discountapplied' style='color:red'></p>
+                </div>
+                <p class="d-flex">
+                  <span>Number of Items</span>
+                  <span><?= $count ?></span>
+                </p>
                 <p class="d-flex">
                   <span>Subtotal</span>
-                  <span>$20.60</span>
+                  <span><?= $total ?>.00 LE</span>
                 </p>
                 <p class="d-flex">
                   <span>Delivery</span>
-                  <span>$0.00</span>
+                  <span><?= $delivery ?>.00 LE</span>
                 </p>
-                <p class="d-flex">
+                <p id='discount' class="discount d-flex">
                   <span>Discount</span>
-                  <span>$3.00</span>
+                  <span id='discountvalue'>0.00 LE</span>
                 </p>
                 <hr>
                 <p class="d-flex total-price">
                   <span>Total</span>
-                  <span>$17.60</span>
+                  <span id='finaltotal'><?= $total + $delivery ?> LE</span>
                 </p>
               </div>
             </div>
@@ -170,113 +201,38 @@
                 <div class="form-group">
                   <div class="col-md-12">
                     <div class="radio">
-                      <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+                      <label><input type="radio" name="optradio" class="mr-2" checked> COD</label>
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <div class="radio">
-                      <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <div class="radio">
-                      <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-md-12">
-                    <div class="checkbox">
-                      <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
-                    </div>
-                  </div>
-                </div>
-                <p><a href="#" class="btn btn-primary py-3 px-4">Place an order</a></p>
+                
+                
+                <p><button type="submit" onclick='submitForm()' class="btn btn-primary py-3 px-4">Place Order</button></p>
+                <p id='formerror' style='color:red'></p>
               </div>
             </div>
           </div>
-        </div> <!-- .col-md-8 -->
+          </div> <!-- .col-md-8 -->
 
 
+          <script>
+            function submitForm(){
+              var formData={
+                firstname:document.getElementById('firstname').value,
+                lastname :document.getElementById('lastname').value,
+                area     :document.getElementById('area').value,
+                street   :document.getElementById('street').value,
+                building  :document.getElementById('building').value,
+                floor    :document.getElementById('floor').value,
+                apartment:document.getElementById('apartment').value,
+                postalcode :document.getElementById('postalcode').value,
+                save     :document.getElementById('save').checked,
+              }
+              validateForm(formData);
+            }
+          </script>
 
 
-        <div class="col-xl-4 sidebar ftco-animate">
-          <div class="sidebar-box">
-            <form action="#" class="search-form">
-              <div class="form-group">
-                <div class="icon">
-                  <span class="icon-search"></span>
-                </div>
-                <input type="text" class="form-control" placeholder="Search...">
-              </div>
-            </form>
-          </div>
-          <div class="sidebar-box ftco-animate">
-            <div class="categories">
-              <h3>Categories</h3>
-              <li><a href="#">Tour <span>(12)</span></a></li>
-              <li><a href="#">Hotel <span>(22)</span></a></li>
-              <li><a href="#">Coffee <span>(37)</span></a></li>
-              <li><a href="#">Drinks <span>(42)</span></a></li>
-              <li><a href="#">Foods <span>(14)</span></a></li>
-              <li><a href="#">Travel <span>(140)</span></a></li>
-            </div>
-          </div>
-
-          <div class="sidebar-box ftco-animate">
-            <h3>Recent Blog</h3>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(public/images/image_1.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(public/images/image_2.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(public/images/image_3.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sidebar-box ftco-animate">
-            <h3>Tag Cloud</h3>
-            <div class="tagcloud">
-              <a href="#" class="tag-cloud-link">dish</a>
-              <a href="#" class="tag-cloud-link">menu</a>
-              <a href="#" class="tag-cloud-link">food</a>
-              <a href="#" class="tag-cloud-link">sweet</a>
-              <a href="#" class="tag-cloud-link">tasty</a>
-              <a href="#" class="tag-cloud-link">delicious</a>
-              <a href="#" class="tag-cloud-link">desserts</a>
-              <a href="#" class="tag-cloud-link">drinks</a>
-            </div>
-          </div>
 
           <div class="sidebar-box ftco-animate">
             <h3>Paragraph</h3>
@@ -291,7 +247,7 @@
 
   <?php
   include 'partials/footer.php'
-  ?>
+    ?>
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
