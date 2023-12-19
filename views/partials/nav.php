@@ -45,8 +45,8 @@ if(isset($_SESSION['user'])){
 					<li class="nav-item cart" id="cart"><a href="cart"  class="nav-link">
 								<span class="icon icon-shopping_cart"></span>
 								<?php if(isset($_SESSION['user'])){
-									foreach($cItems as $item){
-										$quantity+=$item->getQuantity();
+									foreach($cItems as $citem){
+										$quantity+=$citem->getQuantity();
 									}?>
 									<span class="bag d-flex justify-content-center align-items-center" ><small id="Items_count"><?=$quantity?></small></span></a>
 								 <?php }else{?>

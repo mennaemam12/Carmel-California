@@ -66,6 +66,7 @@ function incrementQuantity(index){
 function decrementQuantity(index){
     var quantityElements = document.querySelectorAll('#quantity');
     var quantity = parseInt(quantityElements[index].value);
+    if(quantity!=1){
     quantityElements[index].value = quantity - 1;
 
     $.ajax({
@@ -85,6 +86,7 @@ function decrementQuantity(index){
             console.error("Error with the request. Status code:", xhr.status);
         }
     });
+}
 }
 
 
