@@ -96,13 +96,8 @@ $rows = Item::getAllItems();
                                                     <a class='itemOptions' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
                                                     <a class='itemOptions' href='dashboard/menu?action=edititem&type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>
                                                         <i class='fa-regular fa-pen-to-square'></i>
-<<<<<<< Updated upstream:views/dashboard/menu/menu_dashboard.php
                                                     </a>";
                                                 echo "<a class='itemOptions' onclick='deleteItem(\"".$rows[$i]->itemType."\", \"".$rows[$i]->id."\")'><i class='fa-regular fa-trash-can'></i></a>
-=======
-                                                    </a>
-                                                    <a class='itemOptions' href='dashboard/deleteitem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'><i class='fa-regular fa-trash-can'></i></a>
->>>>>>> Stashed changes:views/dashboard/viewitems.php
                                                     </td></tr>";
                                             }
                                             ?>
