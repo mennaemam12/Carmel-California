@@ -10,7 +10,7 @@ class Database {
     private $host = 'localhost';
     private $user = 'root';
     private $pass = 'root';
-    private $dbname = 'carmel-california';
+    private $dbname = 'Carmel-California';
 
     //Will be the PDO object
     private $dbh;
