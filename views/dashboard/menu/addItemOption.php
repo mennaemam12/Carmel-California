@@ -55,7 +55,7 @@ require_once 'helpers/session.helper.php';
                                     <p class="card-description">
                                         Add Product Option To Menu
                                     </p>
-                                    <form class="forms-sample" method="post" action="dashboard/addoption" enctype='multipart/form-data'>
+                                    <form class="forms-sample" method="post" action="dashboard/menu?action=addoption" enctype='multipart/form-data'>
                                         <div class="form-group">
                                             <label for="itemtype">Type</label>
                                             <select class="form-control" id="itemtype" name="itemtype">
@@ -83,10 +83,8 @@ require_once 'helpers/session.helper.php';
                                                 <input type="text" class="form-control" name="option-values[]" required>
                                             </div>
 
-                                            
                                         </div>
- 
-            
+
                                         <div class="form-message-div">
                                             <?php flash('formError') ?>
                                         </div>

@@ -37,8 +37,6 @@ require_once 'helpers/session.helper.php';
 
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_settings-panel.html -->
-            <!-- <?php include_once 'views/partials/dashboard/_settings-panel.php'; ?> -->
 
             <!-- Sidebar -->
             <?php include_once 'views/partials/dashboard/_sidebar.php'; ?>
@@ -55,7 +53,7 @@ require_once 'helpers/session.helper.php';
                                     <p class="card-description">
                                         Add Salad Ingredient
                                     </p>
-                                    <form class="forms-sample" method="post" action="dashboard/addingredient" enctype='multipart/form-data'>
+                                    <form class="forms-sample" method="post" action="dashboard/menu?action=addingredient" enctype='multipart/form-data'>
                                         <div class="form-group">
                                             <label for="ingredientname">Ingredient Name</label>
                                             <input type="text" class="form-control" id="ingredientname" name="ingredientname" placeholder="Ingredient Name"
