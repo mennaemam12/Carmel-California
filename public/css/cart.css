@@ -921,7 +921,7 @@ h3 {
 }
 
 .cart-list {
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 
 .table {

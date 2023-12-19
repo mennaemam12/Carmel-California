@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 11:36 AM
+-- Generation Time: Dec 19, 2023 at 10:52 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `carmel-california`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `billing_details`
+--
+
+CREATE TABLE `billing_details` (
+  `id` int(11) NOT NULL,
+  `UserId` int(11) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `Area` varchar(50) NOT NULL,
+  `Street` varchar(50) NOT NULL,
+  `Building` int(6) NOT NULL,
+  `Floor` int(2) NOT NULL,
+  `Apartment` int(2) NOT NULL,
+  `Postalcode` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `billing_details`
+--
+
+INSERT INTO `billing_details` (`id`, `UserId`, `FirstName`, `LastName`, `Area`, `Street`, `Building`, `Floor`, `Apartment`, `Postalcode`) VALUES
+(1, 32, 'Shahd', 'Khaled', 'maadi', 'Mahmoud Madkour', 3132, 2, 5, 11733);
 
 -- --------------------------------------------------------
 
@@ -119,7 +145,7 @@ CREATE TABLE `discount` (
 --
 
 INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start_date`, `end_date`, `valid`) VALUES
-(1, 'main', 'Burger', 12, 'Burger12', '2023-12-19', '2024-01-18', 'YES');
+(1, 'main', 'pasta', 10, 'Pasta10', '2023-12-19', '2024-01-19', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -234,8 +260,7 @@ INSERT INTO `permissions` (`id`, `description`, `path`) VALUES
 (8, 'View Checkout Page', 'checkout'),
 (9, 'View Dashboard Home', 'dashboard'),
 (10, 'Add/Edit/View Menu', 'dashboard/menu'),
-(11, 'Add/Edit/View Users', 'dashboard/users'),
-(12, 'View/ Add Discounts', 'dashboard/discount');
+(11, 'Add/Edit/View Users', 'dashboard/users');
 
 -- --------------------------------------------------------
 
@@ -343,7 +368,8 @@ INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`,
 ('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, '1'),
 ('Ramez Ehab', 'ramez@gmail.com', 'ramez', '$2y$10$PIbQHrRj3S0BEmFm1KRCLOzC0ALC7wdQT5b35.YQ/BxTOFiXYAeiO', 2147483647, 28, '2'),
 ('Admin Universal', 'admin@gmail.com', 'admin', '$2y$10$e6fkBOvwdfkkU62V0xsS1eEs0Rs9y8IHSb3Ca71vJTKpVONq//KBu', 2147483647, 29, '2'),
-('User Universal', 'user@gmail.com', 'user', '$2y$10$Tpxk2DpwDP.ugQj0XtFND.hQAk5rEXkD2j4KCeBTm2bP7FPKu40d.', 20123123, 30, '1');
+('User Universal', 'user@gmail.com', 'user', '$2y$10$Tpxk2DpwDP.ugQj0XtFND.hQAk5rEXkD2j4KCeBTm2bP7FPKu40d.', 20123123, 30, '1'),
+('Shahd Khaled', 'shahdksalah@gmail.com', 'shahdksalah', '$2y$10$Ze7U0XZHpOlogx81qV7G5OHmLv55MTShu0QSvxAxcMuyojmMFJoRW', 1019294499, 32, '1');
 
 -- --------------------------------------------------------
 
@@ -379,8 +405,7 @@ INSERT INTO `usertype_permissions` (`usertype_id`, `permission_id`) VALUES
 (2, 8),
 (2, 9),
 (2, 10),
-(2, 11),
-(2, 12);
+(2, 11);
 
 -- --------------------------------------------------------
 
@@ -404,6 +429,12 @@ INSERT INTO `user_type` (`id`, `name`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `billing_details`
+--
+ALTER TABLE `billing_details`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `breakfast`
@@ -500,6 +531,12 @@ ALTER TABLE `user_type`
 --
 
 --
+-- AUTO_INCREMENT for table `billing_details`
+--
+ALTER TABLE `billing_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `breakfast`
 --
 ALTER TABLE `breakfast`
@@ -509,7 +546,7 @@ ALTER TABLE `breakfast`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -527,7 +564,7 @@ ALTER TABLE `desserts`
 -- AUTO_INCREMENT for table `discount`
 --
 ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `drinks`
@@ -557,7 +594,7 @@ ALTER TABLE `option_values`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `saladingredients`
@@ -575,7 +612,7 @@ ALTER TABLE `sides`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `user_type`

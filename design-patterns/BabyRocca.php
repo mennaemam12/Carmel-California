@@ -8,7 +8,7 @@ class BabyRocca extends BaseComponent
     }
     public function getPrice()
     {
-        $this->price = Ingredient::findIngredientByName('BabyRocca')->Price;
+        $this->price = Ingredient::findIngredientByName('Baby Rocca')->Price;
         return $this->price;
     }
     

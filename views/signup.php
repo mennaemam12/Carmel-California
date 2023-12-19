@@ -68,12 +68,6 @@ require_once 'helpers/session.helper.php';
 				<div class="form-holder">
 					<input type="password" id="confirmpass" placeholder="Confirm Password" class="form-control" name="UserConfPass" style="font-size: 15px;">
 				</div>
-				<div class="checkbox">
-					<input type="checkbox" checked>
-					<label>
-						I agree to bla bla bla
-					</label>
-				</div>
 
 				<div class="form-message-div" id = "form-message-div" style="margin-top:25px;">
 					<?php flash('formError') ?>

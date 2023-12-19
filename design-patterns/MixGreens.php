@@ -8,7 +8,7 @@ class MixGreens extends BaseComponent
     }
     public function getPrice()
     {
-        $this->price = Ingredient::findIngredientByName('Mix Greens')->Price;;
+        $this->price = Ingredient::findIngredientByName('Mix Greens')->Price;
         return $this->price;
     }
     

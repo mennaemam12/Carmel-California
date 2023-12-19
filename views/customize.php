@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
   <head>
     <link
       rel="stylesheet"
@@ -168,12 +168,6 @@
   <body>
     
     <script>
-      function getTotal(){
-        var inputs = document.querySelectorAll('input[type="number"]');
-        var chosen = Array.from(inputs).filter(function(input){
-          return input.value > 1;
-        })
-      }
 
       function restriction(input, type, max){
         document.getElementById(type+'serror').innerHTML="";
@@ -198,9 +192,7 @@
     function addToOrder(item, category, max, price){
       var summary = document.getElementById(category+'choices');
       var totalfield = document.getElementById('total');
-
       
-
       if(order[category] === '' || max == 1){
         order[category] = `${item}`;
         summary.innerHTML = `${item}`;
@@ -213,8 +205,8 @@
           summary.innerHTML += `,${item}`;
         }
       }
-      getSaladTotal(order);
       console.log(order);
+      getSaladTotal(order);
     }
 
     function removeFromOrder(item, category, max, price){
@@ -516,9 +508,9 @@
 
                     <div class="pt-5">
                       <h6 class="mb-0">
-                        <a href="#!" class="text-body"
+                        <a href="index" class="text-body"
                           ><i class="fas fa-long-arrow-alt-left me-2"></i>Back
-                          to shop</a
+                          to home</a
                         >
                       </h6>
                     </div>
@@ -526,7 +518,7 @@
                 </div>
                 <div class="col-lg-4 bg-grey">
                   <div class="p-5">
-                    <h3 class="fw-bold mb-5 mt-2 pt-1">Order Summary</h3>
+                    <h3 class="fw-bold mb-5 mt-2 pt-1">Your Salad Picks</h3>
                     <hr class="my-4" />
 
                     <div class="d-flex justify-content-between mb-4">
@@ -551,35 +543,20 @@
 
                   
 
-                    <h5 class="text-uppercase mb-3">Give code</h5>
-
-                    <div class="mb-5">
-                      <div class="form-outline">
-                        <input
-                          type="text"
-                          id="form3Examplea2"0
-                          class="form-control form-control-lg"
-                        />
-                        <label class="form-label" for="form3Examplea2"
-                          >Enter your code</label
-                        >
-                      </div>
-                    </div>
-
                     <hr class="my-4" />
 
                     <div class="d-flex justify-content-between mb-5">
                       <h5 class="text-uppercase">Total price:</h5>
                       <h5>LE</h5>                  
-                      <h5 id='total'>0</h5>
+                      <h5 id='total'>0.00</h5>
                     </div>
 
                     <button
                       type="button"
                       class="btn btn-dark btn-block btn-lg"
-                      data-mdb-ripple-color="dark"
+                      style='background-color:#006a4d; border:none; border-radius:0;'
                     >
-                      Register
+                      Add To Cart
                     </button>
                   </div>
                 </div>

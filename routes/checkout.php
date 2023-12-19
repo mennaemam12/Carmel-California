@@ -25,21 +25,35 @@ $url = $_SERVER['REQUEST_URI'];
 
 // segments
 $segments = explode('/', $url);
+$lastSegment = $segments[count($segments) - 1];
+
+include 'controllers/checkout.controller.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    
+
     // EXAMPLE: if the url is /checkout/anythingElse
     // Then dont show the checkout page
+
+    CheckoutController::viewCheckout();
+
     if (count($segments) > 3) {
-        include 'views/404.php';// show the 404 page
+        include 'views/404.php'; // show the 404 page
         exit();
     }
 
-    include 'views/checkout.php';
-    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Include Controller
+    switch ($lastSegment) {
+        case 'discount':
+            CheckoutController::checkDiscount();
+            exit();
+        case 'placeorder':
+            CheckoutController::validateCheckout();
+            exit();
+        default:
+            include 'views/404.php'; // show the 404 page
+            exit();
+    }
 }
 

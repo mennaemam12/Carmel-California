@@ -1,3 +1,8 @@
+<?php
+include 'projectFolderName.php';
+require_once 'models/Item.php';
+$rows = Item::getAllItems();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -154,29 +159,20 @@
 					
 	          </div>
     			</div>
-    			<div class="col-md-6">
+				<div class="col-md-6">
     				<div class="row">
-    					<div class="col-md-6">
-    						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(public/images/menu-1.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(public/images/menu-2.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(public/images/menu-3.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(public/images/menu-4.jpg);"></a>
-		    				</div>
-    					</div>
-    				</div>
+						<?php
+					for ($i = 0; $i < 4; $i++) {
+					echo "<div class='col-md-6'>";
+					echo "<div class='menu-entry'>";
+					echo "<a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>";
+					echo "<img src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
+					echo "</a>";
+					echo "</div>";
+					echo "</div>";
+                                            }
+											?>
+					</div>
     			</div>
     		</div>
     	</div>

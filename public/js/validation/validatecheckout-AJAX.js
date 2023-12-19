@@ -1,20 +1,22 @@
 
-    function getSaladTotal(order) {
+    function validateForm(formData) {
         // Use the $.ajax function
         $.ajax({
-            url: "salad-order/viewtotal",
+            url: "checkout/placeorder",
             method: "POST",
             contentType: 'application/json',
-            data: JSON.stringify(order),
+            data: JSON.stringify(formData),
             success: function(response) {
-            console.log(response);
-            // if (response) {
+            if (response.includes("successful")) {
                 try {
-                    document.getElementById('total').innerHTML = parseInt(response);
+                    
                 }catch (e) {
                     console.error("Error caught:", e);
                 }
-            // }
+            }
+            else{
+                document.getElementById('formerror').innerHTML = response;
+            }
 },
             error: function(xhr, status, error) {
                 // Handle errors
