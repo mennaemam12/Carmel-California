@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <link rel="stylesheet" href="public/css/dashboard/styles.css">
 
     <style>
   df-messenger {
@@ -26,7 +27,10 @@
   right: 15px;
   box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.568);
   z-index: 1000;
+  background:#006a4d;
 }
+
+
 
 
 .chat-pop{
@@ -55,7 +59,7 @@ margin-left:160px;
 
   <df-messenger
     intent="WELCOME"
-    chat-title="FRNTR"
+    chat-title="Carmel-Calfornia"
     agent-id="dc2cb33c-d133-4d66-819f-90102af7268c"
     language-code="en"
     chat-icon="https://drive.google.com/uc?export=download&id=1QyX4BQOcsvs34wmwZ5xIOSzRJUSvMDo_"></df-messenger>
