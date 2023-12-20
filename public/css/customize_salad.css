@@ -1,0 +1,142 @@
+@media (min-width: 1025px) {
+    .h-custom {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 300px) {
+    .h6,
+    h6 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .h6,
+    h6 {
+        font-size: 1rem !important;
+    }
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
+}
+
+.bg-grey {
+    background-color: #eae8e8;
+}
+
+@media (min-width: 992px) {
+    .card-registration-2 .bg-grey {
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    .card-registration-2 .bg-grey {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+
+li a {
+    text-decoration: none;
+    color: #2d2f31;
+}
+
+span {
+    padding: 30px;
+    color: white;
+    font-size: 1.2em;
+    font-variant: small-caps;
+    cursor: pointer;
+    display: block;
+}
+
+span::after {
+    float: right;
+    right: 10%;
+    content: "+";
+}
+
+.slide,
+.slide2,
+.slide3,
+.slide4,
+.slide5,
+.slide6,
+.slide7 {
+    clear: both;
+    width: 100%;
+    height: 0px;
+    overflow: hidden;
+    text-align: left;
+    transition: height 0.5s ease;
+    padding-left: 0;
+}
+
+.slide li,
+.slide2 li,
+.slide3 li,
+.slide4 li,
+.slide5 li,
+.slide6 li,
+.slide7 li {
+    list-style: none;
+    height: 80px;
+}
+
+#touch,
+#touch2,
+#touch3,
+#touch4,
+#touch5,
+#touch6,
+#touch7 {
+    position: absolute;
+    opacity: 0;
+    height: 0px;
+}
+
+#touch:checked + .slide {
+    height: 500px;
+    transition: height 0.5s ease;
+    overflow: hidden;
+}
+
+#touch2:checked + .slide2,
+#touch5:checked + .slide5,
+#touch6:checked + .slide6,
+#touch7:checked + .slide7,
+#touch4:checked + .slide4 {
+    height: 345px;
+    transition: height 0.5s ease;
+    overflow: hidden;
+}
+
+#touch3:checked + .slide3 {
+    height: 650px;
+    transition: height 0.5s ease;
+    overflow: hidden;
+}
+
+.img-fluid {
+    width: 80px;
+    height: 55px;
+}
+
+.error {
+    color: red;
+    float: right;
+    position: relative;
+    top: 15px;
+    display: none;
+}
