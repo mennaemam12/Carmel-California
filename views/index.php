@@ -386,7 +386,6 @@ $rows = Item::getAllItems();
 	include 'views/partials/footer.php'
 	?>
 
-
 	<script src="public/js/jquery.min.js"></script>
 	<script src="public/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="public/js/popper.min.js"></script>
@@ -403,8 +402,6 @@ $rows = Item::getAllItems();
 	<script src="public/js/scrollax.min.js"></script>
 	<script src="public/js/main.js"></script>
 	<script src="public/js/nav.js"></script>
-	<script src="public/js/Cart.js"></script>
-
 </body>
 
 </html>

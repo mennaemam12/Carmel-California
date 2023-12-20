@@ -7,20 +7,6 @@ include_once 'controllers/nav.controller.php';
 $user = new User;
 $cItems = array();
 $quantity = 0;
-if (isset($_SESSION['user'])) {
-	$user->unserialize($_SESSION['user']);
-	foreach ($user->getCart() as $cartItem) {
-		$cart = new Cart;
-		$cart->unserialize($cartItem);
-		$cItems[] = $cart;
-	}
-}
-
-
-?>
-
-
-<?php
     function getNav() {
         // Create a new PDO instance (replace with your actual connection)
         $db = new PDO('mysql:host=localhost;dbname=Carmel-California', 'root', '');
@@ -91,53 +77,7 @@ if (isset($_SESSION['user'])) {
     
         return $navItems;
     }
-    
-
-
-
 ?>
-<head>
-	<style>
-button {
- padding: 15px 25px;
- border: unset;
- border-radius: 15px;
- color: #212121;
- z-index: 1;
- background: #e8e8e8;
- position: relative;
- font-weight: 1000;
- font-size: 17px;
- -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
- box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
- transition: all 250ms;
- overflow: hidden;
-}
-
-button::before {
- content: "";
- position: absolute;
- top: 0;
- left: 0;
- height: 100%;
- width: 0;
- border-radius: 15px;
- background-color: #212121;
- z-index: -1;
- -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
- box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
- transition: all 250ms
-}
-
-button:hover {
- color: #e8e8e8;
-}
-
-button:hover::before {
- width: 100%;
-}
-	</style>
-</head>
 
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar"
 	style="background: rgb(221, 209, 195,0.8);z-index:100;">
@@ -186,8 +126,6 @@ button:hover::before {
 								id="Items_count">0</small></span></a>
 					<?php } ?>
 				</li>
-
-				<!-- <a id="myButton" style="margin-right: -99px;" class="btn btn-secondary btn-outline-white p-5 px-xl-4 py-xl-3">Add Page</a> -->
 			</ul>
 		</div>
 	</div>
