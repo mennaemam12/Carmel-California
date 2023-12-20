@@ -128,11 +128,20 @@ class CheckoutController
                 $order->saveOrderDetails($user->getID(), $item);
                 
             }
+            $cartItems=array();
+            $user=new User;
+            $user->unserialize($_SESSION['user']);
+            foreach($user->getCart() as $cartItem){
+                $cart=new Cart;
+                $cart->unserialize($cartItem);
+                $cartItems[]=$cart;
+            }
+            $cartItems = array_values($cartItems);
             $user->emptyCart();
-            $_SESSION['user'] = $user->serialize();
-            redirect($GLOBALS['projectFolder'] . "/cart");
+            $_SESSION['user'] = $user->serialize(); 
+                     
         }
-
+      redirect($GLOBALS['projectFolder'] . "/cart");
     }
 }
 ?>
