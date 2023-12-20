@@ -263,7 +263,7 @@ include 'partials/footer.php'
 </div>
 
 
-<script src="public/js/Cart.js"></script>
+<script src="public/js/cart.js"></script>
 <script src="public/js/jquery.min.js"></script>
 <script src="public/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="public/js/popper.min.js"></script>
