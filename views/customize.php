@@ -280,7 +280,7 @@
                                                         >
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
                                                                 <img
-                                                                        src="public/images/salad-ingredients/<?php echo $b->Name ?>.jpg"
+                                                                        src="public/images/salad-ingredients/<?php echo strtolower($b->Name)?>.jpg"
                                                                         class="img-fluid rounded-3"
                                                                         alt="<?php echo $b->Name ?>"
                                                                         height="51px"
@@ -406,7 +406,7 @@
                                                         >
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
                                                                 <img
-                                                                        src="public/images/salad-ingredients/<?php echo $d->Name ?>.jpg"
+                                                                        src="public/images/salad-ingredients/<?php echo strtolower($d->Name)?>.jpg"
                                                                         class="img-fluid rounded-3"
                                                                         alt="<?php echo $d->Name ?>"
                                                                         height="51px"
@@ -457,7 +457,7 @@
                                                         >
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
                                                                 <img
-                                                                        src="public/images/salad-ingredients/<?php echo $prot->Name ?>.jpg"
+                                                                        src="public/images/salad-ingredients/<?php echo strtolower($prot->Name)?>.jpg"
                                                                         class="img-fluid rounded-3"
                                                                         alt="<?php echo $prot->Name ?>"
                                                                 />
