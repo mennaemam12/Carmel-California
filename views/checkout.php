@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="public/css/footer.css">
     <link rel="stylesheet" href="public/css/checkout.css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="public/js/applydiscount-AJAX.js"></script>
     <script src="public/js/validation/validatecheckout-AJAX.js"></script>
 
