@@ -187,7 +187,7 @@ button:hover::before {
 					<?php } ?>
 				</li>
 
-				<a id="myButton" style="margin-right: -99px;" class="btn btn-secondary btn-outline-white p-5 px-xl-4 py-xl-3">Add Page</a>
+				<!-- <a id="myButton" style="margin-right: -99px;" class="btn btn-secondary btn-outline-white p-5 px-xl-4 py-xl-3">Add Page</a> -->
 			</ul>
 		</div>
 	</div>
