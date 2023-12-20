@@ -19784,7 +19784,7 @@
     align-items: stretch;
     -webkit-justify-content: stretch;
     justify-content: stretch;
-    background-color: #F5F7FF;
+    /* background-color: #F5F7FF; */
   }
   
   .stretch-card > .card {

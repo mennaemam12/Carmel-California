@@ -6,6 +6,8 @@ require_once 'models/Item.php';
 $rows = Item::getAllItems();
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,8 +98,8 @@ $rows = Item::getAllItems();
                                                     <a class='itemOptions' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'><i class='fa-regular fa-eye'></i></a>
                                                     <a class='itemOptions' href='dashboard/menu?action=edititem&type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>
                                                         <i class='fa-regular fa-pen-to-square'></i>
-                                                    </a>";
-                                                echo "<a class='itemOptions' onclick='deleteItem(\"".$rows[$i]->itemType."\", \"".$rows[$i]->id."\")'><i class='fa-regular fa-trash-can'></i></a>
+                                                    </a>
+                                                    <a class='itemOptions' href='dashboard/deleteitem/" . $rows[$i]->itemType . "/" . $rows[$i]->id . "'><i class='fa-regular fa-trash-can'></i></a>
                                                     </td></tr>";
                                             }
                                             ?>

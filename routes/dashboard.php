@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'reviews':
             include_once 'routes/dashboard/dashboard.reviews.router.php';
             exit();
-//        case 'drivers':
+        //        case 'drivers':
 //            include 'views/dashboard/drivers.php';
 //            exit();
 //        case 'loginadmin':
@@ -99,5 +99,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
     }
 } else {
-    die ("something wrong in discount");
+    die("something wrong in discount");
 }

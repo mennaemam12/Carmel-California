@@ -250,7 +250,7 @@ class Discount
     }
 
     //edit discount
-    public function editDiscount()
+    public function editDiscount($ID)
     {
         $sql = "UPDATE discount SET type = :type , category = :category , percentage = :percentage , coupon = :coupon , start_date = :start_date , end_date = :end_date , valid = :valid WHERE id = :id";
         $this->db->query($sql);
