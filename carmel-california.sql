@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 10:52 PM
+-- Generation Time: Dec 20, 2023 at 03:11 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -236,6 +236,28 @@ INSERT INTO `option_values` (`id`, `id_options`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `UserId` int(11) NOT NULL,
+  `ItemId` int(11) NOT NULL,
+  `ItemType` varchar(50) NOT NULL,
+  `SelectedOption` varchar(50) NOT NULL,
+  `Quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `UserId`, `ItemId`, `ItemType`, `SelectedOption`, `Quantity`) VALUES
+(6, 32, 2, 'main', '', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `permissions`
 --
 
@@ -318,7 +340,9 @@ INSERT INTO `saladingredients` (`id`, `Name`, `Price`, `Category`, `CategoryMax`
 (9, 'Grilled Chicken', 25, 'Protein', 1, 'public/images/salad-ingredients/Toppings/Grilled Chicken.jpg'),
 (10, 'Red Beans', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Red Beans.jpg'),
 (11, 'Cherry Tomato', 15, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Cherry Tomato.jpg'),
-(12, 'Pepper', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Pepper.jpg');
+(12, 'Pepper', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Pepper.jpg'),
+(13, 'Balsamic', 20, 'Dressing', 1, 'public/images/salad-ingredients/Dressing/Balsamic.jpg'),
+(14, 'Lemon Mustard', 15, 'Dressing', 1, 'public/images/salad-ingredients/Dressing/Lemon Mustard.jpg');
 
 -- --------------------------------------------------------
 
@@ -491,6 +515,12 @@ ALTER TABLE `option_values`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
@@ -591,6 +621,12 @@ ALTER TABLE `option_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
@@ -600,7 +636,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `saladingredients`
 --
 ALTER TABLE `saladingredients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sides`

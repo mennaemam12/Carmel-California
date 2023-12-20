@@ -121,22 +121,22 @@
         height: 0px;
       }
 
-      #touch:checked + .slide,
+      #touch:checked + .slide{
+        height: 500px;
+        transition: height 0.5s ease;
+        overflow: hidden;
+      }
       #touch2:checked + .slide2,
       #touch5:checked + .slide5,
       #touch6:checked + .slide6,
-      #touch7:checked + .slide7 {
-        height: 650px;
+      #touch7:checked + .slide7,
+      #touch4:checked + .slide4  {
+        height: 345px;
         transition: height 0.5s ease;
         overflow: hidden;
       }
 
       #touch3:checked + .slide3 {
-        height: 650px;
-        transition: height 0.5s ease;
-        overflow: hidden;
-      }
-      #touch4:checked + .slide4 {
         height: 650px;
         transition: height 0.5s ease;
         overflow: hidden;
@@ -153,7 +153,7 @@
         position:relative;
         top:15px;
         display:none;
-      }  
+      }   
     </style>
 
     <link rel="stylesheet" href="public/css/flaticon.css">
@@ -162,7 +162,7 @@
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/footer.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="public/js/viewprice-AJAX.js"></script>
+    <script src="public/js/viewprice-AJAX.js"></script> 
   </head>
 
   <body>
@@ -192,20 +192,27 @@
     function addToOrder(item, category, max, price){
       var summary = document.getElementById(category+'choices');
       var totalfield = document.getElementById('total');
-      
-      if(order[category] === '' || max == 1){
+      if(order['base'] === "" && category !== 'base'){
+        document.getElementById('baseerror').innerHTML = "Choose a base first";
+        return;
+      }
+
+      document.getElementById('baseerror').innerHTML = "";
+      if(max==1){
+        order[category] = `${item}`;
+        summary.innerHTML = `${item}`;
+      }else if(order[category] === ''){
         order[category] = `${item}`;
         summary.innerHTML = `${item}`;
       }
-      else if(max != 1 && !order[category].includes(item)){
-        var items = order[category].split(',')
-        console.log(items);
+      else if(!order[category].includes(item)){
+        var items = order[category].split(',');
         if(items.length < max){
           order[category] += `,${item}`;
           summary.innerHTML += `,${item}`;
         }
       }
-      console.log(order);
+      
       getSaladTotal(order);
     }
 
@@ -213,20 +220,23 @@
       var summary = document.getElementById(category+'choices');
       var totalfield = document.getElementById('total');
       var total = parseInt(totalfield.innerHTML);
-      if(max != 1){
+      if(max == 1){
+        order[category] = '';
+        summary.innerHTML = '';
+      }
+      else if(max != 1 && !order[category].includes(',')){
         var text = order[category];
-        text=text.replace(`${item},`,'');
+        text=text.replace(`${item}`,'');
+        order[category] = text;
+        summary.innerHTML = text;
+      }else{
+        var text = order[category];
+        text=text.replace(`,${item}`,'');
         console.log(text);
         order[category] = text;
         summary.innerHTML = text;
       }
-      else{
-        order[category] = '';
-        summary.innerHTML = `${item}`;
-      }
-      totalfield.innerHTML = total-price;
-
-      console.log(order);
+      getSaladTotal(order);
     }
 
 
@@ -251,258 +261,240 @@
                     </div>
 
                     <?php if ($bases): ?>
-                                  <!--BASES SECTION-->
-                                  <div>
-                                    <label for="touch" style="width: 600px; cursor: pointer"
-                                      ><h2 class="fw-bold mb-0 text-black">Base</h2>
-                                      <h4 class="fw-bold mb-0 text-muted">Choose <?php echo $bases[0]->CategoryMax ?> </h4></label
-                                    >
-                                    <input type="checkbox" id="touch" width="600px" />
+                                    <!--BASES SECTION-->
+                                    <div>
+                                      <label for="touch" style="width: 600px; cursor: pointer"
+                                        ><h2 class="fw-bold mb-0 text-black">Base</h2>
+                                        <h4 class="fw-bold mb-0 text-muted">Choose <?php echo $bases[0]->CategoryMax ?> </h4></label
+                                      >
+                                      <input type="checkbox" id="touch" width="600px" />
 
-                                    <ul class="slide">
-                                      <?php foreach ($bases as $b): ?>
-                                                    <hr class="my-4" />
-                                                    <li>
-                                                      <div
-                                                        class="row mb-4 d-flex justify-content-between align-items-center"
-                                                      >
-                                                        <div class="col-md-2 col-lg-2 col-xl-2">
-                                                          <img
-                                                            src="public/images/salad-ingredients/<?php echo $b->Name ?>.jpg"
-                                                            class="img-fluid rounded-3"
-                                                            alt="<?php echo $b->Name ?>"
-                                                            height="51px"
-                                                          />
-                                                        </div>
-                                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                                          <h6 class="text-muted">Base</h6>
-                                                          <h6 class="text-black mb-0"><?php echo $b->Name ?></h6>
-                                                        </div>
-                                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                          <!-- NO QUANTITY -->
-                                                          <button id="add<?php echo $b->Name;
-                                                          echo $GLOBALS['counter']++; ?>" type='submit' class="btn btn-link px-2" 
-                                                          onclick="addToOrder('<?php echo $b->Name ?>', 'base', <?php echo $b->CategoryMax ?>,'<?php echo $b->Price ?>')">
-                                                                <i class="fas fa-plus"></i>
-                                                              </button>
-                                                            </div>
-                                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                              <h6 class="mb-0">LE <?php echo $b->Price ?>.00</h6>
-                                                        </div>
-                                                      </div>
-                                                    </li>
-                                                    <?php $counter = 1; endforeach; ?>
-                                    </ul>
-                      
-                                    <hr class="my-4" />
-                                  </div>
-                    <?php endif; ?>
-                    
-                    <?php if ($toppings): ?>
-                                  <!---TOPPINGS SECTION-->
-                                  <div>
-                                    <label for="touch2" style="width: 600px; cursor: pointer"
-                                      ><h2 class="fw-bold mb-0 text-black">Toppings</h2>
-                                      <h4 class="fw-bold mb-0 text-muted">Choose Up To <?php echo $toppings[0]->CategoryMax ?> </h4>
-                                      </label
-                                    >
-                                    <div id='toppingserror' class="error"></div>
-                                    <input type="checkbox" id="touch2" width="600px" />
-                                    <ul class="slide2">
-                                      <hr class="my-4" />
-                                      <?php foreach ($toppings as $top): ?>
-                                                    <li>
-                                                      <div
-                                                        class="row mb-4 d-flex justify-content-between align-items-center"
-                                                      >
-                                                        <div class="col-md-2 col-lg-2 col-xl-2">
-                                                          <img
-                                                            src="public/images/salad-ingredients/<?php echo $top->Name ?>.jpg"
-                                                            class="img-fluid rounded-3"
-                                                            alt="<?php echo $top->Name ?>"
-                                                          />
-                                                        </div>
-                                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                                          <h6 class="text-muted">Vegetable</h6>
-                                                          <h6 class="text-black mb-0"><?php echo $top->Name ?></h6>
-                                                        </div>
-                                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                          <button
-                                                              class="btn btn-link px-2"
-                                                              onclick="this.parentNode.querySelector('input[type=number]').stepDown();
-                                  restriction(this.parentNode.querySelector('input[type=number]'),'topping', '<?php echo $top->CategoryMax ?>');
-                                  removeFromOrder('<?php echo $top->Name ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>');"
-                                                                >
-                                                                  <i class="fas fa-minus"></i>
-                                                                </button>
-
-                                                                <input
-                                                                id="topping<?php echo $counter++; ?>"
-                                                              min="0"
-                                                              name="<?php echo $top->Name ?>"
-                                                              value="0"
-                                                              type="number"
-                                                              max="1"
-                                                              class="form-control form-control-sm"
-                                                            />
-
-                                                            <button
-                                                              class="btn btn-link px-2"
-                                                              onclick="this.parentNode.querySelector('input[type=number]').stepUp();
-                                  restriction(this.parentNode.querySelector('input[type=number]'),'topping', '<?php echo $top->CategoryMax ?>');
-                                  addToOrder('<?php echo $top->Name ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price?>')"
-                                                            >
-                                                              <i class="fas fa-plus"></i>
-                                                                </button>
-                                                                <p id='toppingmax' style='color:red; text-align:left; font-size:small'></p>
-                                                              </div>
-
-                            
-                                                              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                                <h6 class="mb-0">LE <?php echo $top->Price ?>.00/1</h6>
-                                                        </div>
-                                                      </div>
-                                                    </li>
-                                      <?php endforeach;
-                                      $counter = 1; ?>
-                                    </ul>
-                                   <hr class="my-4" />
-                                  </div>
-                    <?php endif; ?>
-
-                    <!--DRESSINGS SECTION-->
-                    <?php if ($dressings): ?>
-                                  <div>
-                                    <label for="touch3" style="width: 600px; cursor: pointer"
-                                      ><h2 class="fw-bold mb-0 text-black">Dressing</h2>
-                                      <h4 class="fw-bold mb-0 text-muted">Choose <?php echo $dressings[0]->CategoryMax ?> </h4>
-                                      <div id='dressingserror' class="error"></div></label
-                                    >
-                                    <input type="checkbox" id="touch3" width="600px" />
-                                    <ul class="slide3">
-                                      <hr class="my-4" />
-                                      <?php foreach ($dressings as $dress): ?>
-                                                      <li>
-                                                        <div
-                                                          class="row mb-4 d-flex justify-content-between align-items-center"
-                                                        >
-                                                          <div class="col-md-2 col-lg-2 col-xl-2">
-                                                            <img
-                                                              src="public/images/salad-ingredients/<?php echo $dress->Name ?>.jpg"
-                                                              class="img-fluid rounded-3"
-                                                              alt="<?php echo $dress->Name ?>"
-                                                            />
-                                                          </div>
-                                                          <div class="col-md-3 col-lg-3 col-xl-3">
-                                                            <h6 class="text-muted">Dressing</h6>
-                                                            <h6 class="text-black mb-0"><?php echo $dress->Name ?></h6>
-                                                          </div>
-                                                          <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                            <button
-                                                              class="btn btn-link px-2"
-                                                              onclick="this.parentNode.querySelector('input[type=number]').stepDown();
-                                  restriction(this.parentNode.querySelector('input[type=number]'),'dressings', <?php echo $dressings[0]->CategoryMax ?>);
-                                  removeFromOrder('<?php echo $dress->Name ?>', 'dressing', <?php echo $dress->CategoryMax ?>, '<?php echo $dress->Price ?>');"
-                                                                    >
-                                                                      <i class="fas fa-minus"></i>
-                                                                    </button>
-
-                                                                    <input
-                                                                      id="dressing<?php echo $counter++; ?>"
-                                                              min="0"
-                                                              name="<?php echo $dress->Name ?>"
-                                                              value="0"
-                                                              type="number"
-                                                              max="1"
-                                                              class="form-control form-control-sm"
-                                                            />
-
-                                                            <button
-                                                              class="btn btn-link px-2"
-                                                              onclick="this.parentNode.querySelector('input[type=number]').stepUp();
-                                  restriction(this.parentNode.querySelector('input[type=number]'),'dressings'.<?php echo $dressings[0]->CategoryMax ?>);
-                                  addToOrder('<?php echo $dress->Name ?>', 'dressing', <?php echo $dress->CategoryMax ?>,  '<?php echo $dress->Price ?>')"
-                                                                >
-                                                                  <i class="fas fa-plus"></i>
-                                                                </button>
-                                                              </div>
-                                                              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                                <h6 class="mb-0">LE <?php echo $dress->Price ?>.00/1</h6>
-                                                          </div>
-                                                        </div>
-                                                      </li>
-                                      <?php endforeach;
-                                      $counter = 1; ?>
-                                    </ul>
-                                   <hr class="my-4" />
-                                  </div>
-                    <?php endif; ?>
-                    
-                    <!--PROTEINS SECTION-->
-                    <?php if ($proteins): ?>
-                                  <div>
-                                    <label for="touch4" style="width: 600px; cursor: pointer"
-                                      ><h2 class="fw-bold mb-0 text-black">Protein</h2>
-                                      <h4 class="fw-bold mb-0 text-muted">Choose <?php echo $proteins[0]->CategoryMax ?> </h4>
-                                      <div id='proteinserror' class="error"></div></label
-                                    >
-                                    <input type="checkbox" id="touch4" width="600px" />
-                                    <ul class="slide4">
-                                      <hr class="my-4" />
-                                      <?php foreach ($proteins as $prot): ?>
+                                      <ul class="slide">
+                                        <?php foreach ($bases as $b): ?>
+                                                        <hr class="my-4" />
                                                         <li>
                                                           <div
                                                             class="row mb-4 d-flex justify-content-between align-items-center"
                                                           >
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
                                                               <img
-                                                                src="public/images/salad-ingredients/<?php echo $prot->Name ?>.jpg"
+                                                                src="public/images/salad-ingredients/<?php echo $b->Name ?>.jpg"
                                                                 class="img-fluid rounded-3"
-                                                                alt="<?php echo $prot->Name ?>"
+                                                                alt="<?php echo $b->Name ?>"
+                                                                height="51px"
                                                               />
                                                             </div>
                                                             <div class="col-md-3 col-lg-3 col-xl-3">
-                                                              <h6 class="text-muted">Protein</h6>
-                                                              <h6 class="text-black mb-0"><?php echo $prot->Name ?></h6>
+                                                              <h6 class="text-muted">Base</h6>
+                                                              <h6 class="text-black mb-0"><?php echo $b->Name ?></h6>
                                                             </div>
                                                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                              <button
-                                                                class="btn btn-link px-2"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepDown();
-                                    restriction(this.parentNode.querySelector('input[type=number]'),'protein', <?php echo $proteins[0]->CategoryMax ?>);
-                                    removeFromOrder('<?php echo $prot->Name ?>', 'protein', <?php echo $prot->CategoryMax ?>, <?php echo $prot->Price ?>);">
-                                                                    <i class="fas fa-minus"></i>
-                                                              </button>
-
-                                                              <input
-                                                                id="protein<?php echo $counter++; ?>"
-                                                                min="0"
-                                                                name="<?php echo $prot->Name ?>"
-                                                                value="0"
-                                                                type="number"
-                                                                max="1"
-                                                                class="form-control form-control-sm"
-                                                              />
-
-                                                              <button
-                                                                class="btn btn-link px-2"
-                                                                onclick="this.parentNode.querySelector('input[type=number]').stepUp();
-                                    restriction(this.parentNode.querySelector('input[type=number]'),'protein', <?php echo $proteins[0]->CategoryMax ?>)
-                                    addToOrder('<?php echo $prot->Name ?>', 'protein', <?php echo $prot->CategoryMax ?>, <?php echo $prot->Price ?>)"
-                                                                  >
+                                                              <!-- NO QUANTITY -->
+                                                              <button id="add<?php echo $b->Name;
+                                                              echo $GLOBALS['counter']++; ?>" type='submit' class="btn btn-link px-2" 
+                                                              onclick="addToOrder('<?php echo $b->Name ?>', 'base', <?php echo $b->CategoryMax ?>,'<?php echo $b->Price ?>')">
                                                                     <i class="fas fa-plus"></i>
                                                                   </button>
                                                                 </div>
                                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                                  <h6 class="mb-0">LE <?php echo $prot->Price ?>.00/1</h6>
+                                                                  <h6 class="mb-0">LE <?php echo $b->Price ?>.00</h6>
                                                             </div>
                                                           </div>
                                                         </li>
-                                      <?php endforeach;
-                                      $counter = 1; ?>
-                                    </ul>
-                                   <hr class="my-4" />
-                                  </div>
+                                                        <?php $counter = 1; endforeach; ?>
+                                      </ul>
+                      
+                                      <hr class="my-4" />
+                                    </div>
+                    <?php endif; ?>
+                    
+                    
+
+                    <?php if ($toppings): ?>
+                                    <!---TOPPINGS SECTION-->
+                                    <div>
+                                      <label for="touch2" style="width: 600px; cursor: pointer"
+                                        ><h2 class="fw-bold mb-0 text-black">Toppings</h2>
+                                        <h4 class="fw-bold mb-0 text-muted">Choose Up To <?php echo $toppings[0]->CategoryMax ?> </h4>
+                                        </label
+                                      >
+                                      <div id='toppingserror' class="error"></div>
+                                      <input type="checkbox" id="touch2" width="600px" />
+                                      <ul class="slide2">
+                                        <hr class="my-4" />
+                                        <?php foreach ($toppings as $top): ?>
+                                                        <li>
+                                                          <div
+                                                            class="row mb-4 d-flex justify-content-between align-items-center"
+                                                          >
+                                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                              <img
+                                                                src="public/images/salad-ingredients/<?php echo $top->Name ?>.jpg"
+                                                                class="img-fluid rounded-3"
+                                                                alt="<?php echo $top->Name ?>"
+                                                              />
+                                                            </div>
+                                                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                                              <h6 class="text-muted">Vegetable</h6>
+                                                              <h6 class="text-black mb-0"><?php echo $top->Name ?></h6>
+                                                            </div>
+                                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                              <button
+                                                                  class="btn btn-link px-2"
+                                                                  onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                  restriction(this.parentNode.querySelector('input[type=number]'),'topping', '<?php echo $top->CategoryMax ?>');
+                                  removeFromOrder('<?php echo $top->Name ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>');"
+                                                                    >
+                                                                      <i class="fas fa-minus"></i>
+                                                                    </button>
+
+                                                                    <input
+                                                                    id="topping<?php echo $counter++; ?>"
+                                                                  min="0"
+                                                                  name="<?php echo $top->Name ?>"
+                                                                  value="0"
+                                                                  type="number"
+                                                                  max="1"
+                                                                  class="form-control form-control-sm"
+                                                                />
+
+                                                                <button
+                                                                  class="btn btn-link px-2"
+                                                                  onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                  restriction(this.parentNode.querySelector('input[type=number]'),'topping', '<?php echo $top->CategoryMax ?>');
+                                  addToOrder('<?php echo $top->Name ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>')"
+                                                                >
+                                                                  <i class="fas fa-plus"></i>
+                                                                    </button>
+                                                                    <p id='toppingmax' style='color:red; text-align:left; font-size:small'></p>
+                                                                  </div>
+
+                            
+                                                                  <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                                    <h6 class="mb-0">LE <?php echo $top->Price ?>.00/1</h6>
+                                                            </div>
+                                                          </div>
+                                                        </li>
+                                        <?php endforeach;
+                                        $counter = 1; ?>
+                                      </ul>
+                                     <hr class="my-4" />
+                                    </div>
+                    <?php endif; ?>
+
+                    <?php if ($dressings): ?>
+                                        <!--DRESSINGS SECTION-->
+                                        <div>
+                                          <label for="touch5" style="width: 600px; cursor: pointer"
+                                            ><h2 class="fw-bold mb-0 text-black">Dressing</h2>
+                                            <h4 class="fw-bold mb-0 text-muted">Choose <?php echo $dressings[0]->CategoryMax ?> </h4></label
+                                            >
+                                            <input type="checkbox" id="touch5" width="600px" />
+
+                                            <ul class="slide5">
+                                              <?php foreach ($dressings as $d): ?>
+                                                                    <hr class="my-4" />
+                                                                    <li>
+                                                                      <div
+                                                                        class="row mb-4 d-flex justify-content-between align-items-center"
+                                                                      >
+                                                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                                                          <img
+                                                                            src="public/images/salad-ingredients/<?php echo $d->Name ?>.jpg"
+                                                                            class="img-fluid rounded-3"
+                                                                            alt="<?php echo $d->Name ?>"
+                                                                            height="51px"
+                                                                          />
+                                                                        </div>
+                                                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                                                          <h6 class="text-muted">Dressing</h6>
+                                                                          <h6 class="text-black mb-0"><?php echo $d->Name ?></h6>
+                                                                        </div>
+                                                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                                          <!-- NO QUANTITY -->
+                                                                          <button id="add<?php echo $d->Name;
+                                                                          echo $GLOBALS['counter']++; ?>" type='submit' class="btn btn-link px-2" 
+                                                                          onclick="addToOrder('<?php echo $d->Name ?>', 'dressing', <?php echo $d->CategoryMax ?>,'<?php echo $d->Price ?>')">
+                                                                                <i class="fas fa-plus"></i>
+                                                                              </button>
+                                                                            </div>
+                                                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                                              <h6 class="mb-0">LE <?php echo $d->Price ?>.00</h6>
+                                                                        </div>
+                                                                      </div>
+                                                                    </li>
+                                                                    <?php $counter = 1; endforeach; ?>
+                                            </ul>
+                      
+                                            <hr class="my-4" />
+                                          </div>
+                    <?php endif; ?>
+                    
+                    <!--PROTEINS SECTION-->
+                    <?php if ($proteins): ?>
+                                    <div>
+                                      <label for="touch4" style="width: 600px; cursor: pointer"
+                                        ><h2 class="fw-bold mb-0 text-black">Protein</h2>
+                                        <h4 class="fw-bold mb-0 text-muted">Choose <?php echo $proteins[0]->CategoryMax ?> </h4>
+                                        <div id='proteinserror' class="error"></div></label
+                                      >
+                                      <input type="checkbox" id="touch4" width="600px" />
+                                      <ul class="slide4">
+                                        <hr class="my-4" />
+                                        <?php foreach ($proteins as $prot): ?>
+                                                            <li>
+                                                              <div
+                                                                class="row mb-4 d-flex justify-content-between align-items-center"
+                                                              >
+                                                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                                                  <img
+                                                                    src="public/images/salad-ingredients/<?php echo $prot->Name ?>.jpg"
+                                                                    class="img-fluid rounded-3"
+                                                                    alt="<?php echo $prot->Name ?>"
+                                                                  />
+                                                                </div>
+                                                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                                                  <h6 class="text-muted">Protein</h6>
+                                                                  <h6 class="text-black mb-0"><?php echo $prot->Name ?></h6>
+                                                                </div>
+                                                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                                  <button
+                                                                    class="btn btn-link px-2"
+                                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown();
+                                    restriction(this.parentNode.querySelector('input[type=number]'),'protein', <?php echo $proteins[0]->CategoryMax ?>);
+                                    removeFromOrder('<?php echo $prot->Name ?>', 'protein', <?php echo $prot->CategoryMax ?>, <?php echo $prot->Price ?>);">
+                                                                        <i class="fas fa-minus"></i>
+                                                                  </button>
+
+                                                                  <input
+                                                                    id="protein<?php echo $counter++; ?>"
+                                                                    min="0"
+                                                                    name="<?php echo $prot->Name ?>"
+                                                                    value="0"
+                                                                    type="number"
+                                                                    max="1"
+                                                                    class="form-control form-control-sm"
+                                                                  />
+
+                                                                  <button
+                                                                    class="btn btn-link px-2"
+                                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp();
+                                    restriction(this.parentNode.querySelector('input[type=number]'),'protein', <?php echo $proteins[0]->CategoryMax ?>)
+                                    addToOrder('<?php echo $prot->Name ?>', 'protein', <?php echo $prot->CategoryMax ?>, <?php echo $prot->Price ?>)"
+                                                                      >
+                                                                        <i class="fas fa-plus"></i>
+                                                                      </button>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                                      <h6 class="mb-0">LE <?php echo $prot->Price ?>.00/1</h6>
+                                                                </div>
+                                                              </div>
+                                                            </li>
+                                        <?php endforeach;
+                                        $counter = 1; ?>
+                                      </ul>
+                                     <hr class="my-4" />
+                                    </div>
                     <?php endif; ?>
 
 
@@ -541,7 +533,9 @@
                       <p id='dressingchoices'></p>
                     </div>
 
-                  
+                    <div class="d-flex justify-content-between mb-4">
+                      <p style='color:red' id='baseerror'></p>
+                    </div>
 
                     <hr class="my-4" />
 

@@ -1,5 +1,5 @@
 <?php
-
+include_once 'design-patterns/BaseComponent.php';
 class AddedBase extends BaseComponent
 {
     protected $ingredientName;

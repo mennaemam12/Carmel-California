@@ -1,5 +1,5 @@
 <?php
-
+include_once 'design-patterns/SaladDecorator.php';
 class AddedDecorator extends SaladDecorator
 {
     protected $base;

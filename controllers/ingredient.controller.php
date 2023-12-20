@@ -161,7 +161,7 @@ class IngredientController
         $order = json_decode($json_data, true); 
 
         $orderObjects = array();
-
+ 
         $baseTotal = 0;
         $baseChoice = (!empty($order['base'])) ? $order['base'] : '';
         $base = '';

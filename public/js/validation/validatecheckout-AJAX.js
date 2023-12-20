@@ -9,7 +9,7 @@
             success: function(response) {
             if (response.includes("successful")) {
                 try {
-                    
+                    console.log("successful");
                 }catch (e) {
                     console.error("Error caught:", e);
                 }

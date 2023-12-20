@@ -34,11 +34,11 @@ class CheckoutController
         foreach ($items as $item) {
             $total += $item->Price;
         }
-        
+
 
 
         $details = BillingDetails::getUserBillingDetails($user->getID());
-        if($details){
+        if ($details) {
             $firstname = $details->FirstName;
             $lastname = $details->LastName;
             $area = $details->Area;
@@ -47,8 +47,7 @@ class CheckoutController
             $floor = $details->Floor;
             $apartment = $details->Apartment;
             $postalcode = $details->Postalcode;
-        }
-        else{
+        } else {
             $fullname = explode(' ', $user->getFullName());
             $firstname = $fullname[0];
             $lastname = $fullname[1];
@@ -101,25 +100,47 @@ class CheckoutController
 
         $formdata = json_decode($json_data, true);
 
-        if(empty($formdata['firstname']) || empty($formdata['lastname']) || empty($formdata['area']) || 
-            empty($formdata['street']) || empty($formdata['building']) || empty($formdata['floor']) || empty($formdata['apartment'])){
-                echo "Please fill all required fields.";
-        }
-        else{
-            if($formdata['save']){
-                $user = new User;
-                $user->unserialize($_SESSION['user']);
+        $user = new User;
+        $user->unserialize($_SESSION['user']);
+
+        if (
+            empty($formdata['firstname']) || empty($formdata['lastname']) || empty($formdata['area']) ||
+            empty($formdata['street']) || empty($formdata['building']) || empty($formdata['floor']) || empty($formdata['apartment'])
+        ) {
+            echo "Please fill all required fields.";
+        } else {
+            if ($formdata['save']) {
+
                 $id = $user->getID();
                 $bill = new BillingDetails();
                 $bill->saveBillingDetails($id, $formdata);
-                if($bill){
-                    echo "saved successfully";
-                }
+            }
+            include 'models/Order.php';
+            $order = new Order();
+            foreach ($user->getCart() as $cartItem) {
+                $cart = new Cart;
+                $cart->unserialize($cartItem);
+                $cartItems[] = $cart;
+            }
+            foreach ($cartItems as $item) {
+                $items[] = Item::findItemByID($item->getItemType(), $item->getItemId());
+                $order->saveOrderDetails($user->getID(), $item);
                 
             }
-            echo "successful";
+            $cartItems=array();
+            $user=new User;
+            $user->unserialize($_SESSION['user']);
+            foreach($user->getCart() as $cartItem){
+                $cart=new Cart;
+                $cart->unserialize($cartItem);
+                $cartItems[]=$cart;
+            }
+            $cartItems = array_values($cartItems);
+            $user->emptyCart();
+            $_SESSION['user'] = $user->serialize(); 
+                     
         }
-
+      redirect($GLOBALS['projectFolder'] . "/cart");
     }
 }
 ?>

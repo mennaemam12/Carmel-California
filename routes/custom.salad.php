@@ -21,10 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo $lastSegment;
     switch ($lastSegment) {
         case 'viewtotal':
-            echo "hello";
             include 'controllers/ingredient.controller.php';
             IngredientController::getAjaxTotal();
             exit();
