@@ -18,6 +18,8 @@ $rows = Item::getAllItems();
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
+    <base href="/">
+
     <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/animate.css">
 
@@ -60,14 +62,16 @@ include 'partials/nav.php';
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate">
-                <a href="<?=$item->ImagePath?>" class="image-popup"><img src="<?=$item->ImagePath?>" class="img-fluid" alt="Colorlib Template"></a>
+                <a href="<?= $item->ImagePath ?>" class="image-popup"><img src="<?= $item->ImagePath ?>"
+                                                                           class="img-fluid"
+                                                                           alt="Colorlib Template"></a>
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                 <!-- <h3>Creamy Latte Coffee</h3> -->
-                <h3><?=$item->Name?></h3>
+                <h3><?= $item->Name ?></h3>
                 <!-- <p class="price"><span>$4.90</span></p> -->
-                <p class="price"><span><?=$item->Price?> EGP</span></p>
-                <p><?=$item->Description?></p>
+                <p class="price"><span><?= $item->Price ?> EGP</span></p>
+                <p><?= $item->Description ?></p>
                 <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
                 <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.
                 </p> -->
@@ -104,17 +108,18 @@ include 'partials/nav.php';
               </span>
                     <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1"
                            max="100">
-              <span class="input-group-btn ml-2">
+                    <span class="input-group-btn ml-2">
                 <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
                   <i class="icon-plus"></i>
                 </button>
               </span>
                 </div>
-            <?php if(isset($_SESSION['user'])){?>
-                <p><a onclick="add()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
-            <?php }else{?>
-                <p><a href='/login' class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
-            <?php }?>
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <p><a onclick="add()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to
+                            Cart</a></p>
+                <?php } else { ?>
+                    <p><a href='/login' class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -123,7 +128,8 @@ include 'partials/nav.php';
 <section class="ftco-section">
     <div class="container" id="reviews">
         <div class="row justify-content-center pb-3">
-            <div class="heading-section ftco-animate" style="display: flex;flex-direction:column; align-items:flex-start;row-gap:10px;">
+            <div class="heading-section ftco-animate"
+                 style="display: flex;flex-direction:column; align-items:flex-start;row-gap:10px;">
                 <span class="subheading"
                       style="margin-bottom:10px; padding:10px; float: left">Reviews</span>
                 <?php
@@ -172,10 +178,10 @@ include 'partials/nav.php';
                         </div>
                         <div class="rating">
                             <?php for ($i = 1; $i <= 5; $i++) { ?>
-                                    <?php if ($review->getRating() >= $i)
-                                        echo "<span class = 'past-review-stars-checked' >★</span>";
-                                    else
-                                        echo "<span class = 'past-review-stars'>★</span>";
+                                <?php if ($review->getRating() >= $i)
+                                    echo "<span class = 'past-review-stars-checked' >★</span>";
+                                else
+                                    echo "<span class = 'past-review-stars'>★</span>";
                             } ?>
                         </div>
                         <?php echo $review->getDate(); ?>
@@ -202,24 +208,24 @@ include 'partials/nav.php';
             </div>
         </div>
         <div class="row">
-        <?php
-				for ($i = 0; $i < 4; $i++) {
-					echo "<div class='col-md-3'>";
-					echo "<div class='text text-center pt-4'>";
-					echo "<div class='menu-entry'>";
-					echo "<a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>";
-					echo "<img src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
-					echo "</a>";
-					echo "<h3><a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>".$rows[$i]->Name."</a></h3>";
-					echo "<p></p>";
-					echo "<p><span>".$rows[$i]->Price."</span></p>";
-					echo "<p><a class='btn btn-primary btn-outline-primary' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>Add to Cart</a></p>";
-				
-					echo "</div>";
-					echo "</div>";
-					echo "</div>";
-                                            }
-											?>
+            <?php
+            for ($i = 0; $i < 4; $i++) {
+                echo "<div class='col-md-3'>";
+                echo "<div class='text text-center pt-4'>";
+                echo "<div class='menu-entry'>";
+                echo "<a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>";
+                echo "<img src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
+                echo "</a>";
+                echo "<h3><a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>" . $rows[$i]->Name . "</a></h3>";
+                echo "<p></p>";
+                echo "<p><span>" . $rows[$i]->Price . "</span></p>";
+                echo "<p><a class='btn btn-primary btn-outline-primary' href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>Add to Cart</a></p>";
+
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+            ?>
         </div>
     </div>
 </section>
