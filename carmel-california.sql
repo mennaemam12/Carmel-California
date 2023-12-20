@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 20, 2023 at 03:11 AM
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 20, 2023 at 06:49 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,6 +45,7 @@ CREATE TABLE `billing_details` (
 --
 
 INSERT INTO `billing_details` (`id`, `UserId`, `FirstName`, `LastName`, `Area`, `Street`, `Building`, `Floor`, `Apartment`, `Postalcode`) VALUES
+(1, 32, 'Shahd', 'Khaled', 'maadi', 'Mahmoud Madkour', 3132, 2, 5, 11733),
 (1, 32, 'Shahd', 'Khaled', 'maadi', 'Mahmoud Madkour', 3132, 2, 5, 11733);
 
 -- --------------------------------------------------------
@@ -132,7 +133,7 @@ CREATE TABLE `desserts` (
 CREATE TABLE `discount` (
   `id` int(11) NOT NULL,
   `type` varchar(100) NOT NULL,
-  `category` varchar(100) NOT NULL,
+  `category` varchar(100) DEFAULT NULL,
   `percentage` int(50) DEFAULT NULL,
   `coupon` varchar(100) DEFAULT NULL,
   `start_date` date NOT NULL,
@@ -145,7 +146,13 @@ CREATE TABLE `discount` (
 --
 
 INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start_date`, `end_date`, `valid`) VALUES
-(1, 'main', 'pasta', 10, 'Pasta10', '2023-12-19', '2024-01-19', 'Yes');
+(1, 'main', 'pasta', 10, 'Pasta10', '2023-12-19', '2024-01-19', 'Yes'),
+(20, 'breakfast', 'Eggs', 22, 'Eggs22', '2023-12-08', '2024-01-07', 'YES'),
+(21, 'main', 'Burger', 10, 'Burger10', '2023-12-08', '2024-01-07', 'YES'),
+(22, 'sides', 'Starters', 40, 'Starters40', '2023-12-08', '2024-01-07', 'YES'),
+(23, 'main', 'Burger', 22, 'Burger22', '2023-12-08', '2024-01-07', 'YES'),
+(24, 'drinks', 'Coffee', 30, NULL, '2023-12-08', '2024-01-07', 'YES'),
+(25, 'breakfast', 'Eggs', 45, 'Eggs45', '2023-12-19', '2024-01-18', 'YES');
 
 -- --------------------------------------------------------
 
@@ -192,6 +199,32 @@ INSERT INTO `main` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath
 (2, 'Chicken Pesto', 'Pasta', 'pasta, cream', 295, 'public/images/main/image_655b8c040e11b.jpg'),
 (3, 'Mushroom & Swiss Burger', 'Burger', 'Emmental, tomato, lettuce, pickles served with homemade.', 269, 'public/images/main/image_655d3533ef5dc.jpg'),
 (4, 'Shrimp Havana', 'Pasta', 'Sundried tomato, broccoli, fresh cream', 310, 'public/images/main/image_656cea700d41e.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `navbar`
+--
+
+CREATE TABLE `navbar` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `navbar`
+--
+
+INSERT INTO `navbar` (`id`, `name`, `path`) VALUES
+(1, 'Home', 'index'),
+(2, 'Menu', 'menu'),
+(3, 'Services', 'services'),
+(4, 'About', 'about'),
+(5, 'Contact', 'contact'),
+(6, 'Logout', 'logout'),
+(7, 'Sign in', 'login'),
+(8, 'Dashboard', 'dashboard');
 
 -- --------------------------------------------------------
 
@@ -282,7 +315,8 @@ INSERT INTO `permissions` (`id`, `description`, `path`) VALUES
 (8, 'View Checkout Page', 'checkout'),
 (9, 'View Dashboard Home', 'dashboard'),
 (10, 'Add/Edit/View Menu', 'dashboard/menu'),
-(11, 'Add/Edit/View Users', 'dashboard/users');
+(11, 'Add/Edit/View Users', 'dashboard/users'),
+(12, 'View/ Add Discounts', 'dashboard/discount');
 
 -- --------------------------------------------------------
 
@@ -304,6 +338,10 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`user_id`, `item_id`, `item_type`, `message`, `rating`, `date`) VALUES
+('28', '2', 'main', 'Delicious stuff', '5', '2023-12-09'),
+('28', '4', 'main', 'To7fa to7fa ra2e3 fo2 el gamal', '2', '2023-12-09'),
+('28', '4', 'main', 'Folaaa', '5', '2023-12-09'),
+('28', '4', 'main', 'Test 3', '1', '2023-12-09'),
 ('28', '2', 'main', 'Delicious stuff', '5', '2023-12-09'),
 ('28', '4', 'main', 'To7fa to7fa ra2e3 fo2 el gamal', '2', '2023-12-09'),
 ('28', '4', 'main', 'Folaaa', '5', '2023-12-09'),
@@ -340,9 +378,7 @@ INSERT INTO `saladingredients` (`id`, `Name`, `Price`, `Category`, `CategoryMax`
 (9, 'Grilled Chicken', 25, 'Protein', 1, 'public/images/salad-ingredients/Toppings/Grilled Chicken.jpg'),
 (10, 'Red Beans', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Red Beans.jpg'),
 (11, 'Cherry Tomato', 15, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Cherry Tomato.jpg'),
-(12, 'Pepper', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Pepper.jpg'),
-(13, 'Balsamic', 20, 'Dressing', 1, 'public/images/salad-ingredients/Dressing/Balsamic.jpg'),
-(14, 'Lemon Mustard', 15, 'Dressing', 1, 'public/images/salad-ingredients/Dressing/Lemon Mustard.jpg');
+(12, 'Pepper', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Pepper.jpg');
 
 -- --------------------------------------------------------
 
@@ -393,7 +429,7 @@ INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`,
 ('Ramez Ehab', 'ramez@gmail.com', 'ramez', '$2y$10$PIbQHrRj3S0BEmFm1KRCLOzC0ALC7wdQT5b35.YQ/BxTOFiXYAeiO', 2147483647, 28, '2'),
 ('Admin Universal', 'admin@gmail.com', 'admin', '$2y$10$e6fkBOvwdfkkU62V0xsS1eEs0Rs9y8IHSb3Ca71vJTKpVONq//KBu', 2147483647, 29, '2'),
 ('User Universal', 'user@gmail.com', 'user', '$2y$10$Tpxk2DpwDP.ugQj0XtFND.hQAk5rEXkD2j4KCeBTm2bP7FPKu40d.', 20123123, 30, '1'),
-('Shahd Khaled', 'shahdksalah@gmail.com', 'shahdksalah', '$2y$10$Ze7U0XZHpOlogx81qV7G5OHmLv55MTShu0QSvxAxcMuyojmMFJoRW', 1019294499, 32, '1');
+('farrah', 'farah2102625@miuegypt.edu.eg', 'farooha', '$2y$10$1Px1r.Ja6J122X8Dx3s3i.Ntnf9s1DU7OXjqD2uHC9DsgdbxRniTu', 1288319666, 32, '2');
 
 -- --------------------------------------------------------
 
@@ -429,7 +465,8 @@ INSERT INTO `usertype_permissions` (`usertype_id`, `permission_id`) VALUES
 (2, 8),
 (2, 9),
 (2, 10),
-(2, 11);
+(2, 11),
+(2, 12);
 
 -- --------------------------------------------------------
 
@@ -453,12 +490,6 @@ INSERT INTO `user_type` (`id`, `name`) VALUES
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `billing_details`
---
-ALTER TABLE `billing_details`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `breakfast`
@@ -503,6 +534,12 @@ ALTER TABLE `main`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `navbar`
+--
+ALTER TABLE `navbar`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `options`
 --
 ALTER TABLE `options`
@@ -512,12 +549,6 @@ ALTER TABLE `options`
 -- Indexes for table `option_values`
 --
 ALTER TABLE `option_values`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -561,12 +592,6 @@ ALTER TABLE `user_type`
 --
 
 --
--- AUTO_INCREMENT for table `billing_details`
---
-ALTER TABLE `billing_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `breakfast`
 --
 ALTER TABLE `breakfast`
@@ -576,7 +601,7 @@ ALTER TABLE `breakfast`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -594,7 +619,7 @@ ALTER TABLE `desserts`
 -- AUTO_INCREMENT for table `discount`
 --
 ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `drinks`
@@ -609,6 +634,12 @@ ALTER TABLE `main`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `navbar`
+--
+ALTER TABLE `navbar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
@@ -621,22 +652,16 @@ ALTER TABLE `option_values`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `saladingredients`
 --
 ALTER TABLE `saladingredients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `sides`
