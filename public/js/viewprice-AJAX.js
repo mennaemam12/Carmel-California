@@ -7,14 +7,18 @@
             contentType: 'application/json',
             data: JSON.stringify(order),
             success: function(response) {
-            console.log(response);
-            // if (response) {
+            if (!response.includes('error')) {
                 try {
                     document.getElementById('total').innerHTML = parseInt(response);
+                    document.getElementById('baseerror').innerHTML = "";
                 }catch (e) {
                     console.error("Error caught:", e);
                 }
-            // }
+            }
+            else{
+                document.getElementById('total').innerHTML = "0.00";
+                document.getElementById('baseerror').innerHTML = "Choose a base first";
+            }
 },
             error: function(xhr, status, error) {
                 // Handle errors
