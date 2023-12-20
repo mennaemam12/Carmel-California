@@ -221,7 +221,7 @@ class Discount
 
 
     //get discount by coupon
-    public static function getDiscountBycoupon($coupon)
+    public static function getDiscountByCoupon($coupon)
     {
         $db = new Database;
         $db->query('SELECT * FROM discount WHERE coupon = :coupon');
