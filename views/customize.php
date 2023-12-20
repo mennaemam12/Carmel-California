@@ -333,7 +333,7 @@
                                                         >
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
                                                                 <img
-                                                                        src="public/images/salad-ingredients/<?php echo $top->Name ?>.jpg"
+                                                                        src="public/images/salad-ingredients/<?php echo strtolower($b->Name); ?>.jpg"
                                                                         class="img-fluid rounded-3"
                                                                         alt="<?php echo $top->Name ?>"
                                                                 />
@@ -347,7 +347,7 @@
                                                                         class="btn btn-link px-2"
                                                                         onclick="this.parentNode.querySelector('input[type=number]').stepDown();
                                                                                 restriction(this.parentNode.querySelector('input[type=number]'),'topping', '<?php echo $top->CategoryMax ?>');
-                                                                                removeFromOrder('<?php echo $top->Name ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>');"
+                                                                                removeFromOrder('<?php echo strtolower($b->Name); ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>');"
                                                                 >
                                                                     <i class="fas fa-minus"></i>
                                                                 </button>
@@ -355,7 +355,7 @@
                                                                 <input
                                                                         id="topping<?php echo $counter++; ?>"
                                                                         min="0"
-                                                                        name="<?php echo $top->Name ?>"
+                                                                        name="<?php echo strtolower($b->Name); ?>"
                                                                         value="0"
                                                                         type="number"
                                                                         max="1"
@@ -366,7 +366,7 @@
                                                                         class="btn btn-link px-2"
                                                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp();
                                                                                 restriction(this.parentNode.querySelector('input[type=number]'),'topping', '<?php echo $top->CategoryMax ?>');
-                                                                                addToOrder('<?php echo $top->Name ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>')"
+                                                                                addToOrder('<?php echo strtolower($b->Name); ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>')"
                                                                 >
                                                                     <i class="fas fa-plus"></i>
                                                                 </button>
