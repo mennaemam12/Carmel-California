@@ -366,7 +366,7 @@
                                                                         class="btn btn-link px-2"
                                                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp();
                                                                                 restriction(this.parentNode.querySelector('input[type=number]'),'topping', '<?php echo $top->CategoryMax ?>');
-                                                                                addToOrder('<?php echo $b->Name; ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>')"
+                                                                                addToOrder('<?php echo $top->Name; ?>', 'topping', <?php echo $top->CategoryMax ?>, '<?php echo $top->Price ?>')"
                                                                 >
                                                                     <i class="fas fa-plus"></i>
                                                                 </button>
