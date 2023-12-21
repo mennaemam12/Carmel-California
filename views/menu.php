@@ -21,12 +21,7 @@ require_once 'controllers/menu.controller.php';
 
     <link rel="stylesheet" href="public/css/owl.carousel.min.css">
     <link rel="stylesheet" href="public/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="public/css/magnific-popup.css">
-
-    <link rel="stylesheet" href="public/css/aos.css">
-
-    <link rel="stylesheet" href="public/css/ionicons.min.css">
-
+<!--    <link rel="stylesheet" href="public/css/magnific-popup.css">-->
 
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">

@@ -9,6 +9,45 @@ class UserController
 {
 
     private $userModel;
+    private $errorMsg;
+
+    private function validateLogin($data) {
+        if (empty($data['Name/Email']) || empty($data['UserPass'])) {
+            $this->errorMsg = "Please fill out all inputs";
+            return false;
+        }
+        return true;
+    }
+
+    private function validateRegister($data) {
+        if (
+            empty($data['FullName']) || empty($data['Email']) || empty($data['Username']) ||
+            empty($data['UserPass']) || empty($data['UserConfPass'])
+        ) {
+            $this->errorMsg = "Please fill out all inputs";
+            return false;
+        }
+
+        if (!preg_match("/^[a-zA-Z0-9]*$/", $data['Username'])) {
+            $this->errorMsg = "Invalid Username";
+            return false;
+        }
+
+        if (!filter_var($data['Email'], FILTER_VALIDATE_EMAIL)) {
+            $this->errorMsg = "Invalid Email";
+            return false;
+        }
+
+        if (strlen($data['UserPass']) < 8) {
+            $this->errorMsg = "Password must be at least 8 characters long";
+            return false;
+        } else if ($data['UserPass'] !== $data['UserConfPass']) {
+            $this->errorMsg = "Passwords do not match";
+            return false;
+        }
+
+        return true;
+    }
 
     public function __construct()
     {
@@ -70,36 +109,18 @@ class UserController
         ];
 
         //Validate inputs
-        if (
-            empty($data['FullName']) || empty($data['Email']) || empty($data['Username']) ||
-            empty($data['UserPass']) || empty($data['UserConfPass'])
-        ) {
-            flash("formError", "Please fill out all inputs");
-            redirect($GLOBALS['projectFolder'] . "/signup");
-        }
-
-        if (!preg_match("/^[a-zA-Z0-9]*$/", $data['Username'])) {
-            flash("formError", "Invalid Username");
-            redirect($GLOBALS['projectFolder'] . "/signup");
-        }
-
-        if (!filter_var($data['Email'], FILTER_VALIDATE_EMAIL)) {
-            flash("formError", "Invalid Email");
-            redirect($GLOBALS['projectFolder'] . "/signup");
-        }
-
-        if (strlen($data['UserPass']) < 8) {
-            flash("formError", "Password must be at least 8 characters long");
-            redirect($GLOBALS['projectFolder'] . "/signup");
-        } else if ($data['UserPass'] !== $data['UserConfPass']) {
-            flash("formError", "Passwords don't match");
-            redirect($GLOBALS['projectFolder'] . "/signup");
+        if (!$this->validateRegister($data)) {
+            $response = array('msg' => $this->errorMsg);
+            echo json_encode($response);
+            exit();
         }
 
         //User with the same email or password already exists
         if ($this->userModel->findUserByEmailOrUsername($data['Email'], $data['Username'])) {
-            flash("formError", "Username or Email already taken");
-            redirect($GLOBALS['projectFolder'] . "/signup");
+            $this->errorMsg = "Username or Email is already taken";
+            $response = array('msg' => $this->errorMsg);
+            echo json_encode($response);
+            exit();
         }
 
         //Passed all validation checks.
@@ -114,18 +135,17 @@ class UserController
 
         //Register User
         if ($this->userModel->register()) {
-            // $logged=$this->userModel->findUserByEmailOrUsername($data['Email'], $data['FullName']);
-            // if($logged){
-            //Create session
             $id = $this->userModel->getLastInsertedID();
             $this->userModel->setID($id);
             $this->createUserSession($this->userModel);
-            // }else{
-            //     die("Something went wrong while logging in");
-            // }
-        } else {
-            die("Something went wrong");
+
+            $this->errorMsg = "success";
+            $response = array('msg' => $this->errorMsg);
+            echo json_encode($response);
+            return;
         }
+
+        die("Something went wrong");
     }
 
     public function login()
@@ -139,9 +159,9 @@ class UserController
             'UserPass' => trim($_POST['UserPass'])
         ];
 
-        if (empty($data['Name/Email']) || empty($data['UserPass'])) {
-            flash("formError", "Please fill out all inputs");
-            header("location:" . $GLOBALS['projectFolder'] . "/login");
+        if (!$this->validateLogin($data)) {
+            $response = array('msg' => $this->errorMsg);
+            echo json_encode($response);
             exit();
         }
 
@@ -149,23 +169,31 @@ class UserController
         if ($this->userModel->findUserByEmailOrUsername($data['Name/Email'], $data['Name/Email'])) {
             //User Found
             $loggedInUser = $this->userModel->login($data['Name/Email'], $data['UserPass']);
-            if ($loggedInUser) {
-                //Cre
-                $this->userModel->setID($loggedInUser->id);
-                $this->userModel->setFullName($loggedInUser->FullName);
-                $this->userModel->setEmail($loggedInUser->Email);
-                $this->userModel->setUsername($loggedInUser->UserName);
-                $this->userModel->setPhone($loggedInUser->PhoneNumber);
-                $this->userModel->setType($loggedInUser->Usertype);
-                $this->createUserSession($this->userModel);
-            } else {
-                flash("formError", "Password Incorrect");
-                header("location:" . $GLOBALS['projectFolder'] . "/login");
+            if (!$loggedInUser) {
+                $this->errorMsg = "Wrong Password";
+                $response = array('msg' => $this->errorMsg);
+                echo json_encode($response);
+                exit();
             }
-        } else {
-            flash("formError", "No user found");
-            header("location:" . $GLOBALS['projectFolder'] . "/login");
+
+            $this->userModel->setID($loggedInUser->id);
+            $this->userModel->setFullName($loggedInUser->FullName);
+            $this->userModel->setEmail($loggedInUser->Email);
+            $this->userModel->setUsername($loggedInUser->UserName);
+            $this->userModel->setPhone($loggedInUser->PhoneNumber);
+            $this->userModel->setType($loggedInUser->Usertype);
+            $this->createUserSession($this->userModel);
+
+            $this->errorMsg = "success";
+            $response = array('msg' => $this->errorMsg);
+            echo json_encode($response);
+            return;
         }
+
+        $this->errorMsg = "User not found";
+        $response = array('msg' => $this->errorMsg);
+        echo json_encode($response);
+        exit();
     }
 
     public function readCart($userid){
@@ -191,7 +219,6 @@ class UserController
         }
         $this->userModel->eraseCart($user->getID());
         $_SESSION['user'] = $user->serialize();
-        header("location:" . $GLOBALS['projectFolder'] . "/index");
     }
 
     public function logout()

@@ -7,12 +7,12 @@ class FormClass {
 
     initialize() {
         this.validateFields();
-        if (!this.noErr)
+        if (!this.noErr) {
+            $("#form-message-div").empty();
             document.getElementById("form-message-div").appendChild(this.error);
-        else {
-            this.form.querySelector(".button").type = "submit";
-            this.form.querySelector(".button").click();
         }
+        else
+            this.ajaxRegister();
     }
 
     resetErrors() {
@@ -34,7 +34,7 @@ class FormClass {
         for (let i = 0; i < fields.length; i++) {
             switch (fields[i].id) {
                 case 'name':
-                    if (!fields[i].value.match(/^[a-zA-Z]+$/)) {
+                    if (!fields[i].value.match(/^[a-zA-Z\s]+$/)) {
                         this.error.innerHTML = "Name must contain only alphabets";
                         this.noErr = false;
                     }
@@ -76,6 +76,30 @@ class FormClass {
                     break;
             }
         }
+    }
+
+    ajaxRegister() {
+        const formData = $(this.form).serialize();
+        const self = this;
+
+        $.ajax({
+            url: "signup",
+            method: "POST",
+            data: formData,
+            dataType: "json",
+            success: function (response) {
+                if (response.msg === "success") {
+                    window.location.href = "index";
+                    return;
+                }
+
+                self.error = $('<div>').html(response.msg);
+                $("#form-message-div").empty().append(self.error);
+            },
+            error: function (err) {
+                console.log(err);
+            },
+        });
     }
 }
 

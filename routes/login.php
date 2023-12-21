@@ -1,21 +1,16 @@
 <?php
-@session_start();
 // Path: routes/login.php
+@session_start();
 
 include 'projectFolderName.php';
-
-// Commenting till we have a proper database
-// Check if the user is already logged in
-// if (isset($_SESSION['userType'])) {
-//     header('Location: ' .$projectFolder. '/'); // Redirect to the home page
-//     exit();
-// }
+include 'helpers/session.helper.php';
 
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];
 
 // segments
 $segments = explode('/', $url);
+$lastSegment = trim(strtolower($segments[count($segments) - 1]));
 
 if (isset($_SESSION['user'])) {
     redirect($GLOBALS['projectFolder'] . "/"); // Redirect to the home page
@@ -23,10 +18,8 @@ if (isset($_SESSION['user'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    
-    // EXAMPLE: if the url is /login/anythingElse
-    // Then dont show the login page
-    if (count($segments) > 3) {
+
+    if ($lastSegment !== 'login') {
         include 'views/404.php';// show the 404 page
         exit();
     }

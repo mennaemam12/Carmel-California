@@ -6,14 +6,13 @@ class FormClass {
     }
 
     initialize() {
-        console.log("Logging in user JS");
         this.validateFields();
-        if (!this.noErr)
+        if (!this.noErr) {
+            $("#form-message-div").empty();
             document.getElementById("form-message-div").appendChild(this.error);
-        else {
-            this.form.querySelector(".button").type = "submit";
-            this.form.querySelector(".button").click();
         }
+        else
+            this.ajaxLogin();
     }
 
     resetErrors() {
@@ -25,7 +24,6 @@ class FormClass {
         this.resetErrors();
         let fields = document.getElementsByClassName("form-control");
         for (let i = 0; i < fields.length; i++) {
-            console.log(fields[i].id)
             fields[i].value = fields[i].value.trim();
             if (fields[i].value === "") {
                 if (fields[i].id === "Name/Email") {
@@ -39,6 +37,32 @@ class FormClass {
             }
         }
     }
+
+    ajaxLogin() {
+        const formData = $(this.form).serialize();
+        const self = this;
+
+        $.ajax({
+            url: "login",
+            method: "POST",
+            data: formData,
+            dataType: "json",
+            success: function (response) {
+                if (response.msg === "success") {
+                    window.location.href = "index";
+                    return;
+                }
+
+                self.error = $('<div>').html(response.msg);
+                $("#form-message-div").empty().append(self.error);
+            },
+            error: function (err) {
+                console.log(err);
+            },
+        });
+    }
+
+
 }
 
 const validator = new FormClass(document.getElementById("login-form"));
@@ -51,3 +75,5 @@ for (let i = 0; i < form_holders.length; i++) {
         form_holders[i].classList.add("active");
     });
 }
+
+
