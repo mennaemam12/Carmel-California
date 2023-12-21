@@ -139,7 +139,7 @@ class ItemController
 
     public function edit($itemType, $ID)
     {
-        $itemType = strtolower($itemType);
+        $itemType = trim(strtolower($itemType));
 
         //Init data
         $data = [
@@ -150,8 +150,6 @@ class ItemController
             'itemtype' => trim($_POST['itemtype'])
         ];
 
-
-
         if ($this->validateItem($data)) {
 
             //handle image path
@@ -159,7 +157,6 @@ class ItemController
                 $imagePath = (Item::findItemByID($itemType, $ID))->ImagePath;
                 unlink($imagePath);
                 $imagePath = $this->saveImage($_FILES['file'], $data['itemtype']);
-            
             }
             else
                 // get the current image path from the database
@@ -179,6 +176,18 @@ class ItemController
 			$this->itemModel->setDescription($data['description']);
 			$this->itemModel->setPrice($data['price']);
 			$this->itemModel->setImagePath($imagePath);
+
+            $originalType = trim(strtolower($_POST['originalType']));
+
+            if ($originalType != $itemType) {
+                if ($this->itemModel->add($itemType)) {
+                    if ($this->itemModel->delete($originalType, $ID)) {
+                        flash("formSuccess", "Item edited successfully", 'form-message form-message-green');
+                        redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
+                        exit();
+                    }
+                }
+            }
 
             if ($this->itemModel->edit($itemType, $ID)) {
                 flash("formSuccess", "Item edited successfully", 'form-message form-message-green');

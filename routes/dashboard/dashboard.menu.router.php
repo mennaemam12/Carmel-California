@@ -75,7 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
 
         case 'edititem':
-            $item = new ItemController;
             if (!isset($_POST['itemtype']) || !isset($_POST['id'])) {
                 include 'views/404.php';
                 exit();
@@ -84,6 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $type = $_POST['itemtype'];
             $id = $_POST['id'];
 
+            $item = new ItemController;
             $item->edit($type, $id);
             exit();
 

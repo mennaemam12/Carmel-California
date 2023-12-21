@@ -108,18 +108,6 @@ class Item {
             return false;
     }
 
-    public function getItemData($itemType, $ID)
-    {
-        $itemType = strtolower($itemType);
-        $this->db->query('SELECT * FROM ' . $itemType);
-
-        $rows = $this->db->resultSet();
-        if ($this->db->rowCount() > 0) {
-            return $rows;
-        } else {
-            return false;
-        }
-    }
     public static function getAllItems()
     {
         $db = new Database;

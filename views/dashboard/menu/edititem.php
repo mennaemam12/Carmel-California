@@ -77,13 +77,11 @@ require_once 'models/Item.php';
                                     <div class="form-group">
                                         <label for="exampleSelectGender">Type</label>
                                         <select class="form-control" id="itemtype" name="itemtype">
-                                            <option <?php if ($itemType == 'breakfast') echo 'selected'; ?>>Breakfast
-                                            </option>
-                                            <option <?php if ($itemType == 'dinner') echo 'selected'; ?>>Dinner</option>
-                                            <option <?php if ($itemType == 'drinks') echo 'selected'; ?>>Drinks</option>
-                                            <option <?php if ($itemType == 'sides') echo 'selected'; ?>>Sides</option>
-                                            <option <?php if ($itemType == 'desserts') echo 'selected'; ?>>Desserts
-                                            </option>
+                                            <option <?php if ($_GET['type'] == 'breakfast') echo 'selected'; ?>>Breakfast</option>
+                                            <option <?php if ($_GET['type'] == 'main') echo 'selected'; ?>>Main</option>
+                                            <option <?php if ($_GET['type'] == 'sides') echo 'selected'; ?>>Sides</option>
+                                            <option <?php if ($_GET['type'] == 'desserts') echo 'selected'; ?>>Desserts</option>
+                                            <option <?php if ($_GET['type'] == 'drinks') echo 'selected'; ?>>Drinks</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -114,6 +112,7 @@ require_once 'models/Item.php';
                                             ?></textarea>
                                     </div>
                                     <input type = "hidden" name ='id' value =<?php echo $_GET['id'];?>>
+                                    <input type = "hidden" name ='originalType' value =<?php echo $_GET['type'];?>>
                                     <div class="form-message-div">
                                         <?php flash('formError') ?>
                                     </div>

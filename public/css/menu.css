@@ -795,7 +795,6 @@ h3 {
 
 .owl-carousel.home-slider {
     position: relative;
-    height: 750px;
     z-index: 0;
 }
 
@@ -803,8 +802,7 @@ h3 {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 750px;
-    position: relative;
+    height: 85vh;
     z-index: 0;
 }
 
@@ -826,14 +824,22 @@ h3 {
 
 .owl-carousel.home-slider .slider-item .slider-text {
     color: #fff;
-    height: 750px;
+    height: 85vh;
     text-align: right;
 }
 
 @media (max-width: 767.98px) {
     .owl-carousel.home-slider .slider-item .slider-text {
         text-align: center;
-        height: 600px;
+        height: 85vh;
+    }
+
+    .owl-carousel.home-slider .slider-item {
+        height: 70vh;
+    }
+
+    .owl-carousel.home-slider .slider-item .slider-text {
+        height: 70vh;
     }
 }
 
@@ -913,12 +919,6 @@ h3 {
     border: 1px solid transparent;
     background: #c49b63;
     color: #fff;
-}
-
-@media (min-width: 992px) {
-    .ftco-intro {
-        margin-top: -130px;
-    }
 }
 
 .ftco-intro .container-wrap {
@@ -1002,12 +1002,13 @@ h3 {
 
 .pricing-entry .text:after {
     position: absolute;
-    bottom: 35%;
+    bottom: 10%;
     left: 0;
     right: 0;
     content: '';
     width: 100%;
     height: 1px;
+    margin-top:20px;
     border-bottom: 1px dashed #674c27;
     z-index: -1;
 }
@@ -1035,7 +1036,7 @@ h3 {
 }
 
 .ftco-menu {
-    padding-top: 7em;
+    padding-top: 6em;
 }
 
 .menu-wrap {
@@ -1284,8 +1285,41 @@ h3 {
 }
 
 .create-salad {
-    width : 100%;
-    display:flex;
+    width: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.slider-item .overlay {
+    background: #000;
+    opacity: .3;
+}
+
+.owl-dots {
+    height: 0px;
+}
+
+.item-name {
+    color: rgb(100, 100, 100);
+    margin-bottom: 20px;
+}
+
+.item {
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.item:hover {
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+
+    cursor: pointer;
+}
+
+.menu-section {
+    padding-top:50px;
+    padding-bottom:50px;
+}
+
