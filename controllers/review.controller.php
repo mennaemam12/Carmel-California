@@ -3,7 +3,7 @@ require_once 'models/Review.php';
 require_once 'models/User.php';
 require_once 'helpers/session.helper.php';
 require_once 'controllers/item.controller.php';
-include 'projectFolderName.php';
+
 
 class ReviewController
 {

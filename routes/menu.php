@@ -1,5 +1,6 @@
 <?php
 require_once 'models/User.php';
+require_once 'controllers/menu.controller.php';
 // Path: routes/menu.php
 
 if (isset($_SESSION['user'])) {
@@ -15,9 +16,6 @@ if (isset($_SESSION['user'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
-    //include 'views/menu.php';
-    include 'controllers/menu.controller.php';
     $menu = new MenuController;
     $menu->getMenu();
 }

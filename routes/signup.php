@@ -1,7 +1,7 @@
 <?php
 // Path: routes/cart.php
 
-include 'projectFolderName.php';
+
 
 
 if (isset($_SESSION['user'])) {

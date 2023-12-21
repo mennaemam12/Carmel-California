@@ -1,7 +1,6 @@
 <?php
 require_once 'models/Item.php';
 require_once 'helpers/session.helper.php';
-include 'projectFolderName.php';
 
 class MenuController
 {
@@ -33,7 +32,7 @@ class MenuController
         $dessertCategories = !empty($dessertItems) ? $this->extractUniqueCategories($dessertItems) : [];
 
         // Include the view file and pass the variables to it
-        include_once 'views/menu.php';
+        include 'views/menu.php';
 
     }
 

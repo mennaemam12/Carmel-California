@@ -1,25 +1,9 @@
-<?php
-require_once 'helpers/session.helper.php';
-include 'projectFolderName.php';
-?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- STYLE CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-
-    <base href="<?php echo $projectFolder ?>/">
-
-    <link rel="shortcut icon" href="template/images/favicon.png"/>
-
+    <?php include 'views/partials/head.php';?>
     <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
@@ -54,9 +38,7 @@ include 'views/partials/nav.php'
                     <span class="checkmark"></span>
                 </label>
             </div>
-            <div class="form-message-div" id="form-message-div">
-                <?php flash('formError') ?>
-            </div>
+            <div class="form-message-div" id="form-message-div"></div>
             <div class="form-login">
                 <button class="button" type="button" onclick="validator.initialize();" name="submit">Login</button>
                 <p>Don't have an account? <a href='signup'>Sign&nbsp;Up</a></p>

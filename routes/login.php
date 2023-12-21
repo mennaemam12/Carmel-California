@@ -1,7 +1,7 @@
 <?php
 // Path: routes/login.php
 
-include 'projectFolderName.php';
+
 include 'helpers/session.helper.php';
 
 // Get the current URL
