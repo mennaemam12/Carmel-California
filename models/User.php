@@ -256,9 +256,9 @@ class User {
         return $cart;
     }
 
-    public function eraseCart($userid){
+    public function eraseCart(){
         $this->db->query('DELETE FROM cart WHERE User_id = :userid');
-        $this->db->bind(':userid', $userid);
+        $this->db->bind(':userid', $this->getID());
         $this->db->execute();
     }
 

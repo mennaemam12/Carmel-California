@@ -4,14 +4,14 @@ require_once 'models/Cart.php';
 require_once 'helpers/session.helper.php';
 
 
-
 class UserController
 {
 
     private $userModel;
     private $errorMsg;
 
-    private function validateLogin($data) {
+    private function validateLogin($data)
+    {
         if (empty($data['Name/Email']) || empty($data['UserPass'])) {
             $this->errorMsg = "Please fill out all inputs";
             return false;
@@ -19,7 +19,8 @@ class UserController
         return true;
     }
 
-    private function validateRegister($data) {
+    private function validateRegister($data)
+    {
         if (
             empty($data['FullName']) || empty($data['Email']) || empty($data['Username']) ||
             empty($data['UserPass']) || empty($data['UserConfPass'])
@@ -54,7 +55,8 @@ class UserController
         $this->userModel = new User;
     }
 
-    public function editUserType() {
+    public function editUserType()
+    {
         if (!isset($_POST['id']) || !isset($_POST['usertype'])) {
             flash("formError", "Please fill out all inputs");
             redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
@@ -196,53 +198,56 @@ class UserController
         exit();
     }
 
-    public function readCart($userid){
-        $results=$this->userModel->readCart($userid);
-        $cartItems=array();
-        foreach($results as $result){
-            $cart=new Cart;
+    public function readCart($userid)
+    {
+        $results = $this->userModel->readCart($userid);
+        $cartItems = array();
+        foreach ($results as $result) {
+            $cart = new Cart;
             $cart->setUserId($result->User_id);
             $cart->setItemType($result->Item_type);
             $cart->setItemId($result->Item_id);
             $cart->setSelectedOption($result->Selected_Option);
             $cart->setQuantity($result->Quantity);
-            $cartItems[]=$cart;
+            $cartItems[] = $cart;
         }
-        return $cartItems; 
+        return $cartItems;
     }
 
     public function createUserSession($user)
     {
-        $cartItems=$this->readCart($user->getID());
-        foreach($cartItems as $cartItem){
+        $cartItems = $this->readCart($user->getID());
+        foreach ($cartItems as $cartItem)
             $user->addToCart($cartItem->serialize());
-        }
-        $this->userModel->eraseCart($user->getID());
+
         $_SESSION['user'] = $user->serialize();
     }
 
     public function logout()
     {
+        $this->userModel->unserialize($_SESSION['user']);
         $this->saveCart();
         unset($_SESSION['user']);
         session_destroy();
         redirect($GLOBALS['projectFolder'] . "/index");
     }
 
-    public function saveCart(){
-        $cartItems=array();
-        $user=new User;
+    public function saveCart()
+    {
+        $this->userModel->eraseCart();
+
+        $cartItems = array();
+        $user = new User;
         $user->unserialize($_SESSION['user']);
-        foreach($user->getCart() as $cartItem){
-            $cart=new Cart;
+
+        foreach ($user->getCart() as $cartItem) {
+            $cart = new Cart;
             $cart->unserialize($cartItem);
-            $cartItems[]=$cart;
+            $cartItems[] = $cart;
         }
 
-        foreach($cartItems as $item){
+        foreach ($cartItems as $item)
             $user->saveCart($item);
-        }
-
     }
 
 

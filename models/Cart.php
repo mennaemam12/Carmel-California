@@ -103,17 +103,17 @@ class Cart{
         return false;
     }
 
-    public function getCart($user){
-        
-        $sql = "SELECT * FROM `cart` WHERE User_id= :userID";
-        $this->db->query($sql);
-        $this->db->bind(":userID", $user->id);
-        $rows =$this->db->resultSet();
-        foreach($rows as $row){
-            $items[]=Item::findItemByID($row->Item_type,$row->Item_id);
-        }
-        include_once 'views/cart.php';
-    }
+//    public function getCart($user){
+//
+//        $sql = "SELECT * FROM `cart` WHERE User_id= :userID";
+//        $this->db->query($sql);
+//        $this->db->bind(":userID", $user->id);
+//        $rows =$this->db->resultSet();
+//        foreach($rows as $row){
+//            $items[]=Item::findItemByID($row->Item_type,$row->Item_id);
+//        }
+//        include_once 'views/cart.php';
+//    }
 
     
 

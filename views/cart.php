@@ -4,7 +4,7 @@ include 'projectFolderName.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include 'views/partials/head.php';?>
+    <?php include 'views/partials/head.php'; ?>
 
     <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/animate.css">
@@ -28,6 +28,7 @@ include 'projectFolderName.php';
         .remove-btn:hover {
             cursor: pointer;
         }
+
         .icon-close:hover {
             cursor: pointer;
         }
@@ -46,8 +47,8 @@ include 'partials/nav.php';
                     <table class="table">
                         <thead class="thead-primary">
                         <tr class="text-center">
-                            <th>Product</th>
                             <th>&nbsp</th>
+                            <th>Product</th>
                             <th>&nbsp</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -61,21 +62,14 @@ include 'partials/nav.php';
                         foreach ($items as $item) {
                             ?>
                             <tr class="text-center">
-                                <form id="form-remove-<?= $i ?>" action="cart/remove" method="POST">
-                                    <input type="hidden" name="i" value=<?= $i ?>>
-
-                                    <td class="product-remove">
-                                        <button type="submit" class="remove-btn" style="border:none;">
-                                            <span class="icon-close"></span>
-                                        </button>
-                                    </td>
-
-                                </form>
-
+                                <td class="product-remove">
+                                    <button type="submit" class="remove-btn" onclick="removeItem(<?= $i ?>)" style="border:none;">
+                                        <span class="icon-close"></span>
+                                    </button>
+                                </td>
                                 <td class="image-prod">
                                     <div class="img" style="background-image:url(<?= $item->ImagePath ?>);"></div>
                                 </td>
-
                                 <td class="product-name">
                                     <?php if ($cartItems[$i]->getSelectedOption() == '') { ?>
                                         <h3 style="margin-bottom:0px;"><?= $item->Name ?></h3>
@@ -83,31 +77,17 @@ include 'partials/nav.php';
                                         <h3 style="margin-bottom:0px;"><?= $item->Name ?>
                                             (<?= $cartItems[$i]->getSelectedOption() ?>)</h3>
                                     <?php } ?>
-                                    <!-- <p>Far far away, behind the word mountains, far from the countries</p> -->
                                 </td>
-
                                 <td class="price" style="color:#504831;"><?= $item->Price ?> EGP</td>
-
                                 <td class="quantity">
-                                    <div class="input-group mb-3">
-													<span class="input-group-btn mr-2">
-														<button type="button" onclick="decrementQuantity(<?= $i ?>)"
-                                                                class="quantity-left-minus btn" data-type="minus"
-                                                                data-field="">
-														<i class="icon-minus"></i>
-														</button>
-													</span>
-                                        <input type="text" id="quantity" name="quantity"
-                                               class="form-control input-number"
-                                               value="<?= $cartItems[$i]->getQuantity() ?>" min="1"
-                                               max="100">
-                                        <span class="input-group-btn ml-2">
-														<button type="button" onclick="incrementQuantity(<?= $i ?>)"
-                                                                class="quantity-right-plus btn" data-type="plus"
-                                                                data-field="">
-														<i class="icon-plus"></i>
-														</button>
-													</span>
+                                    <div class="input-group">
+                                            <button type="button" onclick="decrementQuantity(<?= $i ?>)" class="quantity-left-minus btn" data-type="minus" data-field="">
+                                                <i class="icon-minus"></i>
+                                            </button>
+                                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="<?= $cartItems[$i]->getQuantity() ?>" min="1" max="100">
+                                            <button type="button" onclick="incrementQuantity(<?= $i ?>)" class="quantity-right-plus btn" data-type="plus" data-field="">
+                                                <i class="icon-plus"></i>
+                                            </button>
                                     </div>
                                 </td>
 
