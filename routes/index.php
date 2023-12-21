@@ -1,5 +1,4 @@
 <?php
-@session_start();
 // Path: index.php
 
 // Get the current URL

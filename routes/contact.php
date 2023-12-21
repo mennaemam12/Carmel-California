@@ -1,5 +1,4 @@
 <?php
-@session_start();
 // Path: routes/contact.php
 require_once 'models/User.php';
 

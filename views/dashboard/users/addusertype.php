@@ -1,5 +1,4 @@
 <?php
-@session_start();
 include 'projectFolderName.php';
 require_once 'helpers/session.helper.php';
 ?>

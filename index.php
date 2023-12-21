@@ -1,8 +1,8 @@
 <?php
 // Path: index.php
 
+@session_start();
 include 'projectFolderName.php';
-
 
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];

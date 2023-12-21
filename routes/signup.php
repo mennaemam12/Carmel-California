@@ -1,5 +1,4 @@
 <?php
-@session_start();
 // Path: routes/cart.php
 
 include 'projectFolderName.php';

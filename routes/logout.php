@@ -1,5 +1,4 @@
 <?php
-@session_start();
 // Path: routes/logout.php
 require_once 'helpers/session.helper.php';
 include 'projectFolderName.php';

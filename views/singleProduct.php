@@ -4,7 +4,6 @@ require_once 'models/Item.php';
 require_once 'models/ItemOption.php';
 require_once 'models/Review.php';
 $rows = Item::getAllItems();
-@session_start();
 ?>
 
 

@@ -1,5 +1,4 @@
 <?php
-@session_start();
 // Path: routes/checkout.php
 
 include 'projectFolderName.php';

@@ -1,6 +1,5 @@
 <?php
 // Path: routes/login.php
-@session_start();
 
 include 'projectFolderName.php';
 include 'helpers/session.helper.php';

@@ -1,7 +1,6 @@
 <?php
-if(!isset($_SESSION)){
+if(!isset($_SESSION))
     @session_start();
-}
 
 function flash($name = '', $message = '', $class = 'form-message form-message-red'){
     if(!empty($name)){
