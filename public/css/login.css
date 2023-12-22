@@ -1,361 +1,191 @@
-@font-face {
-  font-family: "ElMessiri-SemiBold";
-  src: url("../fonts/el_messiri/ElMessiri-SemiBold.ttf");
-}
-@font-face {
-  font-family: "Montserrat-Regular";
-  src: url("../fonts/montserrat/Montserrat-Regular.ttf");
-}
-@font-face {
-  font-family: "Montserrat-SemiBold";
-  src: url("../fonts/montserrat/Montserrat-SemiBold.ttf");
-}
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
-html {
-  width: 100%;
-  height: 100%;
+.image {
+    height: 100%;
+    width: 50%;
 }
 
-body {
-  /* font-family: "Montserrat-Regular"; */
-  color: #ab3606;
-  font-size: 17px;
-  margin: 0;
-  width:100%;
-  height:100%;
-
-}
-
-p,
-h3 {
-  margin: 0;
-}
-
-img {
-  max-width: 100%;
-  height:100%;
-}
-
-a {
-  text-decoration: none;
-  color: #045420;
-  transition: all 0.3s ease;
-}
-a:hover {
-  text-decoration: none;
-  color: #042f13;
-}
-
-:focus {
-  outline: none;
-}
-
-.wrapper {
-  width: 100%;
-  padding: 4em 0em;
-  padding-bottom: 1.25em;
-  /* min-height: 100vh; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* background-color: #ebdcce; */
-}
-
-.inner {
-  width:90%;
-  max-width: 1200px;
-  /* background: #ebdcce; */
-  display: flex;
-  flex-direction: row;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-}
-
-.image-holder {
-  width: 50%;
-  max-height:50%;
-}
-
-form {
-  width: 50%;
-  padding-top: 25px;
-  padding-right: 60px;
-  padding-left: 30px;
-  padding-bottom:25px;
-  /* background: #ebdcce; */
-  background: rgb(235,220,206,0.75);
-}
-
-h3 {
-  font-size: 60px;
-  font-family: "ElMessiri-SemiBold";
-  text-align: center;
-  margin-bottom: 27px;
-  color: #045420;
-}
-
-.form-holder {
-  padding-left: 24px;
-  position: relative;
-}
-.form-holder:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid #045420;
-  position: absolute;
-  left: 1px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.form-holder.active:before {
-  border: 2px solid transparent;
-  background: #045420;
-}
-
-.form-holder input {
-  width:80%;
-  min-width:250px;
-}
-
-.form-control {
-  display: block;
-  width: 100%;
-  border-radius: 15px;
-  height: 47px !important;
-  padding: 0 24px;
-  color: #808080;
-  font-size: 13px;
-  border: none;
-  background: #f7f7f7;
-  margin-bottom: 25px;
-  color:#504831 !important;
-  background: rgb(255,255,255,0.6)!important;
-}
-
-.form-control::-webkit-input-placeholder {
-  font-size: 13px;
-  color: #808080;
-  font-family: "Montserrat-Regular";
-}
-.form-control::-moz-placeholder {
-  font-size: 13px;
-  color: #808080;
-  font-family: "Montserrat-Regular";
-}
-.form-control:-ms-input-placeholder {
-  font-size: 13px;
-  color: #808080;
-  font-family: "Montserrat-Regular";
-}
-.form-control:-moz-placeholder {
-  font-size: 13px;
-  color: #808080;
-  font-family: "Montserrat-Regular";
-}
-
-@-webkit-keyframes hvr-wobble-horizontal {
-  16.65% {
-    -webkit-transform: translateX(8px);
-    transform: translateX(8px);
-  }
-  33.3% {
-    -webkit-transform: translateX(-6px);
-    transform: translateX(-6px);
-  }
-  49.95% {
-    -webkit-transform: translateX(4px);
-    transform: translateX(4px);
-  }
-  66.6% {
-    -webkit-transform: translateX(-2px);
-    transform: translateX(-2px);
-  }
-  83.25% {
-    -webkit-transform: translateX(1px);
-    transform: translateX(1px);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-@keyframes hvr-wobble-horizontal {
-  16.65% {
-    -webkit-transform: translateX(8px);
-    transform: translateX(8px);
-  }
-  33.3% {
-    -webkit-transform: translateX(-6px);
-    transform: translateX(-6px);
-  }
-  49.95% {
-    -webkit-transform: translateX(4px);
-    transform: translateX(4px);
-  }
-  66.6% {
-    -webkit-transform: translateX(-2px);
-    transform: translateX(-2px);
-  }
-  83.25% {
-    -webkit-transform: translateX(1px);
-    transform: translateX(1px);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-.button {
-  letter-spacing: 2px;
-  border: none;
-  /* width: 133px; */
-  /* height: 47px; */
-  margin-right: 19px;
-  border-radius: 23.5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background: #045420;
-  font-size: 15px;
-  color: #fff;
-  text-transform: uppercase;
-  font-family: "Montserrat-SemiBold";
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
-.button:hover {
-  -webkit-animation-name: hvr-wobble-horizontal;
-  animation-name: hvr-wobble-horizontal;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-}
-
-.checkbox {
-  width:100%;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: flex-start;
-  column-gap: 10px;
-  position: relative;
-}
-
-
-.checkbox label {
-  width:100%;
-}
-
-.form-message-div {
-  margin-left:35px;
-  margin-bottom:25px;
-}
-
-.form-login {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-left: 23px;
-  flex-wrap: nowrap;
-}
-
-.form-login p {
-  text-align: center;
-  width:100%;
-}
-
-.form-login .button {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  padding:10px 35px;
-}
-
-@media (max-width:767.98px) {
-  .inner {
-    width:100%;
-    flex-direction: column-reverse;
-  }
-  .form-holder input {
-    min-width: 100px;
-    max-width:250px;
-  }
-  .wrapper {
-    padding-right: 1.25em;
-    padding-left:1.25em;
-  }
-  form {
-    width:100%;
-    padding: 25px 20px;
-  }
-  .image-holder {
-    width:100%;
-    height:100%;
-  }
-  .form-login {
-    margin-left: 0;
-    flex-direction: column;
-    row-gap: 30px;
-  }
-  .form-message-div {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.login {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    margin-left:0px;
-  }
-  .button {
-    margin-right:0px;
-  }
-
+    align-items: center;
+    background: rgb(235, 220, 206, 0.75);
 }
 
-@media (min-width:991.98px) {
-  .wrapper {
-    padding-top: 5.25em;
-  }
-}
-
-@media (max-width:767.98px) {
-  .wrapper::before {
+.image::before {
     content: "";
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    background-image: url(../images/reg.jpg);
-    background-size: cover;
-    /* background-repeat: repeat; */
+    width: 50%;
     height: 100%;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-    z-index: -1;
-    opacity: 0.7;
-  }
-  .image-holder {
-    display: none;
-  }
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.image img {
+    width: 100%;
+    max-height: 100vh;
+    object-fit: cover;
+}
+
+.login form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: inherit;
+
+    border-radius: 10px;
+    padding: 20px;
+
+    margin-top: 50px;
+
+}
+
+.login .form-title {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #045420;
+    font-weight: 400;
+}
+
+.login form .form-group {
+    width: 70%;
+}
+
+.login form .form-group label {
+    color: #045420;
+    font-weight: 400;
+}
+
+.login form .form-group .form-control:focus {
+    box-shadow: 0 0 0 0.1rem rgba(4, 84, 32, 1);
+}
+
+.login form .form-group .form-control {
+    border-color: #504831;
+}
+
+.login form ::placeholder {
+    color: #504831;
+    font-weight: 100;
+    font-size: 1rem;
+}
+
+.form-group:last-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.form-group:last-of-type a {
+    color: #504831;
+    font-weight: 100;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.form-group:last-of-type a:hover {
+    color: #045420;
+    font-weight: 400;
+}
+
+.form-group:last-of-type p {
+    color: #045420;
+}
+
+
+.login form input[type="text"], .login form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login form #submit {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.button {
+    background: #045420;
+}
+
+.button:hover {
+    background: #045420;
+    color: #fff;
+}
+
+.form-message-div {
+    color: red;
+}
+
+@media (max-width: 992px) {
+    .image {
+        display: none;
+    }
+
+    .login {
+        width: 100%;
+        padding: 40px;
+    }
+
+    .login form {
+        min-width: 300px;
+        width: 50%;
+        background: rgb(235, 220, 206, 0.5);
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .login form .form-group input {
+        background: rgba(255,255,255,0.5);
+    }
+
+    .login form ::placeholder {
+        font-size: 0.8rem;
+        color: rgba(80, 72, 49, 1);
+    }
+
+    .login form .form-group {
+        width: 100%;
+    }
+
+    .login {
+        position: relative;
+        overflow: hidden;
+        background: rgba(0,0,0,0.4);
+    }
+
+    .login::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url("../images/reg.jpg") no-repeat center center fixed;
+        background-size: cover;
+        filter: blur(5px);
+        z-index: -1;
+    }
 }
