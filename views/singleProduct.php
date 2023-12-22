@@ -231,7 +231,6 @@ include 'partials/footer.php';
 <script src="public/js/jquery.min.js"></script>
 <script src="public/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="public/js/popper.min.js"></script>
-<script src="public/js/bootstrap.min.js"></script>
 <script src="public/js/jquery.easing.1.3.js"></script>
 <script src="public/js/jquery.waypoints.min.js"></script>
 <script src="public/js/jquery.stellar.min.js"></script>

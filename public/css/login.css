@@ -24,40 +24,40 @@ section {
     object-fit: cover;
 }
 
-#login-section .image img {
-    max-height: 100vh;
-}
+/*#login-section .image img {*/
+/*    max-height: 100vh;*/
+/*}*/
 
-#login-section .image::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-}
+/*#login-section .image::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 50%;*/
+/*    height: 100%;*/
+/*    background-color: rgba(0, 0, 0, 0.5);*/
+/*    z-index: 1;*/
+/*}*/
 
-#signup-section .form-group {
+.form-group {
     margin-bottom: 10px;
 }
 
-#signup-section .form-group:last-of-type {
+.form-group:last-of-type {
     margin-bottom: 0px;
 }
 
-#signup-section .image {
+.image {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
 }
 
-#signup-section .image img {
+.image img {
     height: 100vh;
 }
 
-#signup-section .image::before {
+.image::before {
     content: "";
     position: absolute;
     top: 0;
@@ -68,7 +68,7 @@ section {
     z-index: 1;
 }
 
-#signup-section form {
+form {
     margin-top: 60px;
 }
 
@@ -94,7 +94,7 @@ section {
     font-weight: 400;
 }
 
-#signup-section .login .form-title {
+.login .form-title {
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 2rem;
@@ -220,10 +220,10 @@ section {
         background: rgb(235, 220, 206, 0.9);
         border: 1px solid #ccc;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        max-width:400px;
+        max-width: 400px;
     }
 
-    #signup-section form {
+    form {
         width: 70%;
     }
 
@@ -259,7 +259,7 @@ section {
         z-index: -1;
     }
 
-    #signup-section .login form {
+    .login form {
         margin-top: 45px;
     }
 }

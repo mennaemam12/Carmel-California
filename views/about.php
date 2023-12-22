@@ -8,13 +8,7 @@ $rows = Item::getAllItems();
 <head>
     <?php include 'views/partials/head.php';?>
 
-    <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/animate.css">
-
-    <link rel="stylesheet" href="public/css/ionicons.min.css">
-
-    <link rel="stylesheet" href="public/css/flaticon.css">
-    <link rel="stylesheet" href="public/css/icomoon.css">
 
     <link rel="stylesheet" href="public/css/about.css">
     <link rel="stylesheet" href="public/css/nav.css">
@@ -160,12 +154,7 @@ include 'partials/footer.php'
 
 
 <script src="public/js/jquery.min.js"></script>
-<script src="public/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="public/js/bootstrap.min.js"></script>
 <script src="public/js/jquery.waypoints.min.js"></script>
-<script src="public/js/jquery.stellar.min.js"></script>
-<script src="public/js/owl.carousel.min.js"></script>
-<script src="public/js/aos.js"></script>
 <script src="public/js/scrollax.min.js"></script>
 <script src="public/js/main.js"></script>
 <script src="public/js/nav.js"></script>

@@ -8,26 +8,18 @@ require_once 'controllers/menu.controller.php';
 <head>
 
     <?php include 'views/partials/head.php';?>
-    <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="public/css/animate.css">
-
     <link rel="stylesheet" href="public/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="public/css/owl.theme.default.min.css">
 
-    <link rel="stylesheet" href="public/css/flaticon.css">
-    <link rel="stylesheet" href="public/css/icomoon.css">
     <link rel="stylesheet" href="public/css/nav.css">
     <link rel="stylesheet" href="public/css/footer.css">
     <link rel="stylesheet" href="public/css/menu.css">
-
-    <link rel="stylesheet" href="public/css/chatbot.css">
 
 </head>
 <body>
 
 <?php
 include 'partials/nav.php';
-include_once 'partials/chatbot.php'
 ?>
 
 <section class="home-slider owl-carousel">
@@ -183,20 +175,9 @@ include 'partials/footer.php';
     </svg>
 </div>
 
-
 <script src="public/js/jquery.min.js"></script>
-<script src="public/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="public/js/popper.min.js"></script>
-<script src="public/js/bootstrap.min.js"></script>
-<script src="public/js/jquery.easing.1.3.js"></script>
 <script src="public/js/jquery.waypoints.min.js"></script>
-<script src="public/js/jquery.stellar.min.js"></script>
 <script src="public/js/owl.carousel.min.js"></script>
-<script src="public/js/jquery.magnific-popup.min.js"></script>
-<script src="public/js/aos.js"></script>
-<script src="public/js/jquery.animateNumber.min.js"></script>
-<script src="public/js/bootstrap-datepicker.js"></script>
-<script src="public/js/jquery.timepicker.min.js"></script>
 <script src="public/js/scrollax.min.js"></script>
 <script src="public/js/main.js"></script>
 <script src="public/js/nav.js"></script>

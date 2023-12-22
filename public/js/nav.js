@@ -16,3 +16,14 @@ function addActiveClass() {
         if (navItems[i].id === currentPage)
             navItems[i].classList.add("active");
 }
+
+let navbar_toggler = document.querySelector(".navbar-toggler");
+let nav = document.querySelector("#ftco-nav");
+
+navbar_toggler.addEventListener("click", () => {
+    if (nav.classList.contains("show"))
+        nav.classList.remove("show");
+    else
+        nav.classList.add("show");
+
+});
