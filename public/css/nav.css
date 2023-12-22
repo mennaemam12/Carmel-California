@@ -74,14 +74,12 @@ a:focus {
     opacity: 1 !important;
 }
 
-@media (min-width: 768px) {
-    .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-        padding-left: 20px;
-        padding-right: 20px;
-        /* color: #fff; */
-        font-weight: 500;
-    }
+.ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 500;
 }
+
 
 .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover,
 .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:focus {
@@ -377,4 +375,11 @@ a:focus {
         stroke-dasharray: 89, 200;
         stroke-dashoffset: -136px;
     }
+}
+
+#ftco-nav {
+    transition: height 0.5s ease;
+    height: 0px;
+    overflow: hidden;
+    padding: 0px;
 }

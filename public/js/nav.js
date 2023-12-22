@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", () => {
     addActiveClass();
 });
 
@@ -19,11 +19,34 @@ function addActiveClass() {
 
 let navbar_toggler = document.querySelector(".navbar-toggler");
 let nav = document.querySelector("#ftco-nav");
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 992) {
+        nav.style.height = "auto";
+        nav.style.padding = "0px";
+    }
+    else {
+        nav.style.height = "0px";
+        nav.style.padding = "0px";
+    }
+});
+
+if (window.innerWidth > 992) {
+    nav.style.height = "auto";
+    nav.style.padding = "0px";
+}
+else {
+    nav.style.height = "0px";
+    nav.style.padding = "0px";
+}
 
 navbar_toggler.addEventListener("click", () => {
-    if (nav.classList.contains("show"))
-        nav.classList.remove("show");
-    else
-        nav.classList.add("show");
-
+    if (parseInt(nav.style.height) === 0) {
+        nav.style.height = "400px";
+        nav.style.padding = "15px 0px";
+    } else {
+        nav.style.height = "0px";
+        setTimeout(() => {
+            nav.style.padding = "0px";
+        }, 400);
+    }
 });
