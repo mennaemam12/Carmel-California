@@ -105,44 +105,38 @@ include 'partials/nav.php';
                             <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab"
                                  role="tablist" aria-orientation="vertical">
 
-                                <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
-                                   aria-controls="v-pills-3" aria-selected="false">Breakfast</a>
+                                <a class="nav-link active" id="v-pills-1-tab" href="#v-pills-1">Breakfast</a>
 
-                                <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1"
-                                   role="tab" aria-controls="v-pills-1" aria-selected="true">Main</a>
+                                <a class="nav-link" id="v-pills-2-tab" href="#v-pills-2">Main</a>
 
-                                <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
-                                   aria-controls="v-pills-2" aria-selected="false">Sides</a>
+                                <a class="nav-link" id="v-pills-3-tab" href="#v-pills-3">Sides</a>
 
-                                <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab"
-                                   aria-controls="v-pills-4" aria-selected="false">Desserts</a>
+                                <a class="nav-link" id="v-pills-4-tab" href="#v-pills-4">Desserts</a>
 
-                                <a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab"
-                                   aria-controls="v-pills-5" aria-selected="false">Drinks</a>
+                                <a class="nav-link" id="v-pills-5-tab" href="#v-pills-5">Drinks</a>
                             </div>
                         </div>
 
 
                         <div class="tab-content ftco-animate" id="v-pills-tabContent">
 
-                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
-                                 aria-labelledby="v-pills-1-tab">
-                                <?php echo MenuController::generateItemsHTML($mainCategories, $mainItems, "main") ?>
-                            </div>
-
-                            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
-                                <?php echo MenuController::generateItemsHTML($sideCategories, $sideItems, "sides") ?>
-                            </div>
-
-                            <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                            <div class="tab-pane fade show active" id="v-pills-1">
                                 <?php echo MenuController::generateItemsHTML($breakfastCategories, $breakfastItems, "breakfast") ?>
                             </div>
 
-                            <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+                            <div class="tab-pane fade" id="v-pills-2">
+                                <?php echo MenuController::generateItemsHTML($mainCategories, $mainItems, "main") ?>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-3">
+                                <?php echo MenuController::generateItemsHTML($sideCategories, $sideItems, "sides") ?>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-4">
                                 <?php echo MenuController::generateItemsHTML($dessertCategories, $dessertItems, "desserts") ?>
                             </div>
 
-                            <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+                            <div class="tab-pane fade" id="v-pills-5">
                                 <?php echo MenuController::generateItemsHTML($drinkCategories, $drinkItems, "drinks") ?>
                             </div>
 
@@ -181,6 +175,7 @@ include 'partials/footer.php';
 <script src="public/js/scrollax.min.js"></script>
 <script src="public/js/main.js"></script>
 <script src="public/js/nav.js"></script>
+<script src="public/js/menu.js"></script>
 
 </body>
 </html>

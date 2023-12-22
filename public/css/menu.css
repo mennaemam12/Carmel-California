@@ -278,7 +278,7 @@ h3 {
     color: #c49b63;
     text-align: right;
     background: #151111;
-    background: url(public/images/bg_4.jpg) no-repeat fixed;
+    background: no-repeat fixed;
     font-size: 16px;
     margin-bottom: 15px;
 }
