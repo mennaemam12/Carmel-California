@@ -25,7 +25,7 @@ section {
 }
 
 #login-section .image img {
-    max-height:100vh;
+    max-height: 100vh;
 }
 
 #login-section .image::before {
@@ -40,7 +40,11 @@ section {
 }
 
 #signup-section .form-group {
-    margin-bottom:10px;
+    margin-bottom: 10px;
+}
+
+#signup-section .form-group:last-of-type {
+    margin-bottom: 0px;
 }
 
 #signup-section .image {
@@ -50,7 +54,7 @@ section {
 }
 
 #signup-section .image img {
-    height:100vh;
+    height: 100vh;
 }
 
 #signup-section .image::before {
@@ -91,7 +95,7 @@ section {
 }
 
 #signup-section .login .form-title {
-    margin-top:10px;
+    margin-top: 10px;
     margin-bottom: 10px;
     font-size: 2rem;
     color: #045420;
@@ -108,7 +112,7 @@ section {
 }
 
 .login form .form-group .form-control {
-    background: rgba(255,255,255,0.0);
+    background: rgba(255, 255, 255, 0.0);
 }
 
 .login form .form-group ::placeholder {
@@ -176,13 +180,13 @@ section {
 }
 
 .login form #submit:active {
-    background : rgba(4, 120, 32, 1);
+    background: rgba(4, 120, 32, 1);
     box-shadow: 0 0 0 0;
 }
 
 .login .button {
     background: #045420;
-    color:white;
+    color: white;
 }
 
 .login .button:hover, .button:focus {
@@ -194,9 +198,9 @@ section {
     color: red;
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
     nav {
-        background: rgb(221, 209, 195,1) !important;
+        background: rgb(221, 209, 195, 1) !important;
     }
 }
 
@@ -216,14 +220,15 @@ section {
         background: rgb(235, 220, 206, 0.9);
         border: 1px solid #ccc;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        max-width:400px;
     }
 
     #signup-section form {
-        width:70%;
+        width: 70%;
     }
 
     .login form .form-group input {
-        background: rgba(255,255,255,0.5);
+        background: rgba(255, 255, 255, 0.5);
     }
 
     .login form ::placeholder {
@@ -238,7 +243,7 @@ section {
     .login {
         position: relative;
         overflow: hidden;
-        background: rgba(0,0,0,0.4);
+        background: rgba(0, 0, 0, 0.4);
     }
 
     .login::before {

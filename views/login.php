@@ -46,13 +46,12 @@ include 'views/partials/nav.php'
             </div>
 
             <div class="form-group">
-
-                <div class="form-group">
-                    <a href="forgotPassword">Forgot Password?</a>
+                <div class="form-group" style="margin-bottom:0px;">
+                    <p>Don't have an account? <a href='signup'>Sign&nbsp;Up</a></p>
                 </div>
 
-                <div class="form-group">
-                    <p>Don't have an account? <a href='signup'>Sign&nbsp;Up</a></p>
+                <div class="form-group" >
+                    <a href="forgotPassword">Forgot Password?</a>
                 </div>
             </div>
 
