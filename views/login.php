@@ -25,9 +25,9 @@ include 'views/partials/nav.php'
         <form id="login-form" method="POST" action="login">
             <div class="form-title">Sign In</div>
             <div class="form-group">
-                <label for="Name/Email">Username or Email</label>
-                <input type="text" class="form-control" id="Name/Email" name="Name/Email"
-                       placeholder="Enter your username or email">
+                <label for="Email">Email</label>
+                <input type="text" class="form-control" id="Email" name="Email"
+                       placeholder="Enter your email">
             </div>
             <div class="form-group">
                 <label for="UserPass">Password</label>

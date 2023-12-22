@@ -9,7 +9,6 @@ class User {
     private $id;
     private $fullName;
     private $email;
-    private $username;
     private $password;
     private $phone;
     private $type;
@@ -41,14 +40,6 @@ class User {
 
     public function getEmail() {
         return $this->email;
-    }
-
-    public function setUsername($username) {
-        $this->username = $username;
-    }
-
-    public function getUsername() {
-        return $this->username;
     }
 
     public function setPassword($password) {
@@ -90,7 +81,6 @@ class User {
             $this->id,
             $this->fullName,
             $this->email,
-            $this->username,
             $this->password,
             $this->phone,
             $this->type,
@@ -103,7 +93,6 @@ class User {
             $this->id,
             $this->fullName,
             $this->email,
-            $this->username,
             $this->password,
             $this->phone,
             $this->type,
@@ -111,10 +100,9 @@ class User {
         ) = unserialize($serialized);
     }
 
-    //Find user by email or username
-    public function findUserByEmailOrUsername($email, $username){
-        $this->db->query('SELECT * FROM users WHERE Username = :username OR Email = :email');
-        $this->db->bind(':username', $username);
+    //Find user by email
+    public function findUserByEmail($email){
+        $this->db->query('SELECT * FROM users WHERE Email = :email');
         $this->db->bind(':email', $email);
 
         $row = $this->db->single();
@@ -139,7 +127,6 @@ class User {
             $user->setID($row->id);
             $user->setFullName($row->FullName);
             $user->setEmail($row->Email);
-            $user->setUsername($row->UserName);
             $user->setPhone($row->PhoneNumber);
             $user->setType($row->Usertype);
             return $user;
@@ -161,7 +148,6 @@ class User {
             $user->setID($rows[$i]->id);
             $user->setFullName($rows[$i]->FullName);
             $user->setEmail($rows[$i]->Email);
-            $user->setUsername($rows[$i]->UserName);
             $user->setPhone($rows[$i]->PhoneNumber);
             $user->setType($rows[$i]->Usertype);
             $users[] = $user;
@@ -172,12 +158,11 @@ class User {
 
     //Register User
     public function register(){
-        $this->db->query('INSERT INTO users (FullName, Email, UserName, UserPass, PhoneNumber,Usertype) 
-        VALUES (:fullname, :email, :username, :userpass, :phonenumber,:usertype)');
+        $this->db->query('INSERT INTO users (FullName, Email, UserPass, PhoneNumber,Usertype) 
+        VALUES (:fullname, :email, :userpass, :phonenumber,:usertype)');
         //Bind values
         $this->db->bind(':fullname', $this->fullName);
         $this->db->bind(':email', $this->email);
-        $this->db->bind(':username', $this->username);
         $this->db->bind(':userpass', $this->password);
         $this->db->bind(':phonenumber', $this->phone);
         $this->db->bind(':usertype',$this->getType()->getID());
@@ -189,8 +174,8 @@ class User {
     }
 
     //Login user
-    public function login($nameOrEmail, $password){
-        $row = $this->findUserByEmailOrUsername($nameOrEmail, $nameOrEmail);
+    public function login($email, $password){
+        $row = $this->findUserByEmail($email);
 
         if(!$row)
             return false;

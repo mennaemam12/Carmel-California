@@ -12,7 +12,7 @@ class UserController
 
     private function validateLogin($data)
     {
-        if (empty($data['Name/Email']) || empty($data['UserPass'])) {
+        if (empty($data['Email']) || empty($data['UserPass'])) {
             $this->errorMsg = "Please fill out all inputs";
             return false;
         }
@@ -26,11 +26,6 @@ class UserController
             empty($data['UserPass']) || empty($data['UserConfPass'])
         ) {
             $this->errorMsg = "Please fill out all inputs";
-            return false;
-        }
-
-        if (!preg_match("/^[a-zA-Z0-9]*$/", $data['Username'])) {
-            $this->errorMsg = "Invalid Username";
             return false;
         }
 
@@ -104,7 +99,6 @@ class UserController
         $data = [
             'FullName' => trim($_POST['FullName']),
             'Email' => trim($_POST['Email']),
-            'Username' => trim($_POST['Username']),
             'UserPass' => trim($_POST['UserPass']),
             'UserConfPass' => trim($_POST['UserConfPass']),
             'PhoneNumber' => trim($_POST['PhoneNumber'])
@@ -118,8 +112,8 @@ class UserController
         }
 
         //User with the same email or password already exists
-        if ($this->userModel->findUserByEmailOrUsername($data['Email'], $data['Username'])) {
-            $this->errorMsg = "Username or Email is already taken";
+        if ($this->userModel->findUserByEmail($data['Email'])) {
+            $this->errorMsg = "Email is already taken";
             $response = array('msg' => $this->errorMsg);
             echo json_encode($response);
             exit();
@@ -130,7 +124,6 @@ class UserController
         $data['UserPass'] = password_hash($data['UserPass'], PASSWORD_DEFAULT);
         $this->userModel->setFullName($data['FullName']);
         $this->userModel->setEmail($data['Email']);
-        $this->userModel->setUsername($data['Username']);
         $this->userModel->setPassword($data['UserPass']);
         $this->userModel->setPhone($data['PhoneNumber']);
         $this->userModel->setType(1);
@@ -157,7 +150,7 @@ class UserController
 
         //Init data
         $data = [
-            'Name/Email' => trim($_POST['Name/Email']),
+            'Email' => trim($_POST['Email']),
             'UserPass' => trim($_POST['UserPass'])
         ];
 
@@ -168,9 +161,9 @@ class UserController
         }
 
         //Check for user/email
-        if ($this->userModel->findUserByEmailOrUsername($data['Name/Email'], $data['Name/Email'])) {
+        if ($this->userModel->findUserByEmail($data['Email'])) {
             //User Found
-            $loggedInUser = $this->userModel->login($data['Name/Email'], $data['UserPass']);
+            $loggedInUser = $this->userModel->login($data['Email'], $data['UserPass']);
             if (!$loggedInUser) {
                 $this->errorMsg = "Wrong Password";
                 $response = array('msg' => $this->errorMsg);
@@ -181,7 +174,6 @@ class UserController
             $this->userModel->setID($loggedInUser->id);
             $this->userModel->setFullName($loggedInUser->FullName);
             $this->userModel->setEmail($loggedInUser->Email);
-            $this->userModel->setUsername($loggedInUser->UserName);
             $this->userModel->setPhone($loggedInUser->PhoneNumber);
             $this->userModel->setType($loggedInUser->Usertype);
             $this->createUserSession($this->userModel);

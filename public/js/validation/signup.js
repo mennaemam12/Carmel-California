@@ -39,12 +39,6 @@ class FormClass {
                         this.noErr = false;
                     }
                     break;
-                case 'username':
-                    if (!fields[i].value.match(/^[a-zA-Z0-9]+$/)) {
-                        this.error.innerHTML = "Username must contain only alphabets and numbers";
-                        this.noErr = false;
-                    }
-                    break;
                 case 'email':
                     let mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
                     if (!fields[i].value.match(mailFormat)) {

@@ -39,6 +39,10 @@ section {
     z-index: 0;
 }
 
+#signup-section .form-group {
+    margin-bottom:10px;
+}
+
 #signup-section .image {
     position: -webkit-sticky;
     position: sticky;
@@ -81,6 +85,14 @@ section {
 
 .login .form-title {
     margin-bottom: 30px;
+    font-size: 2rem;
+    color: #045420;
+    font-weight: 400;
+}
+
+#signup-section .login .form-title {
+    margin-top:10px;
+    margin-bottom: 10px;
     font-size: 2rem;
     color: #045420;
     font-weight: 400;
@@ -182,6 +194,12 @@ section {
     color: red;
 }
 
+@media (min-width:992px) {
+    nav {
+        background: rgb(221, 209, 195,1) !important;
+    }
+}
+
 @media (max-width: 992px) {
     .image {
         display: none;
@@ -234,5 +252,9 @@ section {
         background-size: cover;
         filter: blur(5px);
         z-index: -1;
+    }
+
+    #signup-section .login form {
+        margin-top: 45px;
     }
 }

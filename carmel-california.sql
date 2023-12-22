@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 20, 2023 at 06:49 AM
+-- Host: 127.0.0.1
+-- Generation Time: Dec 22, 2023 at 01:33 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -58,7 +58,7 @@ CREATE TABLE `breakfast` (
   `id` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Category` varchar(20) NOT NULL,
-  `Description` varchar(65) NOT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -84,6 +84,13 @@ CREATE TABLE `cart` (
   `Selected_Option` varchar(20) NOT NULL,
   `Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `User_id`, `Item_type`, `Item_id`, `Selected_Option`, `Quantity`) VALUES
+(35, 28, 'main', 2, '', 4);
 
 -- --------------------------------------------------------
 
@@ -119,7 +126,7 @@ CREATE TABLE `desserts` (
   `id` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Category` varchar(20) NOT NULL,
-  `Description` text NOT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(65) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -164,7 +171,7 @@ CREATE TABLE `drinks` (
   `id` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Category` varchar(20) NOT NULL,
-  `Description` varchar(65) NOT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -186,7 +193,7 @@ CREATE TABLE `main` (
   `id` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Category` varchar(20) NOT NULL,
-  `Description` varchar(65) NOT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -197,7 +204,7 @@ CREATE TABLE `main` (
 
 INSERT INTO `main` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath`) VALUES
 (2, 'Chicken Pesto', 'Pasta', 'pasta, cream', 295, 'public/images/main/image_655b8c040e11b.jpg'),
-(3, 'Mushroom & Swiss Burger', 'Burger', 'Emmental, tomato, lettuce, pickles served with homemade.', 269, 'public/images/main/image_655d3533ef5dc.jpg'),
+(3, 'Mushroom', 'Burger', 'Emmental, tomato, lettuce, pickles served with homemade.', 269, 'public/images/main/image_655d3533ef5dc.jpg'),
 (4, 'Shrimp Havana', 'Pasta', 'Sundried tomato, broccoli, fresh cream', 310, 'public/images/main/image_656cea700d41e.jpg');
 
 -- --------------------------------------------------------
@@ -278,15 +285,16 @@ CREATE TABLE `orders` (
   `ItemId` int(11) NOT NULL,
   `ItemType` varchar(50) NOT NULL,
   `SelectedOption` varchar(50) NOT NULL,
-  `Quantity` int(11) NOT NULL
+  `Quantity` int(11) NOT NULL,
+  `new_column` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `UserId`, `ItemId`, `ItemType`, `SelectedOption`, `Quantity`) VALUES
-(6, 32, 2, 'main', '', 1);
+INSERT INTO `orders` (`id`, `UserId`, `ItemId`, `ItemType`, `SelectedOption`, `Quantity`, `new_column`) VALUES
+(6, 32, 2, 'main', '', 1, '2023-12-21 21:05:00');
 
 -- --------------------------------------------------------
 
@@ -390,7 +398,7 @@ CREATE TABLE `sides` (
   `id` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Category` varchar(20) NOT NULL,
-  `Description` varchar(65) NOT NULL,
+  `Description` varchar(1000) DEFAULT NULL,
   `Price` double NOT NULL,
   `ImagePath` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -412,7 +420,6 @@ INSERT INTO `sides` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePat
 CREATE TABLE `users` (
   `FullName` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `UserName` varchar(50) NOT NULL,
   `UserPass` varchar(255) NOT NULL,
   `PhoneNumber` int(11) NOT NULL,
   `id` int(11) NOT NULL,
@@ -423,13 +430,13 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`FullName`, `Email`, `UserName`, `UserPass`, `PhoneNumber`, `id`, `Usertype`) VALUES
-('Menna Emam', 'mennaemaam12@gmail.com', 'mennaemam', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, '1'),
-('Nader Maged', 'donia1@gmail.com', 'nadouraa', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, '1'),
-('Ramez Ehab', 'ramez@gmail.com', 'ramez', '$2y$10$PIbQHrRj3S0BEmFm1KRCLOzC0ALC7wdQT5b35.YQ/BxTOFiXYAeiO', 2147483647, 28, '2'),
-('Admin Universal', 'admin@gmail.com', 'admin', '$2y$10$e6fkBOvwdfkkU62V0xsS1eEs0Rs9y8IHSb3Ca71vJTKpVONq//KBu', 2147483647, 29, '2'),
-('User Universal', 'user@gmail.com', 'user', '$2y$10$Tpxk2DpwDP.ugQj0XtFND.hQAk5rEXkD2j4KCeBTm2bP7FPKu40d.', 20123123, 30, '1'),
-('farrah', 'farah2102625@miuegypt.edu.eg', 'farooha', '$2y$10$1Px1r.Ja6J122X8Dx3s3i.Ntnf9s1DU7OXjqD2uHC9DsgdbxRniTu', 1288319666, 32, '2');
+INSERT INTO `users` (`FullName`, `Email`, `UserPass`, `PhoneNumber`, `id`, `Usertype`) VALUES
+('Menna Emam', 'mennaemaam12@gmail.com', '$2y$10$gEEdH30mYNok7SQixvbqSOq5de/394x247bUDNH3JF.4qCmWgqa5W', 1092348337, 26, '1'),
+('Nader Maged', 'donia1@gmail.com', '$2y$10$HQZeLHqlpx7phPnlqvo7UOf6KRz9jY4VlcAtiyS5uYMUe0kjfDt.G', 1210700150, 27, '1'),
+('Ramez Ehab', 'ramez@gmail.com', '$2y$10$PIbQHrRj3S0BEmFm1KRCLOzC0ALC7wdQT5b35.YQ/BxTOFiXYAeiO', 2147483647, 28, '2'),
+('Admin Universal', 'admin@gmail.com', '$2y$10$e6fkBOvwdfkkU62V0xsS1eEs0Rs9y8IHSb3Ca71vJTKpVONq//KBu', 2147483647, 29, '2'),
+('User Universal', 'user@gmail.com', '$2y$10$Tpxk2DpwDP.ugQj0XtFND.hQAk5rEXkD2j4KCeBTm2bP7FPKu40d.', 20123123, 30, '1'),
+('farrah', 'farah2102625@miuegypt.edu.eg', '$2y$10$1Px1r.Ja6J122X8Dx3s3i.Ntnf9s1DU7OXjqD2uHC9DsgdbxRniTu', 1288319666, 32, '2');
 
 -- --------------------------------------------------------
 
@@ -601,7 +608,7 @@ ALTER TABLE `breakfast`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -673,7 +680,7 @@ ALTER TABLE `sides`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `user_type`

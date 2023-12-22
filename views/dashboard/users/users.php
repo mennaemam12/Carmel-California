@@ -48,20 +48,7 @@ $users = User::getAllUsers();
             document.body.appendChild(form); 
             form.submit();
         }
-        // function Makeadmin(Userid) {
-        //     var form = document.createElement('form');
-        //     form.method = 'POST';
-        //     form.action = 'dashboard/users?action=makeadmin';
-        //
-        //     let input = document.createElement("input");
-        //     input.type = "hidden";
-        //     input.name = "id";
-        //     input.value = Userid;
-        //
-        //     form.appendChild(input);
-        //     document.body.appendChild(form);
-        //     form.submit();
-        // }
+
     </script>
 
 

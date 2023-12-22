@@ -25,31 +25,31 @@ include 'views/partials/nav.php'
         <form id="signup-form" method="POST" action="signup">
             <div class="form-title">Sign Up</div>
             <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" placeholder="Enter your full name" name="FullName" class="form-control">
+<!--                <label for="name">Full Name</label>-->
+                <input type="text" id="name" placeholder="Full Name" name="FullName" class="form-control">
+            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="username">Username</label>-->
+<!--                <input type="text" id="username" placeholder="Username" name="Username" class="form-control">-->
+<!--            </div>-->
+            <div class="form-group">
+<!--                <label for="email">Email</label>-->
+                <input type="text" id="email" placeholder="Email" name="Email" class="form-control">
             </div>
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter your username" name="Username" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Enter your email" name="Email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="phoneNumber">Phone Number</label>
-                <input type="text" id="phoneNumber" placeholder="Enter your phone number" name="PhoneNumber"
+<!--                <label for="phoneNumber">Phone Number</label>-->
+                <input type="text" id="phoneNumber" placeholder="Phone Number" name="PhoneNumber"
                        class="form-control">
             </div>
 
             <div class="form-group">
-                <label for="UserPass">Password</label>
+<!--                <label for="UserPass">Password</label>-->
                 <input type="password" class="form-control" id="UserPass" name="UserPass"
-                       placeholder="Enter your password">
+                       placeholder="Password">
             </div>
 
             <div class="form-group">
-                <label for="confirmpass">Confirm Password</label>
+<!--                <label for="confirmpass">Confirm Password</label>-->
                 <input type="password" id="confirmpass" placeholder="Confirm Password" class="form-control"
                        name="UserConfPass">
             </div>

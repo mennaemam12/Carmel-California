@@ -72,13 +72,6 @@ require_once 'models/Item.php';
                                         echo 'value=' . $user->getEmail();
                                         ?>>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Username</label>
-                                        <input disabled type="text" class="form-control" name="username"
-                                               placeholder="Username" <?php
-                                        echo 'value=' . $user->getUsername();
-                                        ?>>
-                                    </div>
 
                                     <div class="form-group">
                                         <label for="exampleInputName1">Phone Number</label>
