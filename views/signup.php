@@ -77,8 +77,12 @@ include 'views/partials/footer.php'
 </div>
 
 <script src="public/js/jquery.min.js"></script>
+<script src="public/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="public/js/jquery.waypoints.min.js"></script>
 <script src="public/js/scrollax.min.js"></script>
+<script src="public/js/jquery.stellar.min.js"></script>
+<script src="public/js/aos.js"></script>
+<script src="public/js/owl.carousel.min.js"></script>
 <script src="public/js/main.js"></script>
 <script src="public/js/nav.js"></script>
 <script src="public/js/validation/signup.js"></script>
