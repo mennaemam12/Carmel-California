@@ -16,10 +16,19 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background: rgb(235, 220, 206, 0.75);
+    background: rgb(235, 220, 206, 0.0);
 }
 
-.image::before {
+.image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+#login-section .image img {
+    max-height:100vh;
+}
+
+#login-section .image::before {
     content: "";
     position: absolute;
     top: 0;
@@ -30,10 +39,29 @@ section {
     z-index: 0;
 }
 
-.image img {
+#signup-section .image {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+#signup-section .image img {
+    height:100vh;
+}
+
+#signup-section .image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-height: 100vh;
-    object-fit: cover;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#signup-section form {
+    margin-top: 60px;
 }
 
 .login form {
@@ -63,22 +91,27 @@ section {
 }
 
 .login form .form-group label {
-    color: #045420;
+    color: rgba(4, 84, 32, 1);
     font-weight: 400;
 }
 
+.login form .form-group .form-control {
+    background: rgba(255,255,255,0.0);
+}
+
+.login form .form-group ::placeholder {
+    color: #504831;
+    font-weight: 100;
+    font-size: 0.8rem;
+}
+
 .login form .form-group .form-control:focus {
-    box-shadow: 0 0 0 0.1rem rgba(4, 84, 32, 1);
+    box-shadow: 0 0 0 0.1rem #504831;
 }
 
 .login form .form-group .form-control {
-    border-color: #504831;
-}
-
-.login form ::placeholder {
-    color: #504831;
-    font-weight: 100;
-    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid #504831;
 }
 
 .form-group:last-of-type {
@@ -97,7 +130,7 @@ section {
     text-decoration: none;
 }
 
-.form-group:last-of-type a:hover {
+.form-group:last-of-type a:hover, .form-group:last-of-type a:focus {
     color: #045420;
     font-weight: 400;
 }
@@ -126,11 +159,21 @@ section {
     cursor: pointer;
 }
 
-.button {
-    background: #045420;
+.login form #submit:focus, .login form #submit:hover {
+    box-shadow: 0 0 1px 1px #045420;
 }
 
-.button:hover {
+.login form #submit:active {
+    background : rgba(4, 120, 32, 1);
+    box-shadow: 0 0 0 0;
+}
+
+.login .button {
+    background: #045420;
+    color:white;
+}
+
+.login .button:hover, .button:focus {
     background: #045420;
     color: #fff;
 }
@@ -152,9 +195,13 @@ section {
     .login form {
         min-width: 300px;
         width: 50%;
-        background: rgb(235, 220, 206, 0.5);
+        background: rgb(235, 220, 206, 0.9);
         border: 1px solid #ccc;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    #signup-section form {
+        width:70%;
     }
 
     .login form .form-group input {

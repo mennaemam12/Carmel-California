@@ -61,13 +61,4 @@ class FormClass {
 
 const validator = new FormClass(document.getElementById("login-form"));
 
-let form_holders = document.getElementsByClassName("form-group");
-for (let i = 0; i < form_holders.length; i++) {
-    form_holders[i].addEventListener("click", () => {
-        for (let j = 0; j < form_holders.length; j++)
-            form_holders[j].classList.remove("active");
-        form_holders[i].classList.add("active");
-    });
-}
-
 
