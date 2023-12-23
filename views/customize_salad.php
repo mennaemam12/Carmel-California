@@ -18,7 +18,7 @@ include 'partials/nav.php';
 <section>
     <div class="salad-container">
         <div class="choose-salad">
-            <div class="title">Customize Your Salad</div>
+            <div class="title ftco-animate">Customize Your Salad</div>
             <div class="ingredients-div">
 
                 <!-- BASES -->
@@ -128,11 +128,11 @@ include 'partials/nav.php';
             </div>
         </div>
 
-        <div class="calculations">
+        <div class="calculations ftco-animate">
             <div class="title">Your Picks</div>
             <div class="pricing-summary">
                 <?php if ($bases): ?>
-                    <div class="category-pricing" id="base">
+                    <div class="category-pricing ftco-animate" id="base">
                         <div class="category-name">Base:
                             <span class="chosen-item">
                             <ul></ul>
@@ -143,7 +143,7 @@ include 'partials/nav.php';
                 <?php endif; ?>
 
                 <?php if ($toppings): ?>
-                    <div class="category-pricing" id="topping">
+                    <div class="category-pricing ftco-animate" id="topping">
                         <div class="category-name">Toppings:
                             <span class="chosen-item">
                             <ul></ul>
@@ -154,7 +154,7 @@ include 'partials/nav.php';
                 <?php endif; ?>
 
                 <?php if ($dressings): ?>
-                    <div class="category-pricing" id="dressing">
+                    <div class="category-pricing ftco-animate" id="dressing">
                         <div class="category-name">Dressings:
                             <span class="chosen-item">
                             <ul></ul>
@@ -165,7 +165,7 @@ include 'partials/nav.php';
                 <?php endif; ?>
 
                 <?php if ($proteins): ?>
-                    <div class="category-pricing" id="protein">
+                    <div class="category-pricing ftco-animate" id="protein">
                         <div class="category-name">Protein:
                             <span class="chosen-item">
                             <ul></ul>
@@ -174,7 +174,7 @@ include 'partials/nav.php';
                         <div class="category-price"><span class="category-total-field">0</span>&nbsp;EGP</div>
                     </div>
                 <?php endif; ?>
-                <span class="total">Total: <span class="total-field">0</span>&nbsp;EGP</span>
+                <span class="total">Total: <span class="total-field ftco-animate">0</span>&nbsp;EGP</span>
                 <div class="error-msg"></div>
             </div>
         </div>
