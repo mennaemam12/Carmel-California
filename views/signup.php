@@ -3,11 +3,8 @@
 
 <head>
     <?php include 'views/partials/head.php'; ?>
-    <link rel="stylesheet" href="public/css/animate.css">
 
-    <link rel="stylesheet" href="public/css/nav.css">
-    <link rel="stylesheet" href="public/css/footer.css">
-    <link rel="stylesheet" href="public/css/login.css">
+    <link rel="stylesheet" href="public/css/client_side/login.css">
 </head>
 
 <body>

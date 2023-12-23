@@ -24,9 +24,7 @@ $rows = Item::getAllItems();
 
 	<link rel="stylesheet" href="public/css/flaticon.css">
 	<link rel="stylesheet" href="public/css/icomoon.css">
-	<link rel="stylesheet" href="public/css/nav.css">
-	<link rel="stylesheet" href="public/css/footer.css">
-	<link rel="stylesheet" href="public/css/index.css">
+	<link rel="stylesheet" href="public/css/client_side/index.css">
 	<link rel="stylesheet" href="public/css/chatbot.css">
 </head>
 

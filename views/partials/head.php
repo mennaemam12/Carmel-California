@@ -1,4 +1,6 @@
 <title>Carmel Calfornia</title>
+<base href="<?php echo $projectFolder ?>/">
+
 <link rel="shortcut icon" href="template/images/favicon.png"/>
 
 <meta charset="utf-8">
@@ -9,5 +11,6 @@
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
 <link rel="stylesheet" href="public/css/bootstrap.min.css">
-
-<base href="<?php echo $projectFolder ?>/">
+<link rel="stylesheet" href="public/css/client_side/nav.css">
+<link rel="stylesheet" href="public/css/client_side/footer.css">
+<link rel="stylesheet" href="public/css/client_side/animations.css">

@@ -13,7 +13,6 @@ $rows = Item::getAllItems();
     <?php include 'views/partials/head.php';?>
 
     <link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/animate.css">
 
     <link rel="stylesheet" href="public/css/owl.carousel.min.css">
     <link rel="stylesheet" href="public/css/owl.theme.default.min.css">
@@ -26,9 +25,7 @@ $rows = Item::getAllItems();
 
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
-    <link rel="stylesheet" href="public/css/nav.css">
-    <link rel="stylesheet" href="public/css/footer.css">
-    <link rel="stylesheet" href="public/css/product.css">
+    <link rel="stylesheet" href="public/css/client_side/product.css">
     <style>
         .ftco-section {
             padding-bottom: 0px;

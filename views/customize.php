@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
 
-    <link rel="stylesheet" href="public/css/nav.css">
-    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="public/css/client_side/nav.css">
+    <link rel="stylesheet" href="public/css/client_side/footer.css">
     <link rel="stylesheet" href="public/css/customize_salad.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

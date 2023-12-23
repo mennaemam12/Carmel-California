@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2023 at 01:33 PM
+-- Generation Time: Dec 23, 2023 at 08:43 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -90,7 +90,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `User_id`, `Item_type`, `Item_id`, `Selected_Option`, `Quantity`) VALUES
-(35, 28, 'main', 2, '', 4);
+(38, 28, 'main', 2, '', 5),
+(39, 28, 'breakfast', 3, '', 1);
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,9 @@ INSERT INTO `saladingredients` (`id`, `Name`, `Price`, `Category`, `CategoryMax`
 (9, 'Grilled Chicken', 25, 'Protein', 1, 'public/images/salad-ingredients/Toppings/Grilled Chicken.jpg'),
 (10, 'Red Beans', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Red Beans.jpg'),
 (11, 'Cherry Tomato', 15, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Cherry Tomato.jpg'),
-(12, 'Pepper', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Pepper.jpg');
+(12, 'Pepper', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Pepper.jpg'),
+(13, 'Balsamic', 20, 'Dressing', 1, 'public/images/salad-ingredients/Dressing/Balsamic.jpg'),
+(14, 'Lemon Mustard', 15, 'Dressing', 1, 'public/images/salad-ingredients/Dressing/Lemon Mustard.jpg');
 
 -- --------------------------------------------------------
 
@@ -608,7 +611,7 @@ ALTER TABLE `breakfast`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -668,7 +671,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `saladingredients`
 --
 ALTER TABLE `saladingredients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sides`
