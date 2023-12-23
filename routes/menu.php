@@ -16,6 +16,20 @@ if (isset($_SESSION['user'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $menu = new MenuController;
-    $menu->getMenu();
+
+    if (!isset($_GET['action'])) {
+        $menu = new MenuController;
+        $menu->getMenu();
+        exit();
+    }
+
+    switch ($_GET['action']) {
+        case 'customize-salad':
+            include 'views/customize_salad.php';
+            exit();
+        default:
+            include 'views/404.php';
+            exit();
+    }
+
 }

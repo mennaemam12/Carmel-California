@@ -1,0 +1,145 @@
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #151111;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: gray;
+    background: no-repeat fixed;
+    background-size: cover;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.salad-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 80vw;
+}
+
+.salad-container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+.ingredients-div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ingredient {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.title {
+    font-size: 2rem;
+    color: #045420;
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding-bottom:10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.category-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0px;
+    width: 100%;
+}
+
+.category-heading:not(last-of-type) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.category {
+    color: #504831;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.info {
+    color: #045420;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.choose-salad {
+    width: 70%;
+}
+
+.calculations {
+    width: 30%;
+
+}
+
+.category-pricing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 10px;
+    width: 100%;
+}
+
+.category-name {
+    font-size: 1.2rem;
+    color: #045420;
+    font-weight: 500;
+}
+
+.chosen-item {
+    font-weight:200;
+    font-size: 1.2rem;
+}
+
+.category-price {
+    font-size:1rem;
+}
+
+.ingredient-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    row-gap: 10px;
+    width: 100%;
+}
+
+.option:first-of-type {
+    margin-top:20px;
+}
+
+.option {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    column-gap: 20px;
+}
+
+.option img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}

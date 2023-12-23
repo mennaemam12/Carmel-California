@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +6,7 @@
     <?php include 'views/partials/head.php';?>
 
     <link rel="stylesheet" href="public/css/client_side/404.css">
-    
-    
+
 </head>
 
 <body>
