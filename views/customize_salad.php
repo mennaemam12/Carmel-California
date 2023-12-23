@@ -24,15 +24,17 @@ include 'partials/nav.php';
                 <!-- BASES -->
                 <?php if ($bases): ?>
                     <div class="ingredient">
-                        <div class="category">Base</div>
-                        <div class="info">
-                            <?php if ($bases[0]->CategoryMax == 1)
-                                echo 'Choose ' . $bases[0]->CategoryMax;
-                            else
-                                echo 'Choose up to ' . $bases[0]->CategoryMax;
-                            ?>
+                        <div class="category-heading">
+                            <div class="category">Toppings</div>
+                            <div class="info">
+                                <?php if ($bases[0]->CategoryMax == 1)
+                                    echo 'Choose ' . $bases[0]->CategoryMax;
+                                else
+                                    echo 'Choose up to ' . $bases[0]->CategoryMax;
+                                ?>
+                            </div>
                         </div>
-                        <div class="ingredient-options" id="base-ingredients">
+                        <div class="ingredient-options" id="topping-ingredients">
                             <?php foreach ($bases as $b): ?>
                                 <div class="option">
                                     <image src="<?php echo $b->ImagePath ?>">
