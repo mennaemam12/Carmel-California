@@ -60,10 +60,6 @@ switch ($page) {
     case 'dashboard':
         include 'routes/dashboard.php';
         break;
-    case 'salad-order':
-        include 'routes/custom.salad.php';
-        break;
-   
 
     default:
         include 'views/404.php';

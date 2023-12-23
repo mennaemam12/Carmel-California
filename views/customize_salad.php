@@ -25,7 +25,7 @@ include 'partials/nav.php';
                 <?php if ($bases): ?>
                     <div class="ingredient">
                         <div class="category-heading">
-                            <div class="category">Toppings</div>
+                            <div class="category">Base</div>
                             <div class="info">
                                 <?php if ($bases[0]->CategoryMax == 1)
                                     echo 'Choose ' . $bases[0]->CategoryMax;
@@ -174,7 +174,11 @@ include 'partials/nav.php';
                         <div class="category-price"><span class="category-total-field">0</span>&nbsp;EGP</div>
                     </div>
                 <?php endif; ?>
-                <span class="total">Total: <span class="total-field ftco-animate">0</span>&nbsp;EGP</span>
+
+                <div class="cartOrTotal">
+                    <span class="ftco-animate addToCart">Add To Cart</span>
+                    <span class="total">Total: <span class="total-field ftco-animate">0</span>&nbsp;EGP</span>
+                </div>
                 <div class="error-msg"></div>
             </div>
         </div>

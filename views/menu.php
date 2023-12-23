@@ -143,7 +143,7 @@ include 'partials/nav.php';
             </div>
 
             <div class="create-salad">
-                <a href="salad-order" class="btn btn-primary py-3 px-4">Create Your Own Salad</a>
+                <a href="menu?action=customize-salad" class="btn btn-primary py-3 px-4">Create Your Own Salad</a>
             </div>
         </div>
 

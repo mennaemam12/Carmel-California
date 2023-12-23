@@ -14,7 +14,7 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 80px;
     margin-bottom: 50px;
 }
 
@@ -66,6 +66,7 @@ section {
     align-items: flex-start;
     row-gap: 0px;
     width: 100%;
+    cursor: pointer;
 }
 
 .category-heading:not(last-of-type) {
@@ -133,6 +134,8 @@ section {
     column-gap:10px;
     width: 100%;
     padding-right:10px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in;
 }
 
 .option:first-of-type {
@@ -218,3 +221,81 @@ section {
     font-weight: 300;
     margin-top: 10px;
 }
+
+/*@media (max-width:1000px ) {*/
+/*    .choose-salad {*/
+/*        width: 60%;*/
+/*    }*/
+
+/*    .calculations {*/
+/*        width: auto;*/
+/*    }*/
+/*}*/
+
+@media (max-width:992px ) {
+    .ingredient-options {
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+    }
+
+    .icon {
+        font-size: 0.8rem;
+        margin-left: 10px;
+    }
+
+    .salad-container {
+        width:95vw;
+    }
+
+    section {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .salad-container > div {
+        width: 100%;
+    }
+
+    .option {
+        width:100%;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .category, .category-name {
+        font-size: 1.2rem;
+    }
+
+    .info {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width:768px) {
+    .salad-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.cartOrTotal {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.addToCart {
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #045420;
+    color: white;
+}
+

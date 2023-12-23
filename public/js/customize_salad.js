@@ -189,3 +189,25 @@ function getSaladTotal(order) {
         }
     });
 }
+let categoryIngredients = document.querySelectorAll('.ingredient-options');
+document.addEventListener('DOMContentLoaded', function () {
+    let categoryHeadings = document.querySelectorAll('.category-heading');
+    for (let i = 0; i < categoryHeadings.length; i++) {
+        categoryIngredients[i].style.maxHeight = '0px';
+        categoryHeadings[i].addEventListener('click', function () {
+            toggleSaladCategory(categoryIngredients[i]);
+        })
+    }
+
+});
+
+function toggleSaladCategory(div) {
+    for (let i = 0; i < categoryIngredients.length; i++)
+        if (categoryIngredients[i] !== div)
+            categoryIngredients[i].style.maxHeight = '0px';
+
+    if (div.style.maxHeight === '1000px')
+        div.style.maxHeight = '0px';
+    else
+        div.style.maxHeight = '1000px';
+}
