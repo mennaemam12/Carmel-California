@@ -1,6 +1,8 @@
 <?php
 require_once 'models/User.php';
 require_once 'controllers/menu.controller.php';
+require_once 'controllers/ingredient.controller.php';
+
 // Path: routes/menu.php
 
 if (isset($_SESSION['user'])) {
@@ -25,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     switch ($_GET['action']) {
         case 'customize-salad':
-            include 'views/customize_salad.php';
+            $ing = new IngredientController;
+            $ing->getSections();
+//            include 'views/customize_salad.php';
             exit();
         default:
             include 'views/404.php';

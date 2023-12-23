@@ -151,7 +151,7 @@ class IngredientController
         }
         $counter = 1;
         $items = array();
-        include_once('views/customize.php');
+        include 'views/customize_salad.php';
     }
 
 

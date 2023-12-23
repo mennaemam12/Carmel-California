@@ -1,3 +1,6 @@
+<?php
+include 'projectFolderName.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,50 +20,83 @@ include 'partials/nav.php';
         <div class="choose-salad">
             <div class="title">Customize Your Salad</div>
             <div class="ingredients-div">
-                <div class="ingredient">
-                    <div class="category-heading">
-                        <div class="category">Base</div>
-                        <div class="info">Choose 1</div>
-                    </div>
-                    <div class="ingredient-options">
-                        <div class="option">
-                            <image src="public/images/salad-ingredients/lettuce.jpg">
-                            <div class="option-name">Lettuce</div>
-                            <div class="option-price">0 EGP</div>
-                        </div>
-                        <div class="option">
-                            <image src="public/images/salad-ingredients/lettuce.jpg">
-                            <div class="option-name">Lettuce</div>
-                            <div class="option-price">0 EGP</div>
-                        </div>
-                        <div class="option">
-                            <image src="public/images/salad-ingredients/lettuce.jpg">
-                            <div class="option-name">Lettuce</div>
-                            <div class="option-price">0 EGP</div>
-                        </div>
 
+                <!-- BASES -->
+                <?php if ($bases): ?>
+                    <div class="ingredient">
+                        <div class="category-heading">
+                            <div class="category">Base</div>
+                            <div class="info">Choose <?php echo $bases[0]->CategoryMax ?></div>
+                        </div>
+                        <div class="ingredient-options">
+                            <?php foreach ($bases as $b): ?>
+                                <div class="option">
+                                    <image src="<?php echo $b->ImagePath ?>">
+                                        <div class="option-name"><?php echo $b->Name ?></div>
+                                        <div class="option-price"><?php echo $b->Price ?>&nbsp;EGP</div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
 
+                <!-- TOPPINGS -->
+                <?php if ($toppings): ?>
+                    <div class="ingredient">
+                        <div class="category-heading">
+                            <div class="category">Toppings</div>
+                            <div class="info">Choose up to <?php echo $toppings[0]->CategoryMax ?></div>
+                        </div>
+                        <div class="ingredient-options">
+                            <?php foreach ($toppings as $top): ?>
+                                <div class="option">
+                                    <image src="<?php echo $top->ImagePath ?>">
+                                        <div class="option-name"><?php echo $top->Name ?></div>
+                                        <div class="option-price"><?php echo $top->Price ?>&nbsp;EGP</div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
-                <div class="ingredient">
-                    <div class="category-heading">
-                        <div class="category">Base</div>
-                        <div class="info">Choose 1</div>
+                <!-- DRESSINGS -->
+                <?php if ($dressings): ?>
+                    <div class="ingredient">
+                        <div class="category-heading">
+                            <div class="category">Dressings</div>
+                            <div class="info">Choose up to <?php echo $dressings[0]->CategoryMax ?></div>
+                        </div>
+                        <div class="ingredient-options">
+                            <?php foreach ($dressings as $d): ?>
+                                <div class="option">
+                                    <image src="<?php echo $d->ImagePath ?>">
+                                        <div class="option-name"><?php echo $d->Name ?></div>
+                                        <div class="option-price"><?php echo $d->Price ?>&nbsp;EGP</div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="ingredient">
-                    <div class="category-heading">
-                        <div class="category">Base</div>
-                        <div class="info">Choose 1</div>
+                <?php endif; ?>
+
+                <!-- Protein -->
+                <?php if ($proteins): ?>
+                    <div class="ingredient">
+                        <div class="category-heading">
+                            <div class="category">Protein</div>
+                            <div class="info">Choose <?php echo $proteins[0]->CategoryMax ?></div>
+                        </div>
+                        <div class="ingredient-options">
+                            <?php foreach ($proteins as $p): ?>
+                                <div class="option">
+                                    <image src="<?php echo $p->ImagePath ?>">
+                                        <div class="option-name"><?php echo $p->Name ?></div>
+                                        <div class="option-price"><?php echo $p->Price ?>&nbsp;EGP</div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="ingredient">
-                    <div class="category-heading">
-                        <div class="category">Base</div>
-                        <div class="info">Choose 1</div>
-                    </div>
-                </div>
+                <?php endif; ?>
+
             </div>
         </div>
 
