@@ -37,3 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    switch ($_GET['action']) {
+        case 'getsaladiteminfo':
+            IngredientController::getSaladItemInfo();
+            exit();
+        case 'getsaladtotal':
+            IngredientController::getAjaxTotal();
+            exit();
+    }
+}

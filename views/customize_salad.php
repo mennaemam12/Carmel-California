@@ -24,15 +24,20 @@ include 'partials/nav.php';
                 <!-- BASES -->
                 <?php if ($bases): ?>
                     <div class="ingredient">
-                        <div class="category-heading">
-                            <div class="category">Base</div>
-                            <div class="info">Choose <?php echo $bases[0]->CategoryMax ?></div>
+                        <div class="category">Base</div>
+                        <div class="info">
+                            <?php if ($bases[0]->CategoryMax == 1)
+                                echo 'Choose ' . $bases[0]->CategoryMax;
+                            else
+                                echo 'Choose up to ' . $bases[0]->CategoryMax;
+                            ?>
                         </div>
-                        <div class="ingredient-options">
+                        <div class="ingredient-options" id="base-ingredients">
                             <?php foreach ($bases as $b): ?>
                                 <div class="option">
                                     <image src="<?php echo $b->ImagePath ?>">
                                         <div class="option-name"><?php echo $b->Name ?></div>
+                                        <i class="icon icon-plus" onclick="updateOrder('<?= $b->id ?>', this)"></i>
                                         <div class="option-price"><?php echo $b->Price ?>&nbsp;EGP</div>
                                 </div>
                             <?php endforeach; ?>
@@ -45,13 +50,20 @@ include 'partials/nav.php';
                     <div class="ingredient">
                         <div class="category-heading">
                             <div class="category">Toppings</div>
-                            <div class="info">Choose up to <?php echo $toppings[0]->CategoryMax ?></div>
+                            <div class="info">
+                                <?php if ($toppings[0]->CategoryMax == 1)
+                                    echo 'Choose ' . $toppings[0]->CategoryMax;
+                                else
+                                    echo 'Choose up to ' . $toppings[0]->CategoryMax;
+                                ?>
+                            </div>
                         </div>
-                        <div class="ingredient-options">
+                        <div class="ingredient-options" id="topping-ingredients">
                             <?php foreach ($toppings as $top): ?>
                                 <div class="option">
                                     <image src="<?php echo $top->ImagePath ?>">
                                         <div class="option-name"><?php echo $top->Name ?></div>
+                                        <i class="icon icon-plus" onclick="updateOrder('<?= $top->id ?>', this)"></i>
                                         <div class="option-price"><?php echo $top->Price ?>&nbsp;EGP</div>
                                 </div>
                             <?php endforeach; ?>
@@ -64,13 +76,20 @@ include 'partials/nav.php';
                     <div class="ingredient">
                         <div class="category-heading">
                             <div class="category">Dressings</div>
-                            <div class="info">Choose up to <?php echo $dressings[0]->CategoryMax ?></div>
+                            <div class="info">
+                                <?php if ($dressings[0]->CategoryMax == 1)
+                                    echo 'Choose ' . $dressings[0]->CategoryMax;
+                                else
+                                    echo 'Choose up to ' . $dressings[0]->CategoryMax;
+                                ?>
+                            </div>
                         </div>
-                        <div class="ingredient-options">
+                        <div class="ingredient-options" id="dressing-ingredients">
                             <?php foreach ($dressings as $d): ?>
                                 <div class="option">
                                     <image src="<?php echo $d->ImagePath ?>">
                                         <div class="option-name"><?php echo $d->Name ?></div>
+                                        <i class="icon icon-plus" onclick="updateOrder('<?= $d->id ?>', this)"></i>
                                         <div class="option-price"><?php echo $d->Price ?>&nbsp;EGP</div>
                                 </div>
                             <?php endforeach; ?>
@@ -83,13 +102,20 @@ include 'partials/nav.php';
                     <div class="ingredient">
                         <div class="category-heading">
                             <div class="category">Protein</div>
-                            <div class="info">Choose <?php echo $proteins[0]->CategoryMax ?></div>
+                            <div class="info">
+                                <?php if ($proteins[0]->CategoryMax == 1)
+                                    echo 'Choose ' . $proteins[0]->CategoryMax;
+                                else
+                                    echo 'Choose up to ' . $proteins[0]->CategoryMax;
+                                ?>
+                            </div>
                         </div>
-                        <div class="ingredient-options">
+                        <div class="ingredient-options" id="protein-ingredients">
                             <?php foreach ($proteins as $p): ?>
                                 <div class="option">
                                     <image src="<?php echo $p->ImagePath ?>">
                                         <div class="option-name"><?php echo $p->Name ?></div>
+                                        <i class="icon icon-plus" onclick="updateOrder('<?= $p->id ?>', this)"></i>
                                         <div class="option-price"><?php echo $p->Price ?>&nbsp;EGP</div>
                                 </div>
                             <?php endforeach; ?>
@@ -101,32 +127,54 @@ include 'partials/nav.php';
         </div>
 
         <div class="calculations">
-            <div class="title">Your Salad Picks</div>
-            <div class="category-pricing">
-                <div class="category-name">Base:
-                    <span class="chosen-item">Lettuce</span>
-                </div>
-                <div class="category-price"><span>0</span> EGP</div>
-            </div>
-            <div class="category-pricing">
-                <div class="category-name">Base:
-                    <span class="chosen-item">Lettuce</span>
-                </div>
-                <div class="category-price"><span>0</span> EGP</div>
-            </div>
-            <div class="category-pricing">
-                <div class="category-name">Base:
-                    <span class="chosen-item">Lettuce</span>
-                </div>
-                <div class="category-price"><span>0</span> EGP</div>
-            </div>
-            <div class="category-pricing">
-                <div class="category-name">Base:
-                    <span class="chosen-item">Lettuce</span>
-                </div>
-                <div class="category-price"><span>0</span> EGP</div>
-            </div>
+            <div class="title">Your Picks</div>
+            <div class="pricing-summary">
+                <?php if ($bases): ?>
+                    <div class="category-pricing" id="base">
+                        <div class="category-name">Base:
+                            <span class="chosen-item">
+                            <ul></ul>
+                        </span>
+                        </div>
+                        <div class="category-price"><span class="category-total-field">0</span>&nbsp;EGP</div>
+                    </div>
+                <?php endif; ?>
 
+                <?php if ($toppings): ?>
+                    <div class="category-pricing" id="topping">
+                        <div class="category-name">Toppings:
+                            <span class="chosen-item">
+                            <ul></ul>
+                        </span>
+                        </div>
+                        <div class="category-price"><span class="category-total-field">0</span>&nbsp;EGP</div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($dressings): ?>
+                    <div class="category-pricing" id="dressing">
+                        <div class="category-name">Dressings:
+                            <span class="chosen-item">
+                            <ul></ul>
+                        </span>
+                        </div>
+                        <div class="category-price"><span class="category-total-field">0</span>&nbsp;EGP</div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($proteins): ?>
+                    <div class="category-pricing" id="protein">
+                        <div class="category-name">Protein:
+                            <span class="chosen-item">
+                            <ul></ul>
+                        </span>
+                        </div>
+                        <div class="category-price"><span class="category-total-field">0</span>&nbsp;EGP</div>
+                    </div>
+                <?php endif; ?>
+                <span class="total">Total: <span class="total-field">0</span>&nbsp;EGP</span>
+                <div class="error-msg"></div>
+            </div>
         </div>
     </div>
 </section>
@@ -155,6 +203,7 @@ include 'partials/footer.php'
 <script src="public/js/owl.carousel.min.js"></script>
 <script src="public/js/main.js"></script>
 <script src="public/js/nav.js"></script>
+<script src="public/js/customize_salad.js"></script>
 
 </body>
 

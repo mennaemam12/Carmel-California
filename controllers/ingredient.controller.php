@@ -18,7 +18,7 @@ class IngredientController
     public function validateItem($data)
     {
         if (empty($data['ingredientname']) || empty($data['category']) || empty($data['price'])) {
-            $this->errorMsg ='Please fill all inputs';
+            $this->errorMsg = 'Please fill all inputs';
             return false;
         }
 
@@ -47,7 +47,7 @@ class IngredientController
 
     private function saveImage($file, $category, $name)
     {
-        $uploadDir = 'public/images/salad-ingredients/'. $category . '/';
+        $uploadDir = 'public/images/salad-ingredients/' . $category . '/';
         $imageFileType = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
         // Generate a unique name for the image
@@ -80,23 +80,23 @@ class IngredientController
             'price' => trim($_POST['price']),
         ];
 
-        if(Ingredient::findIngredientByName($data['ingredientname'])) {
+        if (Ingredient::findIngredientByName($data['ingredientname'])) {
             flash("formError", "Ingredient with the same name already exists", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder']."/dashboard/menu?action=addingredient");
+            redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
             exit();
         }
 
         if ($this->validateItem($data)) {
             $imagePath = $this->saveImage($_FILES['file'], $data['category'], $data['ingredientname']);
 
-            if(!$imagePath) {
-                flash("ImageError",'form-message form-message-red');
-                redirect($GLOBALS['projectFolder']."/dashboard/menu?action=addingredient");
+            if (!$imagePath) {
+                flash("ImageError", 'form-message form-message-red');
+                redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
                 exit();
             }
 
             // Validation successful, create an Item object
-            $this->ingredientModel = new Ingredient($data['ingredientname'], $data['category'],$data['categorymax'], $data['price'], $imagePath);
+            $this->ingredientModel = new Ingredient($data['ingredientname'], $data['category'], $data['categorymax'], $data['price'], $imagePath);
 
             if ($this->ingredientModel->add()) {
                 flash("formSuccess", "Ingredient added successfully", 'form-message form-message-green');
@@ -110,10 +110,11 @@ class IngredientController
         }
 
         flash("formError", $this->errorMsg, 'form-message form-message-red');
-        redirect($GLOBALS['projectFolder']."/dashboard/menu?action=addingredient");
+        redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
     }
 
-    public function getSections(){
+    public function getSections()
+    {
         $ing = new Ingredient();
         $ingredients = $ing->getIngredients();
         $bases = array();
@@ -159,14 +160,14 @@ class IngredientController
     {
         $json_data = file_get_contents("php://input");
 
-        $order = json_decode($json_data, true); 
+        $order = json_decode($json_data, true);
 
         $orderObjects = array();
- 
+
         $baseTotal = 0;
         $baseChoice = (!empty($order['base'])) ? $order['base'] : '';
         $base = '';
-        $baseChoice=trim($baseChoice);
+        $baseChoice = trim($baseChoice);
         if ($baseChoice != '') {
             switch ($baseChoice) {
                 case 'Lettuce':
@@ -201,7 +202,6 @@ class IngredientController
                     break;
             }
         }
-
 
 
         $toppings = $order['topping'];
@@ -303,5 +303,23 @@ class IngredientController
 
     }
 
-   
+    public static function getSaladItemInfo() {
+
+        $json_data = file_get_contents("php://input");
+        $id = json_decode($json_data, true);
+
+        $item = Ingredient::findIngredientByID($id);
+
+        $response = array(
+            'name' => $item->getName(),
+            'category' => strtolower($item->getCategory()),
+            'price' => $item->getPrice(),
+            'max' => $item->getCategoryMax(),
+        );
+
+        echo json_encode($response);
+        exit();
+    }
+
+
 }

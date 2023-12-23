@@ -97,9 +97,10 @@ section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     row-gap: 10px;
     width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .category-name {
@@ -111,6 +112,10 @@ section {
 .chosen-item {
     font-weight:200;
     font-size: 1.2rem;
+}
+
+.chosen-item li {
+    font-size:1rem;
 }
 
 .category-price {
@@ -142,6 +147,11 @@ section {
     width:40%;
 }
 
+.option {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+}
+
 .option img {
     width: 50px;
     height: 50px;
@@ -150,4 +160,60 @@ section {
 
 .option-name {
     text-align:center;
+    min-width:35%;
+}
+
+.total {
+    margin-left:auto;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-plus:before {
+    content: "\f067";
+}
+
+.icon-minus:before {
+    content: "\f068";
+}
+
+/*custom css for icon-plus*/
+.icon {
+    font-size: 1rem;
+    color: #045420;
+    cursor: pointer;
+}
+
+.icon:focus, .icon:active {
+    transform: scale(1.2);
+    background: none;
+    border:none;
+}
+
+.pricing-summary {
+    display:flex;
+    flex-direction:column;
+    row-gap:10px;
+    width:100%;
+}
+
+.error-msg {
+    color: red;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-top: 10px;
 }

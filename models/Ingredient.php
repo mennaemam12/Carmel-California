@@ -3,6 +3,7 @@ require_once 'database.php';
 class Ingredient
 {
     private $db;
+    protected $id;
     protected $name;
     protected $category;
     protected $categorymax;
@@ -15,7 +16,7 @@ class Ingredient
         $this->db = new Database;
     }
 
-    public function __construct($name = NULL, $category = NULL, $categorymax = NULL, $price = NULL, $imagePath = NULL)
+    public function __construct($id = null,$name = NULL, $category = NULL, $categorymax = NULL, $price = NULL, $imagePath = NULL)
     {
         $this->db = new Database;
         $this->name = $name;
@@ -23,6 +24,10 @@ class Ingredient
         $this->categorymax = $categorymax;
         $this->price = $price;
         $this->imagePath = $imagePath;
+    }
+
+    public function getID() {
+        return $this->id;
     }
 
     public function getName()
@@ -48,6 +53,21 @@ class Ingredient
     public function getImagePath()
     {
         return $this->imagePath;
+    }
+
+    public static function findIngredientByID($IngredientID)
+    {
+        $db = new Database;
+
+        $db->query('SELECT * FROM saladingredients WHERE ID = :ingredientid');
+        $db->bind(':ingredientid', $IngredientID);
+        $row = $db->single();
+
+        //Check row
+        if ($db->rowCount() > 0)
+            return new Ingredient($row->id,$row->Name, $row->Category, $row->CategoryMax, $row->Price, $row->ImagePath);
+
+        return false;
     }
 
     public static function findIngredientByName($IngredientName)

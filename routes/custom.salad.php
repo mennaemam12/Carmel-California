@@ -12,7 +12,7 @@ if (strpos($lastSegment, '?') !== false)
 
 // Path: routes/salad-order
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    include 'controllers/ingredient.controller.php';
+    require_once 'controllers/ingredient.controller.php';
     $ing = new IngredientController;
     $ing->getSections();
     
@@ -22,9 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     switch ($lastSegment) {
         case 'viewtotal':
-            include 'controllers/ingredient.controller.php';
-            IngredientController::getAjaxTotal();
-            exit();
+
         case 'addtocart':
 
         default:

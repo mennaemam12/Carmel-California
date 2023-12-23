@@ -62,7 +62,7 @@ include 'partials/nav.php';
                                             (<?= $cartItems[$i]->getSelectedOption() ?>)</h3>
                                     <?php } ?>
                                 </td>
-                                <td class="price" style="color:#504831;"><?= $item->Price ?> EGP</td>
+                                <td class="price" style="color:#504831;"><?= $item->Price ?>&nbsp;EGP</td>
                                 <td class="quantity">
                                     <div class="input-group">
                                             <button type="button" onclick="decrementQuantity(<?= $i ?>)" class="quantity-left-minus btn" data-type="minus" data-field="">
@@ -77,7 +77,7 @@ include 'partials/nav.php';
 
                                 <td class="total"
                                     style="color:#504831;"><?php echo $item->Price * $cartItems[$i]->getQuantity() ?>
-                                    EGP
+                                   &nbsp;EGP
                                 </td>
                             </tr><!-- END TR-->
                             <?php
@@ -101,13 +101,13 @@ include 'partials/nav.php';
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
                             <span>Subtotal</span>
-                            <span><?= $total ?> EGP</span>
+                            <span><?= $total ?>&nbsp;EGP</span>
                         </p>
 
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span><?= $total ?> EGP</span>
+                            <span><?= $total ?>&nbsp;EGP</span>
                         </p>
                     </div>
                     <p class="text-center"><a href="checkout" class="btn btn-primary py-3 px-4"
