@@ -11,7 +11,8 @@ include 'projectFolderName.php';
 </head>
 <body>
 <?php
-include 'partials/nav.php';
+require_once 'controllers/nav.controller.php';
+    NavController::viewNav();
 ?>
 
 <section class="ftco-section ftco-cart">

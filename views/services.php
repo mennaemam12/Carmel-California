@@ -14,7 +14,8 @@
 </head>
 <body>
 <?php
-include 'partials/nav.php';
+require_once 'controllers/nav.controller.php';
+    NavController::viewNav();
 ?>
 
 <section class="home-slider owl-carousel">

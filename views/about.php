@@ -13,7 +13,8 @@ $rows = Item::getAllItems();
 </head>
 <body>
 <?php
-include 'partials/nav.php';
+require_once 'controllers/nav.controller.php';
+    NavController::viewNav();
 ?>
 
 <section class="ftco-about d-md-flex mt-5">

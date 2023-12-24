@@ -79,6 +79,24 @@ class CartController
         }
     }
 
+    public static function getCartSessionQuantity()
+    {
+        $user = new User;
+        $user->unserialize($_SESSION['user']);
+        $cartItems = array();
+        foreach ($user->getCart() as $cartItem) {
+            $cart = new Cart;
+            $cart->unserialize($cartItem);
+            $cartItems[] = $cart;
+        }
+
+        $quantity = 0;
+        foreach ($cartItems as $citem)
+            $quantity += $citem->getQuantity();
+
+        return $quantity;
+    }
+
 
     public static function viewCart()
     {

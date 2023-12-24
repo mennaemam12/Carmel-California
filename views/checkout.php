@@ -19,7 +19,8 @@ include 'projectFolderName.php';
 
 <body>
 <?php
-include 'partials/nav.php';
+require_once 'controllers/nav.controller.php';
+    NavController::viewNav();
 ?>
 
 <section class="ftco-section">

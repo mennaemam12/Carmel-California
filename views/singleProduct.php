@@ -39,7 +39,8 @@ $rows = Item::getAllItems();
 
 <body>
 <?php
-include 'partials/nav.php';
+require_once 'controllers/nav.controller.php';
+    NavController::viewNav();
 ?>
 <!-- END nav -->
 

@@ -14,7 +14,8 @@
 
 <body>
 <?php
-include 'partials/nav.php';
+require_once 'controllers/nav.controller.php';
+    NavController::viewNav();
 ?>
 
 <section class="ftco-section contact-section pb-5 mt-1">

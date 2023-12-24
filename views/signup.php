@@ -9,7 +9,8 @@
 
 <body>
 <?php
-include 'views/partials/nav.php'
+require_once 'controllers/nav.controller.php';
+NavController::viewNav();
 ?>
 
 <section>

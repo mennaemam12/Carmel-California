@@ -11,7 +11,8 @@
 
 <body>
     <?php
-    include 'partials/nav.php';
+    require_once 'controllers/nav.controller.php';
+    NavController::viewNav();
     ?>
 
 <section class="ftco-menu" style="padding-top:150px;padding-bottom:70px;" >
