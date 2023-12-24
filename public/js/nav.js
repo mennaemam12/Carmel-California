@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     addActiveClass();
+    if (window.innerWidth >= 992) {
+        nav.style.maxHeight = "100vh";
+        nav.style.padding = "0px";
+    } else {
+        nav.style.maxHeight = "0px";
+        nav.style.padding = "0px";
+    }
+
 });
 
 //Add active class to nav-link based on url dynamically
@@ -20,24 +28,16 @@ function addActiveClass() {
 let navbar_toggler = document.querySelector(".navbar-toggler");
 let nav = document.querySelector("#ftco-nav");
 window.addEventListener("resize", () => {
-    if (window.innerWidth > 992) {
+
+    if (window.innerWidth >= 992) {
         nav.style.maxHeight = "100vh";
         nav.style.padding = "0px";
-    }
-    else {
+    } else {
         nav.style.maxHeight = "0px";
         nav.style.padding = "0px";
     }
-});
-
-if (window.innerWidth > 992) {
-    nav.style.maxHeight = "100vh";
-    nav.style.padding = "0px";
-}
-else {
-    nav.style.maxHeight = "100vh";
-    nav.style.padding = "0px";
-}
+})
+;
 
 navbar_toggler.addEventListener("click", () => {
     if (parseInt(nav.style.maxHeight) === 0) {

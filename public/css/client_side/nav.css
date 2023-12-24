@@ -62,29 +62,18 @@ a:focus {
 
 .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
     font-size: 13px;
-    padding-top: 0.9rem;
-    padding-bottom: 0.9rem;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0.9rem 20px;
     color: #504831;
-    font-weight: 400;
     position: relative;
     text-transform: uppercase;
     letter-spacing: 2px;
     opacity: 1 !important;
-}
-
-.ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-    padding-left: 20px;
-    padding-right: 20px;
     font-weight: 500;
 }
 
 
 .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover,
 .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:focus {
-    /* color: #c49b63; */
-    /* color: #b42800; */
     color: #fff;
 }
 
@@ -121,11 +110,32 @@ a:focus {
     color: #fff;
 }
 
+#cart .nav-link {
+    padding-left: 0px;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item.cart > a .icon {
+    transition: color 0.3s ease;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item.cart:hover .icon {
+    color: #fff;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item.cart.active .icon {
+    color: #b42800;
+}
+
+
 @media (max-width: 992px) {
     .ftco-navbar-light .navbar-nav > .nav-item.cart > a .bag {
         position: absolute;
         left: 32px;
         top: 4px;
+    }
+
+    #cart .nav-link {
+        padding-left: 20px;
     }
 }
 
@@ -378,12 +388,11 @@ a:focus {
 }
 
 #ftco-nav {
-    transition: max-height 0.8s ease;
     max-height: 0px;
     overflow: hidden;
     padding: 0px;
 }
 
-#ftco-nav .nav-link:last-child {
-    padding-left:0px;
+.nav-transition {
+    transition: max-height 0.8s ease;
 }

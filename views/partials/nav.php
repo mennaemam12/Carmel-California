@@ -6,7 +6,7 @@
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu" style="color:#504831"></span> Menu
         </button>
-        <div class="navbar-collapse" id="ftco-nav">
+        <div class="navbar-collapse nav-transition" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
 
                 <?php foreach($navItems as $navItem): ?>
