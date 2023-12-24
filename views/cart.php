@@ -8,15 +8,6 @@ include 'projectFolderName.php';
 
     <link rel="stylesheet" href="public/css/client_side/cart.css">
 
-    <style>
-        .remove-btn:hover {
-            cursor: pointer;
-        }
-
-        .icon-close:hover {
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
 <?php
@@ -47,7 +38,8 @@ include 'partials/nav.php';
                             ?>
                             <tr class="text-center">
                                 <td class="product-remove">
-                                    <button type="submit" class="remove-btn" onclick="removeItem(<?= $i ?>)" style="border:none;">
+                                    <button type="submit" class="remove-btn" onclick="removeItem(<?= $i ?>)"
+                                            style="border:none;">
                                         <span class="icon-close"></span>
                                     </button>
                                 </td>
@@ -65,19 +57,23 @@ include 'partials/nav.php';
                                 <td class="price" style="color:#504831;"><?= $item->Price ?>&nbsp;EGP</td>
                                 <td class="quantity">
                                     <div class="input-group">
-                                            <button type="button" onclick="decrementQuantity(<?= $i ?>)" class="quantity-left-minus btn" data-type="minus" data-field="">
-                                                <i class="icon-minus"></i>
-                                            </button>
-                                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="<?= $cartItems[$i]->getQuantity() ?>" min="1" max="100">
-                                            <button type="button" onclick="incrementQuantity(<?= $i ?>)" class="quantity-right-plus btn" data-type="plus" data-field="">
-                                                <i class="icon-plus"></i>
-                                            </button>
+                                        <button type="button" onclick="decrementQuantity(<?= $i ?>)"
+                                                class="quantity-left-minus btn" data-type="minus" data-field="">
+                                            <i class="icon-minus"></i>
+                                        </button>
+                                        <input type="text" disabled id="quantity" name="quantity"
+                                               class="form-control input-number"
+                                               value="<?= $cartItems[$i]->getQuantity() ?>" min="1" max="100">
+                                        <button type="button" onclick="incrementQuantity(<?= $i ?>)"
+                                                class="quantity-right-plus btn" data-type="plus" data-field="">
+                                            <i class="icon-plus"></i>
+                                        </button>
                                     </div>
                                 </td>
 
-                                <td class="total"
+                                <td class="total" id="item-total"
                                     style="color:#504831;"><?php echo $item->Price * $cartItems[$i]->getQuantity() ?>
-                                   &nbsp;EGP
+                                    &nbsp;EGP
                                 </td>
                             </tr><!-- END TR-->
                             <?php
@@ -101,13 +97,13 @@ include 'partials/nav.php';
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
                             <span>Subtotal</span>
-                            <span><?= $total ?>&nbsp;EGP</span>
+                            <span id="subtotal-field"><?=$total ?>&nbsp;EGP</span>
                         </p>
 
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span><?= $total ?>&nbsp;EGP</span>
+                            <span id="total-field"><?=$total?>&nbsp;EGP</span>
                         </p>
                     </div>
                     <p class="text-center"><a href="checkout" class="btn btn-primary py-3 px-4"
@@ -195,7 +191,6 @@ include 'partials/footer.php'
                 stroke="#F96D00"/>
     </svg>
 </div>
-
 
 
 <script src="public/js/jquery.min.js"></script>

@@ -185,12 +185,12 @@ form {
 }
 
 .login .button {
-    background: #045420;
+    background: #006a4d;
     color: white;
 }
 
 .login .button:hover, .button:focus {
-    background: #045420;
+    background: #006a4d;
     color: #fff;
 }
 

@@ -3,6 +3,7 @@
 
 require_once 'helpers/session.helper.php';
 require_once "models/User.php";
+require_once "controllers/cart.controller.php";
 
 if (!isset($_SESSION['user'])) {
     redirect($GLOBALS['projectFolder'] . "/login");
@@ -35,15 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         exit();
     }
 
-    include 'controllers/cart.controller.php';
     CartController::viewCart();
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Include Controller
-    include 'controllers/cart.controller.php';
-    switch($lastSegment){
+    switch($_GET['action']){
         case 'increment':
             CartController::updateQuantity(true);
             exit();
@@ -53,7 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'remove':
             CartController::removeItem();
             exit();
-
+        default:
+            include_once 'views/404.php';
+            exit();
     }
 }
 

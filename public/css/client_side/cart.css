@@ -496,3 +496,33 @@ td {
 .icon-close:before {
     content: "\f00d";
 }
+
+.icon-close {
+    background: none;
+    color: black;
+}
+
+@media (min-width:767.98px) {
+    table td.quantity {
+        max-width: 100px !important;
+    }
+}
+
+.input-group button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group button:hover {
+    background:gray;
+}
+
+.remove-btn:hover {
+    cursor: pointer;
+}
+
+.icon-close:hover {
+    cursor: pointer;
+}

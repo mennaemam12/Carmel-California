@@ -38,23 +38,28 @@ function add() {
     });
 }
 
-function incrementQuantity(index) {
-    var quantityElements = document.querySelectorAll('#quantity');
-    var quantity = parseInt(quantityElements[index].value);
-    quantityElements[index].value = quantity + 1;
+let quantityElements = document.querySelectorAll('#quantity');
+let itemTotals = document.querySelectorAll('#item-total');
+let totalField = document.getElementById('total-field');
+let subTotalField = document.getElementById('subtotal-field');
+let cartNav = document.getElementById('Items_count');
 
+function incrementQuantity(index) {
     $.ajax({
-        url: "cart/increment",
+        url: "cart?action=increment",
         method: "POST",
         data: {
             index: index
         },
+        dataType: "json",
         success: function (response) {
-            console.log(response);
-            if (response) {
-                location.reload()
+            if (response.success) {
+                quantityElements[index].value = response.quantity;
+                itemTotals[index].innerHTML = response.itemTotal;
+                totalField.innerHTML = response.total + "&nbsp;EGP";
+                subTotalField.innerHTML = response.subtotal + "&nbsp;EGP"
+                cartNav.innerHTML = response.cartQuantity;
             }
-
         },
         error: function (xhr, status, error) {
             // Handle errors
@@ -64,35 +69,37 @@ function incrementQuantity(index) {
 }
 
 function decrementQuantity(index) {
-    var quantityElements = document.querySelectorAll('#quantity');
-    var quantity = parseInt(quantityElements[index].value);
-    if (quantity != 1) {
-        quantityElements[index].value = quantity - 1;
-
-        $.ajax({
-            url: "cart/decrement",
-            method: "POST",
-            data: {
-                index: index
-            },
-            success: function (response) {
-                console.log(response);
-                if (response) {
-                    location.reload()
-                }
-            },
-            error: function (xhr, status, error) {
-                // Handle errors
-                console.error("Error with the request. Status code:", xhr.status);
+    $.ajax({
+        url: "cart?action=decrement",
+        method: "POST",
+        data: {
+            index: index
+        },
+        dataType: "json",
+        success: function (response) {
+            if (response.success) {
+                quantityElements[index].value = response.quantity;
+                itemTotals[index].innerHTML = response.itemTotal;
+                totalField.innerHTML = response.total + "&nbsp;EGP";
+                subTotalField.innerHTML = response.subtotal + "&nbsp;EGP"
+                cartNav.innerHTML = response.cartQuantity;
             }
-        });
-    }
+            else
+                removeItem(index);
+        },
+        error: function (xhr, status, error) {
+            // Handle errors
+            console.log(error);
+            console.error("Error with the request. Status code:", xhr.status);
+        }
+    });
 }
 
 function removeItem(index) {
+
     let form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'cart/remove';
+    form.action = 'cart?action=remove';
     document.body.appendChild(form);
     let input = document.createElement('input');
     input.type = 'hidden';

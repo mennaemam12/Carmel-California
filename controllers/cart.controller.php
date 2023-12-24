@@ -56,7 +56,7 @@ class CartController
 
                 $cartItems[$index]->setQuantity($newQuantity);
 
-            } else if ($index == '') {
+            } else if ($index === '') {
                 $this->cartModel->setUserId($user->getID());
                 $this->cartModel->setItemType($type);
                 $this->cartModel->setItemId($id);
@@ -92,9 +92,8 @@ class CartController
             $cartItems[] = $cart;
         }
 
-        foreach ($cartItems as $item) {
+        foreach ($cartItems as $item)
             $items[] = Item::findItemByID($item->getItemType(), $item->getItemId());
-        }
 
         include_once 'views/cart.php';
     }
@@ -110,22 +109,46 @@ class CartController
             $cartItems[] = $cart;
         }
         $existingQuantity = $cartItems[$_POST['index']]->getQuantity();
-        if ($increment == true) {
-            $newQuantity = $existingQuantity + 1;
-        } else {
-            $newQuantity = $existingQuantity - 1;
+
+        if (!$increment && $existingQuantity == 1) {
+            echo json_encode(array('success' => false));
+            exit();
         }
+
+        if ($increment)
+            $newQuantity = $existingQuantity + 1;
+        else
+            $newQuantity = $existingQuantity - 1;
+
         $cartItems[$_POST['index']]->setQuantity($newQuantity);
 
         $user->emptyCart();
-        foreach ($cartItems as $cartItem) {
+        foreach ($cartItems as $cartItem)
             $user->addToCart($cartItem->serialize());
-        }
 
         $_SESSION['user'] = $user->serialize();
 
-        $response = true;
-        echo $response;
+        $total = 0;
+        $cartQuantity = 0;
+        $items = Cart::getCartItems($user->getID());
+
+        for ($i = 0; $i < count($items); $i++) {
+            $total += $items[$i]->Price * $cartItems[$i]->getQuantity();
+            $cartQuantity += $cartItems[$i]->getQuantity();
+        }
+
+        $itemTotal = $cartItems[$_POST['index']]->getQuantity() * $items[$_POST['index']]->Price;
+
+        $response = array(
+            'success' => true,
+            'quantity' => $newQuantity,
+            'itemTotal' => $itemTotal,
+            'subtotal' => $total,
+            'total' => $total,
+            'cartQuantity' => $cartQuantity
+        );
+
+        echo json_encode($response);
     }
 
     public static function removeItem()
@@ -144,9 +167,9 @@ class CartController
         // Reindex the array
         $cartItems = array_values($cartItems);
         $user->emptyCart();
-        foreach ($cartItems as $cartItem) {
+        foreach ($cartItems as $cartItem)
             $user->addToCart($cartItem->serialize());
-        }
+
         $_SESSION['user'] = $user->serialize();
 
         redirect($GLOBALS['projectFolder'] . "/cart");

@@ -1,6 +1,6 @@
 //fetch.php
 <?php
-  include('database.php');
+  include_once 'database.php';
   include_once 'controllers/menu.controller.php';
   include_once 'models/DrinkItem.php';
   include_once 'models/MainItem.php';

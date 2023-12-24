@@ -1,7 +1,6 @@
 <?php
 require_once 'database.php';
 require_once 'models/Item.php';
-//session_start();
 
 class Cart{
     protected $db;
@@ -103,6 +102,30 @@ class Cart{
         return false;
     }
 
+    public static function getCartItems($user_id) {
+        $db = new Database;
+        $db->query('SELECT * FROM cart WHERE User_id = :user_id');
+        $db->bind(':user_id', $user_id);
+        $rows = $db->resultSet();
+        $items = array();
+        foreach ($rows as $row)
+            $items[] = Item::findItemByID($row->Item_type, $row->Item_id);
+
+        return $items;
+    }
+
+    public static function getCartQuantity($user_id) {
+        $db = new Database;
+        $db->query('SELECT * FROM cart WHERE User_id = :user_id');
+        $db->bind(':user_id', $user_id);
+        $rows = $db->resultSet();
+        $quantity = 0;
+        foreach ($rows as $row)
+            $quantity += $row->Quantity;
+
+        return $quantity;
+    }
+
 //    public function getCart($user){
 //
 //        $sql = "SELECT * FROM `cart` WHERE User_id= :userID";
@@ -115,11 +138,4 @@ class Cart{
 //        include_once 'views/cart.php';
 //    }
 
-    
-
-  
-
-
 }
-
-?>

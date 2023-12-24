@@ -87,8 +87,8 @@ class Item {
         //Check row
         if ($db->rowCount() > 0) 
             return $row;
-         else 
-            return false;
+
+        return false;
         
     }
 
@@ -104,8 +104,8 @@ class Item {
         //Check row
         if ($db->rowCount() > 0)
             return $result;
-        else
-            return false;
+
+        return false;
     }
 
     public static function getAllItems()
