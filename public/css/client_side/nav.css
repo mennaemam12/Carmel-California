@@ -378,8 +378,12 @@ a:focus {
 }
 
 #ftco-nav {
-    transition: height 0.5s ease;
-    height: 0px;
+    transition: max-height 0.8s ease;
+    max-height: 0px;
     overflow: hidden;
     padding: 0px;
+}
+
+#ftco-nav .nav-link:last-child {
+    padding-left:0px;
 }

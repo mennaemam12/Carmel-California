@@ -21,30 +21,30 @@ let navbar_toggler = document.querySelector(".navbar-toggler");
 let nav = document.querySelector("#ftco-nav");
 window.addEventListener("resize", () => {
     if (window.innerWidth > 992) {
-        nav.style.height = "auto";
+        nav.style.maxHeight = "100vh";
         nav.style.padding = "0px";
     }
     else {
-        nav.style.height = "0px";
+        nav.style.maxHeight = "0px";
         nav.style.padding = "0px";
     }
 });
 
 if (window.innerWidth > 992) {
-    nav.style.height = "auto";
+    nav.style.maxHeight = "100vh";
     nav.style.padding = "0px";
 }
 else {
-    nav.style.height = "0px";
+    nav.style.maxHeight = "100vh";
     nav.style.padding = "0px";
 }
 
 navbar_toggler.addEventListener("click", () => {
-    if (parseInt(nav.style.height) === 0) {
-        nav.style.height = "400px";
+    if (parseInt(nav.style.maxHeight) === 0) {
+        nav.style.maxHeight = "100vh";
         nav.style.padding = "15px 0px";
     } else {
-        nav.style.height = "0px";
+        nav.style.maxHeight = "0px";
         setTimeout(() => {
             nav.style.padding = "0px";
         }, 400);
