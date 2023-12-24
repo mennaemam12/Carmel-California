@@ -102,28 +102,21 @@ class Cart{
         return false;
     }
 
-    public static function getCartItems($user_id) {
-        $db = new Database;
-        $db->query('SELECT * FROM cart WHERE User_id = :user_id');
-        $db->bind(':user_id', $user_id);
-        $rows = $db->resultSet();
+    public static function getCartSessionItems() {
+        $user = new User;
+        $user->unserialize($_SESSION['user']);
+        $cartItems = array();
+        foreach ($user->getCart() as $cartItem) {
+            $cart = new Cart;
+            $cart->unserialize($cartItem);
+            $cartItems[] = $cart;
+        }
+
         $items = array();
-        foreach ($rows as $row)
-            $items[] = Item::findItemByID($row->Item_type, $row->Item_id);
+        foreach ($cartItems as $item)
+            $items[] = Item::findItemByID($item->getItemType(), $item->getItemId());
 
         return $items;
-    }
-
-    public static function getCartQuantity($user_id) {
-        $db = new Database;
-        $db->query('SELECT * FROM cart WHERE User_id = :user_id');
-        $db->bind(':user_id', $user_id);
-        $rows = $db->resultSet();
-        $quantity = 0;
-        foreach ($rows as $row)
-            $quantity += $row->Quantity;
-
-        return $quantity;
     }
 
 //    public function getCart($user){

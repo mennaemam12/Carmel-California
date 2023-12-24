@@ -55,7 +55,7 @@ function incrementQuantity(index) {
         success: function (response) {
             if (response.success) {
                 quantityElements[index].value = response.quantity;
-                itemTotals[index].innerHTML = response.itemTotal;
+                itemTotals[index].innerHTML = response.itemTotal + "&nbsp;EGP";
                 totalField.innerHTML = response.total + "&nbsp;EGP";
                 subTotalField.innerHTML = response.subtotal + "&nbsp;EGP"
                 cartNav.innerHTML = response.cartQuantity;
@@ -79,7 +79,7 @@ function decrementQuantity(index) {
         success: function (response) {
             if (response.success) {
                 quantityElements[index].value = response.quantity;
-                itemTotals[index].innerHTML = response.itemTotal;
+                itemTotals[index].innerHTML = response.itemTotal + "&nbsp;EGP";
                 totalField.innerHTML = response.total + "&nbsp;EGP";
                 subTotalField.innerHTML = response.subtotal + "&nbsp;EGP"
                 cartNav.innerHTML = response.cartQuantity;

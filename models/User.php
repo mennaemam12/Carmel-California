@@ -157,7 +157,7 @@ class User {
     }
 
     //Register User
-    public function register(){
+    public function signup(){
         $this->db->query('INSERT INTO users (FullName, Email, UserPass, PhoneNumber,Usertype) 
         VALUES (:fullname, :email, :userpass, :phonenumber,:usertype)');
         //Bind values

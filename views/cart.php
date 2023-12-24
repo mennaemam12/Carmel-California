@@ -97,13 +97,13 @@ include 'partials/nav.php';
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
                             <span>Subtotal</span>
-                            <span id="subtotal-field"><?=$total ?>&nbsp;EGP</span>
+                            <span id="subtotal-field"><?= $total ?>&nbsp;EGP</span>
                         </p>
 
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span id="total-field"><?=$total?>&nbsp;EGP</span>
+                            <span id="total-field"><?= $total ?>&nbsp;EGP</span>
                         </p>
                     </div>
                     <p class="text-center"><a href="checkout" class="btn btn-primary py-3 px-4"

@@ -31,6 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include 'controllers/user.controller.php';
     $user = new UserController;
-    $user->register();
+    $user->signup();
 }
 

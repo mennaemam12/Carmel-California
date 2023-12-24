@@ -130,9 +130,9 @@ class CartController
 
         $total = 0;
         $cartQuantity = 0;
-        $items = Cart::getCartItems($user->getID());
+        $items = Cart::getCartSessionItems();
 
-        for ($i = 0; $i < count($items); $i++) {
+        for ($i = 0; $i < count($cartItems); $i++) {
             $total += $items[$i]->Price * $cartItems[$i]->getQuantity();
             $cartQuantity += $cartItems[$i]->getQuantity();
         }

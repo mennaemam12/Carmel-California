@@ -19,7 +19,7 @@ class UserController
         return true;
     }
 
-    private function validateRegister($data)
+    private function validateSignUp($data)
     {
         if (
             empty($data['FullName']) || empty($data['Email']) || empty($data['Username']) ||
@@ -88,7 +88,7 @@ class UserController
 
     }
 
-    public function register()
+    public function signup()
     {
         //Process form
 
@@ -105,7 +105,7 @@ class UserController
         ];
 
         //Validate inputs
-        if (!$this->validateRegister($data)) {
+        if (!$this->validateSignUp($data)) {
             $response = array('msg' => $this->errorMsg);
             echo json_encode($response);
             exit();
@@ -129,7 +129,7 @@ class UserController
         $this->userModel->setType(1);
 
         //Register User
-        if ($this->userModel->register()) {
+        if ($this->userModel->signup()) {
             $id = $this->userModel->getLastInsertedID();
             $this->userModel->setID($id);
             $this->createUserSession($this->userModel);
