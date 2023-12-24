@@ -269,7 +269,7 @@ h3 {
 
 .pricing-entry .text h3 span {
     background: #151111;
-    background: url(public/images/bg_4.jpg) no-repeat fixed;
+    background: no-repeat fixed;
     padding-right: 20px;
 }
 
@@ -607,4 +607,24 @@ h3 {
 
 .icon-my_location:before {
     content: "\e55c";
+}
+
+.salad-button {
+    margin-top:30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #006a4d;
+    color: white;
+}
+
+.salad-button:active, .salad-button:focus {
+    color: white;
+}
+
+.salad-button:hover {
+    background: #007a4d;
+    color: white;
 }

@@ -86,7 +86,7 @@ require_once 'controllers/nav.controller.php';
 </section>
 
 
-<section class="ftco-menu mb-5 pb-5">
+<section class="ftco-menu">
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 heading-section text-center ftco-animate">
@@ -127,6 +127,9 @@ require_once 'controllers/nav.controller.php';
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-3">
+                                <div class="create-salad">
+                                    <a href="menu?action=customize-salad" class="ftco-animate salad-button">Customize Your Salad?</a>
+                                </div>
                                 <?php echo MenuController::generateItemsHTML($sideCategories, $sideItems, "sides") ?>
                             </div>
 
@@ -141,10 +144,6 @@ require_once 'controllers/nav.controller.php';
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="create-salad">
-                <a href="menu?action=customize-salad" class="btn btn-primary py-3 px-4">Create Your Own Salad</a>
             </div>
         </div>
 
