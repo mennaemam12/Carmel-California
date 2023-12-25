@@ -73,8 +73,7 @@ require_once 'controllers/nav.controller.php';
                                 </td>
 
                                 <td class="total" id="item-total"
-                                    style="color:#504831;"><?php echo $item->Price * $cartItems[$i]->getQuantity() ?>
-                                    &nbsp;EGP
+                                    style="color:#504831;"><?php echo $item->Price * $cartItems[$i]->getQuantity() ?>&nbsp;EGP
                                 </td>
                             </tr><!-- END TR-->
                             <?php

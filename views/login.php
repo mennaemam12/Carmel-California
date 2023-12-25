@@ -17,7 +17,7 @@ NavController::viewNav();
     <div class="image">
         <img src="public/images/reg.jpg" alt="">
     </div>
-    <div class="login">
+    <div class="login" id="login">
         <form id="login-form" method="POST" action="login" class = "ftco-animate">
             <div class="form-title">Sign In</div>
             <div class="form-group">

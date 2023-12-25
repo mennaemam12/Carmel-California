@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-<link rel="stylesheet" href="public/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="public/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="public/css/client_side/nav.css">
 <link rel="stylesheet" href="public/css/client_side/footer.css">
 <link rel="stylesheet" href="public/css/client_side/animations.css">

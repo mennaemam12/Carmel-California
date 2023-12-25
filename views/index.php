@@ -10,6 +10,7 @@ $rows = Item::getAllItems();
 <head>
     <?php include 'views/partials/head.php';?>
 
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="public/css/animate.css">
 

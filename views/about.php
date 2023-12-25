@@ -91,16 +91,6 @@ require_once 'controllers/nav.controller.php';
                     </div>
                 </div>
             </div>
-            <div class="testimony">
-                <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
-                    unorthographic life One day however a small line of blind text by the name. &rdquo;</p>
-                <div class="author">
-                    <img src="public/images/person_3.jpg" alt="">
-                    <div class="name align-self-center">Louise Kelly
-                        <span class="position">Illustrator Designer</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
