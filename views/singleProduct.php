@@ -23,7 +23,6 @@ $rows = Item::getAllItems();
     <link rel="stylesheet" href="public/css/ionicons.min.css">
 
 
-    <link rel="stylesheet" href="public/css/flaticon.css">
     <link rel="stylesheet" href="public/css/icomoon.css">
     <link rel="stylesheet" href="public/css/client_side/product.css">
     <style>
