@@ -70,7 +70,7 @@ require_once 'controllers/nav.controller.php';
                     <div class="col-md-4 d-flex ftco-animate">
                         <div class="icon"><span class="icon-my_location"></span></div>
                         <div class="text">
-                            <h3>13 Street 18, Maadi, Cairo, Egypt</h3>
+                            <h3><a href="https://maps.app.goo.gl/3hpH3Aos6b4J4tLDA" style="color:inherit">13 Street 18, Maadi, Cairo, Egypt</a></h3>
                         </div>
                     </div>
                     <div class="col-md-4 d-flex ftco-animate">

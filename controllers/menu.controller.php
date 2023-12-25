@@ -54,10 +54,10 @@ class MenuController
     {
         $html = "<section class='menu-section ftco-section'>
 								<div class='container'>
-									<div class='row'>";
+									<div class='menu-area'>";
 
         foreach ($Categories as $category) {
-            $html .= "<div class='col-md-6 mb-5 pb-3'>
+            $html .= "<div class='menu-category'>
 									<h3 class='mb-5 heading-pricing ftco-animate'>" . $category . "</h3>";
 
             foreach ($Items as $item) {
