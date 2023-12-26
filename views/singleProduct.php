@@ -47,7 +47,7 @@ require_once 'controllers/nav.controller.php';
     <div class="container">
         <div class="row">
             <div class="col-lg-6 mb-5 ftco-animate">
-                <a href="<?=$item->ImagePath?>" class="image-popup"><img src="<?=$item->ImagePath?>" class="img-fluid" alt="Colorlib Template"></a>
+                <a href="<?=$item->ImagePath?>" class="image-popup"><img loading='lazy'src="<?=$item->ImagePath?>" class="img-fluid" alt="Colorlib Template"></a>
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                 <!-- <h3>Creamy Latte Coffee</h3> -->
@@ -195,7 +195,7 @@ require_once 'controllers/nav.controller.php';
 					echo "<div class='text text-center pt-4'>";
 					echo "<div class='menu-entry'>";
 					echo "<a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>";
-					echo "<img src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
+					echo "<img loading='lazy' src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
 					echo "</a>";
 					echo "<h3><a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id ."'>".$rows[$i]->Name."</a></h3>";
 					echo "<p></p>";

@@ -31,7 +31,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo" style="margin: 0%;">
-                <img src="template/images/CARMEL (2).png" alt="logo" style="margin: 0%;">
+                <img loading='lazy'src="template/images/CARMEL (2).png" alt="logo" style="margin: 0%;">
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="font-weight-light">Sign in to continue.</h6>

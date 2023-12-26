@@ -54,7 +54,7 @@ require_once 'controllers/nav.controller.php';
                 <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                     unorthographic life One day however a small.&rdquo;</p>
                 <div class="author">
-                    <img src="public/images/person_2.jpg" alt="">
+                    <img loading='lazy'src="public/images/person_2.jpg" alt="">
                     <div class="name ">Louise Kelly
                         <span class="position">Illustrator Designer</span>
                     </div>
@@ -65,7 +65,7 @@ require_once 'controllers/nav.controller.php';
                     unorthographic life One day however a small line of blind text by the name of Lorem Ipsum
                     decided to leave for the far World of Grammar.&rdquo;</p>
                 <div class="author">
-                    <img src="public/images/person_2.jpg" alt="">
+                    <img loading='lazy'src="public/images/person_2.jpg" alt="">
                     <div class="name">Louise Kelly
                         <span class="position">Illustrator Designer</span>
                     </div>
@@ -75,7 +75,7 @@ require_once 'controllers/nav.controller.php';
                 <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                     unorthographic life One day however a small line of blind text by the name. &rdquo;</p>
                 <div class="author">
-                    <img src="public/images/person_3.jpg" alt="">
+                    <img loading='lazy'src="public/images/person_3.jpg" alt="">
                     <div class="name">Louise Kelly
                         <span class="position">Illustrator Designer</span>
                     </div>
@@ -85,7 +85,7 @@ require_once 'controllers/nav.controller.php';
                 <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                     unorthographic life One day however.&rdquo;</p>
                 <div class="author">
-                    <img src="public/images/person_2.jpg" alt="">
+                    <img loading='lazy'src="public/images/person_2.jpg" alt="">
                     <div class="name align-self-center">Louise Kelly
                         <span class="position">Illustrator Designer</span>
                     </div>
@@ -114,7 +114,7 @@ require_once 'controllers/nav.controller.php';
                     echo "<div>";
                     echo "<div class='menu-entry'>";
                     echo "<a href='product?type=" . $rows[$i]->itemType . "&id=" . $rows[$i]->id . "'>";
-                    echo "<img src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
+                    echo "<img loading='lazy' src='" . $rows[$i]->ImagePath . "' alt='' width='200' height='150'>";
                     echo "</a>";
                     echo "</div>";
                     echo "</div>";

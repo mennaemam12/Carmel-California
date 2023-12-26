@@ -48,7 +48,7 @@
                                                     <li>
                                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                                <img src="public/images/salad-ingredients/<?php echo $b->Name ?>.jpg" class="img-fluid rounded-3" alt="<?php echo $b->Name ?>" height="51px"/>
+                                                                <img loading='lazy'src="public/images/salad-ingredients/<?php echo $b->Name ?>.jpg" class="img-fluid rounded-3" alt="<?php echo $b->Name ?>" height="51px"/>
                                                             </div>
                                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                                 <h6 class="text-muted">Base</h6>
@@ -93,7 +93,7 @@
                                                     <li>
                                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                                <img src="public/images/salad-ingredients/<?php echo $top->Name ?>.jpg" class="img-fluid rounded-3" alt="<?php echo $top->Name ?>"/>
+                                                                <img loading='lazy'src="public/images/salad-ingredients/<?php echo $top->Name ?>.jpg" class="img-fluid rounded-3" alt="<?php echo $top->Name ?>"/>
                                                             </div>
                                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                                 <h6 class="text-muted">Vegetable</h6>
@@ -141,7 +141,7 @@
                                                     <li>
                                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                                <img src="public/images/salad-ingredients/<?php echo $d->Name ?>.jpg" class="img-fluid rounded-3" alt="<?php echo $d->Name ?>" height="51px"/>
+                                                                <img loading='lazy'src="public/images/salad-ingredients/<?php echo $d->Name ?>.jpg" class="img-fluid rounded-3" alt="<?php echo $d->Name ?>" height="51px"/>
                                                             </div>
                                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                                 <h6 class="text-muted">Dressing</h6>
@@ -185,7 +185,7 @@
                                                     <li>
                                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                                <img src="public/images/salad-ingredients/<?php echo $prot->Name ?>.jpg" class="img-fluid rounded-3" alt="<?php echo $prot->Name ?>"/>
+                                                                <img loading='lazy'src="public/images/salad-ingredients/<?php echo $prot->Name ?>.jpg" class="img-fluid rounded-3" alt="<?php echo $prot->Name ?>"/>
                                                             </div>
                                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                                 <h6 class="text-muted">Protein</h6>

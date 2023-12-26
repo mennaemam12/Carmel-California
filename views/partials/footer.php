@@ -2,8 +2,8 @@
     <div class="footer-div">
         <div class="footer-title">About Us</div>
         <div class="footer-div-content">
-            <div>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                there live the blind texts.
+            <div>
+
             </div>
             <div class="footer-social">
                 <ul>
