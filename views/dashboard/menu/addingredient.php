@@ -82,6 +82,7 @@ require_once 'helpers/session.helper.php';
                                             <input type="text" class="form-control" id="categorymax" name="categorymax" placeholder="Example: 4" onclick='emptyMessage()'>
                                            
                                         </div>
+                                        <div id = "image-preview" class = "image-preview"></div>
                                         <div class="form-group">
                                             <label for="file">Ingredient Image </label>
                                             <input type="file" name="file" id="file" class="file-upload-default" onclick='emptyMessage()'>
@@ -144,6 +145,8 @@ require_once 'helpers/session.helper.php';
         <script src="template/js/file-upload.js"></script>
         <script src="template/js/typeahead.js"></script>
         <script src="template/js/select2.js"></script>
+
+        <script src = "public/js/dashboard/imagePreview.js"></script>
 </body>
 
 </html>

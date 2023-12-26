@@ -47,30 +47,32 @@ class IngredientController
 
     private function saveImage($file, $category, $name)
     {
-        $uploadDir = 'public/images/salad-ingredients/' . $category . '/';
-        $imageFileType = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $category = strtolower($category);
+        $name = strtolower($name);
 
-        // Generate a unique name for the image
+        $uploadDir = 'public/images/salad-ingredients/' . $category . '/';
+//        $imageFileType = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $imageFileType = 'webp';
+
         $imageName = $name . '.' . $imageFileType;
         $targetPath = $uploadDir . $imageName;
 
         // Create the category subfolder if it doesn't exist
-        if (!is_dir($uploadDir)) {
+        if (!is_dir($uploadDir))
             mkdir($uploadDir, 0755);
-        }
 
         // Move the uploaded file to the destination subfolder
-        if (move_uploaded_file($file['tmp_name'], $targetPath)) {
+        if (move_uploaded_file($file['tmp_name'], $targetPath))
             return $targetPath;
-        } else {
-            return false;
-        }
+
+        return false;
+
     }
 
     public function add()
     {
         //Sanitize POST data
-        //$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         //Init data
         $data = [
@@ -78,6 +80,7 @@ class IngredientController
             'category' => trim($_POST['category']),
             'categorymax' => trim($_POST['categorymax']),
             'price' => trim($_POST['price']),
+            'image' => $_FILES['file']
         ];
 
         if (Ingredient::findIngredientByName($data['ingredientname'])) {
@@ -95,18 +98,17 @@ class IngredientController
                 exit();
             }
 
-            // Validation successful, create an Item object
-            $this->ingredientModel = new Ingredient($data['ingredientname'], $data['category'], $data['categorymax'], $data['price'], $imagePath);
+            // Validation successful, create an Ingredient object
+            $this->ingredientModel = new Ingredient(null,$data['ingredientname'], $data['category'], $data['categorymax'], $data['price'], $imagePath);
 
             if ($this->ingredientModel->add()) {
                 flash("formSuccess", "Ingredient added successfully", 'form-message form-message-green');
                 redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
                 exit();
-            } else {
-                flash("formError", "Failed to add ingredient to the database", 'form-message form-message-red');
-                redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
-                exit();
             }
+            flash("formError", "Failed to add ingredient to the database", 'form-message form-message-red');
+            redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
+            exit();
         }
 
         flash("formError", $this->errorMsg, 'form-message form-message-red');

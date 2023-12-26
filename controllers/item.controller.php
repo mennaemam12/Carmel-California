@@ -64,9 +64,9 @@ class ItemController
         $targetPath = $uploadDir . $imageName;
 
         // Create the category subfolder if it doesn't exist
-        if (!is_dir($uploadDir)) {
+        if (!is_dir($uploadDir))
             mkdir($uploadDir, 0755);
-        }
+
 
         // Move the uploaded file to the destination subfolder
         if (move_uploaded_file($file['tmp_name'], $targetPath))
