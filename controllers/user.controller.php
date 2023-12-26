@@ -22,7 +22,7 @@ class UserController
     private function validateSignUp($data)
     {
         if (
-            empty($data['FullName']) || empty($data['Email']) || empty($data['Username']) ||
+            empty($data['FullName']) || empty($data['Email']) || empty($data['PhoneNumber']) ||
             empty($data['UserPass']) || empty($data['UserConfPass'])
         ) {
             $this->errorMsg = "Please fill out all inputs";
