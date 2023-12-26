@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.1deb1ubuntu1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 23, 2023 at 08:43 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: localhost:3306
+-- Generation Time: Dec 26, 2023 at 08:40 AM
+-- Server version: 8.0.35-0ubuntu0.23.10.1
+-- PHP Version: 8.2.10-2ubuntu1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,25 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `billing_details` (
-  `id` int(11) NOT NULL,
-  `UserId` int(11) NOT NULL,
-  `FirstName` varchar(50) NOT NULL,
-  `LastName` varchar(50) NOT NULL,
-  `Area` varchar(50) NOT NULL,
-  `Street` varchar(50) NOT NULL,
-  `Building` int(6) NOT NULL,
-  `Floor` int(2) NOT NULL,
-  `Apartment` int(2) NOT NULL,
-  `Postalcode` int(5) DEFAULT NULL
+  `id` int NOT NULL,
+  `UserId` int NOT NULL,
+  `FirstName` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `LastName` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Area` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Street` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Building` int NOT NULL,
+  `Floor` int NOT NULL,
+  `Apartment` int NOT NULL,
+  `Postalcode` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `billing_details`
---
-
-INSERT INTO `billing_details` (`id`, `UserId`, `FirstName`, `LastName`, `Area`, `Street`, `Building`, `Floor`, `Apartment`, `Postalcode`) VALUES
-(1, 32, 'Shahd', 'Khaled', 'maadi', 'Mahmoud Madkour', 3132, 2, 5, 11733),
-(1, 32, 'Shahd', 'Khaled', 'maadi', 'Mahmoud Madkour', 3132, 2, 5, 11733);
 
 -- --------------------------------------------------------
 
@@ -55,12 +47,12 @@ INSERT INTO `billing_details` (`id`, `UserId`, `FirstName`, `LastName`, `Area`, 
 --
 
 CREATE TABLE `breakfast` (
-  `id` int(11) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Category` varchar(20) NOT NULL,
-  `Description` varchar(1000) DEFAULT NULL,
+  `id` int NOT NULL,
+  `Name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `Category` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Description` varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Price` double NOT NULL,
-  `ImagePath` varchar(60) NOT NULL
+  `ImagePath` varchar(60) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -77,12 +69,12 @@ INSERT INTO `breakfast` (`id`, `Name`, `Category`, `Description`, `Price`, `Imag
 --
 
 CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `User_id` int(11) NOT NULL,
-  `Item_type` varchar(15) NOT NULL,
-  `Item_id` int(11) NOT NULL,
-  `Selected_Option` varchar(20) NOT NULL,
-  `Quantity` int(11) NOT NULL
+  `id` int NOT NULL,
+  `User_id` int NOT NULL,
+  `Item_type` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `Item_id` int NOT NULL,
+  `Selected_Option` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Quantity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -90,8 +82,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `User_id`, `Item_type`, `Item_id`, `Selected_Option`, `Quantity`) VALUES
-(38, 28, 'main', 2, '', 5),
-(39, 28, 'breakfast', 3, '', 1);
+(2, 28, 'main', 2, '', 4);
 
 -- --------------------------------------------------------
 
@@ -100,8 +91,8 @@ INSERT INTO `cart` (`id`, `User_id`, `Item_type`, `Item_id`, `Selected_Option`, 
 --
 
 CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `Name` varchar(20) NOT NULL
+  `id` int NOT NULL,
+  `Name` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -124,12 +115,12 @@ INSERT INTO `categories` (`id`, `Name`) VALUES
 --
 
 CREATE TABLE `desserts` (
-  `id` int(11) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Category` varchar(20) NOT NULL,
-  `Description` varchar(1000) DEFAULT NULL,
+  `id` int NOT NULL,
+  `Name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `Category` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Description` varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Price` double NOT NULL,
-  `ImagePath` varchar(65) NOT NULL
+  `ImagePath` varchar(65) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -139,14 +130,14 @@ CREATE TABLE `desserts` (
 --
 
 CREATE TABLE `discount` (
-  `id` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `category` varchar(100) DEFAULT NULL,
-  `percentage` int(50) DEFAULT NULL,
-  `coupon` varchar(100) DEFAULT NULL,
+  `id` int NOT NULL,
+  `type` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `category` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `percentage` int DEFAULT NULL,
+  `coupon` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
-  `valid` varchar(50) DEFAULT NULL
+  `valid` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -169,12 +160,12 @@ INSERT INTO `discount` (`id`, `type`, `category`, `percentage`, `coupon`, `start
 --
 
 CREATE TABLE `drinks` (
-  `id` int(11) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Category` varchar(20) NOT NULL,
-  `Description` varchar(1000) DEFAULT NULL,
+  `id` int NOT NULL,
+  `Name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `Category` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Description` varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Price` double NOT NULL,
-  `ImagePath` varchar(60) NOT NULL
+  `ImagePath` varchar(60) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -191,12 +182,12 @@ INSERT INTO `drinks` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePa
 --
 
 CREATE TABLE `main` (
-  `id` int(11) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Category` varchar(20) NOT NULL,
-  `Description` varchar(1000) DEFAULT NULL,
+  `id` int NOT NULL,
+  `Name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `Category` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Description` varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Price` double NOT NULL,
-  `ImagePath` varchar(60) NOT NULL
+  `ImagePath` varchar(60) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -215,9 +206,9 @@ INSERT INTO `main` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePath
 --
 
 CREATE TABLE `navbar` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `path` varchar(255) NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -241,9 +232,9 @@ INSERT INTO `navbar` (`id`, `name`, `path`) VALUES
 --
 
 CREATE TABLE `options` (
-  `id` int(11) NOT NULL,
-  `Category_id` int(11) NOT NULL,
-  `Criteria` varchar(20) NOT NULL
+  `id` int NOT NULL,
+  `Category_id` int NOT NULL,
+  `Criteria` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -260,9 +251,9 @@ INSERT INTO `options` (`id`, `Category_id`, `Criteria`) VALUES
 --
 
 CREATE TABLE `option_values` (
-  `id` int(11) NOT NULL,
-  `id_options` int(11) NOT NULL,
-  `value` varchar(20) NOT NULL
+  `id` int NOT NULL,
+  `id_options` int NOT NULL,
+  `value` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -281,13 +272,13 @@ INSERT INTO `option_values` (`id`, `id_options`, `value`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
-  `UserId` int(11) NOT NULL,
-  `ItemId` int(11) NOT NULL,
-  `ItemType` varchar(50) NOT NULL,
-  `SelectedOption` varchar(50) NOT NULL,
-  `Quantity` int(11) NOT NULL,
-  `new_column` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `UserId` int NOT NULL,
+  `ItemId` int NOT NULL,
+  `ItemType` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `SelectedOption` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Quantity` int NOT NULL,
+  `new_column` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -304,9 +295,9 @@ INSERT INTO `orders` (`id`, `UserId`, `ItemId`, `ItemType`, `SelectedOption`, `Q
 --
 
 CREATE TABLE `permissions` (
-  `id` int(11) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  `path` varchar(100) NOT NULL
+  `id` int NOT NULL,
+  `description` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `path` varchar(100) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -325,7 +316,10 @@ INSERT INTO `permissions` (`id`, `description`, `path`) VALUES
 (9, 'View Dashboard Home', 'dashboard'),
 (10, 'Add/Edit/View Menu', 'dashboard/menu'),
 (11, 'Add/Edit/View Users', 'dashboard/users'),
-(12, 'View/ Add Discounts', 'dashboard/discount');
+(12, 'View/ Add Discounts', 'dashboard/discount'),
+(13, 'View Orders', 'dashboard/orders'),
+(14, 'View Reviews', 'dashboard/reviews'),
+(15, 'View Analytics', 'dashboard/reports');
 
 -- --------------------------------------------------------
 
@@ -334,27 +328,13 @@ INSERT INTO `permissions` (`id`, `description`, `path`) VALUES
 --
 
 CREATE TABLE `reviews` (
-  `user_id` varchar(200) NOT NULL,
-  `item_id` varchar(200) NOT NULL,
-  `item_type` varchar(20) NOT NULL,
-  `message` varchar(500) NOT NULL,
-  `rating` set('1','2','3','4','5') NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp()
+  `user_id` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `item_id` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
+  `item_type` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `message` varchar(500) COLLATE utf8mb4_general_ci NOT NULL,
+  `rating` set('1','2','3','4','5') COLLATE utf8mb4_general_ci NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `reviews`
---
-
-INSERT INTO `reviews` (`user_id`, `item_id`, `item_type`, `message`, `rating`, `date`) VALUES
-('28', '2', 'main', 'Delicious stuff', '5', '2023-12-09'),
-('28', '4', 'main', 'To7fa to7fa ra2e3 fo2 el gamal', '2', '2023-12-09'),
-('28', '4', 'main', 'Folaaa', '5', '2023-12-09'),
-('28', '4', 'main', 'Test 3', '1', '2023-12-09'),
-('28', '2', 'main', 'Delicious stuff', '5', '2023-12-09'),
-('28', '4', 'main', 'To7fa to7fa ra2e3 fo2 el gamal', '2', '2023-12-09'),
-('28', '4', 'main', 'Folaaa', '5', '2023-12-09'),
-('28', '4', 'main', 'Test 3', '1', '2023-12-09');
 
 -- --------------------------------------------------------
 
@@ -363,12 +343,12 @@ INSERT INTO `reviews` (`user_id`, `item_id`, `item_type`, `message`, `rating`, `
 --
 
 CREATE TABLE `saladingredients` (
-  `id` int(11) NOT NULL,
-  `Name` varchar(50) NOT NULL,
+  `id` int NOT NULL,
+  `Name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `Price` double NOT NULL,
-  `Category` varchar(50) NOT NULL,
-  `CategoryMax` int(11) NOT NULL,
-  `ImagePath` varchar(255) NOT NULL
+  `Category` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `CategoryMax` int NOT NULL,
+  `ImagePath` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -384,7 +364,7 @@ INSERT INTO `saladingredients` (`id`, `Name`, `Price`, `Category`, `CategoryMax`
 (6, 'Blueberries', 20, 'Add On', 3, 'public/images/salad-ingredients/Add Ons/Blueberries.jpg'),
 (7, 'Strawberries', 15, 'Add On', 2, 'public/images/salad-ingredients/Add Ons/Strawberries.jpg'),
 (8, 'Onions', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Onions.jpg'),
-(9, 'Grilled Chicken', 25, 'Protein', 1, 'public/images/salad-ingredients/Toppings/Grilled Chicken.jpg'),
+(9, 'Grilled Chicken', 25, 'Protein', 1, 'public/images/salad-ingredients/Protein/Grilled Chicken.jpg'),
 (10, 'Red Beans', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Red Beans.jpg'),
 (11, 'Cherry Tomato', 15, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Cherry Tomato.jpg'),
 (12, 'Pepper', 10, 'Topping', 3, 'public/images/salad-ingredients/Toppings/Pepper.jpg'),
@@ -398,12 +378,12 @@ INSERT INTO `saladingredients` (`id`, `Name`, `Price`, `Category`, `CategoryMax`
 --
 
 CREATE TABLE `sides` (
-  `id` int(11) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Category` varchar(20) NOT NULL,
-  `Description` varchar(1000) DEFAULT NULL,
+  `id` int NOT NULL,
+  `Name` varchar(30) COLLATE utf8mb4_general_ci NOT NULL,
+  `Category` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Description` varchar(1000) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Price` double NOT NULL,
-  `ImagePath` varchar(60) NOT NULL
+  `ImagePath` varchar(60) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -421,12 +401,12 @@ INSERT INTO `sides` (`id`, `Name`, `Category`, `Description`, `Price`, `ImagePat
 --
 
 CREATE TABLE `users` (
-  `FullName` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `UserPass` varchar(255) NOT NULL,
-  `PhoneNumber` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `Usertype` varchar(20) NOT NULL
+  `FullName` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `UserPass` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `PhoneNumber` int NOT NULL,
+  `id` int NOT NULL,
+  `Usertype` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -448,8 +428,8 @@ INSERT INTO `users` (`FullName`, `Email`, `UserPass`, `PhoneNumber`, `id`, `User
 --
 
 CREATE TABLE `usertype_permissions` (
-  `usertype_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
+  `usertype_id` int NOT NULL,
+  `permission_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -476,7 +456,10 @@ INSERT INTO `usertype_permissions` (`usertype_id`, `permission_id`) VALUES
 (2, 9),
 (2, 10),
 (2, 11),
-(2, 12);
+(2, 12),
+(2, 13),
+(2, 14),
+(2, 15);
 
 -- --------------------------------------------------------
 
@@ -485,8 +468,8 @@ INSERT INTO `usertype_permissions` (`usertype_id`, `permission_id`) VALUES
 --
 
 CREATE TABLE `user_type` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `id` int NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -500,6 +483,12 @@ INSERT INTO `user_type` (`id`, `name`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `billing_details`
+--
+ALTER TABLE `billing_details`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `breakfast`
@@ -562,10 +551,22 @@ ALTER TABLE `option_values`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`user_id`,`item_id`,`item_type`);
 
 --
 -- Indexes for table `saladingredients`
@@ -602,94 +603,70 @@ ALTER TABLE `user_type`
 --
 
 --
--- AUTO_INCREMENT for table `breakfast`
+-- AUTO_INCREMENT for table `billing_details`
 --
-ALTER TABLE `breakfast`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `billing_details`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `desserts`
---
-ALTER TABLE `desserts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `discount`
---
-ALTER TABLE `discount`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `drinks`
---
-ALTER TABLE `drinks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `main`
---
-ALTER TABLE `main`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `navbar`
 --
 ALTER TABLE `navbar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `option_values`
 --
 ALTER TABLE `option_values`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `saladingredients`
 --
 ALTER TABLE `saladingredients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sides`
 --
 ALTER TABLE `sides`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
