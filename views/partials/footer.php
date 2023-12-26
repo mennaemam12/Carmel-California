@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="footer-div">
-        <div class="footer-title">Have&nbsp;A Question?</div>
+        <div class="footer-title">Have&nbsp;A&nbsp;Question?</div>
         <div class="footer-div-content">
             <div>
                 <ul class="footer-navigation footer-question">

@@ -140,12 +140,12 @@ include 'partials/footer.php'
 </div>
 
 
-<script src="public/js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="public/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="public/js/jquery.waypoints.min.js"></script>
 <script src="public/js/scrollax.min.js"></script>
 <script src="public/js/jquery.stellar.min.js"></script>
-<script src="public/js/aos.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="public/js/owl.carousel.min.js"></script>
 <script src="public/js/main.js"></script>
 <script src="public/js/nav.js"></script>

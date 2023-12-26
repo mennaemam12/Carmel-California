@@ -66,16 +66,19 @@ class CartController
             }
 
             $user->emptyCart();
-            foreach ($cartItems as $cartItem) {
+            foreach ($cartItems as $cartItem)
                 $user->addToCart($cartItem->serialize());
-            }
+
 
             $_SESSION['user'] = $user->serialize();
 
-
             // Return a JSON response with a boolean value
-            $response = true;
-            echo $response;
+            $response = array(
+                'success' => true,
+                'cartQuantity' => $this->getCartSessionQuantity()
+            );
+
+            echo json_encode($response);
         }
     }
 

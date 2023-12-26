@@ -1,6 +1,7 @@
 <?php
 require_once 'controllers/itemOption.controller.php';
 require_once 'controllers/review.controller.php';
+require_once 'controllers/cart.controller.php';
 
 if (isset($_SESSION['user'])) {
     $user = new User;
@@ -41,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
 
 
     if (isset($_POST['review-message'])) {
@@ -49,9 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $review->add();
         exit();
     }
+
     if(isset($_POST['id'])){
-    
-        include 'controllers/cart.controller.php';
+
         $cartController=new CartController;
         $cartController->addToUserSession();
         exit();

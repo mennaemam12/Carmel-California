@@ -19,15 +19,13 @@ function add() {
             selectedOption: selectedOption,
             quantity: quantity
         },
+        dataType: "json",
         success: function (response) {
-            console.log(response);
-            if (response) {
-                var currentItemCount = parseInt($("#Items_count").text(), 10);
-                var newItemCount = currentItemCount + 1;
+            if (response.success) {
+                document.getElementById('Items_count').innerHTML = response.cartQuantity;
+                document.getElementById('addCart').disabled = true;
+                document.getElementById('addCart').innerHTML = "Added to Cart";
 
-                $("#Items_count").text(newItemCount);
-                $('#addCart').prop('disabled', true);
-                $('#addCart').text("Added to Cart");
 
             }
         },
