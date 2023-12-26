@@ -193,7 +193,7 @@ class CartController
 
         $_SESSION['user'] = $user->serialize();
 
-        redirect($GLOBALS['projectFolder'] . "/cart");
+        redirect("/cart");
         echo $_POST['i'];
     }
 }

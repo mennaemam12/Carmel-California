@@ -6,7 +6,7 @@ require_once 'helpers/session.helper.php';
 require_once "models/User.php";
 
 if (!isset($_SESSION['user'])) {
-    redirect($GLOBALS['projectFolder'] . "/login");
+    redirect("/login");
     exit();
 }
 
@@ -33,13 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     // EXAMPLE: if the url is /checkout/anythingElse
     // Then dont show the checkout page
-
-    CheckoutController::viewCheckout();
-
-    if (count($segments) > 3) {
-        include 'views/404.php'; // show the 404 page
+    if (count($segments) > 2) {
+        include 'views/404.php';// show the 404 page
         exit();
     }
+
+    CheckoutController::viewCheckout();
 
 }
 

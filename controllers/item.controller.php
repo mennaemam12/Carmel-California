@@ -88,7 +88,7 @@ class ItemController
 		
         if (Item::findItemByName($data['item_name'], $data['itemtype'])) {
             flash("formSuccess", "Item name is already taken", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=additem");
+            redirect("/dashboard/menu?action=additem");
             exit();
         }
 
@@ -101,7 +101,7 @@ class ItemController
                 if ($this->errorMsg == "")
                     $this->errorMsg = "Failed to save image";
                 flash("formError", $this->errorMsg, 'form-message form-message-red');
-                redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=additem");
+                redirect("/dashboard/menu?action=additem");
                 exit();
             }
 
@@ -117,23 +117,23 @@ class ItemController
 
             if ($this->itemModel->add($data['itemtype'])) {
                 flash("formSuccess", "Item added successfully", 'form-message form-message-green');
-                redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=additem");
+                redirect("/dashboard/menu?action=additem");
                 exit();
             }
 
             flash("formError", "Failed to add item to the database", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=additem");
+            redirect("/dashboard/menu?action=additem");
             exit();
         }
 
         if ($_FILES['file']['size'] <= 0) {
             flash("formError", "Please upload an image", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=additem");
+            redirect("/dashboard/menu?action=additem");
             exit();
         }
 
         flash("formError", $this->errorMsg, 'form-message form-message-red');
-        redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=additem");
+        redirect("/dashboard/menu?action=additem");
     }
 
 
@@ -164,7 +164,7 @@ class ItemController
 
             if (!$imagePath) {
                 flash("formError", "Failed to save image", 'form-message form-message-red');
-                redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
+                redirect("/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
                 exit();
             }
 
@@ -183,7 +183,7 @@ class ItemController
                 if ($this->itemModel->add($itemType)) {
                     if ($this->itemModel->delete($originalType, $ID)) {
                         flash("formSuccess", "Item edited successfully", 'form-message form-message-green');
-                        redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
+                        redirect("/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
                         exit();
                     }
                 }
@@ -191,17 +191,17 @@ class ItemController
 
             if ($this->itemModel->edit($itemType, $ID)) {
                 flash("formSuccess", "Item edited successfully", 'form-message form-message-green');
-                redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
+                redirect("/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
                 exit();
             }
 
             flash("formError", "Failed to edit item in the database", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
+            redirect("/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
             exit();
         }
 
         flash("formError", $this->errorMsg, 'form-message form-message-red');
-        redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
+        redirect("/dashboard/menu?action=edititem&type=" . $itemType . '&id=' .  $ID);
         exit();
     }
 
@@ -257,12 +257,12 @@ class ItemController
             if ($this->itemModel->delete($itemType, $ID)) {
                 unlink($imagePath);
                 flash("formSuccess", "Item deleted successfully", 'form-message form-message-green');
-                redirect($GLOBALS['projectFolder'] . "/dashboard/menu");
+                redirect("/dashboard/menu");
                 exit();
             }
 
         flash("formError", "Failed to delete item from the database", 'form-message form-message-red');
-        redirect($GLOBALS['projectFolder'] . "/dashboard/menu");
+        redirect("/dashboard/menu");
         exit();
     }
 

@@ -6,7 +6,7 @@ require_once "models/User.php";
 require_once "controllers/cart.controller.php";
 
 if (!isset($_SESSION['user'])) {
-    redirect($GLOBALS['projectFolder'] . "/login");
+    redirect("/login");
     exit();
 }
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     // EXAMPLE: if the url is /cart/anythingElse
     // Then dont show the cart page
-    if (count($segments) > 3) {
+    if (count($segments) > 2) {
         include 'views/404.php';// show the 404 page
         exit();
     }

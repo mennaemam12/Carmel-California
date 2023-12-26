@@ -2,6 +2,10 @@
 require_once 'controllers/itemOption.controller.php';
 require_once 'controllers/review.controller.php';
 require_once 'controllers/cart.controller.php';
+require_once 'controllers/item.controller.php';
+
+$url = $_SERVER['REQUEST_URI'];
+$segments = explode('/', $url);
 
 if (isset($_SESSION['user'])) {
     $user = new User;
@@ -18,27 +22,30 @@ if (isset($_SESSION['user'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-        include_once 'controllers/item.controller.php';
-
-        $itemID = $_GET['id'];
-        $itemType = $_GET['type'];
-
-        $_SESSION['itemID'] = $itemID;
-        $_SESSION['itemType'] = $itemType;
-
-        // Check if the item type & item id are valid
-        if (!ItemController::doesExist($itemType, $itemID)) {
-            include 'views/404.php';
-            exit();
-        }
-
-        $item = Item::findItemByID($itemType, $itemID);
-
-        $reviews = Review::getReviews($itemType, $itemID);
-
-        $result = ItemOption::getItemOptions($itemType, $itemID);
-        include 'views/singleProduct.php';
+    if (count($segments) > 2) {
+        include 'views/404.php';// show the 404 page
         exit();
+    }
+
+    $itemID = $_GET['id'];
+    $itemType = $_GET['type'];
+
+    $_SESSION['itemID'] = $itemID;
+    $_SESSION['itemType'] = $itemType;
+
+    // Check if the item type & item id are valid
+    if (!ItemController::doesExist($itemType, $itemID)) {
+        include 'views/404.php';
+        exit();
+    }
+
+    $item = Item::findItemByID($itemType, $itemID);
+
+    $reviews = Review::getReviews($itemType, $itemID);
+
+    $result = ItemOption::getItemOptions($itemType, $itemID);
+    include 'views/singleProduct.php';
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -50,12 +57,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    if(isset($_POST['id'])){
+    if (isset($_POST['id'])) {
 
-        $cartController=new CartController;
+        $cartController = new CartController;
         $cartController->addToUserSession();
         exit();
-        
+
     }
 }
 

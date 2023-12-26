@@ -1,11 +1,8 @@
 <?php
 // Path: routes/cart.php
 
-
-
-
 if (isset($_SESSION['user'])) {
-    redirect ($GLOBALS['projectFolder'] . "/"); // Redirect to the home page
+    redirect ("/"); // Redirect to the home page
     exit();
 }
 
@@ -19,11 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     
     // EXAMPLE: if the url is /signup/anythingElse
     // Then dont show the signup page
-    if (count($segments) > 3) {
+    if (count($segments) > 2) {
         include 'views/404.php';// show the 404 page
         exit();
     }
-
+    
     include 'views/signup.php';
     exit();
 }

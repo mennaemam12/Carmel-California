@@ -1,7 +1,6 @@
 <?php
 // Path: index.php
 @session_start();
-require 'projectFolderName.php';
 
 // Get the current URL
 $url = $_SERVER['REQUEST_URI'];
@@ -9,10 +8,10 @@ $url = $_SERVER['REQUEST_URI'];
 // segments
 $segments = explode('/', $url);
 
-$page = $segments[2];
+$page = $segments[1];
 
 if (strpos($page, '?') !== false)
-    $page = strstr($segments[2], '?', true);
+    $page = strstr($segments[1], '?', true);
 
 // We use segments[2] to determine which route to load
 // segments[0] is empty because the URL starts with a slash

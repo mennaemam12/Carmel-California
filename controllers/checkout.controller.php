@@ -141,7 +141,7 @@ class CheckoutController
             $_SESSION['user'] = $user->serialize(); 
                      
         }
-      redirect($GLOBALS['projectFolder'] . "/cart");
+      redirect("/cart");
     }
 }
 ?>

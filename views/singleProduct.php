@@ -100,7 +100,7 @@ require_once 'controllers/nav.controller.php';
             <?php if(isset($_SESSION['user'])){?>
                 <p><a onclick="add()" id="addCart" class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
             <?php }else{?>
-                <p><a href='<?=$projectFolder?>/login' class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
+                <p><a href='login' class="btn btn-primary py-3 px-5" style="color: white">Add to Cart</a></p>
             <?php }?>
             </div>
         </div>

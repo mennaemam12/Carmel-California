@@ -1,5 +1,4 @@
 <?php
-include 'projectFolderName.php';
 require_once 'controllers/menu.controller.php';
 ?>
 

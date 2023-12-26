@@ -1,5 +1,5 @@
 <title>Carmel Calfornia</title>
-<base href="<?php echo $projectFolder ?>/">
+<base href="/">
 
 <link rel="shortcut icon" href="template/images/favicon.png"/>
 

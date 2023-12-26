@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     
     // EXAMPLE: if the url is /index/anythingElse
     // Then dont show the index page
-    if (count($segments) > 3) {
+    if (count($segments) > 2) {
         include 'views/404.php';// show the 404 page
         exit();
     }

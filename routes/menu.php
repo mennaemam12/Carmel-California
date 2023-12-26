@@ -3,6 +3,9 @@ require_once 'models/User.php';
 require_once 'controllers/menu.controller.php';
 require_once 'controllers/ingredient.controller.php';
 
+$url = $_SERVER['REQUEST_URI'];
+$segments = explode('/', $url);
+
 // Path: routes/menu.php
 
 if (isset($_SESSION['user'])) {
@@ -18,6 +21,11 @@ if (isset($_SESSION['user'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    if (count($segments) > 2) {
+        include 'views/404.php';// show the 404 page
+        exit();
+    }
 
     if (!isset($_GET['action'])) {
         $menu = new MenuController;

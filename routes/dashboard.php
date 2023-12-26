@@ -33,7 +33,7 @@ if (strpos($lastSegment, '?') !== false)
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    if (count($segments) < 4) {
+    if (count($segments) < 3) {
         include 'views/dashboard/dashboard.php';
         exit();
     }

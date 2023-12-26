@@ -36,7 +36,7 @@ class ReviewController
     {
         if (!isset($_SESSION['user'])) {
             flash("reviewError", "You must be logged in to add a review", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/product?type=" . $_SESSION['itemType'] . "&id=" . $_SESSION['itemID']);
+            redirect("/product?type=" . $_SESSION['itemType'] . "&id=" . $_SESSION['itemID']);
             exit();
         }
 
@@ -54,7 +54,7 @@ class ReviewController
 
         if (!ItemController::doesExist($data['item_type'], $data['item_id'])) {
             flash("reviewError", "Item not found", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/product?type=" . $data['item_type'] . "&id=" . $data['item_id']);
+            redirect("/product?type=" . $data['item_type'] . "&id=" . $data['item_id']);
             exit();
         }
 
@@ -69,12 +69,12 @@ class ReviewController
 
             if ($this->reviewModel->add()) {
                 flash("reviewError", "Review added successfully", 'form-message form-message-green');
-                redirect($GLOBALS['projectFolder'] . "/product?type=" . $data['item_type'] . "&id=" . $data['item_id']);
+                redirect("/product?type=" . $data['item_type'] . "&id=" . $data['item_id']);
                 exit();
             }
 
             flash("reviewError", "Failed to add review to the database", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/product?type=" . $data['item_type'] . "&id=" . $data['item_id']);
+            redirect("/product?type=" . $data['item_type'] . "&id=" . $data['item_id']);
             exit();
         }
     }

@@ -85,7 +85,7 @@ class IngredientController
 
         if (Ingredient::findIngredientByName($data['ingredientname'])) {
             flash("formError", "Ingredient with the same name already exists", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
+            redirect("/dashboard/menu?action=addingredient");
             exit();
         }
 
@@ -94,7 +94,7 @@ class IngredientController
 
             if (!$imagePath) {
                 flash("ImageError", 'form-message form-message-red');
-                redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
+                redirect("/dashboard/menu?action=addingredient");
                 exit();
             }
 
@@ -103,16 +103,16 @@ class IngredientController
 
             if ($this->ingredientModel->add()) {
                 flash("formSuccess", "Ingredient added successfully", 'form-message form-message-green');
-                redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
+                redirect("/dashboard/menu?action=addingredient");
                 exit();
             }
             flash("formError", "Failed to add ingredient to the database", 'form-message form-message-red');
-            redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
+            redirect("/dashboard/menu?action=addingredient");
             exit();
         }
 
         flash("formError", $this->errorMsg, 'form-message form-message-red');
-        redirect($GLOBALS['projectFolder'] . "/dashboard/menu?action=addingredient");
+        redirect("/dashboard/menu?action=addingredient");
     }
 
     public function getSections()

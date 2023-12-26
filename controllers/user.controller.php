@@ -54,7 +54,7 @@ class UserController
     {
         if (!isset($_POST['id']) || !isset($_POST['usertype'])) {
             flash("formError", "Please fill out all inputs");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
             exit();
         }
 
@@ -63,13 +63,13 @@ class UserController
 
         if (!is_numeric($id) || !is_numeric($usertype)) {
             flash("formError", "Invalid input");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
             exit();
         }
 
         if (empty($id) || empty($usertype)) {
             flash("formError", "Please fill out all inputs");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
             exit();
         }
 
@@ -78,12 +78,12 @@ class UserController
 
         if ($this->userModel->editUserType()) {
             flash("formSuccess", "User updated successfully");
-            redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+            redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
             exit();
         }
 
         flash("formError", "Something went wrong");
-        redirect($GLOBALS['projectFolder'] . "/dashboard/users?action=edituser&id=" . $_POST['id']);
+        redirect("/dashboard/users?action=edituser&id=" . $_POST['id']);
         exit();
 
     }
@@ -221,7 +221,7 @@ class UserController
         $this->saveCart();
         unset($_SESSION['user']);
         session_destroy();
-        redirect($GLOBALS['projectFolder'] . "/index");
+        redirect("/index");
     }
 
     public function saveCart()
