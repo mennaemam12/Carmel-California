@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="public/css/client_side/nav.css">
     <link rel="stylesheet" href="public/css/client_side/footer.css">
-    <link rel="stylesheet" href="public/css/customize_salad.css">
+    <link rel="stylesheet" href="../public/css/old_customize_salad.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="public/js/viewprice-AJAX.js"></script>

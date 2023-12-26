@@ -3,7 +3,7 @@
         <div class="footer-title">About Us</div>
         <div class="footer-div-content">
             <div>
-
+                Join us into the Golden State of mind, where all good things collide.
             </div>
             <div class="footer-social">
                 <ul>
@@ -19,22 +19,9 @@
             <div>
                 <ul class="footer-navigation">
                     <li><a href="">Home</a></li>
-                    <li><a href="menu">Menu</a></li>
                     <li><a href="about">About</a></li>
-                    <li><a href="services">Services</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-div">
-        <div class="footer-title">Services</div>
-        <div class="footer-div-content">
-            <div>
-                <ul class="footer-navigation">
                     <li><a href="menu">Menu</a></li>
                     <li><a href="cart">Cart</a></li>
-                    <li><a href="#">Quality Foods</a></li>
-                    <li><a href="#">Mixed</a></li>
                 </ul>
             </div>
         </div>

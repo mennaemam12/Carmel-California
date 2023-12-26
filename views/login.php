@@ -15,7 +15,7 @@ NavController::viewNav();
 
 <section>
     <div class="image">
-        <img loading='lazy'src="public/images/reg.jpg" alt="">
+        <img loading='lazy'src="public/images/reg.webp" alt="">
     </div>
     <div class="login" id="login">
         <form id="login-form" method="POST" action="login" class = "ftco-animate">

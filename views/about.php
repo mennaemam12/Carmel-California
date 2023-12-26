@@ -18,7 +18,7 @@ require_once 'controllers/nav.controller.php';
 ?>
 
 <section class="ftco-about d-md-flex mt-5">
-    <div class="one-half img" style="background-image: url(public/images/bgstory_3.jpg); background-size: 88%;"></div>
+    <div class="one-half img" style="background-image: url(public/images/bgstory_3.webp); background-size: 88%;"></div>
     <div class="one-half one-half-about ftco-animate">
         <div class="heading-section ftco-animate ">
             <span class="subheading">Discover</span>
@@ -54,7 +54,7 @@ require_once 'controllers/nav.controller.php';
                 <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                     unorthographic life One day however a small.&rdquo;</p>
                 <div class="author">
-                    <img loading='lazy'src="public/images/person_2.jpg" alt="">
+                    <img loading='lazy'src="public/images/person_2.webp" alt="">
                     <div class="name ">Louise Kelly
                         <span class="position">Illustrator Designer</span>
                     </div>
@@ -65,7 +65,7 @@ require_once 'controllers/nav.controller.php';
                     unorthographic life One day however a small line of blind text by the name of Lorem Ipsum
                     decided to leave for the far World of Grammar.&rdquo;</p>
                 <div class="author">
-                    <img loading='lazy'src="public/images/person_2.jpg" alt="">
+                    <img loading='lazy'src="public/images/person_2.webp" alt="">
                     <div class="name">Louise Kelly
                         <span class="position">Illustrator Designer</span>
                     </div>
@@ -75,7 +75,7 @@ require_once 'controllers/nav.controller.php';
                 <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                     unorthographic life One day however a small line of blind text by the name. &rdquo;</p>
                 <div class="author">
-                    <img loading='lazy'src="public/images/person_3.jpg" alt="">
+                    <img loading='lazy'src="public/images/person_3.webp" alt="">
                     <div class="name">Louise Kelly
                         <span class="position">Illustrator Designer</span>
                     </div>
@@ -85,7 +85,7 @@ require_once 'controllers/nav.controller.php';
                 <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                     unorthographic life One day however.&rdquo;</p>
                 <div class="author">
-                    <img loading='lazy'src="public/images/person_2.jpg" alt="">
+                    <img loading='lazy'src="public/images/person_2.webp" alt="">
                     <div class="name align-self-center">Louise Kelly
                         <span class="position">Illustrator Designer</span>
                     </div>

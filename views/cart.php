@@ -133,7 +133,7 @@ require_once 'controllers/nav.controller.php';
         <div class="row">
             <div class="col-md-3">
                 <div class="menu-entry">
-                    <a href="#" class="img" style="background-image: url(public/images/menu-1.jpg);"></a>
+                    <a href="#" class="img" style="background-image: url(public/images/menu-1.webp);"></a>
                     <div class="text text-center pt-4">
                         <h3><a href="#">Coffee Capuccino</a></h3>
                         <p>A small river named Duden flows by their place and supplies</p>
@@ -144,7 +144,7 @@ require_once 'controllers/nav.controller.php';
             </div>
             <div class="col-md-3">
                 <div class="menu-entry">
-                    <a href="#" class="img" style="background-image: url(public/images/menu-2.jpg);"></a>
+                    <a href="#" class="img" style="background-image: url(public/images/menu-2.webp);"></a>
                     <div class="text text-center pt-4">
                         <h3><a href="#">Coffee Capuccino</a></h3>
                         <p>A small river named Duden flows by their place and supplies</p>
@@ -155,7 +155,7 @@ require_once 'controllers/nav.controller.php';
             </div>
             <div class="col-md-3">
                 <div class="menu-entry">
-                    <a href="#" class="img" style="background-image: url(public/images/menu-3.jpg);"></a>
+                    <a href="#" class="img" style="background-image: url(public/images/menu-3.webp);"></a>
                     <div class="text text-center pt-4">
                         <h3><a href="#">Coffee Capuccino</a></h3>
                         <p>A small river named Duden flows by their place and supplies</p>
@@ -166,7 +166,7 @@ require_once 'controllers/nav.controller.php';
             </div>
             <div class="col-md-3">
                 <div class="menu-entry">
-                    <a href="#" class="img" style="background-image: url(public/images/menu-4.jpg);"></a>
+                    <a href="#" class="img" style="background-image: url(public/images/menu-4.webp);"></a>
                     <div class="text text-center pt-4">
                         <h3><a href="#">Coffee Capuccino</a></h3>
                         <p>A small river named Duden flows by their place and supplies</p>

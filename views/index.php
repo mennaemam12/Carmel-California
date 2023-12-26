@@ -23,7 +23,7 @@ $rows = Item::getAllItems();
 	?>
 
 	<section class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image: url(public/images/bg_1.jpg);">
+		<div class="slider-item" style="background-image: url(public/images/bg_1.webp);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -42,7 +42,7 @@ $rows = Item::getAllItems();
 			</div>
 		</div>
 
-		<div class="slider-item" style="background-image: url(public/images/bg_6.jpg);">
+		<div class="slider-item" style="background-image: url(public/images/bg_6.webp);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -60,7 +60,7 @@ $rows = Item::getAllItems();
 			</div>
 		</div>
 
-		<div class="slider-item" style="background-image: url(public/images/bg_3.jpg);">
+		<div class="slider-item" style="background-image: url(public/images/bg_3.webp);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -81,7 +81,7 @@ $rows = Item::getAllItems();
 
 	<!--OUR STORY-->
     <section class="ftco-about d-md-flex mt-5">
-        <div class="one-half img" style="background-image: url(public/images/bgstory_3.jpg); background-size: 88%;"></div>
+        <div class="one-half img" style="background-image: url(public/images/bgstory_3.webp); background-size: 88%;"></div>
         <div class="one-half one-half-about ftco-animate">
             <div class="heading-section ftco-animate ">
                 <span class="subheading">Discover</span>
@@ -190,7 +190,7 @@ $rows = Item::getAllItems();
                     <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                         unorthographic life One day however a small.&rdquo;</p>
                     <div class="author">
-                        <img loading='lazy'src="public/images/person_2.jpg" alt="">
+                        <img loading='lazy'src="public/images/person_2.webp" alt="">
                         <div class="name ">Louise Kelly
                             <span class="position">Illustrator Designer</span>
                         </div>
@@ -201,7 +201,7 @@ $rows = Item::getAllItems();
                         unorthographic life One day however a small line of blind text by the name of Lorem Ipsum
                         decided to leave for the far World of Grammar.&rdquo;</p>
                     <div class="author">
-                        <img loading='lazy'src="public/images/person_2.jpg" alt="">
+                        <img loading='lazy'src="public/images/person_2.webp" alt="">
                         <div class="name">Louise Kelly
                             <span class="position">Illustrator Designer</span>
                         </div>
@@ -211,7 +211,7 @@ $rows = Item::getAllItems();
                     <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                         unorthographic life One day however a small line of blind text by the name. &rdquo;</p>
                     <div class="author">
-                        <img loading='lazy'src="public/images/person_3.jpg" alt="">
+                        <img loading='lazy'src="public/images/person_3.webp" alt="">
                         <div class="name">Louise Kelly
                             <span class="position">Illustrator Designer</span>
                         </div>
@@ -221,7 +221,7 @@ $rows = Item::getAllItems();
                     <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost
                         unorthographic life One day however.&rdquo;</p>
                     <div class="author">
-                        <img loading='lazy'src="public/images/person_2.jpg" alt="">
+                        <img loading='lazy'src="public/images/person_2.webp" alt="">
                         <div class="name align-self-center">Louise Kelly
                             <span class="position">Illustrator Designer</span>
                         </div>

@@ -239,7 +239,7 @@ form {
         right: 0;
         bottom: 0;
         left: 0;
-        background: url("../../images/reg.jpg") no-repeat center center fixed;
+        background: url("../../images/reg.webp") no-repeat center center fixed;
         background-size: cover;
         filter: blur(5px);
         z-index: -1;

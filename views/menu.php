@@ -21,7 +21,7 @@ require_once 'controllers/nav.controller.php';
 ?>
 
 <section class="home-slider owl-carousel">
-    <div class="slider-item" style= "background-image: url('public/images/bg_7.png')" data-stellar-background-ratio="0.5">
+    <div class="slider-item" style= "background-image: url('public/images/bg_9.webp')" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row slider-text justify-content-center align-items-center">
@@ -32,7 +32,7 @@ require_once 'controllers/nav.controller.php';
             </div>
         </div>
     </div>
-    <div class="slider-item" style="background-image: url('public/images/bg_2.jpeg')" data-stellar-background-ratio="0.5">
+    <div class="slider-item" style="background-image: url('public/images/bg_2.webp')" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row slider-text justify-content-center align-items-center">
@@ -43,7 +43,7 @@ require_once 'controllers/nav.controller.php';
             </div>
         </div>
     </div>
-    <div class="slider-item" style="background-image: url('public/images/bg_9.jpg')" data-stellar-background-ratio="0.5">
+    <div class="slider-item" style="background-image: url('public/images/bg_7.webp')" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row slider-text justify-content-center align-items-center">
